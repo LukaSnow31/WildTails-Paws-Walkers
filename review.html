@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reviews | WildTails & Paws Walkers</title>
+  <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: #222;
+    }
+    #logo {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      height: 280px;
+      width: auto;
+      z-index: 999;
+      border-radius: 50%;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #5C4033;
+      z-index: 998;
+      padding-left: 130px;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    nav li { margin: 0; }
+    nav a {
+      display: block;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    nav a:hover { background-color: #4e2f22; }
+    .container {
+      padding-top: 140px;
+      padding-bottom: 40px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+    }
+    form {
+      background: rgba(255,255,255,0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input[type="text"], textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .paws {
+      display: flex;
+      gap: 5px;
+      margin-top: 5px;
+    }
+    .paw {
+      width: 40px;
+      height: 40px;
+      background: url('https://i.postimg.cc/mZMS9bHX/pngegg-3.png') no-repeat center;
+      background-size: contain;
+      cursor: pointer;
+      opacity: 0.5;
+    }
+    .paw.selected {
+      opacity: 1;
+    }
+    button[type="submit"] {
+      margin-top: 20px;
+      background: #5C4033;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .reviews {
+      margin-top: 40px;
+      background: rgba(255,255,255,0.8);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .review {
+      margin-bottom: 20px;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      text-align: left;
+    }
+    footer {
+      background-color: #5C4033;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
+  <nav>
+    <ul>
+      <li><a href="#Home">Home</a></li>
+      <li><a href="#About">About Us</a></li>
+      <li><a href="#Gallery">Gallery</a></li>
+      <li><a href="#Services">Services</a></li>
+      <li><a href="#Shop">Shop</a></li>
+      <li><a herf="#checkout">Check Out</a></li>
+      <li><a href="#Reviews">Reviews</a></li>
+      <li><a href="#Book">Book Now</a></li>
+      <li><a href="#Contact">Contact Us</a></li>
+    </ul>
+  </nav>
+  <main class="container">
+    <h1>Leave a Review</h1>
+    <form id="reviewForm">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" required>
+
+      <label>Rate Our Service</label>
+      <div class="paws" id="rating">
+        <div class="paw" data-value="1"></div>
+        <div class="paw" data-value="2"></div>
+        <div class="paw" data-value="3"></div>
+        <div class="paw" data-value="4"></div>
+        <div class="paw" data-value="5"></div>
+      </div>
+
+      <label for="recommend">How likely would you recommend us (out of 5)?</label>
+      <select id="recommend" required>
+        <option value="">--Select--</option>
+        <option value="1">1 - Not likely</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 - Highly likely</option>
+      </select>
+
+      <label for="comments">Your Experience</label>
+      <textarea id="comments" rows="5" required></textarea>
+
+      <button type="submit">Submit Review</button>
+    </form>
+
+    <div class="reviews" id="reviews">
+      <h2>What Our Clients Say</h2>
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
+  </footer>
+  <script>
+    const paws = document.querySelectorAll('.paw');
+    let selectedRating = 0;
+
+    paws.forEach(paw => {
+      paw.addEventListener('click', () => {
+        selectedRating = parseInt(paw.dataset.value);
+        paws.forEach(p => p.classList.remove('selected'));
+        for (let i = 0; i < selectedRating; i++) {
+          paws[i].classList.add('selected');
+        }
+      });
+    });
+
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const recommend = document.getElementById('recommend').value;
+      const comments = document.getElementById('comments').value;
+
+      const reviewHTML = `
+        <div class="review">
+          <strong>${name}</strong><br>
+          <div>${'🐾'.repeat(selectedRating)}</div>
+          <p>${comments}</p>
+          <small>Recommendation: ${recommend}/5</small>
+        </div>
+      `;
+
+      document.getElementById('reviews').innerHTML += reviewHTML;
+      this.reset();
+      paws.forEach(p => p.classList.remove('selected'));
+      selectedRating = 0;
+    });
+  </script>
+</body>
+</html>

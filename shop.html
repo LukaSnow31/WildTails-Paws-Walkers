@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop | WildTails & Paws Walkers</title>
+  <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet" />
+  <style>
+    /* Your existing styles, plus minimal cart styling */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: #222;
+    }
+    #logo {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      height: 280px;
+      width: auto;
+      z-index: 999;
+      border-radius: 50%;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #5C4033;
+      z-index: 998;
+      padding-left: 130px;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    nav li { margin: 0; }
+    nav a {
+      display: block;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    nav a:hover { background-color: #4e2f22; }
+    .container {
+      padding-top: 140px;
+      padding-bottom: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .shop-item {
+      background: white;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .shop-item h3 { font-family: 'Playfair Display', serif; }
+    .shop-item .images img { width: 100px; margin: 5px; }
+    footer {
+      background-color: #5C4033;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 80px;
+    }
+    #cart {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 600px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    #cart p {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 0;
+    }
+    #cart button.remove-btn {
+      background: #c0392b;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+    #cart button.remove-btn:hover {
+      background: #e74c3c;
+    }
+    #checkout-btn {
+      margin-top: 10px;
+      padding: 12px 20px;
+      font-size: 1.1em;
+      background: #5C4033;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #checkout-btn:hover {
+      background: #4e2f22;
+    }
+    @media (max-width: 768px) {
+      nav { padding-left: 0; }
+      #logo { position: static; margin: 10px auto; display: block; }
+      nav ul { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
+  <nav>
+    <ul>
+      <li><a href="#Home">Home</a></li>
+      <li><a href="#About">About Us</a></li>
+      <li><a href="#Gallery">Gallery</a></li>
+      <li><a href="#Services">Services</a></li>
+      <li><a href="#Shop">Shop</a></li>
+      <li><a herf="#checkout">Check Out</a></li>
+      <li><a href="#Reviews">Reviews</a></li>
+      <li><a href="#Book">Book Now</a></li>
+      <li><a href="#Contact">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="Shop">
+      <h1>Shop</h1>
+      <div id="shop-items"></div>
+    </section>
+
+    <section id="CartSection">
+      <h2>Your Cart</h2>
+      <div id="cart"></div>
+      <button id="checkout-btn">Go to Checkout</button>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
+  </footer>
+
+  <script>
+    const shopItems = [
+      {
+        id: 1,
+        title: "WildTails Dog Bandana",
+        description: "Stylish, washable dog bandana in various sizes.",
+        images: ["img1a.jpg", "img1b.jpg", "img1c.jpg"],
+        price: 10,
+        quantity: 5
+      },
+      {
+        id: 2,
+        title: "Natural Dog Treats Pack",
+        description: "Healthy, handmade treats your pup will love!",
+        images: ["img2a.jpg", "img2b.jpg"],
+        price: 6,
+        quantity: 10
+      }
+    ];
+
+    const shopContainer = document.getElementById("shop-items");
+    const cartContainer = document.getElementById("cart");
+    const checkoutBtn = document.getElementById("checkout-btn");
+
+    // Load cart from localStorage or initialize empty
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function renderShop() {
+      shopContainer.innerHTML = '';
+      shopItems.forEach(item => {
+        const imagesHTML = item.images.slice(0, 6).map(src => `<img src="${src}" alt="${item.title}">`).join('');
+        // Find current stock (reduce by quantity in cart)
+        const cartQty = cart.find(ci => ci.id === item.id)?.qty || 0;
+        const availableQty = item.quantity - cartQty;
+        shopContainer.innerHTML += `
+          <div class="shop-item">
+            <h3>${item.title}</h3>
+            <div class="images">${imagesHTML}</div>
+            <p>${item.description}</p>
+            <p><b>£${item.price.toFixed(2)}</b></p>
+            <p>Available: ${availableQty}</p>
+            <input type="number" min="1" max="${availableQty}" value="1" id="qty-${item.id}" ${availableQty === 0 ? 'disabled' : ''} />
+            <button onclick="addToCart(${item.id})" ${availableQty === 0 ? 'disabled' : ''}>Add to Cart</button>
+          </div>
+        `;
+      });
+    }
+
+    function renderCart() {
+      if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+        checkoutBtn.disabled = true;
+        return;
+      }
+      checkoutBtn.disabled = false;
+      cartContainer.innerHTML = '';
+      let total = 0;
+      cart.forEach(item => {
+        total += item.qty * item.price;
+        cartContainer.innerHTML += `
+          <p>
+            ${item.title} x ${item.qty} = £${(item.qty * item.price).toFixed(2)}
+            <button class="remove-btn" onclick="removeFromCart(${item.id})">Remove</button>
+          </p>`;
+      });
+      cartContainer.innerHTML += `<p><b>Total: £${total.toFixed(2)}</b></p>`;
+    }
+
+    function addToCart(id) {
+      const item = shopItems.find(i => i.id === id);
+      const qtyInput = document.getElementById(`qty-${id}`);
+      const qty = parseInt(qtyInput.value);
+      if (!qty || qty < 1) return alert("Please enter a valid quantity");
+      // Calculate available stock
+      const cartQty = cart.find(ci => ci.id === id)?.qty || 0;
+      const availableQty = item.quantity - cartQty;
+      if (qty > availableQty) {
+        return alert("Not enough stock available");
+      }
+      const cartItem = cart.find(ci => ci.id === id);
+      if (cartItem) {
+        cartItem.qty += qty;
+      } else {
+        cart.push({ id: item.id, title: item.title, price: item.price, qty });
+      }
+      saveCart();
+      renderShop();
+      renderCart();
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      saveCart();
+      renderShop();
+      renderCart();
+    }
+
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    checkoutBtn.addEventListener('click', () => {
+      if(cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      window.location.href = 'checkout.html';
+    });
+
+    renderShop();
+    renderCart();
+  </script>
+</body>
+</html>

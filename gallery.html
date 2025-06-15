@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | WildTails & Paws Walkers</title>
+  <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: #222;
+    }
+    #logo {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      height: 280px;
+      width: auto;
+      z-index: 999;
+      border-radius: 50%;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #5C4033;
+      z-index: 998;
+      padding-left: 130px;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    nav li { margin: 0; }
+    nav a {
+      display: block;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    nav a:hover { background-color: #4e2f22; }
+    .container {
+      padding-top: 140px;
+      padding-bottom: 40px;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+    }
+
+    .gallery-wrapper {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      margin: 20px auto;
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 20px;
+      animation: scrollGallery 30s linear infinite;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-track img {
+      width: 300px;
+      height: auto;
+      flex-shrink: 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      background: rgba(92, 64, 51, 0.8);
+      color: white;
+      border: none;
+      padding: 10px;
+      z-index: 1000;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .arrow.left { left: 10px; }
+    .arrow.right { right: 10px; }
+    .arrow:hover { background: rgba(78, 47, 34, 0.9); }
+
+    .gallery-wrapper:hover .gallery-track {
+      animation-play-state: paused;
+    }
+
+    footer {
+      background-color: #5C4033;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    @keyframes scrollGallery {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Lightbox styles */
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      flex-direction: column;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .lightbox-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 20px;
+    }
+
+    .lightbox-controls button {
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 2rem;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      color: white;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding-left: 0; }
+      #logo {
+        position: static;
+        margin: 10px auto;
+        display: block;
+      }
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
+
+  <nav>
+    <ul>
+      <li><a href="#Home">Home</a></li>
+      <li><a href="#About">About Us</a></li>
+      <li><a href="#Gallery">Gallery</a></li>
+      <li><a href="#Services">Services</a></li>
+      <li><a href="#Shop">Shop</a></li>
+      <li><a herf="#checkout">Check Out</a></li>
+      <li><a href="#Reviews">Reviews</a></li>
+      <li><a href="#Book">Book Now</a></li>
+      <li><a href="#Contact">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <h1>Gallery</h1>
+    <div class="gallery-wrapper">
+      <button class="arrow left" onclick="scrollGallery(-1)">&#10094;</button>
+      <div class="gallery-track" id="galleryTrack">
+        <img src="https://i.postimg.cc/x8NVxXz7/7378dbf4-baf9-442d-8bd4-189d50243b8c.jpg" alt="Walking Asher" />
+        <img src="https://i.postimg.cc/76Wyn3f0/580512e2-2477-4c16-bb9f-24806240fe93.jpg" alt="Walking Asher 2" />
+        <img src="https://i.postimg.cc/qRRTKbMp/88c39646-a048-4059-bc38-745737926189.jpg" alt="Walking Asher 3" />
+        <img src="https://i.postimg.cc/jjvTL0T8/6b51755a-c970-4276-bc65-bd2cb68c7b06.jpg" alt="Walking Asher 4" />    
+      <img src="https://i.postimg.cc/WpdDLS6R/d8e07db9-216b-45a8-9c55-fbee1c077091.jpg" alt="Walking Lulu, Ralph and CoCo" />    
+      <img src="https://i.postimg.cc/Th8MZTjP/a60742ff-31d6-4efd-868a-58fc9a05ce33.jpg" alt="Walking Poppy" />    
+      <img src="https://i.postimg.cc/W1GTcqHc/534c534f-cec3-4bae-921d-09255500b7e6.jpg" alt="Pearl sleeping" />    
+      <img src="https://i.postimg.cc/DwknNP5c/ebdc72e0-8322-4073-ab2c-70426274afad.jpg" alt="Pearl playing tug 0 war" />    
+      <img src="https://i.postimg.cc/GpbrL3W8/3edc8735-98f6-45d3-9e90-ad30b0fcea32.jpg" alt="Walking Pearl" />    
+      <img src="https://i.postimg.cc/BQ1JNV56/4849848e-4f32-449f-b18c-439b5ed63d3f.jpg" alt="Walking Scooby" />    
+      <img src="https://i.postimg.cc/7h5wFBpK/b9057dad-c06a-4813-912e-40b9f19d555b.jpg" alt="Walking Scooby" />    
+      <img src="https://i.postimg.cc/qBFksT3S/b944a5b8-14fd-4c07-9b57-eabcc5f086f2.jpg" alt="Scooby resting on sofa" />    
+      <img src="https://i.postimg.cc/4dLXFCFK/c8de7bbd-7452-48fd-aeed-2e7c314b750e.jpg" alt="Walking Ozwald" />    
+      <img src="https://i.postimg.cc/9fBmZwdY/9576b374-c4e6-42ee-8a38-8f1b6517681e.jpg" alt="Walking Ozwald 2" />    
+      <img src="https://i.postimg.cc/3NzYYXhY/001ee920-fb94-4add-b6c3-a34d622db9b5.jpg" alt="Walking Ozwald 3" />    
+      <img src="https://i.postimg.cc/CxkLMQdt/280bcd56-a2d4-4d6e-81b6-84ba63d4186c.jpg" alt="Walking Missy" />    
+      <img src="https://i.postimg.cc/XJ7V8NxS/2c44b9f4-f347-477a-8d7d-5e6c06e1a2e1.jpg" alt="Walking Missy 2" />    
+      <img src="https://i.postimg.cc/DzhfSPXz/7a76ca89-c85b-4012-a372-f2c72b0070ab.jpg" alt="Walking Missy 3" />    
+      <img src="https://i.postimg.cc/1t9zjrmd/271a220f-3581-4b8b-aff1-7fe3aa09e81a.jpg" alt="Walking Ruby" />    
+      <img src="https://i.postimg.cc/SRRxyQz7/b942d8a3-959e-486f-94c7-a56f1f20f427.jpg" alt="Ruby sleeping" />    
+      <img src="https://i.postimg.cc/cCz46qRq/f97d717c-13a8-499a-9296-9b14f77a74ab.jpg" alt="ruby playing tug o war" />    
+      <img src="https://i.postimg.cc/W4m38Hvr/56277d21-57b6-4c8b-9717-b9e186a198ce.jpg alt="Dexter sleeping" />    
+      <img src="https://i.postimg.cc/T3DhLPNt/9094f52d-6f5b-4dd3-b362-d6e47fa46789.jpg alt="Walking Dexter" />    
+      <img src="https://i.postimg.cc/ydvN43W8/f8e39174-22b2-4c54-925b-cd50ffb7b3ef.jpg alt="Walking Dexter 2" />    
+      <img src="https://i.postimg.cc/ydvN43W8/f8e39174-22b2-4c54-925b-cd50ffb7b3ef.jpg alt="Walking Dexter 3" />    
+      <img src="https://i.postimg.cc/dtzVYYQr/14e68ebb-7b65-4659-861f-d9715f0b04c6.jpg alt="Ripley resting" />    
+      <img src="https://i.postimg.cc/c4KL2HWd/6d041dfe-f200-41cd-82d7-11b02eebfcfa.jpg alt="Ripley walking" />    
+      <img src="https://i.postimg.cc/KcpY0Td9/947aa004-8a21-47fa-8d97-26c3ae212c5d.jpg alt="Ripley getting pets" />    
+      <img src="https://i.postimg.cc/JhC0bW9M/5516e294-9674-4254-92b3-18f50a1d25f0.jpg alt="Buddy walking" />    
+      <img src="https://i.postimg.cc/pXymvCfb/78f506f1-de56-47ff-984c-78c8915eb445-1.jpg alt=" Buddy walking 2" />    
+      <img src="https://i.postimg.cc/9FSrQ9b4/c5679497-6ddb-477a-85bb-c43f1abb425f.jpg alt="Buddy walking 3" />    
+   
+        <!-- Duplicates for loop -->
+        <img src="https://i.postimg.cc/x8NVxXz7/7378dbf4-baf9-442d-8bd4-189d50243b8c.jpg" alt="Repeat 1" />
+        <img src="https://i.postimg.cc/76Wyn3f0/580512e2-2477-4c16-bb9f-24806240fe93.jpg" alt="Repeat 2" />
+        <img src="https://i.postimg.cc/qRRTKbMp/88c39646-a048-4059-bc38-745737926189.jpg" alt="Repeat 3" />
+ <img src="https://i.postimg.cc/jjvTL0T8/6b51755a-c970-4276-bc65-bd2cb68c7b06.jpgalt="Repeat 4" />
+        <img src="https://i.postimg.cc/WpdDLS6R/d8e07db9-216b-45a8-9c55-fbee1c077091.jpg" alt="Repeat 5" />  
+        <img src="https://i.postimg.cc/Th8MZTjP/a60742ff-31d6-4efd-868a-58fc9a05ce33.jpg" alt="Repeat 6" />  
+      <img src="https://i.postimg.cc/W1GTcqHc/534c534f-cec3-4bae-921d-09255500b7e6.jpg" alt="Repeat 7" />  
+      <img src="https://i.postimg.cc/DwknNP5c/ebdc72e0-8322-4073-ab2c-70426274afad.jpg" alt="Repeat 8" />   
+      <img src="https://i.postimg.cc/GpbrL3W8/3edc8735-98f6-45d3-9e90-ad30b0fcea32.jpg" alt="Repeat 9" />  
+      <img src="https://i.postimg.cc/BQ1JNV56/4849848e-4f32-449f-b18c-439b5ed63d3f.jpg" alt="Repeat 10" />  
+      <img src="https://i.postimg.cc/7h5wFBpK/b9057dad-c06a-4813-912e-40b9f19d555b.jpg" alt="Repeat 11" />  
+      <img src="https://i.postimg.cc/qBFksT3S/b944a5b8-14fd-4c07-9b57-eabcc5f086f2.jpg" alt="Repeat 12" />  
+      <img src="https://i.postimg.cc/4dLXFCFK/c8de7bbd-7452-48fd-aeed-2e7c314b750e.jpg" alt="Repeat 13" />   
+      <img src="https://i.postimg.cc/9fBmZwdY/9576b374-c4e6-42ee-8a38-8f1b6517681e.jpg" alt="Repeat 14" />   
+      <img src="https://i.postimg.cc/3NzYYXhY/001ee920-fb94-4add-b6c3-a34d622db9b5.jpg" alt="Repeat 15" />   
+      <img src="https://i.postimg.cc/CxkLMQdt/280bcd56-a2d4-4d6e-81b6-84ba63d4186c.jpg" alt="Repeat 16" />  
+      <img src="https://i.postimg.cc/XJ7V8NxS/2c44b9f4-f347-477a-8d7d-5e6c06e1a2e1.jpg" alt="Repeat 17" />   
+      <img src="https://i.postimg.cc/DzhfSPXz/7a76ca89-c85b-4012-a372-f2c72b0070ab.jpg" alt="Repeat 18" />   
+      <img src="https://i.postimg.cc/1t9zjrmd/271a220f-3581-4b8b-aff1-7fe3aa09e81a.jpg" alt="Repeat 19" />  
+      <img src="https://i.postimg.cc/SRRxyQz7/b942d8a3-959e-486f-94c7-a56f1f20f427.jpg" alt="Repeat 20" />    
+      <img src="https://i.postimg.cc/cCz46qRq/f97d717c-13a8-499a-9296-9b14f77a74ab.jpg" alt="Repeat 21" />  
+      <img src="https://i.postimg.cc/W4m38Hvr/56277d21-57b6-4c8b-9717-b9e186a198ce.jpg alt="Repeat 22" />  
+      <img src="https://i.postimg.cc/T3DhLPNt/9094f52d-6f5b-4dd3-b362-d6e47fa46789.jpg alt="Repeat 23" />   
+      <img src="https://i.postimg.cc/ydvN43W8/f8e39174-22b2-4c54-925b-cd50ffb7b3ef.jpg alt="Repeat 24" />  
+      <img src="https://i.postimg.cc/ydvN43W8/f8e39174-22b2-4c54-925b-cd50ffb7b3ef.jpg alt="Repeat 25" />   
+      <img src="https://i.postimg.cc/dtzVYYQr/14e68ebb-7b65-4659-861f-d9715f0b04c6.jpg alt="Repeat 26" />   
+      <img src="https://i.postimg.cc/c4KL2HWd/6d041dfe-f200-41cd-82d7-11b02eebfcfa.jpg alt="Repeat 27" />   
+      <img src="https://i.postimg.cc/KcpY0Td9/947aa004-8a21-47fa-8d97-26c3ae212c5d.jpg alt="Repeat 28" />   
+      <img src="https://i.postimg.cc/JhC0bW9M/5516e294-9674-4254-92b3-18f50a1d25f0.jpg alt="Repeat 29" />   
+      <img src="https://i.postimg.cc/pXymvCfb/78f506f1-de56-47ff-984c-78c8915eb445-1.jpg alt=" alt="Repeat 30" />  
+      <img src="https://i.postimg.cc/9FSrQ9b4/c5679497-6ddb-477a-85bb-c43f1abb425f.jpg alt="Repeat 31" />  
+   
+      </div>
+      <button class="arrow right" onclick="scrollGallery(1)">&#10095;</button>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="close-btn" onclick="closeLightbox()">&times;</button>
+    <div class="lightbox-controls">
+      <button onclick="changeImage(-1)">&#10094;</button>
+      <button onclick="changeImage(1)">&#10095;</button>
+    </div>
+    <img id="lightboxImg" src="" alt="Zoomed" />
+  </div>
+
+  <script>
+    const track = document.getElementById('galleryTrack');
+    const galleryImages = Array.from(track.querySelectorAll('img'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    let currentImgIndex = 0;
+
+    function scrollGallery(direction) {
+      const scrollAmount = 320;
+      track.style.animationPlayState = 'paused';
+      const currentTransform = getComputedStyle(track).transform;
+      const matrix = new DOMMatrix(currentTransform);
+      const newX = matrix.m41 + (direction * -scrollAmount);
+      track.style.transform = `translateX(${newX}px)`;
+      setTimeout(() => {
+        track.style.animationPlayState = 'running';
+      }, 2000);
+    }
+
+    galleryImages.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        currentImgIndex = index;
+        lightboxImg.src = img.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    function changeImage(direction) {
+      currentImgIndex = (currentImgIndex + direction + galleryImages.length) % galleryImages.length;
+      lightboxImg.src = galleryImages[currentImgIndex].src;
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+    }
+
+    // Optional: ESC key to close
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>

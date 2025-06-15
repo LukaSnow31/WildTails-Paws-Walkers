@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout | WildTails & Paws Walkers</title>
+  <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: #222;
+    }
+    #logo {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      height: 280px;
+      width: auto;
+      z-index: 999;
+      border-radius: 50%;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #5C4033;
+      z-index: 998;
+      padding-left: 130px;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    nav li {
+      margin: 0;
+      position: relative;
+    }
+    nav a {
+      display: block;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #4e2f22;
+    }
+    #cart-icon {
+      cursor: pointer;
+      position: relative;
+    }
+    #cart-count {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-size: 0.8em;
+    }
+    .mini-cart {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 58px;
+      width: 250px;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      border-radius: 8px;
+      z-index: 999;
+    }
+    nav li:hover .mini-cart {
+      display: block;
+    }
+    .container {
+      padding-top: 160px;
+      padding-bottom: 40px;
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 0 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select, textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+    }
+    #cart-preview {
+      margin: 20px;
+      background: #f8f8f8;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    #paypal-button-container {
+      margin: 20px;
+    }
+    #thank-you {
+      display: none;
+      text-align: center;
+      font-size: 1.3em;
+      color: green;
+      margin-top: 20px;
+    }
+    footer {
+      background-color: #5C4033;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 80px;
+    }
+    @media (max-width: 768px) {
+      nav { padding-left: 0; }
+      #logo { position: static; margin: 10px auto; display: block; }
+      nav ul { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
+  <nav>
+    <ul>
+      <li><a href="index.html#Home">Home</a></li>
+      <li><a href="index.html#About">About Us</a></li>
+      <li><a href="index.html#Gallery">Gallery</a></li>
+      <li><a href="index.html#Services">Services</a></li>
+      <li><a href="index.html#Shop">Shop</a></li>
+      <li><a href="checkout.html">Check Out</a></li>
+      <li><a href="index.html#Reviews">Reviews</a></li>
+      <li><a href="index.html#Book">Book Now</a></li>
+      <li><a href="index.html#Contact">Contact Us</a></li>
+      <li id="cart-icon">
+        <a href="#">Cart <span id="cart-count">0</span></a>
+        <div class="mini-cart" id="mini-cart"></div>
+      </li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <h1 style="text-align: center;">Checkout</h1>
+    <div id="cart-preview"></div>
+    <button onclick="clearCart()">Clear Cart</button>
+    <form id="checkout-form">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required>
+
+      <label for="address">Address</label>
+      <textarea id="address" rows="3" required></textarea>
+
+      <label for="gift">Is this a gift?</label>
+      <select id="gift">
+        <option value="no">No</option>
+        <option value="yes">Yes, please gift wrap</option>
+      </select>
+
+      <label for="note">Add a note for the recipient (optional):</label>
+      <textarea id="note" rows="3"></textarea>
+    </form>
+
+    <div id="paypal-button-container"></div>
+    <div id="thank-you">
+      <p>Thank you for your order! 🐾</p>
+      <p>We’ll process it shortly and be in touch if needed.</p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
+  </footer>
+
+  <script>
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let total = 0;
+      let html = '<strong>Your Cart:</strong><ul>';
+      cart.forEach((item, index) => {
+        total += item.price * item.qty;
+        html += `<li>${item.title} - £${item.price} x <input type="number" min="1" value="${item.qty}" onchange="updateQty(${index}, this.value)" style="width: 50px;"> = £${(item.price * item.qty).toFixed(2)}</li>`;
+      });
+      html += `</ul><strong>Total: £${total.toFixed(2)}</strong>`;
+      document.getElementById('cart-preview').innerHTML = html;
+      document.getElementById('mini-cart').innerHTML = html;
+      document.getElementById('cart-count').textContent = cart.length;
+    }
+
+    function updateQty(index, newQty) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart[index].qty = parseInt(newQty);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function clearCart() {
+      localStorage.removeItem('cart');
+      renderCart();
+    }
+
+    window.onload = renderCart;
+  </script>
+</body>
+</html>
