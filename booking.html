@@ -2,17 +2,152 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Book a Service | WildTails & Paws Walkers</title>
-  <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="WildTails-PawsWalkers/front-logo.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet" />
   <style>
-    /* (Keep your existing CSS styles as-is) */
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    #logo {
+      display: block;
+      max-width: 180px;
+      margin: 20px auto;
+    }
+    nav {
+      background: #2e7d32; /* dark green */
+      padding: 10px 0;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus {
+      color: #a5d6a7; /* lighter green */
+      outline: none;
+    }
+
+    main.container {
+      max-width: 700px;
+      background: #fff;
+      margin: 30px auto;
+      padding: 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #2e7d32;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      margin: 10px 0 20px;
+      font-size: 1.1rem;
+    }
+
+    form label {
+      display: block;
+      margin: 12px 0 5px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="time"],
+    textarea {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 1rem;
+      border: 1.5px solid #ccc;
+      border-radius: 4px;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="date"]:focus,
+    input[type="time"]:focus,
+    textarea:focus {
+      border-color: #2e7d32;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .calendar-label {
+      margin-top: 25px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #2e7d32;
+      border-bottom: 2px solid #a5d6a7;
+      padding-bottom: 4px;
+    }
+
+    button[type="submit"] {
+      margin-top: 25px;
+      background-color: #2e7d32;
+      color: white;
+      font-weight: 700;
+      padding: 12px 0;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background-color: #1b4d20;
+      outline: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 0.9rem;
+      color: #555;
+      background: #e6e6e6;
+      margin-top: 40px;
+    }
   </style>
 </head>
 <body>
 
-  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
+  <img id="logo" src="WildTails-PawsWalkers/front-logo.png" alt="WildTails Logo" />
 
   <nav>
     <ul>
@@ -24,69 +159,69 @@
       <li><a href="checkout.html">Check Out</a></li>
       <li><a href="review.html">Reviews</a></li>
       <li><a href="booking.html">Book Now</a></li>
-      <li><a href="contact us.html">Contact Us</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
     </ul>
   </nav>
 
   <main class="container">
-    <section id="Book Now" class="hero">
+    <section id="book-now" class="hero">
       <h1>Book a Service</h1>
       <p>Ready to book in and secure your dates?</p>
       <p>Fill in the form below to pre-book your dog's holidays, drop-ins, or walks.</p>
       <p>If you have any questions or would like to arrange your free 30-minute introduction as a new client, please use our Contact Us form instead.</p>
 
-      <form id="bookingForm" action="https://formsubmit.co/info@wildtailsandpawswalkers.co.uk" method="POST">
-        <input type="hidden" name="_next" value="https://wildtailsandpawswalkers.co.uk/thank-you-booking.html">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="New Booking from Website">
+      <form id="bookingForm" action="https://formsubmit.co/info@wildtailsandpawswalkers.co.uk" method="POST" autocomplete="off">
+        <input type="hidden" name="_next" value="https://wildtailsandpawswalkers.co.uk/thank-you-booking.html" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_subject" value="New Booking from Website" />
 
         <div class="calendar-label">Walks & Drop-ins</div>
         <label for="walk-date-start">Start Date:</label>
-        <input type="date" id="walk-date-start" name="walk-date-start" required>
+        <input type="date" id="walk-date-start" name="walk-date-start" required />
 
         <label for="walk-date-end">End Date:</label>
-        <input type="date" id="walk-date-end" name="walk-date-end" required>
+        <input type="date" id="walk-date-end" name="walk-date-end" required />
 
         <label for="walk-time-start">Start Time:</label>
-        <input type="time" id="walk-time-start" name="walk-time-start" required>
+        <input type="time" id="walk-time-start" name="walk-time-start" required />
 
         <label for="walk-time-end">End Time:</label>
-        <input type="time" id="walk-time-end" name="walk-time-end" required>
+        <input type="time" id="walk-time-end" name="walk-time-end" required />
 
         <div class="calendar-label">Day Sitting</div>
         <label for="day-date-start">Start Date:</label>
-        <input type="date" id="day-date-start" name="day-date-start">
+        <input type="date" id="day-date-start" name="day-date-start" />
 
         <label for="day-date-end">End Date:</label>
-        <input type="date" id="day-date-end" name="day-date-end">
+        <input type="date" id="day-date-end" name="day-date-end" />
 
         <label for="day-time-start">Start Time:</label>
-        <input type="time" id="day-time-start" name="day-time-start">
+        <input type="time" id="day-time-start" name="day-time-start" />
 
         <label for="day-time-end">End Time:</label>
-        <input type="time" id="day-time-end" name="day-time-end">
+        <input type="time" id="day-time-end" name="day-time-end" />
 
         <div class="calendar-label">Holiday Sitting</div>
         <label for="holiday-date-start">Start Date:</label>
-        <input type="date" id="holiday-date-start" name="holiday-date-start">
+        <input type="date" id="holiday-date-start" name="holiday-date-start" />
 
         <label for="holiday-date-end">End Date:</label>
-        <input type="date" id="holiday-date-end" name="holiday-date-end">
+        <input type="date" id="holiday-date-end" name="holiday-date-end" />
 
         <label for="holiday-time-start">Start Time:</label>
-        <input type="time" id="holiday-time-start" name="holiday-time-start">
+        <input type="time" id="holiday-time-start" name="holiday-time-start" />
 
         <label for="holiday-time-end">End Time:</label>
-        <input type="time" id="holiday-time-end" name="holiday-time-end">
+        <input type="time" id="holiday-time-end" name="holiday-time-end" />
 
         <label for="name">First Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" required />
 
         <label for="surname">Last Name:</label>
-        <input type="text" id="surname" name="surname" required>
+        <input type="text" id="surname" name="surname" required />
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" required />
 
         <label for="details">Additional Details:</label>
         <textarea id="details" name="details" rows="4" placeholder="Include number of dogs, breed, behaviour notes etc..."></textarea>
@@ -102,4 +237,5 @@
 
 </body>
 </html>
+
 
