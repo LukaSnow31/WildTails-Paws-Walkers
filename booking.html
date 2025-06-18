@@ -122,86 +122,91 @@
 
   <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 
-<nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="checkout.html">Check Out</a></li>
-    <li><a href="review.html">Reviews</a></li>
-    <li><a href="booking.html">Book Now</a></li>
-    <li><a href="contact us.html">Contact Us</a></li>
-  </ul>
-</nav>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="checkout.html">Check Out</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact us.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
   <main class="container">
-  <section id="Book Now" class="hero">
-    <h1>Book a Service</h1>
-    <p>If you would like to enquire for further information, get a tailored quote or to arrange a slot for the free 30mins introduction then please use the form below and we will get back to you within 24hrs. Thank you.</p>
+    <section id="Book Now" class="hero">
+      <h1>Book a Service</h1>
+      <p>Ready to book in and secure your dates?</p>
+      <p>Fill in the form below to pre-book your dog's holidays, drop-ins, or walks.</p>
+      <p>If you have any questions or would like to arrange your free 30-minute introduction as a new client, please use our Contact Us form instead.</p>
 
-    <form action="https://formsubmit.co/kaygeorge31@hotmail.com" method="POST">
-      <input type="hidden" name="_next" value="https://yourwebsite.co.uk/thank-you.html">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_subject" value="New Booking from Website">
+      <form action="https://formsubmit.co/contact@wildtailsandpawswalkers.co.uk" method="POST">
+        <input type="hidden" name="_next" value="https://wildtailsandpawswalkers.co.uk/thank-you.html">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New Booking from Website">
 
-      <div class="calendar-label">Walks & Drop-ins</div>
-      <label for="walk-date-start">Start Date:</label>
-      <input type="date" id="walk-date-start" name="walk-date-start">
+        <div class="calendar-label">Walks & Drop-ins</div>
+        <label for="walk-date-start">Start Date:</label>
+        <input type="date" id="walk-date-start" name="walk-date-start" required>
 
-      <label for="walk-date-end">End Date:</label>
-      <input type="date" id="walk-date-end" name="walk-date-end">
+        <label for="walk-date-end">End Date:</label>
+        <input type="date" id="walk-date-end" name="walk-date-end" required>
 
-      <label for="walk-time-start">Start Time:</label>
-      <input type="time" id="walk-time-start" name="walk-time-start">
+        <label for="walk-time-start">Start Time:</label>
+        <input type="time" id="walk-time-start" name="walk-time-start" required>
 
-      <label for="walk-time-end">End Time:</label>
-      <input type="time" id="walk-time-end" name="walk-time-end">
+        <label for="walk-time-end">End Time:</label>
+        <input type="time" id="walk-time-end" name="walk-time-end" required>
 
-      <div class="calendar-label">Day Sitting</div>
-      <label for="day-date-start">Start Date:</label>
-      <input type="date" id="day-date-start" name="day-date-start">
+        <div class="calendar-label">Day Sitting</div>
+        <label for="day-date-start">Start Date:</label>
+        <input type="date" id="day-date-start" name="day-date-start">
 
-      <label for="day-date-end">End Date:</label>
-      <input type="date" id="day-date-end" name="day-date-end">
+        <label for="day-date-end">End Date:</label>
+        <input type="date" id="day-date-end" name="day-date-end">
 
-      <label for="day-time-start">Start Time:</label>
-      <input type="time" id="day-time-start" name="day-time-start">
+        <label for="day-time-start">Start Time:</label>
+        <input type="time" id="day-time-start" name="day-time-start">
 
-      <label for="day-time-end">End Time:</label>
-      <input type="time" id="day-time-end" name="day-time-end">
+        <label for="day-time-end">End Time:</label>
+        <input type="time" id="day-time-end" name="day-time-end">
 
-      <div class="calendar-label">Holiday Sitting</div>
-      <label for="holiday-date-start">Start Date:</label>
-      <input type="date" id="holiday-date-start" name="holiday-date-start">
+        <div class="calendar-label">Holiday Sitting</div>
+        <label for="holiday-date-start">Start Date:</label>
+        <input type="date" id="holiday-date-start" name="holiday-date-start">
 
-      <label for="holiday-date-end">End Date:</label>
-      <input type="date" id="holiday-date-end" name="holiday-date-end">
+        <label for="holiday-date-end">End Date:</label>
+        <input type="date" id="holiday-date-end" name="holiday-date-end">
 
-      <label for="holiday-time-start">Start Time:</label>
-      <input type="time" id="holiday-time-start" name="holiday-time-start">
+        <label for="holiday-time-start">Start Time:</label>
+        <input type="time" id="holiday-time-start" name="holiday-time-start">
 
-      <label for="holiday-time-end">End Time:</label>
-      <input type="time" id="holiday-time-end" name="holiday-time-end">
+        <label for="holiday-time-end">End Time:</label>
+        <input type="time" id="holiday-time-end" name="holiday-time-end">
 
-      <label for="name">First Name:</label>
-      <input type="text" id="name" name="name" required>
+        <label for="name">First Name:</label>
+        <input type="text" id="name" name="name" required>
 
-      <label for="surname">Last Name:</label>
-      <input type="text" id="surname" name="surname" required>
+        <label for="surname">Last Name:</label>
+        <input type="text" id="surname" name="surname" required>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
 
-      <label for="details">Additional Details:</label>
-      <textarea id="details" name="details" rows="4"></textarea>
+        <label for="details">Additional Details:</label>
+        <textarea id="details" name="details" rows="4" placeholder="Include number of dogs, breed, behaviour notes etc..."></textarea>
 
-      <button type="submit">Confirm Booking</button>
-    </form>
+        <button type="submit">Confirm Booking</button>
+      </form>
+    </section>
   </main>
 
   <footer>
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
+
 </body>
 </html>
