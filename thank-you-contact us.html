@@ -3,22 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thank You | We’ll Be in Touch</title>
+  <title>Thank You | WildTails & Paws Walkers</title>
   <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Quicksand', sans-serif;
-      background-color: #f2f0ec;
+      background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: #222;
       text-align: center;
-      padding: 60px 20px;
-      overflow: hidden;
+      padding: 100px 20px 60px;
     }
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 36px;
+      font-size: 42px;
       color: #5C4033;
     }
 
@@ -26,6 +33,15 @@
       font-size: 20px;
       margin-top: 20px;
       color: #333;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 25px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #5C4033;
+      text-decoration: underline;
     }
 
     .paw {
@@ -45,6 +61,16 @@
         opacity: 0;
       }
     }
+
+    footer {
+      background-color: #5C4033;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -53,12 +79,18 @@
   <p>Thank you for getting in touch with us.<br>
   We’ll respond to your enquiry as soon as possible – usually within 24 hours.</p>
 
+  <a href="index.html">Return to Home</a>
+
   <!-- Pawprint animation -->
   <img src="https://i.postimg.cc/6qC2jRZP/paw.png" class="paw" style="left: 15%; animation-delay: 0s;">
   <img src="https://i.postimg.cc/6qC2jRZP/paw.png" class="paw" style="left: 35%; animation-delay: 1.5s;">
   <img src="https://i.postimg.cc/6qC2jRZP/paw.png" class="paw" style="left: 55%; animation-delay: 3s;">
   <img src="https://i.postimg.cc/6qC2jRZP/paw.png" class="paw" style="left: 75%; animation-delay: 2s;">
   <img src="https://i.postimg.cc/6qC2jRZP/paw.png" class="paw" style="left: 90%; animation-delay: 4s;">
+
+  <footer>
+    &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
+  </footer>
 
 </body>
 </html>
