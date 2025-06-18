@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You | Booking Received</title>
+  <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #f7f4ef;
+      text-align: center;
+      padding: 60px 20px;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: #5C4033;
+    }
+
+    p {
+      font-size: 20px;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    .paw {
+      position: absolute;
+      width: 50px;
+      animation: fall 6s infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Booking Request Received!</h1>
+  <p>Thank you for pre-booking your holiday, walk, or drop-in service.<br>
+  We’ll be in touch shortly to confirm availability and details.</p>
+
+  <!-- Animated Pawprints -->
+  <img src="https://i.postimg.cc/6qC2jRZP/paw.png" class="paw" style="left: 10%; animation-delay: 0s;">
+  <img src="https://i.postimg.cc/6qC2jRZP/paw.png" class="paw" style="left: 25%; animation-delay: 2s;">
+  <img src="https://i.postimg.cc/6qC2jRZP/paw.png" class="paw" style="left: 45%; animation-delay: 4s;">
+  <img src="https://i.postimg.cc/6qC2jRZP/paw.png" class="paw" style="left: 65%; animation-delay: 1s;">
+  <img src="https://i.postimg.cc/6qC2jRZP/paw.png" class="paw" style="left: 80%; animation-delay: 3s;">
+
+</body>
+</html>
