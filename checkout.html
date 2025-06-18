@@ -125,6 +125,58 @@
       font-size: 1.3em;
       color: green;
       margin-top: 20px;
+      position: relative;
+    }
+    /* Paw animation container */
+    #paw-animation {
+      display: none;
+      margin: 20px auto 0 auto;
+      width: 100px;
+      height: 100px;
+      position: relative;
+      animation: paw-bounce 1.5s infinite;
+    }
+    /* Simple paw shape with circles */
+    #paw-animation .pad {
+      background: #5C4033;
+      border-radius: 50%;
+      position: absolute;
+      opacity: 0.85;
+    }
+    #paw-animation .pad.main {
+      width: 60px;
+      height: 60px;
+      bottom: 0;
+      left: 20px;
+    }
+    #paw-animation .pad.toe1 {
+      width: 25px;
+      height: 25px;
+      top: 0;
+      left: 0;
+    }
+    #paw-animation .pad.toe2 {
+      width: 25px;
+      height: 25px;
+      top: 0;
+      left: 35px;
+    }
+    #paw-animation .pad.toe3 {
+      width: 25px;
+      height: 25px;
+      top: 15px;
+      left: 55px;
+    }
+    #paw-animation .pad.toe4 {
+      width: 25px;
+      height: 25px;
+      top: 30px;
+      left: 10px;
+    }
+    /* Animation bounce */
+    @keyframes paw-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
     }
     footer {
       background-color: #5C4033;
@@ -144,15 +196,16 @@
   <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
   <nav>
     <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="checkout.html">Check Out</a></li>
-    <li><a href="review.html">Reviews</a></li>
-    <li><a href="booking.html">Book Now</a></li>
-    <li><a href="contact us.html">Contact Us</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="checkout.html">Check Out</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact us.html">Contact Us</a></li>
+      <li>
         <a href="#">Cart <span id="cart-count">0</span></a>
         <div class="mini-cart" id="mini-cart"></div>
       </li>
@@ -163,35 +216,53 @@
     <h1 style="text-align: center;">Checkout</h1>
     <div id="cart-preview"></div>
     <button onclick="clearCart()">Clear Cart</button>
-    <form id="checkout-form">
+    <form id="checkout-form" action="https://formsubmit.co/info@wildtailsandpawswalkers.co.uk" method="POST" onsubmit="return handleSubmit(event)">
+      <!-- FormSubmit hidden inputs -->
+      <input type="hidden" name="_next" value="https://wildtailsandpawswalkers.co.uk/thank-you.html" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_subject" value="New Order from Website" />
+      
       <label for="name">Full Name</label>
-      <input type="text" id="name" required>
+      <input type="text" id="name" name="name" required />
 
       <label for="address">Address</label>
-      <textarea id="address" rows="3" required></textarea>
+      <textarea id="address" name="address" rows="3" required></textarea>
 
       <label for="gift">Is this a gift?</label>
-      <select id="gift">
+      <select id="gift" name="gift">
         <option value="no">No</option>
         <option value="yes">Yes, please gift wrap</option>
       </select>
 
       <label for="note">Add a note for the recipient (optional):</label>
-      <textarea id="note" rows="3"></textarea>
+      <textarea id="note" name="note" rows="3"></textarea>
+
+      <!-- Hidden input to send cart data as JSON string -->
+      <input type="hidden" name="cart" id="cart-input" />
+
+      <button type="submit">Place Order</button>
     </form>
 
-    <div id="paypal-button-container"></div>
     <div id="thank-you">
       <p>Thank you for your order! 🐾</p>
       <p>We’ll process it shortly and be in touch if needed.</p>
+      <div id="paw-animation">
+        <div class="pad main"></div>
+        <div class="pad toe1"></div>
+        <div class="pad toe2"></div>
+        <div class="pad toe3"></div>
+        <div class="pad toe4"></div>
+      </div>
     </div>
-  </main>
+  </section>
+ </main>
 
   <footer>
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
 
   <script>
+    // Render cart items on page
     function renderCart() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       let total = 0;
@@ -206,6 +277,7 @@
       document.getElementById('cart-count').textContent = cart.length;
     }
 
+    // Update quantity in cart
     function updateQty(index, newQty) {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
       cart[index].qty = parseInt(newQty);
@@ -213,9 +285,25 @@
       renderCart();
     }
 
+    // Clear cart function
     function clearCart() {
       localStorage.removeItem('cart');
       renderCart();
+    }
+
+    // Handle form submit: add cart JSON to hidden input before submit
+    function handleSubmit(event) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if(cart.length === 0) {
+        alert("Your cart is empty. Please add items before checking out.");
+        event.preventDefault();
+        return false;
+      }
+      // Put cart data as JSON string in hidden input
+      document.getElementById('cart-input').value = JSON.stringify(cart);
+      // Optionally clear cart after submission, or after redirect
+      // clearCart();
+      return true; // let form submit normally
     }
 
     window.onload = renderCart;
