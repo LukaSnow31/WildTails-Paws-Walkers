@@ -127,7 +127,6 @@
       margin-top: 20px;
       position: relative;
     }
-    /* Paw animation container */
     #paw-animation {
       display: none;
       margin: 20px auto 0 auto;
@@ -136,44 +135,12 @@
       position: relative;
       animation: paw-bounce 1.5s infinite;
     }
-    /* Simple paw shape with circles */
     #paw-animation .pad {
       background: #5C4033;
       border-radius: 50%;
       position: absolute;
       opacity: 0.85;
     }
-    #paw-animation .pad.main {
-      width: 60px;
-      height: 60px;
-      bottom: 0;
-      left: 20px;
-    }
-    #paw-animation .pad.toe1 {
-      width: 25px;
-      height: 25px;
-      top: 0;
-      left: 0;
-    }
-    #paw-animation .pad.toe2 {
-      width: 25px;
-      height: 25px;
-      top: 0;
-      left: 35px;
-    }
-    #paw-animation .pad.toe3 {
-      width: 25px;
-      height: 25px;
-      top: 15px;
-      left: 55px;
-    }
-    #paw-animation .pad.toe4 {
-      width: 25px;
-      height: 25px;
-      top: 30px;
-      left: 10px;
-    }
-    /* Animation bounce */
     @keyframes paw-bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-15px); }
@@ -205,65 +172,41 @@
       <li><a href="review.html">Reviews</a></li>
       <li><a href="booking.html">Book Now</a></li>
       <li><a href="contact-us.html">Contact Us</a></li>
-      <li>
-        <a href="#">Cart <span id="cart-count">0</span></a>
-        <div class="mini-cart" id="mini-cart"></div>
-      </li>
+      <li><a href="#">Cart <span id="cart-count">0</span></a><div class="mini-cart" id="mini-cart"></div></li>
     </ul>
   </nav>
- <main class="container">
-   <section id="Check Out" class="hero">
-    <h1 style="text-align: center;">Checkout</h1>
-    <div id="cart-preview"></div>
-    <button onclick="clearCart()">Clear Cart</button>
-    <form id="checkout-form" action="https://formsubmit.co/info@wildtailsandpawswalkers.co.uk" method="POST" onsubmit="return handleSubmit(event)">
-      <!-- FormSubmit hidden inputs -->
-      <input type="hidden" name="_next" value="https://wildtailsandpawswalkers.co.uk/thank-you.html" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_subject" value="New Order from Website" />
-      
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required />
-
-      <label for="address">Address</label>
-      <textarea id="address" name="address" rows="3" required></textarea>
-
-      <label for="gift">Is this a gift?</label>
-      <select id="gift" name="gift">
-        <option value="no">No</option>
-        <option value="yes">Yes, please gift wrap</option>
-      </select>
-
-      <label for="note">Add a note for the recipient (optional):</label>
-      <textarea id="note" name="note" rows="3"></textarea>
-
-      <!-- Hidden input to send cart data as JSON string -->
-      <input type="hidden" name="cart" id="cart-input" />
-
-      <button type="submit">Place Order</button>
-    </form>
-
-    <div id="thank-you">
-      <p>Thank you for your order! 🐾</p>
-      <p>We’ll process it shortly and be in touch if needed.</p>
-      <div id="paw-animation">
-<img src="WildTails-PawsWalkers/paw.png" class="paw" style="left: 15%; animation-delay: 0s;">
-<img src="WildTails-PawsWalkers/paw.png" class="paw" style="left: 35%; animation-delay: 1.5s;">
-<img src="WildTails-PawsWalkers/paw.png" class="paw" style="left: 55%; animation-delay: 3s;">
-<img src="WildTails-PawsWalkers/paw.png" class="paw" style="left: 75%; animation-delay: 2s;">
-<img src="WildTails-PawsWalkers/paw.png" class="paw" style="left: 90%; animation-delay: 4s;">
-
+  <main class="container">
+    <section id="Check Out" class="hero">
+      <h1 style="text-align: center;">Checkout</h1>
+      <div id="cart-preview"></div>
+      <button onclick="clearCart()">Clear Cart</button>
+      <form id="checkout-form" action="https://formsubmit.co/info@wildtailsandpawswalkers.co.uk" method="POST" onsubmit="return handleSubmit(event)">
+        <input type="hidden" name="_next" value="https://wildtailsandpawswalkers.co.uk/thank-you.html" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_subject" value="New Order from Website" />
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required />
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="3" required></textarea>
+        <label for="gift">Is this a gift?</label>
+        <select id="gift" name="gift">
+          <option value="no">No</option>
+          <option value="yes">Yes, please gift wrap</option>
+        </select>
+        <label for="note">Add a note for the recipient (optional):</label>
+        <textarea id="note" name="note" rows="3"></textarea>
+        <input type="hidden" name="cart" id="cart-input" />
+        <div id="paypal-button-container"></div>
+      </form>
+      <div id="thank-you">
+        <p>Thank you for your order! 🐾</p>
+        <div id="paw-animation"></div>
       </div>
-    </div>
-  </section>
- </main>
-
-  <footer>
-    &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
-  </footer>
-
+    </section>
+  </main>
+  <footer>&copy; 2025 WildTails & Paws Walkers • All Rights Reserved</footer>
+  <script src="https://www.paypal.com/sdk/js?client-id=AXDymlDQhb3VpRy44UXz5xuUGpR_RknZA6JLjKt2t4FrquU88QBAEg3sR_Txcowlmas9Y79xaHZEAPkw&currency=GBP&components=buttons,funding-eligibility"></script>
   <script>
-    // Render cart items on page
     function renderCart() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       let total = 0;
@@ -277,22 +220,16 @@
       document.getElementById('mini-cart').innerHTML = html;
       document.getElementById('cart-count').textContent = cart.length;
     }
-
-    // Update quantity in cart
     function updateQty(index, newQty) {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
       cart[index].qty = parseInt(newQty);
       localStorage.setItem('cart', JSON.stringify(cart));
       renderCart();
     }
-
-    // Clear cart function
     function clearCart() {
       localStorage.removeItem('cart');
       renderCart();
     }
-
-    // Handle form submit: add cart JSON to hidden input before submit
     function handleSubmit(event) {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       if(cart.length === 0) {
@@ -300,14 +237,51 @@
         event.preventDefault();
         return false;
       }
-      // Put cart data as JSON string in hidden input
       document.getElementById('cart-input').value = JSON.stringify(cart);
-      // Optionally clear cart after submission, or after redirect
-      // clearCart();
-      return true; // let form submit normally
+      return true;
     }
-
     window.onload = renderCart;
+    paypal.Buttons({
+      fundingSource: paypal.FUNDING.PAYPAL,
+      style: { layout: 'vertical', color: 'gold', shape: 'pill', label: 'paypal' },
+      createOrder: function(data, actions) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let total = 0;
+        cart.forEach(item => total += item.price * item.qty);
+        return actions.order.create({
+          purchase_units: [{ amount: { currency_code: 'GBP', value: total.toFixed(2) } }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Transaction completed by ' + details.payer.name.given_name + '!');
+          document.getElementById('cart-input').value = JSON.stringify(JSON.parse(localStorage.getItem('cart')) || []);
+          document.getElementById('checkout-form').submit();
+          localStorage.removeItem('cart');
+        });
+      }
+    }).render('#paypal-button-container');
+    paypal.Buttons({
+      fundingSource: paypal.FUNDING.CARD,
+      style: { layout: 'vertical', color: 'blue', shape: 'pill', label: 'pay' },
+      createOrder: function(data, actions) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let total = 0;
+        cart.forEach(item => total += item.price * item.qty);
+        return actions.order.create({
+          purchase_units: [{ amount: { currency_code: 'GBP', value: total.toFixed(2) } }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Card payment completed by ' + details.payer.name.given_name + '!');
+          document.getElementById('cart-input').value = JSON.stringify(JSON.parse(localStorage.getItem('cart')) || []);
+          document.getElementById('checkout-form').submit();
+          localStorage.removeItem('cart');
+        });
+      }
+    }).render('#paypal-button-container');
   </script>
 </body>
 </html>
+
