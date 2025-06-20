@@ -156,31 +156,63 @@
   </footer>
 
   <script>
-    const shopItems = [
-      {
-        id: 1,
-        title: "WildTails Dog Bandana",
-        description: "Stylish, washable dog bandana in various sizes.",
-        images: ["img1a.jpg", "img1b.jpg", "img1c.jpg"],
-        price: 10,
-        quantity: 5
-      },
-      {
-        id: 2,
-        title: "Natural Dog Treats Pack",
-        description: "Healthy, handmade treats your pup will love!",
-        images: ["img2a.jpg", "img2b.jpg"],
-        price: 6,
-        quantity: 10
-      }
-    ];
-
     const shopContainer = document.getElementById("shop-items");
     const cartContainer = document.getElementById("cart");
     const checkoutBtn = document.getElementById("checkout-btn");
 
     // Load cart from localStorage or initialize empty
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // This will hold your products from the API
+    let shopItems = [];
+
+    // Fetch products from API and then render shop and cart
+    fetch('https://wildtails-printify.onrender.com/api/products')
+      .then(response => response.json())
+      .then(data => {
+        // Assuming data is an array of products with needed properties
+        // Example product shape expected:
+        // { id, title, description, images: [url], price, quantity }
+
+        // If the API data needs adjusting to match your structure, do it here:
+        shopItems = data.map(item => ({
+          id: item.id,
+          title: item.title,
+          description: item.description,
+          images: item.images || [], // fallback to empty array
+          price: item.price,
+          quantity: item.quantity || 0
+        }));
+
+        renderShop();
+        renderCart();
+      })
+      .catch(err => {
+        console.error('Failed to fetch products, using fallback shopItems', err);
+
+        // fallback static products if fetch fails:
+        shopItems = [
+          {
+            id: 1,
+            title: "WildTails Dog Bandana",
+            description: "Stylish, washable dog bandana in various sizes.",
+            images: ["img1a.jpg", "img1b.jpg", "img1c.jpg"],
+            price: 10,
+            quantity: 5
+          },
+          {
+            id: 2,
+            title: "Natural Dog Treats Pack",
+            description: "Healthy, handmade treats your pup will love!",
+            images: ["img2a.jpg", "img2b.jpg"],
+            price: 6,
+            quantity: 10
+          }
+        ];
+
+        renderShop();
+        renderCart();
+      });
 
     function renderShop() {
       shopContainer.innerHTML = '';
@@ -263,9 +295,6 @@
       }
       window.location.href = 'checkout.html';
     });
-
-    renderShop();
-    renderCart();
   </script>
 </body>
 </html>
