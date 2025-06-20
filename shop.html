@@ -170,18 +170,15 @@
     fetch('https://wildtails-printify.onrender.com/api/products')
       .then(response => response.json())
       .then(data => {
-        // Assuming data is an array of products with needed properties
-        // Example product shape expected:
-        // { id, title, description, images: [url], price, quantity }
-
-        // If the API data needs adjusting to match your structure, do it here:
+        // Map Printify API product structure to what we need:
+        // You may need to adjust depending on the exact API response format
         shopItems = data.map(item => ({
           id: item.id,
           title: item.title,
           description: item.description,
-          images: item.images || [], // fallback to empty array
-          price: item.price,
-          quantity: item.quantity || 0
+          images: (item.images && item.images.length) ? item.images : (item.photos || []).map(p => p.src) || [],
+          price: item.variants && item.variants.length ? item.variants[0].price : 0,
+          quantity: 10 // Or any quantity you want to set or get from API if available
         }));
 
         renderShop();
@@ -218,7 +215,6 @@
       shopContainer.innerHTML = '';
       shopItems.forEach(item => {
         const imagesHTML = item.images.slice(0, 6).map(src => `<img src="${src}" alt="${item.title}">`).join('');
-        // Find current stock (reduce by quantity in cart)
         const cartQty = cart.find(ci => ci.id === item.id)?.qty || 0;
         const availableQty = item.quantity - cartQty;
         shopContainer.innerHTML += `
@@ -260,7 +256,6 @@
       const qtyInput = document.getElementById(`qty-${id}`);
       const qty = parseInt(qtyInput.value);
       if (!qty || qty < 1) return alert("Please enter a valid quantity");
-      // Calculate available stock
       const cartQty = cart.find(ci => ci.id === id)?.qty || 0;
       const availableQty = item.quantity - cartQty;
       if (qty > availableQty) {
