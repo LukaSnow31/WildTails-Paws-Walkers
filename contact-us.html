@@ -19,6 +19,10 @@
       color: #222;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     #logo {
       position: fixed;
       top: 10px;
@@ -29,13 +33,30 @@
       border-radius: 50%;
     }
 
-    nav {
+    header {
       position: fixed;
       top: 0;
       width: 100%;
       background-color: #5C4033;
       z-index: 998;
       padding-left: 130px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    nav {
+      background-color: #5C4033;
     }
 
     nav ul {
@@ -156,15 +177,33 @@
       margin-top: 80px;
     }
 
+    /* Mobile Styles */
     @media (max-width: 768px) {
-      nav {
+      header {
         padding-left: 0;
+        padding: 10px;
       }
 
       #logo {
-        position: static;
-        margin: 10px auto;
+        position: relative;
+        margin: 0 auto;
         display: block;
+        height: 100px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        transition: all 0.3s ease;
+      }
+
+      nav.show {
+        display: flex;
       }
 
       nav ul {
@@ -172,8 +211,26 @@
         align-items: center;
       }
 
+      nav li {
+        width: 100%;
+        text-align: center;
+      }
+
+      nav a {
+        padding: 15px;
+        border-top: 1px solid #6d4a3a;
+      }
+
       form {
         padding: 0 10px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
       }
     }
   </style>
@@ -183,8 +240,13 @@
   <!-- Logo -->
   <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 
+  <!-- Header -->
+  <header>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </header>
+
   <!-- Navigation -->
-  <nav>
+  <nav id="mainNav">
     <ul>
       <li><a href="home.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
@@ -236,6 +298,13 @@
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
 
+  <!-- Script -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mainNav');
+      nav.classList.toggle('show');
+    }
+  </script>
+
 </body>
 </html>
-
