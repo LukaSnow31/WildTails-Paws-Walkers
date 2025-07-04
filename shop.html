@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shop | WildTails & Paws Walkers</title>
   <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet" />
   <style>
-    /* Your existing styles, plus minimal cart styling */
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: 'Quicksand', sans-serif;
@@ -18,6 +18,7 @@
       background-repeat: no-repeat;
       color: #222;
     }
+
     #logo {
       position: fixed;
       top: 10px;
@@ -27,6 +28,7 @@
       z-index: 999;
       border-radius: 50%;
     }
+
     nav {
       position: fixed;
       top: 0;
@@ -35,6 +37,7 @@
       z-index: 998;
       padding-left: 130px;
     }
+
     nav ul {
       list-style: none;
       margin: 0;
@@ -43,7 +46,9 @@
       justify-content: flex-end;
       flex-wrap: wrap;
     }
+
     nav li { margin: 0; }
+
     nav a {
       display: block;
       padding: 18px 20px;
@@ -52,7 +57,9 @@
       font-weight: bold;
       transition: background 0.3s ease;
     }
+
     nav a:hover { background-color: #4e2f22; }
+
     .container {
       padding-top: 140px;
       padding-bottom: 40px;
@@ -60,6 +67,7 @@
       margin: 0 auto;
       text-align: center;
     }
+
     .shop-item {
       background: white;
       margin: 20px;
@@ -67,8 +75,24 @@
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    .shop-item h3 { font-family: 'Playfair Display', serif; }
-    .shop-item .images img { width: 100px; margin: 5px; }
+
+    .shop-item h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .shop-item .images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .shop-item .images img {
+      width: 100px;
+      height: auto;
+      border-radius: 6px;
+    }
+
     footer {
       background-color: #5C4033;
       color: white;
@@ -76,6 +100,7 @@
       padding: 20px;
       margin-top: 80px;
     }
+
     #cart {
       background: white;
       padding: 20px;
@@ -85,12 +110,15 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: left;
     }
+
     #cart p {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin: 8px 0;
+      flex-wrap: wrap;
     }
+
     #cart button.remove-btn {
       background: #c0392b;
       color: white;
@@ -100,9 +128,11 @@
       cursor: pointer;
       font-size: 0.9em;
     }
+
     #cart button.remove-btn:hover {
       background: #e74c3c;
     }
+
     #checkout-btn {
       margin-top: 10px;
       padding: 12px 20px;
@@ -113,31 +143,84 @@
       border-radius: 8px;
       cursor: pointer;
     }
+
     #checkout-btn:hover {
       background: #4e2f22;
     }
+
+    /* ===== MOBILE STYLES ONLY BELOW THIS LINE ===== */
     @media (max-width: 768px) {
-      nav { padding-left: 0; }
-      #logo { position: static; margin: 10px auto; display: block; }
-      nav ul { flex-direction: column; align-items: center; }
+      nav {
+        padding-left: 0;
+      }
+
+      #logo {
+        position: static;
+        margin: 10px auto;
+        display: block;
+        height: 100px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav li {
+        width: 100%;
+        text-align: center;
+      }
+
+      nav a {
+        padding: 14px;
+      }
+
+      .container {
+        padding: 120px 15px 40px;
+      }
+
+      .shop-item {
+        margin: 15px auto;
+        width: 100%;
+      }
+
+      .shop-item .images img {
+        width: 80px;
+      }
+
+      #cart {
+        width: 95%;
+        padding: 15px;
+      }
+
+      #cart p {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      #checkout-btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
-<nav>
-  <ul>
-    <li><a href="home.html">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="checkout.html">Check Out</a></li>
-    <li><a href="review.html">Reviews</a></li>
-    <li><a href="booking.html">Book Now</a></li>
-    <li><a href="contact-us.html">Contact Us</a></li>
-  </ul>
-</nav>
+
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="checkout.html">Check Out</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
   <main class="container">
     <section id="Shop">
       <h1>Shop</h1>
@@ -160,25 +243,19 @@
     const cartContainer = document.getElementById("cart");
     const checkoutBtn = document.getElementById("checkout-btn");
 
-    // Load cart from localStorage or initialize empty
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    // This will hold your products from the API
     let shopItems = [];
 
-    // Fetch products from API and then render shop and cart
     fetch('https://wildtails-printify.onrender.com/api/products')
       .then(response => response.json())
       .then(data => {
-        // Map Printify API product structure to what we need:
-        // You may need to adjust depending on the exact API response format
         shopItems = data.map(item => ({
           id: item.id,
           title: item.title,
           description: item.description,
           images: (item.images && item.images.length) ? item.images : (item.photos || []).map(p => p.src) || [],
           price: item.variants && item.variants.length ? item.variants[0].price : 0,
-          quantity: 10 // Or any quantity you want to set or get from API if available
+          quantity: 10
         }));
 
         renderShop();
@@ -186,8 +263,6 @@
       })
       .catch(err => {
         console.error('Failed to fetch products, using fallback shopItems', err);
-
-        // fallback static products if fetch fails:
         shopItems = [
           {
             id: 1,
