@@ -40,24 +40,16 @@
       position: fixed;
       width: 100%;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 998;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 1rem;
-    }
-
-    .menu-toggle {
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      display: none;
+      padding-left: 150px; /* leaves space for logo */
     }
 
     nav {
       display: flex;
+      justify-content: flex-end;
+      align-items: center;
     }
 
     nav ul {
@@ -169,39 +161,27 @@
     /* MOBILE STYLES */
     @media (max-width: 768px) {
       #logo {
-        position: relative;
-        display: block;
-        margin: 10px auto 0;
+        position: fixed;
+        top: 10px;
+        left: 10px;
         height: 90px;
       }
 
-      header {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
       nav {
-        display: none;
         flex-direction: column;
-        width: 100%;
-        background-color: #5C4033;
+        align-items: center;
+        padding-left: 0;
       }
 
       nav ul {
         flex-direction: column;
         text-align: center;
+        width: 100%;
       }
 
       nav a {
         padding: 15px;
-      }
-
-      nav.active {
-        display: flex;
+        width: 100%;
       }
 
       .card {
@@ -225,36 +205,34 @@
       }
 
       .container {
-        padding-top: 160px;
+        padding-top: 180px;
+        padding-left: 10px;
+        padding-right: 10px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Logo -->
+  <!-- Fixed Logo -->
   <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 
-  <!-- Header with Toggle -->
+  <!-- Header Navigation -->
   <header>
-    <div></div>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="checkout.html">Check Out</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="booking.html">Book Now</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+      </ul>
+    </nav>
   </header>
-
-  <!-- Navigation Menu -->
-  <nav id="mainNav">
-    <ul>
-      <li><a href="home.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="checkout.html">Check Out</a></li>
-      <li><a href="review.html">Reviews</a></li>
-      <li><a href="booking.html">Book Now</a></li>
-      <li><a href="contact-us.html">Contact Us</a></li>
-    </ul>
-  </nav>
 
   <!-- Main Content -->
   <main class="container">
@@ -305,13 +283,6 @@
   <footer>
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
-
-  <!-- JS for mobile toggle -->
-  <script>
-    function toggleMenu() {
-      document.getElementById('mainNav').classList.toggle('active');
-    }
-  </script>
 
 </body>
 </html>
