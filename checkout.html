@@ -152,10 +152,49 @@
       padding: 20px;
       margin-top: 80px;
     }
+
+    /* === MOBILE-FRIENDLY ENHANCEMENTS ONLY === */
     @media (max-width: 768px) {
       nav { padding-left: 0; }
-      #logo { position: static; margin: 10px auto; display: block; }
-      nav ul { flex-direction: column; align-items: center; }
+      #logo {
+        position: static;
+        display: block;
+        margin: 10px auto;
+        height: 100px;
+      }
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav li {
+        width: 100%;
+        text-align: center;
+      }
+      nav a {
+        padding: 14px;
+      }
+      .container {
+        margin: 20px 10px;
+        padding: 20px 10px;
+      }
+      form {
+        padding: 0 10px;
+      }
+      #cart-preview, #paypal-button-container {
+        margin: 10px;
+      }
+      input, select, textarea {
+        font-size: 16px;
+      }
+      button {
+        width: 100%;
+      }
+      #cart-preview input[type="number"] {
+        width: 40px;
+      }
+      h1 {
+        font-size: 26px;
+      }
     }
   </style>
 </head>
@@ -205,6 +244,7 @@
     </section>
   </main>
   <footer>&copy; 2025 WildTails & Paws Walkers • All Rights Reserved</footer>
+
   <script src="https://www.paypal.com/sdk/js?client-id=AXDymlDQhb3VpRy44UXz5xuUGpR_RknZA6JLjKt2t4FrquU88QBAEg3sR_Txcowlmas9Y79xaHZEAPkw&currency=GBP&components=buttons,funding-eligibility"></script>
   <script>
     function renderCart() {
@@ -241,47 +281,42 @@
       return true;
     }
     window.onload = renderCart;
+
     paypal.Buttons({
       fundingSource: paypal.FUNDING.PAYPAL,
       style: { layout: 'vertical', color: 'gold', shape: 'pill', label: 'paypal' },
-      createOrder: function(data, actions) {
+      createOrder: (data, actions) => {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let total = 0;
-        cart.forEach(item => total += item.price * item.qty);
+        let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
         return actions.order.create({
           purchase_units: [{ amount: { currency_code: 'GBP', value: total.toFixed(2) } }]
         });
       },
-      onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-          alert('Transaction completed by ' + details.payer.name.given_name + '!');
-          document.getElementById('cart-input').value = JSON.stringify(JSON.parse(localStorage.getItem('cart')) || []);
-          document.getElementById('checkout-form').submit();
-          localStorage.removeItem('cart');
-        });
-      }
+      onApprove: (data, actions) => actions.order.capture().then(details => {
+        alert('Transaction completed by ' + details.payer.name.given_name + '!');
+        document.getElementById('cart-input').value = JSON.stringify(JSON.parse(localStorage.getItem('cart')) || []);
+        document.getElementById('checkout-form').submit();
+        localStorage.removeItem('cart');
+      })
     }).render('#paypal-button-container');
+
     paypal.Buttons({
       fundingSource: paypal.FUNDING.CARD,
       style: { layout: 'vertical', color: 'blue', shape: 'pill', label: 'pay' },
-      createOrder: function(data, actions) {
+      createOrder: (data, actions) => {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let total = 0;
-        cart.forEach(item => total += item.price * item.qty);
+        let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
         return actions.order.create({
           purchase_units: [{ amount: { currency_code: 'GBP', value: total.toFixed(2) } }]
         });
       },
-      onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-          alert('Card payment completed by ' + details.payer.name.given_name + '!');
-          document.getElementById('cart-input').value = JSON.stringify(JSON.parse(localStorage.getItem('cart')) || []);
-          document.getElementById('checkout-form').submit();
-          localStorage.removeItem('cart');
-        });
-      }
+      onApprove: (data, actions) => actions.order.capture().then(details => {
+        alert('Card payment completed by ' + details.payer.name.given_name + '!');
+        document.getElementById('cart-input').value = JSON.stringify(JSON.parse(localStorage.getItem('cart')) || []);
+        document.getElementById('checkout-form').submit();
+        localStorage.removeItem('cart');
+      })
     }).render('#paypal-button-container');
   </script>
 </body>
 </html>
-
