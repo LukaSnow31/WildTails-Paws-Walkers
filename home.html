@@ -43,7 +43,7 @@
       left: 0;
       right: 0;
       z-index: 998;
-      padding-left: 150px; /* leaves space for logo */
+      padding-left: 150px;
     }
 
     nav {
@@ -161,10 +161,15 @@
     /* MOBILE STYLES */
     @media (max-width: 768px) {
       #logo {
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        height: 90px;
+        position: static;
+        display: block;
+        margin: 10px auto 0 auto;
+        height: 80px;
+      }
+
+      header {
+        position: relative;
+        padding-left: 0;
       }
 
       nav {
@@ -176,6 +181,10 @@
       nav ul {
         flex-direction: column;
         text-align: center;
+        width: 100%;
+      }
+
+      nav li {
         width: 100%;
       }
 
@@ -205,7 +214,7 @@
       }
 
       .container {
-        padding-top: 180px;
+        padding-top: 40px;
         padding-left: 10px;
         padding-right: 10px;
       }
@@ -282,6 +291,11 @@
 
   <footer>
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
+  </footer>
+
+</body>
+</html>
+aws Walkers • All Rights Reserved
   </footer>
 
 </body>
