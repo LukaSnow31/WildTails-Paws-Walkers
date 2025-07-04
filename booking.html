@@ -110,19 +110,44 @@
       padding: 20px;
       margin-top: 40px;
     }
+
+    /* ===== MOBILE ENHANCEMENTS ONLY ===== */
     @media (max-width: 768px) {
-      nav { padding-left: 0; }
+      nav {
+        padding-left: 0;
+      }
       #logo {
         position: static;
-        margin: 10px auto;
         display: block;
+        margin: 10px auto;
+        height: 100px;
       }
       nav ul {
         flex-direction: column;
         align-items: center;
       }
+      nav li {
+        width: 100%;
+        text-align: center;
+      }
+      nav a {
+        padding: 14px;
+      }
+      .container {
+        padding: 100px 15px 40px;
+      }
       form {
-        padding: 0 10px;
+        padding: 20px 15px;
+        margin: 20px 10px;
+      }
+      h1 {
+        font-size: 30px;
+      }
+      label, input, select, textarea {
+        font-size: 15px;
+      }
+      button {
+        width: 100%;
       }
     }
   </style>
@@ -148,9 +173,9 @@
   <main class="container">
     <section id="Book Now" class="hero">
       <h1>Book a Service</h1>
-      <p><b>Ready to book in and secure your dates?</p></b>
-      <p><b>Fill in the form below to pre-book your dog's holidays, drop-ins, or walks.</p></b>
-      <p><b>If you have any questions or would like to arrange your free 30-minute introduction as a new client, please use our Contact Us form instead.</p></b>
+      <p><b>Ready to book in and secure your dates?</b></p>
+      <p><b>Fill in the form below to pre-book your dog's holidays, drop-ins, or walks.</b></p>
+      <p><b>If you have any questions or would like to arrange your free 30-minute introduction as a new client, please use our Contact Us form instead.</b></p>
 
       <form action="https://formsubmit.co/info@wildtailsandpawswalkers.co.uk" method="POST">
         <input type="hidden" name="_next" value="https://wildtailsandpawswalkers.co.uk/thank-you-booking.html">
@@ -218,3 +243,4 @@
   </footer>
 </body>
 </html>
+
