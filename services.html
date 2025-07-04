@@ -95,7 +95,10 @@
       line-height: 1.6;
     }
 
-    ul { padding-left: 20px; text-align: left; }
+    ul { 
+      padding-left: 20px; 
+      text-align: left; 
+    }
 
     table {
       width: 100%;
@@ -121,6 +124,7 @@
       margin-top: 80px;
     }
 
+    /* ===== MOBILE STYLES ===== */
     @media (max-width: 768px) {
       nav {
         padding-left: 0;
@@ -128,13 +132,73 @@
 
       #logo {
         position: static;
-        margin: 10px auto;
         display: block;
+        margin: 10px auto;
+        height: 100px;
       }
 
       nav ul {
         flex-direction: column;
         align-items: center;
+      }
+
+      nav li {
+        width: 100%;
+        text-align: center;
+      }
+
+      nav a {
+        padding: 14px;
+      }
+
+      .container {
+        padding: 120px 15px 40px;
+      }
+
+      .hero {
+        padding: 30px 15px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero h2 {
+        font-size: 24px;
+      }
+
+      .hero p, .hero li {
+        font-size: 16px;
+      }
+
+      table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+      }
+
+      table thead {
+        display: none;
+      }
+
+      table tr {
+        margin-bottom: 15px;
+        background: #fff;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+
+      table td {
+        border: none;
+        padding: 8px 10px;
+        position: relative;
+      }
+
+      table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 6px;
+        color: #444;
       }
     }
   </style>
@@ -145,22 +209,23 @@
   <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 
   <!-- Navigation -->
-<nav>
-  <ul>
-    <li><a href="home.html">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="checkout.html">Check Out</a></li>
-    <li><a href="review.html">Reviews</a></li>
-    <li><a href="booking.html">Book Now</a></li>
-    <li><a href="contact-us.html">Contact Us</a></li>
-  </ul>
-</nav>
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="checkout.html">Check Out</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
   <!-- Main Content -->
   <main class="container">
-    <section id=Services" class="hero">
+    <section id="Services" class="hero">
       <h1>Our Services & Pricing</h1>
       <p>We provide safe, tailored dog walking and sitting for all types of dogs — from energetic pups to reactive or high-needs companions. Here's our full breakdown:</p>
 
@@ -206,13 +271,14 @@
           <tr><th>Area</th><th>Travel Fee</th></tr>
         </thead>
         <tbody>
-          <tr><td>Calne</td><td>£2.50</td></tr>
-          <tr><td>Christian Malford</td><td>£2</td></tr>
-          <tr><td>Foxham</td><td>£2</td></tr>
-          <tr><td>Bromham</td><td>£3</td></tr>
-          <tr><td>Other villages (5+ miles)</td><td>£2–£3 depending on distance</td></tr>
+          <tr><td data-label="Area">Calne</td><td data-label="Travel Fee">£2.50</td></tr>
+          <tr><td data-label="Area">Christian Malford</td><td data-label="Travel Fee">£2</td></tr>
+          <tr><td data-label="Area">Foxham</td><td data-label="Travel Fee">£2</td></tr>
+          <tr><td data-label="Area">Bromham</td><td data-label="Travel Fee">£3</td></tr>
+          <tr><td data-label="Area">Other villages (5+ miles)</td><td data-label="Travel Fee">£2–£3 depending on distance</td></tr>
         </tbody>
       </table>
+
       <p><em>We may waive or reduce travel fees for regular weekly clients!</em></p>
 
       <h2>Accepted Payment Methods</h2>
