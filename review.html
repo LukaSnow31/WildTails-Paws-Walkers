@@ -126,8 +126,6 @@
       padding: 20px;
       margin-top: 40px;
     }
-
-    /* Mobile-friendly styles */
     @media (max-width: 768px) {
       #logo {
         position: static;
@@ -135,42 +133,33 @@
         margin: 10px auto;
         height: 150px;
       }
-
       nav {
         padding-left: 0;
       }
-
       nav ul {
         flex-direction: column;
         align-items: center;
       }
-
       nav a {
         padding: 12px 16px;
       }
-
       .container {
         padding: 120px 15px 40px 15px;
         max-width: 100%;
       }
-
       form, .reviews {
         padding: 15px;
       }
-
       h1 {
         font-size: 28px;
       }
-
       .paw {
         width: 30px;
         height: 30px;
       }
-
       button[type="submit"] {
         width: 100%;
       }
-
       .review {
         font-size: 15px;
       }
@@ -247,23 +236,48 @@
       });
     });
 
+    // Load existing reviews
+    window.onload = function () {
+      fetch("https://script.google.com/macros/s/AKfycbzb2YMVn5kJ-f4wMlGnIX_xAFLoa3H09CO7RAc-L8061m0gO36Nr-4FasXHRa3QASNE/exec")
+        .then(res => res.json())
+        .then(data => {
+          const reviewsContainer = document.getElementById('reviews');
+          data.forEach(review => {
+            reviewsContainer.innerHTML += `
+              <div class="review">
+                <strong>${review.name}</strong><br>
+                <div>${'🐾'.repeat(review.rating)}</div>
+                <p>${review.comments}</p>
+                <small>Recommendation: ${review.recommend}/5</small>
+              </div>
+            `;
+          });
+        });
+    };
+
+    // Submit review to Google Sheet
     document.getElementById('reviewForm').addEventListener('submit', function(e) {
       e.preventDefault();
-
       const name = document.getElementById('name').value;
       const recommend = document.getElementById('recommend').value;
       const comments = document.getElementById('comments').value;
 
-      const reviewHTML = `
-        <div class="review">
-          <strong>${name}</strong><br>
-          <div>${'🐾'.repeat(selectedRating)}</div>
-          <p>${comments}</p>
-          <small>Recommendation: ${recommend}/5</small>
-        </div>
-      `;
+      fetch("https://script.google.com/macros/s/AKfycbzb2YMVn5kJ-f4wMlGnIX_xAFLoa3H09CO7RAc-L8061m0gO36Nr-4FasXHRa3QASNE/exec", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          rating: selectedRating,
+          recommend: recommend,
+          comments: comments
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("Thank you for your review!");
+        location.reload();
+      });
 
-      document.getElementById('reviews').innerHTML += reviewHTML;
       this.reset();
       paws.forEach(p => p.classList.remove('selected'));
       selectedRating = 0;
@@ -271,3 +285,4 @@
   </script>
 </body>
 </html>
+
