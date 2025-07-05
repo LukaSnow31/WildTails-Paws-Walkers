@@ -52,6 +52,7 @@
       transition: background 0.3s ease;
     }
     nav a:hover { background-color: #4e2f22; }
+
     .container {
       padding-top: 140px;
       padding-bottom: 40px;
@@ -59,22 +60,26 @@
       max-width: 1000px;
       margin: 0 auto;
     }
+
     h1 {
       font-family: 'Playfair Display', serif;
       font-size: 40px;
     }
+
     .gallery-wrapper {
       position: relative;
       overflow: hidden;
       width: 100%;
       margin: 20px auto;
     }
+
     .gallery-track {
       display: flex;
       gap: 20px;
       animation: scrollGallery 30s linear infinite;
       transition: transform 0.5s ease;
     }
+
     .gallery-track img {
       width: 300px;
       height: auto;
@@ -83,6 +88,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
       cursor: pointer;
     }
+
     .arrow {
       position: absolute;
       top: 50%;
@@ -96,12 +102,15 @@
       cursor: pointer;
       border-radius: 50%;
     }
+
     .arrow.left { left: 10px; }
     .arrow.right { right: 10px; }
     .arrow:hover { background: rgba(78, 47, 34, 0.9); }
+
     .gallery-wrapper:hover .gallery-track {
       animation-play-state: paused;
     }
+
     footer {
       background-color: #5C4033;
       color: white;
@@ -109,10 +118,12 @@
       padding: 20px;
       margin-top: 40px;
     }
+
     @keyframes scrollGallery {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
+
     .lightbox {
       position: fixed;
       top: 0; left: 0;
@@ -124,12 +135,14 @@
       z-index: 9999;
       flex-direction: column;
     }
+
     .lightbox img {
       max-width: 90%;
       max-height: 90%;
       border-radius: 10px;
       margin-bottom: 20px;
     }
+
     .lightbox-controls {
       position: absolute;
       top: 50%;
@@ -139,6 +152,7 @@
       transform: translateY(-50%);
       padding: 0 20px;
     }
+
     .lightbox-controls button {
       background: rgba(255,255,255,0.1);
       color: white;
@@ -148,6 +162,7 @@
       padding: 10px;
       border-radius: 50%;
     }
+
     .close-btn {
       position: absolute;
       top: 20px;
@@ -158,18 +173,28 @@
       border: none;
       cursor: pointer;
     }
+
+    /* Mobile-Friendly CSS */
     @media (max-width: 768px) {
-      nav { padding-left: 0; }
+      nav {
+        padding-left: 0;
+        padding-top: 100px;
+        flex-direction: column;
+        align-items: center;
+      }
+
       #logo {
         position: static;
         margin: 10px auto;
         display: block;
         height: 100px;
       }
+
       nav ul {
         flex-direction: column;
         align-items: center;
       }
+
       .gallery-track {
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -177,22 +202,31 @@
         gap: 10px;
         padding: 10px;
       }
+
       .gallery-track img {
         width: 80vw;
         height: auto;
       }
+
       .arrow {
         display: none;
       }
+
       h1 {
         font-size: 28px;
+      }
+
+      .container {
+        padding-top: 160px;
+        padding-left: 15px;
+        padding-right: 15px;
       }
     }
   </style>
 </head>
 <body>
 
-  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
+     <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 <nav>
   <ul>
     <li><a href="home.html">Home</a></li>
@@ -280,8 +314,7 @@
       </div>
       <button class="arrow right" onclick="scrollGallery(1)">&#10095;</button>
     </div>
-  </main>
-
+  </main> 
   <footer>
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
@@ -296,6 +329,7 @@
     <img id="lightboxImg" src="" alt="Zoomed" />
   </div>
 
+  <!-- JS -->
   <script>
     const track = document.getElementById('galleryTrack');
     const galleryImages = Array.from(track.querySelectorAll('img'));
@@ -309,7 +343,7 @@
       const currentTransform = getComputedStyle(track).transform;
       const matrix = new DOMMatrix(currentTransform);
       const newX = matrix.m41 + (direction * -scrollAmount);
-      track.style.transform = translateX(${newX}px);
+      track.style.transform = `translateX(${newX}px)`;
       setTimeout(() => {
         track.style.animationPlayState = 'running';
       }, 2000);
@@ -333,11 +367,9 @@
       lightboxImg.src = '';
     }
 
-    // Optional: ESC key to close
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeLightbox();
     });
   </script>
-
 </body>
 </html>
