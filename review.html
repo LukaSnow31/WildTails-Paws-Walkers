@@ -255,7 +255,7 @@
         });
     };
 
-    // Submit review to Google Sheet
+    // Submit review to Google Sheet and redirect
     document.getElementById('reviewForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const name = document.getElementById('name').value;
@@ -274,8 +274,8 @@
       })
       .then(res => res.json())
       .then(data => {
-        alert("Thank you for your review!");
-        location.reload();
+        // ✅ Redirect to thank-you page
+        window.location.href = "thank-you-review.html";
       });
 
       this.reset();
@@ -285,4 +285,5 @@
   </script>
 </body>
 </html>
+
 
