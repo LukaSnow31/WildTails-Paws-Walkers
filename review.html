@@ -69,6 +69,7 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       text-align: left;
+      position: relative;
     }
     label {
       display: block;
@@ -94,6 +95,7 @@
       background-size: contain;
       cursor: pointer;
       opacity: 0.5;
+      transition: opacity 0.3s ease;
     }
     .paw.selected {
       opacity: 1;
@@ -112,12 +114,12 @@
       background: rgba(255,255,255,0.8);
       padding: 20px;
       border-radius: 10px;
+      text-align: left;
     }
     .review {
       margin-bottom: 20px;
       padding: 10px;
       border-bottom: 1px solid #ccc;
-      text-align: left;
     }
     footer {
       background-color: #5C4033;
@@ -255,12 +257,18 @@
         });
     };
 
-    // Submit review to Google Sheet and redirect
+    // Submit review with validation and inline success message
     document.getElementById('reviewForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const name = document.getElementById('name').value;
+
+      if (selectedRating === 0) {
+        alert('Please select a rating using the paws.');
+        return;
+      }
+
+      const name = document.getElementById('name').value.trim();
       const recommend = document.getElementById('recommend').value;
-      const comments = document.getElementById('comments').value;
+      const comments = document.getElementById('comments').value.trim();
 
       fetch("https://script.google.com/macros/s/AKfycbzb2YMVn5kJ-f4wMlGnIX_xAFLoa3H09CO7RAc-L8061m0gO36Nr-4FasXHRa3QASNE/exec", {
         method: 'POST',
@@ -274,16 +282,27 @@
       })
       .then(res => res.json())
       .then(data => {
-        // ✅ Redirect to thank-you page
-        window.location.href = "thank-you-review.html";
-      });
+        const form = document.getElementById('reviewForm');
+        form.reset();
+        paws.forEach(p => p.classList.remove('selected'));
+        selectedRating = 0;
 
-      this.reset();
-      paws.forEach(p => p.classList.remove('selected'));
-      selectedRating = 0;
+        const successMsg = document.createElement('p');
+        successMsg.style.color = 'green';
+        successMsg.textContent = 'Thank you for your review! It has been submitted successfully.';
+        form.appendChild(successMsg);
+
+        setTimeout(() => {
+          successMsg.remove();
+        }, 5000);
+      })
+      .catch(() => {
+        alert('Oops! Something went wrong submitting your review. Please try again later.');
+      });
     });
   </script>
 </body>
 </html>
+
 
 
