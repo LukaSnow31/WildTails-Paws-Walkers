@@ -110,8 +110,6 @@
       padding: 20px;
       margin-top: 40px;
     }
-
-    /* ===== MOBILE ENHANCEMENTS ONLY ===== */
     @media (max-width: 768px) {
       body {
         background-attachment: scroll;
@@ -159,8 +157,6 @@
         font-size: 18px;
       }
     }
-
-    /* Slight scaling for ultra-small devices */
     @media (max-width: 480px) {
       h1 {
         font-size: 24px;
@@ -169,6 +165,7 @@
         font-size: 15px;
       }
     }
+    .service-section { display: none; }
   </style>
 </head>
 <body>
@@ -193,7 +190,7 @@
     <section id="Book Now" class="hero">
       <h1>Book a Service</h1>
       <p><b>Ready to book in and secure your dates?</b></p>
-      <p><b>Fill in the form below to pre-book your dog's holidays, drop-ins, or walks.</b></p>
+      <p><b>Fill in the form below to pre-book your pet's care.</b></p>
       <p><b>If you have any questions or would like to arrange your free 30-minute introduction as a new client, please use our Contact Us form instead.</b></p>
 
       <form action="https://formsubmit.co/info@wildtailsandpawswalkers.co.uk" method="POST">
@@ -201,44 +198,54 @@
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" value="New Booking from Website">
 
-        <div class="calendar-label">Walks & Drop-ins</div>
-        <label for="walk-date-start">Start Date:</label>
-        <input type="date" id="walk-date-start" name="walk-date-start" required>
+        <label for="service-type">Select Service:</label>
+        <select id="service-type" name="service-type" required>
+          <option value="">-- Please choose an option --</option>
+          <option value="walks">Walks & Drop-ins</option>
+          <option value="dog-sitting">Dog Sitting</option>
+          <option value="cat-sitting">Cat Sitting</option>
+          <option value="small-pets">Small Pet Care</option>
+        </select>
 
-        <label for="walk-date-end">End Date:</label>
-        <input type="date" id="walk-date-end" name="walk-date-end" required>
+        <div id="walks" class="service-section">
+          <div class="calendar-label">Walks & Drop-ins</div>
+          <label>Start Date:</label>
+          <input type="date" name="walk-date-start">
+          <label>End Date:</label>
+          <input type="date" name="walk-date-end">
+          <label>Start Time:</label>
+          <input type="time" name="walk-time-start">
+          <label>End Time:</label>
+          <input type="time" name="walk-time-end">
+        </div>
 
-        <label for="walk-time-start">Start Time:</label>
-        <input type="time" id="walk-time-start" name="walk-time-start" required>
+        <div id="dog-sitting" class="service-section">
+          <div class="calendar-label">Dog Sitting</div>
+          <label>Start Date:</label>
+          <input type="date" name="dog-date-start">
+          <label>End Date:</label>
+          <input type="date" name="dog-date-end">
+          <label>Start Time:</label>
+          <input type="time" name="dog-time-start">
+          <label>End Time:</label>
+          <input type="time" name="dog-time-end">
+        </div>
 
-        <label for="walk-time-end">End Time:</label>
-        <input type="time" id="walk-time-end" name="walk-time-end" required>
+        <div id="cat-sitting" class="service-section">
+          <div class="calendar-label">Cat Sitting</div>
+          <label>Start Date:</label>
+          <input type="date" name="cat-date-start">
+          <label>End Date:</label>
+          <input type="date" name="cat-date-end">
+        </div>
 
-        <div class="calendar-label">Day Sitting</div>
-        <label for="day-date-start">Start Date:</label>
-        <input type="date" id="day-date-start" name="day-date-start">
-
-        <label for="day-date-end">End Date:</label>
-        <input type="date" id="day-date-end" name="day-date-end">
-
-        <label for="day-time-start">Start Time:</label>
-        <input type="time" id="day-time-start" name="day-time-start">
-
-        <label for="day-time-end">End Time:</label>
-        <input type="time" id="day-time-end" name="day-time-end">
-
-        <div class="calendar-label">Holiday Sitting</div>
-        <label for="holiday-date-start">Start Date:</label>
-        <input type="date" id="holiday-date-start" name="holiday-date-start">
-
-        <label for="holiday-date-end">End Date:</label>
-        <input type="date" id="holiday-date-end" name="holiday-date-end">
-
-        <label for="holiday-time-start">Start Time:</label>
-        <input type="time" id="holiday-time-start" name="holiday-time-start">
-
-        <label for="holiday-time-end">End Time:</label>
-        <input type="time" id="holiday-time-end" name="holiday-time-end">
+        <div id="small-pets" class="service-section">
+          <div class="calendar-label">Small Pet Care</div>
+          <label>Start Date:</label>
+          <input type="date" name="smallpet-date-start">
+          <label>End Date:</label>
+          <input type="date" name="smallpet-date-end">
+        </div>
 
         <label for="name">First Name:</label>
         <input type="text" id="name" name="name" required>
@@ -250,7 +257,7 @@
         <input type="email" id="email" name="email" required>
 
         <label for="details">Additional Details:</label>
-        <textarea id="details" name="details" rows="4" placeholder="Include number of dogs, breed, behaviour notes etc..."></textarea>
+        <textarea id="details" name="details" rows="4" placeholder="Include number of pets, breed, behaviour notes etc..."></textarea>
 
         <button type="submit">Confirm Booking</button>
       </form>
@@ -260,6 +267,21 @@
   <footer>
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
+
+  <script>
+    const serviceSelect = document.getElementById('service-type');
+    const sections = document.querySelectorAll('.service-section');
+
+    serviceSelect.addEventListener('change', function () {
+      sections.forEach(section => section.style.display = 'none');
+      const selected = this.value;
+      if (selected) {
+        document.getElementById(selected).style.display = 'block';
+      }
+    });
+  </script>
+
 </body>
 </html>
+
 
