@@ -17,154 +17,24 @@
       background-repeat: no-repeat;
       color: #222;
     }
-    #logo {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      height: 280px;
-      width: auto;
-      z-index: 999;
-      border-radius: 50%;
-    }
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #5C4033;
-      z-index: 998;
-      padding-left: 130px;
-    }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-    }
+    #logo { position: fixed; top: 10px; left: 10px; height: 280px; width: auto; z-index: 999; border-radius: 50%; }
+    nav { position: fixed; top: 0; width: 100%; background-color: #5C4033; z-index: 998; padding-left: 130px; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: flex-end; flex-wrap: wrap; }
     nav li { margin: 0; }
-    nav a {
-      display: block;
-      padding: 18px 20px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
+    nav a { display: block; padding: 18px 20px; text-decoration: none; color: white; font-weight: bold; transition: background 0.3s ease; }
     nav a:hover { background-color: #4e2f22; }
-    .container {
-      padding-top: 140px;
-      padding-bottom: 40px;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
-    }
-    form {
-      background: rgba(255,255,255,0.9);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      text-align: left;
-      position: relative;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    input[type="text"], textarea, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .paws {
-      display: flex;
-      gap: 5px;
-      margin-top: 5px;
-    }
-    .paw {
-      width: 40px;
-      height: 40px;
-      background: url('https://i.postimg.cc/mZMS9bHX/pngegg-3.png') no-repeat center;
-      background-size: contain;
-      cursor: pointer;
-      opacity: 0.5;
-      transition: opacity 0.3s ease;
-    }
-    .paw.selected {
-      opacity: 1;
-    }
-    button[type="submit"] {
-      margin-top: 20px;
-      background: #5C4033;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .reviews {
-      margin-top: 40px;
-      background: rgba(255,255,255,0.8);
-      padding: 20px;
-      border-radius: 10px;
-      text-align: left;
-    }
-    .review {
-      margin-bottom: 20px;
-      padding: 10px;
-      border-bottom: 1px solid #ccc;
-    }
-    footer {
-      background-color: #5C4033;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
+    .container { padding-top: 140px; padding-bottom: 40px; text-align: center; max-width: 800px; margin: 0 auto; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 40px; }
+    .reviews { margin-top: 40px; background: rgba(255,255,255,0.8); padding: 20px; border-radius: 10px; text-align: left; }
+    .review { margin-bottom: 20px; padding: 10px; border-bottom: 1px solid #ccc; }
+    footer { background-color: #5C4033; color: white; text-align: center; padding: 20px; margin-top: 40px; }
     @media (max-width: 768px) {
-      #logo {
-        position: static;
-        display: block;
-        margin: 10px auto;
-        height: 150px;
-      }
-      nav {
-        padding-left: 0;
-      }
-      nav ul {
-        flex-direction: column;
-        align-items: center;
-      }
-      nav a {
-        padding: 12px 16px;
-      }
-      .container {
-        padding: 120px 15px 40px 15px;
-        max-width: 100%;
-      }
-      form, .reviews {
-        padding: 15px;
-      }
-      h1 {
-        font-size: 28px;
-      }
-      .paw {
-        width: 30px;
-        height: 30px;
-      }
-      button[type="submit"] {
-        width: 100%;
-      }
-      .review {
-        font-size: 15px;
-      }
+      #logo { position: static; display: block; margin: 10px auto; height: 150px; }
+      nav { padding-left: 0; }
+      nav ul { flex-direction: column; align-items: center; }
+      nav a { padding: 12px 16px; }
+      .container { padding: 120px 15px 40px 15px; max-width: 100%; }
+      .review { font-size: 15px; }
     }
   </style>
 </head>
@@ -183,126 +53,55 @@
       <li><a href="contact-us.html">Contact Us</a></li>
     </ul>
   </nav>
+
   <main class="container">
     <section id="Reviews" class="hero">
       <h1>Leave a Review</h1>
-      <form id="reviewForm">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" required>
 
-        <label>Rate Our Service</label>
-        <div class="paws" id="rating">
-          <div class="paw" data-value="1"></div>
-          <div class="paw" data-value="2"></div>
-          <div class="paw" data-value="3"></div>
-          <div class="paw" data-value="4"></div>
-          <div class="paw" data-value="5"></div>
-        </div>
+      <!-- Zoho Form Embed -->
+      <iframe src="https://forms.zohopublic.eu/infowildtailsan1/form/FeedbackCustomerSatisfaction/formperma/AKgGnWB1vHEM5Lys3VIANlrbe5iWw53_9zDt5fpGEhA" 
+        width="100%" height="600" style="border:none;"></iframe>
 
-        <label for="recommend">How likely would you recommend us (out of 5)?</label>
-        <select id="recommend" required>
-          <option value="">--Select--</option>
-          <option value="1">1 - Not likely</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5 - Highly likely</option>
-        </select>
-
-        <label for="comments">Your Experience</label>
-        <textarea id="comments" rows="5" required></textarea>
-
-        <button type="submit">Submit Review</button>
-      </form>
-
+      <!-- Reviews pulled from Google Sheets -->
       <div class="reviews" id="reviews">
         <h2>What Our Clients Say</h2>
       </div>
     </section>
   </main>
+
   <footer>
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
 
   <script>
-    const paws = document.querySelectorAll('.paw');
-    let selectedRating = 0;
+    // Fetch reviews from Google Sheet
+    const sheetID = "1bmLk2elRynizuxliSG8GI18sTHp8y0u8Ht1aAc8h6zs"; // Your Sheet ID
+    const sheetURL = `https://spreadsheets.google.com/feeds/list/${sheetID}/od6/public/values?alt=json`;
 
-    paws.forEach(paw => {
-      paw.addEventListener('click', () => {
-        selectedRating = parseInt(paw.dataset.value);
-        paws.forEach(p => p.classList.remove('selected'));
-        for (let i = 0; i < selectedRating; i++) {
-          paws[i].classList.add('selected');
-        }
-      });
-    });
-
-    // Load existing reviews
-    window.onload = function () {
-      fetch("https://script.google.com/macros/s/AKfycbzb2YMVn5kJ-f4wMlGnIX_xAFLoa3H09CO7RAc-L8061m0gO36Nr-4FasXHRa3QASNE/exec")
-        .then(res => res.json())
-        .then(data => {
-          const reviewsContainer = document.getElementById('reviews');
-          data.forEach(review => {
-            reviewsContainer.innerHTML += `
-              <div class="review">
-                <strong>${review.name}</strong><br>
-                <div>${'🐾'.repeat(review.rating)}</div>
-                <p>${review.comments}</p>
-                <small>Recommendation: ${review.recommend}/5</small>
-              </div>
-            `;
-          });
-        });
-    };
-
-    // Submit review with validation and inline success message
-    document.getElementById('reviewForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      if (selectedRating === 0) {
-        alert('Please select a rating using the paws.');
-        return;
-      }
-
-      const name = document.getElementById('name').value.trim();
-      const recommend = document.getElementById('recommend').value;
-      const comments = document.getElementById('comments').value.trim();
-
-      fetch("https://script.google.com/macros/s/AKfycbzb2YMVn5kJ-f4wMlGnIX_xAFLoa3H09CO7RAc-L8061m0gO36Nr-4FasXHRa3QASNE/exec", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name,
-          rating: selectedRating,
-          recommend: recommend,
-          comments: comments
-        })
-      })
+    fetch(sheetURL)
       .then(res => res.json())
       .then(data => {
-        const form = document.getElementById('reviewForm');
-        form.reset();
-        paws.forEach(p => p.classList.remove('selected'));
-        selectedRating = 0;
+        const reviewsContainer = document.getElementById('reviews');
+        const entries = data.feed.entry || [];
+        entries.forEach(entry => {
+          const name = entry.gsx$name.$t;
+          const rating = parseInt(entry.gsx$rating.$t);
+          const recommend = entry.gsx$recommend.$t;
+          const comments = entry.gsx$comments.$t;
 
-        const successMsg = document.createElement('p');
-        successMsg.style.color = 'green';
-        successMsg.textContent = 'Thank you for your review! It has been submitted successfully.';
-        form.appendChild(successMsg);
-
-        setTimeout(() => {
-          successMsg.remove();
-        }, 5000);
+          reviewsContainer.innerHTML += `
+            <div class="review">
+              <strong>${name}</strong><br>
+              <div>${'🐾'.repeat(rating)}</div>
+              <p>${comments}</p>
+              <small>Recommendation: ${recommend}/5</small>
+            </div>
+          `;
+        });
       })
-      .catch(() => {
-        alert('Oops! Something went wrong submitting your review. Please try again later.');
-      });
-    });
+      .catch(err => console.error('Error fetching reviews:', err));
   </script>
 </body>
 </html>
-
 
 
