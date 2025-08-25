@@ -66,11 +66,20 @@
       <div class="reviews">
         <h2>Customer Reviews</h2>
 
-        <!-- Zoho Reviews Report Embed (Auto-resizing) -->
-        <iframe id="zohoReviews" frameborder="0" 
-            style="width:100%;border:none;margin-bottom:20px;" 
-            src="https://forms.zohopublic.eu/infowildtailsan1/report/CustomerReviews/reportperma/riKPj1k0XZzdp649H7xpps7G1IVI2TTac41tGkGiBJ4">
+        <!-- Zoho Reports Embed (Dynamic Height) -->
+        <iframe id="zohoReviews" frameborder="0" style="width:100%;border:none;" 
+          src="https://forms.zohopublic.eu/infowildtailsan1/report/CustomerReviews/reportperma/riKPj1k0XZzdp649H7xpps7G1IVI2TTac41tGkGiBJ4">
         </iframe>
+        <script type="text/javascript" src="https://forms.zohopublic.eu/js/iframeResizer.min.js"></script>
+        <script>
+          // Initialize iframe resizer for Zoho report
+          iFrameResize({
+            log: false,
+            checkOrigin: false,
+            heightCalculationMethod: 'bodyScroll',
+            enablePublicMethods: true
+          }, '#zohoReviews');
+        </script>
 
         <!-- Google Sheets Reviews -->
         <div id="reviews"></div>
@@ -83,14 +92,6 @@
   </footer>
 
   <script>
-    // Adjust Zoho iframe height dynamically
-    window.addEventListener("message", function(event) {
-      if(event.origin.includes("zohopublic.eu") && event.data && event.data.height){
-        const iframe = document.getElementById("zohoReviews");
-        iframe.style.height = event.data.height + "px";
-      }
-    });
-
     // Fetch reviews from Google Sheet
     const sheetID = "1bmLk2elRynizuxliSG8GI18sTHp8y0u8Ht1aAc8h6zs"; // Your Sheet ID
     const sheetURL = `https://spreadsheets.google.com/feeds/list/${sheetID}/od6/public/values?alt=json`;
@@ -120,7 +121,3 @@
   </script>
 </body>
 </html>
-
-
-
-
