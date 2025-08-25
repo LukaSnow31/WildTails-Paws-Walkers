@@ -86,8 +86,22 @@
       font-family: 'Playfair Display', serif;
       font-size: 48px;
       margin-bottom: 25px;
-      color: #228B22; /* forest green */
+      color: #228B22;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(-10px);
+      animation: fadeIn 1.5s ease-in-out forwards;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .hero p {
@@ -97,9 +111,7 @@
       color: #333;
     }
 
-    .hero strong {
-      color: #228B22; /* forest green for strong text */
-    }
+    .highlight { color: #228B22; font-weight: bold; }
 
     .section {
       margin-top: 60px;
@@ -113,7 +125,7 @@
       font-size: 32px;
       font-family: 'Playfair Display', serif;
       margin-bottom: 30px;
-      color: #228B22; /* forest green */
+      color: #228B22;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
 
@@ -150,7 +162,7 @@
       margin-bottom: 12px;
       font-family: 'Playfair Display', serif;
       font-size: 22px;
-      color: #228B22; /* forest green */
+      color: #228B22;
     }
 
     .card p {
@@ -167,30 +179,23 @@
       margin-top: 80px;
     }
 
-    /* MOBILE STYLES */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 768px) {
       #logo { position: static; display: block; margin: 10px auto; height: 80px; }
-
       header { position: relative; padding-left: 0; }
-
       nav { flex-direction: column; align-items: center; }
-
       nav ul { flex-direction: column; width: 100%; text-align: center; }
-
       nav li { width: 100%; }
-
       nav a { padding: 15px; width: 100%; }
-
       .card { width: 90%; }
-
       .hero h1 { font-size: 36px; }
-
       .hero p { font-size: 18px; }
-
       .section h2 { font-size: 28px; }
-
       .section p { font-size: 16px; }
-
       .container { padding-top: 40px; padding-left: 10px; padding-right: 10px; }
     }
   </style>
@@ -223,14 +228,14 @@
     <!-- Hero Banner -->
     <section id="Home" class="hero">
       <h1>Welcome to WildTails & Paws Walkers</h1>
-      <p><strong>Your dog’s next adventure starts here!</strong></p>
-      <p>From peaceful woodland strolls to energy-burning trail hikes, we create walks that suit your dog’s pace, personality, and needs.</p>
-      <p>We are available day or night, in all weather conditions, offering flexible walking, sitting, and small pet care services every day of the year.</p>
-      <p><strong>Emergency and same-day bookings are always welcome!</strong></p>
-      <p>Our services extend beyond dogs. We also provide dedicated cat sitting and small animal care tailored to each pet’s needs.</p>
-      <p>Whether you have a cat, guinea pig, rabbit, hamster, or other small companion, we ensure attentive, compassionate care in the comfort of their home.</p>
-      <p>This includes feeding, fresh water, litter tray or cage cleaning, playtime, and lots of affection. We always adapt to your pet’s routine, temperament, and preferences.</p>
-      <p><strong>Because every companion deserves more than basic care — they deserve the WildTails experience.</strong></p>
+      <p class="fade-in"><strong>Your dog’s next adventure starts here!</strong></p>
+      <p class="fade-in">From peaceful woodland strolls to energy-burning trail hikes, we create walks that suit your dog’s pace, personality, and needs.</p>
+      <p class="fade-in">We are available day or night, in all weather conditions, offering flexible walking, sitting, and small pet care services every day of the year.</p>
+      <p class="fade-in"><strong>Emergency and same-day bookings are always welcome!</strong></p>
+      <p class="fade-in">Our services extend beyond dogs. We also provide dedicated cat sitting and small animal care tailored to each pet’s needs.</p>
+      <p class="fade-in">Whether you have a cat, guinea pig, rabbit, hamster, or other small companion, we ensure attentive, compassionate care in the comfort of their home.</p>
+      <p class="fade-in">This includes feeding, fresh water, litter tray or cage cleaning, playtime, and lots of affection. We always adapt to your pet’s routine, temperament, and preferences.</p>
+      <p class="fade-in"><strong>Because every companion deserves more than basic care — they deserve the WildTails experience.</strong></p>
     </section>
 
     <!-- Services Section -->
@@ -239,30 +244,30 @@
       <div class="cards">
         <div class="card">
           <h3>Specialist One-to-One</h3>
-          <p>We focus on each dog individually to fulfil their every need.</p>
+          <p class="fade-in">We focus on each dog individually to fulfil their every need.</p>
         </div>
         <div class="card">
           <h3>Adventure Walks</h3>
-          <p>Long-distance nature walks that provide exercise and mental stimulation.</p>
+          <p class="fade-in">Long-distance nature walks that provide exercise and mental stimulation.</p>
         </div>
         <div class="card">
           <h3>Special Needs Dogs</h3>
-          <p>We welcome dogs that need extra understanding, care, and support.</p>
+          <p class="fade-in">We welcome dogs that need extra understanding, care, and support.</p>
         </div>
         <div class="card">
           <h3>Behavioural Challenges</h3>
-          <p>We work patiently and compassionately with nervous, reactive, and misunderstood dogs.</p>
+          <p class="fade-in">We work patiently and compassionately with nervous, reactive, and misunderstood dogs.</p>
         </div>
         <div class="card">
           <h3>Training Add-Ons</h3>
-          <p>Short training sessions built into walks to build confidence and good habits.</p>
+          <p class="fade-in">Short training sessions built into walks to build confidence and good habits.</p>
         </div>
         <div class="card">
           <h3>Cat Sitting & Small Pet Care</h3>
-          <p>We care for cats, guinea pigs, and other small pets with the same love and attention we give dogs.</p>
+          <p class="fade-in">We care for cats, guinea pigs, and other small pets with the same love and attention we give dogs.</p>
         </div>
         <div class="card">
-          <p><strong>Free 30-minute meet & greet for new customers — get to know us and your furry companion before their first adventure!</strong></p>
+          <p class="fade-in"><strong>Free 30-minute meet & greet for new customers — get to know us and your furry companion before their first adventure!</strong></p>
         </div>
       </div>
     </section>
@@ -273,6 +278,28 @@
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
 
+  <script>
+    // Scroll fade-in effect
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+
 </body>
 </html>
-
