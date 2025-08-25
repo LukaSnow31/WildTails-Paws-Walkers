@@ -27,6 +27,7 @@
     h1 { font-family: 'Playfair Display', serif; font-size: 40px; }
     .reviews { margin-top: 40px; background: rgba(255,255,255,0.9); padding: 20px; border-radius: 10px; text-align: left; }
     .review { margin-bottom: 20px; padding: 10px; border-bottom: 1px solid #ccc; }
+    .zoho-container { width: 100%; padding: 0; margin-bottom: 20px; }
     footer { background-color: #5C4033; color: white; text-align: center; padding: 20px; margin-top: 40px; }
     @media (max-width: 768px) {
       #logo { position: static; display: block; margin: 10px auto; height: 150px; }
@@ -66,20 +67,12 @@
       <div class="reviews">
         <h2>Customer Reviews</h2>
 
-        <!-- Zoho Reports Embed (Dynamic Height) -->
-        <iframe id="zohoReviews" frameborder="0" style="width:100%;border:none;" 
-          src="https://forms.zohopublic.eu/infowildtailsan1/report/CustomerReviews/reportperma/riKPj1k0XZzdp649H7xpps7G1IVI2TTac41tGkGiBJ4">
-        </iframe>
-        <script type="text/javascript" src="https://forms.zohopublic.eu/js/iframeResizer.min.js"></script>
-        <script>
-          // Initialize iframe resizer for Zoho report
-          iFrameResize({
-            log: false,
-            checkOrigin: false,
-            heightCalculationMethod: 'bodyScroll',
-            enablePublicMethods: true
-          }, '#zohoReviews');
-        </script>
+        <!-- Zoho Report Embed -->
+        <div class="zoho-container">
+          <iframe id="zohoReviews" frameborder="0" style="width:100%; border:none;" 
+            src="https://forms.zohopublic.eu/infowildtailsan1/report/CustomerReviews/reportperma/riKPj1k0XZzdp649H7xpps7G1IVI2TTac41tGkGiBJ4">
+          </iframe>
+        </div>
 
         <!-- Google Sheets Reviews -->
         <div id="reviews"></div>
@@ -92,8 +85,29 @@
   </footer>
 
   <script>
+    // Fully dynamic Zoho iframe height
+    const iframe = document.getElementById('zohoReviews');
+
+    function adjustIframeHeight() {
+      // generous default height
+      let newHeight = 900;
+
+      try {
+        // Try to read content height if same-origin (usually blocked cross-origin)
+        newHeight = iframe.contentWindow.document.body.scrollHeight + 50;
+      } catch(e) {
+        // fallback minimum height ensures content visible
+      }
+
+      iframe.style.height = newHeight + 'px';
+    }
+
+    // Adjust immediately and every 500ms in case content changes dynamically
+    adjustIframeHeight();
+    setInterval(adjustIframeHeight, 500);
+
     // Fetch reviews from Google Sheet
-    const sheetID = "1bmLk2elRynizuxliSG8GI18sTHp8y0u8Ht1aAc8h6zs"; // Your Sheet ID
+    const sheetID = "1bmLk2elRynizuxliSG8GI18sTHp8y0u8Ht1aAc8h6zs";
     const sheetURL = `https://spreadsheets.google.com/feeds/list/${sheetID}/od6/public/values?alt=json`;
 
     fetch(sheetURL)
@@ -121,5 +135,4 @@
   </script>
 </body>
 </html>
-
 
