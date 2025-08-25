@@ -67,7 +67,7 @@
       padding-bottom: 40px;
       max-width: 1000px;
       margin: 0 auto;
-      text-align: center; /* Center all text */
+      text-align: center;
       background-color: rgba(255, 255, 255, 0.9);
       padding: 60px 20px;
       border-radius: 12px;
@@ -76,17 +76,36 @@
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 42px;
+      font-size: 48px;
       margin-bottom: 20px;
+      color: #5C4033;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .highlight {
+      color: #D2691E; /* chocolate accent */
+      font-weight: bold;
     }
 
     p {
       font-size: 18px;
-      line-height: 1.7;
+      line-height: 1.8;
       margin-bottom: 20px;
-      max-width: 700px;
+      max-width: 720px;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    blockquote {
+      font-size: 20px;
+      font-style: italic;
+      background-color: #FFF3E0;
+      border-left: 6px solid #D2691E;
+      margin: 20px auto;
+      padding: 15px 25px;
+      max-width: 700px;
+      border-radius: 8px;
     }
 
     footer {
@@ -97,17 +116,18 @@
       margin-top: 80px;
     }
 
-    @media (max-width: 768px) {
-      nav {
-        padding-left: 0;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
+    @media (max-width: 768px) {
+      nav { padding-left: 0; }
       #logo {
         position: static;
         margin: 10px auto;
         display: block;
       }
-
       nav ul {
         flex-direction: column;
         align-items: center;
@@ -137,17 +157,19 @@
 
   <!-- Main Content -->
   <main class="container">
-    <h1>About WildTails & Paws Walkers</h1>
+    <h1>About <span class="highlight">WildTails & Paws Walkers</span></h1>
 
-    <p>Founded in 2024, WildTails & Paws Walkers was established with a clear and heartfelt mission to provide dedicated, affordable, and compassionate care tailored to the unique needs of each pet we serve. With over a decade of hands-on experience in animal care, our expertise spans a wide range of species and temperaments, from dogs of all breeds and ages to retired racehorses with complex disabilities. This diverse background has enriched our understanding of animal behaviour, patience, and the critical importance of delivering personalised, respectful care.</p>
+    <p><strong>Founded in 2024</strong>, WildTails & Paws Walkers began with a heartfelt mission: to provide <span class="highlight">dedicated, compassionate care</span> tailored to the unique needs of each pet. With over a decade of hands-on experience, our team understands animals of all kinds—from playful puppies to retired racehorses with special needs.</p>
 
-    <p>We recognise that every animal is an individual with their own personality, needs, and sensitivities. Whether caring for an energetic puppy, a nervous rescue dog, a reserved senior pet, or a reactive companion, our approach is always grounded in empathy and tailored support. Beyond dogs, we have expanded our services to include attentive cat sitting and small pet care. Our team provides feeding, cleaning, playtime, and companionship for cats and small animals such as rabbits, guinea pigs, hamsters, and other small mammals, ensuring they receive the same level of love and attention as our canine clients.</p>
+    <p>We know every pet is an individual, with their own personality and sensitivities. From energetic pups to nervous rescues, reserved seniors, and even our feline and small mammal friends, our approach is grounded in <span class="highlight">empathy, patience, and personalised support</span>.</p>
 
-    <p>Initially, our services were offered through third-party platforms like Rover. However, the high fees and lack of direct communication with clients limited our ability to provide transparent pricing and truly personalised care. To overcome this, we chose to operate independently, allowing us to build stronger, more meaningful relationships with both pets and their owners, while maintaining fair, honest pricing and flexibility.</p>
+    <p>Initially, we worked through third-party platforms like Rover. But we wanted to offer <span class="highlight">transparent pricing, direct communication, and truly personalised care</span>. Operating independently allows us to build stronger, meaningful relationships with both pets and their owners.</p>
 
-    <p>At WildTails & Paws Walkers, we are passionate about enhancing the wellbeing and happiness of every animal we care for. Whether it’s a revitalising woodland stroll for your dog, a quiet afternoon of companionship for your cat, or thorough and gentle care for your small pets, we are committed to delivering exceptional service tailored to your pet’s unique lifestyle and requirements.</p>
+    <blockquote>
+      <em>"Every pet deserves kindness, respect, and patience. We’re not just carers—we’re trusted partners in your pet’s happiness and wellbeing."</em>
+    </blockquote>
 
-    <p>Our philosophy is simple. Every pet deserves to be treated with kindness, respect, and patience. By combining professional expertise with genuine love for animals, we strive to be more than just carers. We aim to be trusted partners in your pet’s health, happiness, and everyday adventures. One animal at a time, one meaningful moment at a time.</p>
+    <p>From woodland walks to quiet afternoons of companionship, we provide <span class="highlight">tailored adventures</span> that keep pets happy, healthy, and loved. One animal at a time, one meaningful moment at a time.</p>
   </main>
 
   <!-- Footer -->
@@ -157,4 +179,3 @@
 
 </body>
 </html>
-
