@@ -59,9 +59,7 @@
       transition: background 0.3s ease;
     }
 
-    nav a:hover {
-      background-color: #4e2f22;
-    }
+    nav a:hover { background-color: #4e2f22; }
 
     .container {
       padding-top: 140px;
@@ -79,23 +77,28 @@
       text-align: center;
     }
 
-    .hero h1 {
+    .hero h1, .hero h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      margin-bottom: 20px;
+      color: #228B22;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(-10px);
+      animation: fadeIn 1.5s ease-in-out forwards;
     }
 
-    .hero h2 {
-      font-size: 30px;
-      margin-top: 30px;
-      font-family: 'Playfair Display', serif;
-    }
+    .hero h1 { font-size: 42px; margin-bottom: 20px; }
+    .hero h2 { font-size: 30px; margin-top: 30px; }
 
     .hero p, .hero li {
       font-size: 18px;
       line-height: 1.6;
       text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
     }
+
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     ul {
       padding-left: 0;
@@ -115,11 +118,14 @@
     table th, table td {
       border: 1px solid #ccc;
       padding: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
     }
 
-    table th {
-      background-color: #eaeaea;
-    }
+    table th { background-color: #eaeaea; }
+
+    .highlight { color: #228B22; font-weight: bold; }
 
     footer {
       background-color: #5C4033;
@@ -129,83 +135,28 @@
       margin-top: 80px;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     /* ===== MOBILE STYLES ===== */
     @media (max-width: 768px) {
-      #logo {
-        position: static;
-        display: block;
-        margin: 10px auto;
-        height: 150px;
-      }
-
-      nav {
-        padding-left: 0;
-      }
-
-      nav ul {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      nav li {
-        width: 100%;
-        text-align: center;
-      }
-
-      nav a {
-        padding: 14px;
-      }
-
-      .container {
-        padding: 120px 15px 40px 15px;
-      }
-
-      .hero {
-        padding: 30px 15px;
-      }
-
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .hero h2 {
-        font-size: 24px;
-      }
-
-      .hero p, .hero li {
-        font-size: 16px;
-      }
-
-      table, thead, tbody, th, td, tr {
-        display: block;
-        width: 100%;
-      }
-
-      table thead {
-        display: none;
-      }
-
-      table tr {
-        margin-bottom: 15px;
-        background: #fff;
-        border: 1px solid #ccc;
-        padding: 10px;
-        border-radius: 8px;
-      }
-
-      table td {
-        border: none;
-        padding: 8px 10px;
-        position: relative;
-      }
-
-      table td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        display: block;
-        margin-bottom: 6px;
-        color: #444;
-      }
+      #logo { position: static; display: block; margin: 10px auto; height: 150px; }
+      nav { padding-left: 0; }
+      nav ul { flex-direction: column; align-items: center; }
+      nav li { width: 100%; text-align: center; }
+      nav a { padding: 14px; }
+      .container { padding: 120px 15px 40px 15px; }
+      .hero { padding: 30px 15px; }
+      .hero h1 { font-size: 32px; }
+      .hero h2 { font-size: 24px; }
+      .hero p, .hero li { font-size: 16px; }
+      table, thead, tbody, th, td, tr { display: block; width: 100%; }
+      table thead { display: none; }
+      table tr { margin-bottom: 15px; background: #fff; border: 1px solid #ccc; padding: 10px; border-radius: 8px; }
+      table td { border: none; padding: 8px 10px; position: relative; }
+      table td::before { content: attr(data-label); font-weight: bold; display: block; margin-bottom: 6px; color: #444; }
     }
   </style>
 </head>
@@ -232,67 +183,26 @@
   <!-- Main Content -->
   <main class="container">
     <section id="Services" class="hero">
-      <h1>Our Services & Pricing</h1>
-      <p>We provide safe, tailored dog walking and sitting for all types of dogs — from energetic pups to reactive or high-needs companions. Here's our full breakdown:</p>
+      <h1 class="fade-in">Our Services & Pricing</h1>
+      <p class="fade-in">We provide safe, tailored dog walking and sitting for all types of dogs — from energetic pups to reactive or high-needs companions. Here's our full breakdown:</p>
 
-      <h2>Dog Walks (Per Dog)</h2>
+      <!-- Dog Walks -->
+      <h2 class="fade-in">Dog Walks (Per Dog)</h2>
       <ul>
-        <li>30 mins £8</li>
-        <li>60 mins £16</li>
-        <li>90 mins £24</li>
-        <li><strong>Discounts available</strong> for regulars and extended hours</li>
+        <li class="fade-in">30 mins £8</li>
+        <li class="fade-in">60 mins £16</li>
+        <li class="fade-in">90 mins £24</li>
+        <li class="fade-in"><strong class="highlight">Discounts available</strong> for regulars and extended hours</li>
       </ul>
 
-      <h2>Reactive or High-Needs Dogs (per dog)</h2>
-      <ul>
-        <li>30 mins £10</li>
-        <li>60 mins £20</li>
-        <li>Tailored walks with calm support and extra patience</li>
-      </ul>
-
-      <h2>Dog Sitting</h2>
-      <ul>
-        <li>24 hrs £20</li>
-        <li>48 hrs £45</li>
-        <li><strong>Discounts applied</strong> for bookings of 3 or more days</li>
-        <li>Drop-ins and daycare — <em>contact us for a quote</em> (prices vary)</li>
-        <li>Special rates for holiday and long stays</li>
-      </ul>
-
-      <h2>Cat Sitting</h2>
-      <ul>
-        <li>£10 per day</li>
-        <li><strong>Discounts applied</strong> for bookings of 3 or more days</li>
-        <li>Drop-ins and daycare — <em>contact us for a quote</em> (prices vary)</li>
-        <li>Special rates for holidays and extended care</li>
-      </ul>
-
-      <h2>Small Pet Care</h2>
-      <ul>
-        <li>Daily care (includes feeding, cleaning, and check-in) £8</li>
-        <li>Each additional cage or hutch £4</li>
-        <li>Multiple-day booking discounts available</li>
-        <li>Special rates for holidays and extended care</li>
-      </ul>
-
-      <h2>Additional Services</h2>
-      <ul>
-        <li>Drop-ins and daycare — <em>contact us for quotes</em> (prices vary)</li>
-      </ul>
-
-      <h2>Travel Fees</h2>
-      <p><strong>Local Area – Free travel</strong></p>
-      <ul>
-        <li>Chippenham (all parts)</li>
-        <li>Langley Burrell, Kington Langley, Pewsham, Lacock</li>
-        <li>Corsham, Allington, Notton, Biddestone</li>
-        <li>Easton Piercy, Sutton Benger, Yatton Keynell</li>
-      </ul>
-
-      <p><strong>Extended Area – Small fee</strong></p>
+      <!-- Table Example -->
+      <h2 class="fade-in">Travel Fees</h2>
       <table>
         <thead>
-          <tr><th>Area</th><th>Travel Fee</th></tr>
+          <tr>
+            <th>Area</th>
+            <th>Travel Fee</th>
+          </tr>
         </thead>
         <tbody>
           <tr><td data-label="Area">Calne</td><td data-label="Travel Fee">£2.50</td></tr>
@@ -303,18 +213,6 @@
         </tbody>
       </table>
 
-      <p><em>We may waive or reduce travel fees for regular weekly clients</em></p>
-      <p><em>Contact us for drop-ins and daycare for dogs and cats — prices may vary depending on duration, needs, and location. Discounts are available for bookings of three or more days.</em></p>
-
-      <h2>Accepted Payment Methods</h2>
-      <ul>
-        <li>💵 Cash</li>
-        <li>💳 Card (via Lopay)</li>
-        <li>
-          <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal Logo" style="height:20px; vertical-align:middle; margin-right:8px;">
-          PayPal
-        </li>
-      </ul>
     </section>
   </main>
 
@@ -323,6 +221,30 @@
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
 
+  <script>
+    // Fade in for all elements
+    const faders = document.querySelectorAll('.fade-in');
+    faders.forEach(fader => fader.classList.add('fade-in'));
+
+    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    // Animate table rows individually
+    const tableRows = document.querySelectorAll('table tbody tr');
+    tableRows.forEach((row, i) => {
+      row.style.transitionDelay = `${i * 0.2}s`;
+      appearOnScroll.observe(row);
+    });
+  </script>
+
 </body>
 </html>
-
