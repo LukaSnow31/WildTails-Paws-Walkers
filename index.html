@@ -68,6 +68,40 @@
 
     nav a:hover { background-color: #4e2f22; }
 
+    /* Hamburger icon - hidden by default */
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: white;
+      padding: 18px 20px;
+      user-select: none;
+    }
+
+    .hamburger.active {
+      content: "✖";
+    }
+
+    /* Mobile dropdown menu (hidden by default) */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #5C4033;
+      width: 100%;
+    }
+
+    .mobile-menu a {
+      padding: 15px;
+      border-top: 1px solid #4e2f22;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .mobile-menu a:hover {
+      background-color: #4e2f22;
+    }
+
     .container {
       padding-top: 180px;
       padding-bottom: 40px;
@@ -187,10 +221,9 @@
     @media (max-width: 768px) {
       #logo { position: static; display: block; margin: 10px auto; height: 80px; }
       header { position: relative; padding-left: 0; }
-      nav { flex-direction: column; align-items: center; }
-      nav ul { flex-direction: column; width: 100%; text-align: center; }
-      nav li { width: 100%; }
-      nav a { padding: 15px; width: 100%; }
+      nav ul { display: none; } /* hide desktop menu */
+      .hamburger { display: block; } /* show hamburger */
+      .mobile-menu.show { display: flex; } /* toggle dropdown */
       .card { width: 90%; }
       .hero h1 { font-size: 36px; }
       .hero p { font-size: 18px; }
@@ -209,17 +242,29 @@
   <header>
     <nav>
       <ul>
-    <li><a href="./">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="checkout.html">Check Out</a></li>
-    <li><a href="review.html">Reviews</a></li>
-    <li><a href="booking.html">Book Now</a></li>
-    <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="./">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="checkout.html">Check Out</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="booking.html">Book Now</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
       </ul>
+      <div class="hamburger" id="hamburger">☰</div>
     </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="./">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="services.html">Services</a>
+      <a href="shop.html">Shop</a>
+      <a href="checkout.html">Check Out</a>
+      <a href="review.html">Reviews</a>
+      <a href="booking.html">Book Now</a>
+      <a href="contact-us.html">Contact Us</a>
+    </div>
   </header>
 
   <!-- Main Content -->
@@ -299,11 +344,28 @@
     faders.forEach(fader => {
       appearOnScroll.observe(fader);
     });
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function toggleMenu() {
+      mobileMenu.classList.toggle('show');
+      hamburger.textContent = mobileMenu.classList.contains('show') ? "✖" : "☰";
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+
+    // Close mobile menu when a link is clicked
+    const mobileLinks = document.querySelectorAll('#mobileMenu a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('show');
+        hamburger.textContent = "☰";
+      });
+    });
   </script>
 
 </body>
 </html>
-
-
-
 
