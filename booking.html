@@ -33,6 +33,9 @@
       background-color: #5C4033;
       z-index: 998;
       padding-left: 130px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     nav ul {
       list-style: none;
@@ -52,6 +55,25 @@
       transition: background 0.3s ease;
     }
     nav a:hover { background-color: #4e2f22; }
+    .hamburger {
+      display: none;
+      font-size: 30px;
+      color: white;
+      padding: 15px 20px;
+      cursor: pointer;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: #5C4033;
+    }
+    .mobile-menu a {
+      padding: 14px;
+      border-top: 1px solid #444;
+    }
+    .mobile-menu.show {
+      display: flex;
+    }
     .container {
       padding-top: 140px;
       padding-bottom: 40px;
@@ -67,7 +89,6 @@
       transform: translateY(30px);
       animation: fadeUp 1s ease-out forwards;
     }
-    /* Subtitles under title */
     .subtitle {
       font-family: 'Playfair Display', serif;
       font-size: 22px;
@@ -144,9 +165,8 @@
         margin: 10px auto;
         height: 100px;
       }
-      nav ul { flex-direction: column; align-items: center; }
-      nav li { width: 100%; text-align: center; }
-      nav a { padding: 14px; font-size: 16px; }
+      nav ul { display: none; }
+      .hamburger { display: block; }
       .container { padding: 110px 15px 40px; }
       form { padding: 20px 15px; margin: 20px 10px; }
       h1 { font-size: 28px; }
@@ -168,17 +188,30 @@
 
   <nav>
     <ul>
-    <li><a href="./">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="checkout.html">Check Out</a></li>
-    <li><a href="review.html">Reviews</a></li>
-    <li><a href="booking.html">Book Now</a></li>
-    <li><a href="contact-us.html">Contact Us</a></li>
+      <li><a href="./">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="checkout.html">Check Out</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
     </ul>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
   </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="services.html">Services</a>
+    <a href="shop.html">Shop</a>
+    <a href="checkout.html">Check Out</a>
+    <a href="review.html">Reviews</a>
+    <a href="booking.html">Book Now</a>
+    <a href="contact-us.html">Contact Us</a>
+  </div>
 
   <main class="container">
     <section id="Book Now" class="hero">
@@ -263,6 +296,19 @@
   </footer>
 
   <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('show');
+    }
+
+    // Close menu when a link is clicked
+    const mobileLinks = document.querySelectorAll('#mobileMenu a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.remove('show');
+      });
+    });
+
     // Service type toggle
     const serviceSelect = document.getElementById('service-type');
     const sections = document.querySelectorAll('.service-section');
@@ -290,7 +336,3 @@
 
 </body>
 </html>
-
-
-
-
