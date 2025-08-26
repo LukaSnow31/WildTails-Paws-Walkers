@@ -33,6 +33,9 @@
       background-color: #5C4033;
       z-index: 998;
       padding-left: 130px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     nav ul {
       list-style: none;
@@ -57,10 +60,7 @@
     nav a:hover {
       background-color: #4e2f22;
     }
-    #cart-icon {
-      cursor: pointer;
-      position: relative;
-    }
+    #cart-icon { cursor: pointer; position: relative; }
     #cart-count {
       position: absolute;
       top: 10px;
@@ -83,9 +83,19 @@
       border-radius: 8px;
       z-index: 999;
     }
-    nav li:hover .mini-cart {
-      display: block;
+    nav li:hover .mini-cart { display: block; }
+
+    /* Hamburger menu button (hidden by default) */
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-right: 20px;
     }
+
     .container {
       padding-top: 160px;
       padding-bottom: 40px;
@@ -101,9 +111,7 @@
       gap: 15px;
       padding: 0 20px;
     }
-    label {
-      font-weight: bold;
-    }
+    label { font-weight: bold; }
     input, select, textarea {
       padding: 10px;
       border-radius: 5px;
@@ -116,9 +124,7 @@
       padding: 15px;
       border-radius: 8px;
     }
-    #paypal-button-container {
-      margin: 20px;
-    }
+    #paypal-button-container { margin: 20px; }
     #thank-you {
       display: none;
       text-align: center;
@@ -153,29 +159,25 @@
       margin-top: 80px;
     }
 
-    /* === MOBILE-FRIENDLY ENHANCEMENTS === */
+    /* === MOBILE DROPDOWN MENU === */
     @media (max-width: 768px) {
-      nav {
-        padding-left: 0;
-      }
+      nav { padding-left: 0; flex-wrap: wrap; }
       #logo {
         position: static;
         display: block;
         margin: 10px auto;
         height: 100px;
       }
+      .menu-toggle { display: block; }
       nav ul {
         flex-direction: column;
         align-items: center;
-      }
-      nav li {
         width: 100%;
-        text-align: center;
+        display: none; /* hidden until toggled */
       }
-      nav a {
-        padding: 14px;
-        font-size: 16px;
-      }
+      nav ul.show { display: flex; }
+      nav li { width: 100%; text-align: center; }
+      nav a { padding: 14px; font-size: 16px; }
       .mini-cart {
         position: static;
         width: 100%;
@@ -186,33 +188,16 @@
         margin: 20px 10px;
         padding: 20px 10px;
       }
-      form {
-        padding: 0 10px;
-      }
-      #cart-preview, #paypal-button-container {
-        margin: 10px;
-      }
-      input, select, textarea {
-        font-size: 16px;
-      }
-      button {
-        width: 100%;
-      }
-      #cart-preview input[type="number"] {
-        width: 50px;
-      }
-      h1 {
-        font-size: 24px;
-      }
+      form { padding: 0 10px; }
+      #cart-preview, #paypal-button-container { margin: 10px; }
+      input, select, textarea { font-size: 16px; }
+      button { width: 100%; }
+      #cart-preview input[type="number"] { width: 50px; }
+      h1 { font-size: 24px; }
     }
-
     @media (max-width: 480px) {
-      nav a {
-        font-size: 15px;
-      }
-      #cart-preview li {
-        font-size: 14px;
-      }
+      nav a { font-size: 15px; }
+      #cart-preview li { font-size: 14px; }
       #cart-count {
         top: 6px;
         right: 6px;
@@ -224,19 +209,21 @@
 <body>
   <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
   <nav>
-    <ul>
-    <li><a href="./">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="checkout.html">Check Out</a></li>
-    <li><a href="review.html">Reviews</a></li>
-    <li><a href="booking.html">Book Now</a></li>
-    <li><a href="contact-us.html">Contact Us</a></li>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <ul id="menu">
+      <li><a href="./">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="checkout.html">Check Out</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
       <li><a href="#">Cart <span id="cart-count">0</span></a><div class="mini-cart" id="mini-cart"></div></li>
     </ul>
   </nav>
+
   <main class="container">
     <section id="Check Out" class="hero">
       <h1 style="text-align: center;">Checkout</h1>
@@ -270,6 +257,10 @@
 
   <script src="https://www.paypal.com/sdk/js?client-id=AXDymlDQhb3VpRy44UXz5xuUGpR_RknZA6JLjKt2t4FrquU88QBAEg3sR_Txcowlmas9Y79xaHZEAPkw&currency=GBP&components=buttons,funding-eligibility"></script>
   <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('show');
+    }
+
     function renderCart() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       let total = 0;
