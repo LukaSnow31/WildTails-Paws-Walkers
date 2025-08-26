@@ -37,8 +37,12 @@
       background-color: #5C4033;
       z-index: 998;
       padding-left: 130px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
     }
 
+    /* Default Nav Menu */
     nav ul {
       list-style: none;
       margin: 0;
@@ -63,6 +67,35 @@
       background-color: #4e2f22;
     }
 
+    /* Hamburger Button */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    /* Hide menu on mobile by default */
+    nav ul {
+      transition: max-height 0.4s ease-out;
+    }
+
+    nav ul.collapsed {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #5C4033;
+      text-align: center;
+    }
+
     .container {
       padding-top: 140px;
       padding-bottom: 40px;
@@ -85,7 +118,7 @@
     }
 
     .highlight {
-      color: #228B22; /* forest green accent */
+      color: #228B22; 
       font-weight: bold;
     }
 
@@ -101,7 +134,7 @@
     blockquote {
       font-size: 20px;
       font-style: italic;
-      background-color: #F0FFF0; /* light green background */
+      background-color: #F0FFF0;
       border-left: 6px solid #228B22;
       margin: 20px auto;
       padding: 15px 25px;
@@ -122,16 +155,40 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Mobile Styles */
     @media (max-width: 768px) {
-      nav { padding-left: 0; }
       #logo {
         position: static;
         margin: 10px auto;
         display: block;
+        height: 80px;
       }
+
+      nav {
+        padding-left: 0;
+        justify-content: space-between;
+        padding: 10px 20px;
+      }
+
+      .menu-toggle { display: flex; }
+
       nav ul {
+        display: none;
         flex-direction: column;
-        align-items: center;
+        width: 100%;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      nav li {
+        width: 100%;
+      }
+
+      nav a {
+        padding: 15px;
+        width: 100%;
       }
     }
   </style>
@@ -143,16 +200,21 @@
 
   <!-- Navigation -->
   <nav>
-    <ul>
-    <li><a href="./">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="checkout.html">Check Out</a></li>
-    <li><a href="review.html">Reviews</a></li>
-    <li><a href="booking.html">Book Now</a></li>
-    <li><a href="contact-us.html">Contact Us</a></li>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <ul id="menu">
+      <li><a href="./">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="checkout.html">Check Out</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
     </ul>
   </nav>
 
@@ -177,6 +239,12 @@
   <footer>
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+  </script>
 
 </body>
 </html>
