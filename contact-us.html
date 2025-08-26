@@ -17,7 +17,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #228B22; /* Forest Green */
+      background-color: #228B22; /* Forest Green header unchanged from original */
       z-index: 998;
       padding-left: 130px;
       display: flex;
@@ -35,7 +35,7 @@
     nav {
       display: flex;
       justify-content: center;
-      background-color: #228B22; /* Forest Green */
+      background-color: #228B22;
     }
 
     nav ul {
@@ -46,9 +46,7 @@
       flex-wrap: wrap;
     }
 
-    nav li {
-      margin: 0;
-    }
+    nav li { margin: 0; }
 
     nav a {
       display: block;
@@ -58,7 +56,7 @@
     }
 
     nav a:hover {
-      background-color: #1a6e1a; /* Darker Green */
+      background-color: #1a6e1a;
     }
 
     main {
@@ -71,22 +69,20 @@
       text-align: center;
     }
 
-    h1 {
-      color: #228B22;
-    }
+    h1 { color: #228B22; }
 
     .contact-options {
       margin-top: 20px;
     }
 
-    /* Updated styles for email, call, WhatsApp */
+    /* Only these changes: forest green text and larger font for Call and WhatsApp */
     .contact-options a {
       display: inline-block;
       margin: 10px;
       text-decoration: none;
-      color: #228B22; /* Forest Green */
+      color: #228B22; /* Forest Green text */
       font-weight: bold;
-      font-size: 1.2rem; /* Bigger and eye-catching */
+      font-size: 1.4rem; /* Bigger text */
     }
 
     .contact-options a:hover {
@@ -96,7 +92,7 @@
     button {
       margin-top: 20px;
       padding: 12px 20px;
-      background-color: #228B22; /* Forest Green */
+      background-color: #5C4033; /* Keep original brown button */
       color: white;
       font-size: 16px;
       border: none;
@@ -105,11 +101,11 @@
     }
 
     button:hover {
-      background-color: #1a6e1a; /* Darker Green */
+      background-color: #4e2f22; /* Keep original hover */
     }
 
     footer {
-      background-color: #228B22; /* Forest Green */
+      background-color: #5C4033; /* Original footer */
       color: white;
       text-align: center;
       padding: 20px;
@@ -124,16 +120,12 @@
 
       nav a {
         padding: 15px;
-        border-top: 1px solid #1a6e1a;
+        border-top: 1px solid #6d4a3a;
       }
 
-      .logo {
-        height: 80px;
-      }
+      .logo { height: 80px; }
 
-      main {
-        margin: 140px 20px 40px;
-      }
+      main { margin: 140px 20px 40px; }
     }
   </style>
 </head>
@@ -158,11 +150,13 @@
   <main>
     <h1>Contact Us</h1>
     <p>If you’d like to get in touch with us, please use one of the following methods:</p>
+
     <div class="contact-options">
       <a href="mailto:info@wildtailsandpawswalkers.co.uk">📧 Email Us</a><br>
-      <a href="tel:+447584341173">📞 Call Us</a><br>
-      <a href="https://wa.me/447584341173" target="_blank">💬 WhatsApp</a>
+      <a href="tel:+447307403170">📞 Call Us</a><br>
+      <a href="https://wa.me/447307403170" target="_blank">💬 WhatsApp</a>
     </div>
+
     <button onclick="location.href='booking.html'">Book a Walk</button>
   </main>
 
@@ -171,6 +165,3 @@
   </footer>
 </body>
 </html>
-
-
-
