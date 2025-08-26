@@ -2,30 +2,144 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WildTails & Paws Walkers</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us | WildTails & Paws Walkers</title>
+  <link rel="stylesheet" href="styles.css">
   <style>
-    /* Make call & WhatsApp more eye-catching */
-    .contact-info {
-      font-size: 1.3rem; /* Bigger text */
-      font-weight: bold;
-      color: #fff;
-      text-align: center;
-      margin-top: 10px;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
     }
-    .contact-info a {
-      color: #ffd700; /* Gold highlight */
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #228B22; /* Forest Green */
+      z-index: 998;
+      padding-left: 130px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      height: 110px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #228B22; /* Forest Green */
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      margin: 0;
+    }
+
+    nav a {
+      display: block;
+      padding: 15px 20px;
       text-decoration: none;
+      color: white;
     }
-    .contact-info a:hover {
-      color: #ffa500; /* Orange hover */
+
+    nav a:hover {
+      background-color: #1a6e1a; /* Darker Green */
+    }
+
+    main {
+      max-width: 900px;
+      margin: 160px auto 40px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #228B22;
+    }
+
+    .contact-options {
+      margin-top: 20px;
+    }
+
+    /* Updated styles for email, call, WhatsApp */
+    .contact-options a {
+      display: inline-block;
+      margin: 10px;
+      text-decoration: none;
+      color: #228B22; /* Forest Green */
+      font-weight: bold;
+      font-size: 1.2rem; /* Bigger and eye-catching */
+    }
+
+    .contact-options a:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #228B22; /* Forest Green */
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1a6e1a; /* Darker Green */
+    }
+
+    footer {
+      background-color: #228B22; /* Forest Green */
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        padding: 15px;
+        border-top: 1px solid #1a6e1a;
+      }
+
+      .logo {
+        height: 80px;
+      }
+
+      main {
+        margin: 140px 20px 40px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- HEADER -->
   <header>
+    <img src="WildTails-PawsWalkers/front logo.png" alt="WildTails & Paws Walkers Logo" class="logo">
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -41,30 +155,21 @@
     </nav>
   </header>
 
-  <!-- MAIN -->
   <main>
-    <section>
-      <h1>Welcome to WildTails & Paws Walkers</h1>
-      <p>Your trusted dog walking and sitting service 🐾</p>
-    </section>
+    <h1>Contact Us</h1>
+    <p>If you’d like to get in touch with us, please use one of the following methods:</p>
+    <div class="contact-options">
+      <a href="mailto:info@wildtailsandpawswalkers.co.uk">📧 Email Us</a><br>
+      <a href="tel:+447307403170">📞 Call Us</a><br>
+      <a href="https://wa.me/447307403170" target="_blank">💬 WhatsApp</a>
+    </div>
+    <button onclick="location.href='booking.html'">Book a Walk</button>
   </main>
 
-  <!-- CONTACT INFO -->
-  <section class="contact-info">
-    📞 Call us: <a href="tel:+447123456789">+44 7123 456789</a><br>
-    💬 WhatsApp: <a href="https://wa.me/447123456789" target="_blank">Chat with us</a><br>
-    📧 Email: <a href="mailto:info@wildtailsandpawswalkers.co.uk">info@wildtailsandpawswalkers.co.uk</a>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 WildTails & Paws Walkers. All rights reserved.</p>
+    <p>&copy; 2025 WildTails & Paws Walkers. All Rights Reserved.</p>
   </footer>
 </body>
 </html>
-
-
-
-
 
 
