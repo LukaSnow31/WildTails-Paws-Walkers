@@ -1,214 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reviews | WildTails & Paws Walkers</title>
-  <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reviews | WildTails & Paws Walkers</title>
+<link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
+<style>
+/* ===== Base Styles ===== */
+* { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: 'Quicksand', sans-serif;
-      background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
-      background-size: cover;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      color: #228B22; /* Forest green text */
-    }
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #228B22; /* Forest green text */
+}
 
-    #logo {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      height: 280px;
-      width: auto;
-      z-index: 999;
-      border-radius: 50%;
-    }
+#logo {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  height: 280px;
+  width: auto;
+  z-index: 999;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+#logo:hover { transform: scale(1.05); }
 
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #5C4033;
-      z-index: 998;
-      padding-left: 130px;
-    }
+/* ===== Navigation ===== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #5C4033;
+  z-index: 998;
+  padding-left: 130px;
+  transition: background 0.3s ease;
+}
 
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-    }
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
 
-    nav li { margin: 0; }
+nav li { margin: 0; opacity: 0; transform: translateY(-20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+nav li.visible { opacity: 1; transform: translateY(0); }
 
-    nav a {
-      display: block;
-      padding: 18px 20px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
+nav a {
+  display: block;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+nav a:hover { background-color: #4e2f22; }
 
-    nav a:hover { background-color: #4e2f22; }
+/* ===== Container ===== */
+.container {
+  padding-top: 140px;
+  padding-bottom: 40px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-    .container {
-      padding-top: 140px;
-      padding-bottom: 40px;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+/* ===== Hero Section ===== */
+.hero { 
+  background: rgba(255,255,255,0.9); 
+  padding: 40px 30px; 
+  border-radius: 12px; 
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2); 
+  transform: scale(0.95); 
+  opacity: 0; 
+  transition: transform 0.8s ease, opacity 0.8s ease; 
+}
+.hero.visible { transform: scale(1); opacity: 1; }
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
-      color: #228B22;
-    }
+h1 { font-family: 'Playfair Display', serif; font-size: 40px; color: #228B22; }
+h2 { color: #228B22; }
 
-    h2 { color: #228B22; }
+.reviews {
+  margin-top: 40px;
+  background: rgba(255,255,255,0.9);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  color: #228B22;
+}
 
-    .reviews {
-      margin-top: 40px;
-      background: rgba(255,255,255,0.9);
-      padding: 20px;
-      border-radius: 10px;
-      text-align: left;
-      color: #228B22;
-    }
+.review {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
 
-    .review {
-      margin-bottom: 20px;
-      padding: 10px;
-      border-bottom: 1px solid #ccc;
-      color: #228B22;
-    }
+.zoho-container { width: 100%; padding: 0; margin-bottom: 20px; }
 
-    .zoho-container {
-      width: 100%;
-      padding: 0;
-      margin-bottom: 20px;
-    }
+footer {
+  background-color: #5C4033;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
 
-    footer {
-      background-color: #5C4033;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
+.highlight { color: #228B22; font-weight: bold; font-size: 1.2rem; }
 
-    .highlight {
-      color: #228B22;
-      font-weight: bold;
-      font-size: 1.2rem; /* For WhatsApp/phone */
-    }
+/* ===== Mobile Styles ===== */
+@media (max-width: 768px) {
+  #logo { position: static; display: block; margin: 10px auto; height: 150px; }
+  
+  nav { padding-left: 0; }
+  nav ul { flex-direction: column; align-items: center; display: none; }
+  nav.active ul { display: flex; }
+  nav li { width: 100%; text-align: center; }
+  nav a { padding: 14px; }
 
-    @media (max-width: 768px) {
-      #logo {
-        position: static;
-        display: block;
-        margin: 10px auto;
-        height: 150px;
-      }
-      nav { padding-left: 0; }
-      nav ul { flex-direction: column; align-items: center; }
-      nav a { padding: 12px 16px; }
-      .container { padding: 120px 15px 40px 15px; max-width: 100%; }
-      .review { font-size: 15px; }
-    }
-  </style>
+  .container { padding: 120px 15px 40px 15px; max-width: 100%; }
+  .review { font-size: 15px; }
+  
+  iframe { width: 100%; height: auto; min-height: 400px; }
+
+  /* Hamburger */
+  .hamburger { display: block; position: fixed; top: 20px; right: 20px; z-index: 1000; cursor: pointer; width: 30px; height: 22px; }
+  .hamburger div { width: 100%; height: 4px; background-color: white; margin: 4px 0; transition: 0.4s; }
+  .hamburger.active div:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .hamburger.active div:nth-child(2) { opacity: 0; }
+  .hamburger.active div:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+  .hero, .reviews, .review { opacity: 1 !important; transform: none !important; }
+}
+
+/* ===== Fade-in Animation ===== */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
 </head>
 <body>
-  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 
-  <nav>
-    <ul>
-      <li><a href="./">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="checkout.html">Check Out</a></li>
-      <li><a href="review.html">Reviews</a></li>
-      <li><a href="booking.html">Book Now</a></li>
-      <li><a href="contact-us.html">Contact Us</a></li>
-    </ul>
-  </nav>
+<!-- Logo -->
+<img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 
-  <main class="container">
-    <section id="Reviews" class="hero">
-      <h1>Reviews</h1>
+<!-- Hamburger -->
+<div class="hamburger" onclick="toggleNav()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
 
-      <!-- Zoho Form Embed -->
-      <iframe src="https://forms.zohopublic.eu/infowildtailsan1/form/FeedbackCustomerSatisfaction/formperma/AKgGnWB1vHEM5Lys3VIANlrbe5iWw53_9zDt5fpGEhA" 
-          width="100%" height="600" style="border:none;"></iframe>
+<!-- Navigation -->
+<nav id="nav">
+  <ul>
+    <li><a href="./">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="checkout.html">Check Out</a></li>
+    <li><a href="review.html">Reviews</a></li>
+    <li><a href="booking.html">Book Now</a></li>
+    <li><a href="contact-us.html">Contact Us</a></li>
+  </ul>
+</nav>
 
-      <!-- Combined Reviews Container -->
-      <div class="reviews">
-        <h2>Customer Reviews</h2>
+<!-- Main Content -->
+<main class="container">
+<section id="Reviews" class="hero">
+  <h1>Reviews</h1>
 
-        <!-- Zoho Report Embed -->
-        <div class="zoho-container">
-          <iframe id="zohoReviews" frameborder="0" style="width:100%; border:none;" 
-            src="https://forms.zohopublic.eu/infowildtailsan1/report/CustomerReviews/reportperma/riKPj1k0XZzdp649H7xpps7G1IVI2TTac41tGkGiBJ4">
-          </iframe>
+  <!-- Zoho Form Embed -->
+  <iframe src="https://forms.zohopublic.eu/infowildtailsan1/form/FeedbackCustomerSatisfaction/formperma/AKgGnWB1vHEM5Lys3VIANlrbe5iWw53_9zDt5fpGEhA" 
+      width="100%" height="600" style="border:none;"></iframe>
+
+  <!-- Combined Reviews Container -->
+  <div class="reviews">
+    <h2>Customer Reviews</h2>
+
+    <!-- Zoho Report Embed -->
+    <div class="zoho-container">
+      <iframe id="zohoReviews" frameborder="0" style="width:100%; border:none;" 
+        src="https://forms.zohopublic.eu/infowildtailsan1/report/CustomerReviews/reportperma/riKPj1k0XZzdp649H7xpps7G1IVI2TTac41tGkGiBJ4">
+      </iframe>
+    </div>
+
+    <!-- Google Sheets Reviews -->
+    <div id="reviews"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+&copy; 2025 WildTails & Paws Walkers • All Rights Reserved
+</footer>
+
+<script>
+// Hamburger toggle
+function toggleNav() {
+  document.getElementById("nav").classList.toggle("active");
+  document.querySelector(".hamburger").classList.toggle("active");
+}
+
+// Mobile: show content immediately
+if(window.innerWidth <= 768){
+  document.querySelectorAll('.hero, .reviews, .review').forEach(el => el.classList.add('visible'));
+} else {
+  const hero = document.querySelector('.hero');
+  const heroObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => { 
+      if(entry.isIntersecting) { 
+        entry.target.classList.add('visible'); 
+        heroObserver.unobserve(entry.target); 
+      }
+    });
+  }, {threshold:0.3});
+  heroObserver.observe(hero);
+}
+
+// Animate nav links
+window.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.querySelectorAll('nav li');
+  navLinks.forEach((link, i) => { setTimeout(() => { link.classList.add('visible'); }, i*150); });
+});
+
+// Zoho Reviews iframe adjust
+const iframe = document.getElementById('zohoReviews');
+function adjustIframeHeight() {
+  let newHeight = 900;
+  try { newHeight = iframe.contentWindow.document.body.scrollHeight + 50; } catch(e) {}
+  iframe.style.height = newHeight + 'px';
+}
+adjustIframeHeight();
+setInterval(adjustIframeHeight, 500);
+
+// Google Sheets Reviews
+const sheetID = "1bmLk2elRynizuxliSG8GI18sTHp8y0u8Ht1aAc8h6zs";
+const sheetURL = `https://spreadsheets.google.com/feeds/list/${sheetID}/od6/public/values?alt=json`;
+
+fetch(sheetURL)
+  .then(res => res.json())
+  .then(data => {
+    const reviewsContainer = document.getElementById('reviews');
+    const entries = data.feed.entry || [];
+    entries.forEach(entry => {
+      const name = entry.gsx$name.$t;
+      const rating = parseInt(entry.gsx$rating.$t);
+      const recommend = entry.gsx$recommend.$t;
+      const comments = entry.gsx$comments.$t;
+
+      reviewsContainer.innerHTML += `
+        <div class="review">
+          <strong>${name}</strong><br>
+          <div>${'🐾'.repeat(rating)}</div>
+          <p>${comments}</p>
+          <small>Recommendation: ${recommend}/5</small>
         </div>
-
-        <!-- Google Sheets Reviews -->
-        <div id="reviews"></div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
-  </footer>
-
-  <script>
-    const iframe = document.getElementById('zohoReviews');
-
-    function adjustIframeHeight() {
-      let newHeight = 900;
-      try { newHeight = iframe.contentWindow.document.body.scrollHeight + 50; } catch(e) {}
-      iframe.style.height = newHeight + 'px';
-    }
-    adjustIframeHeight();
-    setInterval(adjustIframeHeight, 500);
-
-    const sheetID = "1bmLk2elRynizuxliSG8GI18sTHp8y0u8Ht1aAc8h6zs";
-    const sheetURL = `https://spreadsheets.google.com/feeds/list/${sheetID}/od6/public/values?alt=json`;
-
-    fetch(sheetURL)
-      .then(res => res.json())
-      .then(data => {
-        const reviewsContainer = document.getElementById('reviews');
-        const entries = data.feed.entry || [];
-        entries.forEach(entry => {
-          const name = entry.gsx$name.$t;
-          const rating = parseInt(entry.gsx$rating.$t);
-          const recommend = entry.gsx$recommend.$t;
-          const comments = entry.gsx$comments.$t;
-
-          reviewsContainer.innerHTML += `
-            <div class="review">
-              <strong>${name}</strong><br>
-              <div>${'🐾'.repeat(rating)}</div>
-              <p>${comments}</p>
-              <small>Recommendation: ${recommend}/5</small>
-            </div>
-          `;
-        });
-      })
-      .catch(err => console.error('Error fetching reviews:', err));
-  </script>
+      `;
+    });
+  })
+  .catch(err => console.error('Error fetching reviews:', err));
+</script>
 </body>
 </html>
+
+
