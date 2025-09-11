@@ -1,147 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Services & Pricing | WildTails & Paws Walkers</title>
-  <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Extra tweaks */
-    body, h1, h2, h3, p, li, td, th {
-      color: #228B22; /* Forest green text */
-    }
-    header .logo img {
-      max-height: 70px; /* Smaller logo */
-      width: auto;
-    }
-    table th, table td {
-      border: 1px solid #228B22;
-      padding: 8px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services & Pricing | WildTails & Paws Walkers</title>
+<link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Quicksand', sans-serif; background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png"); background-size: cover; background-attachment: fixed; background-repeat: no-repeat; color: #222; text-align: center; }
+#logo { position: fixed; top: 10px; left: 10px; height: 280px; width: auto; z-index: 999; border-radius: 50%; transition: transform 0.3s ease; }
+#logo:hover { transform: scale(1.05); }
+nav { position: fixed; top: 0; width: 100%; background-color: #5C4033; z-index: 998; padding-left: 130px; transition: background 0.3s ease; }
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: flex-end; flex-wrap: wrap; }
+nav li { margin: 0; opacity: 0; transform: translateY(-20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+nav li.visible { opacity: 1; transform: translateY(0); }
+nav a { display: block; padding: 18px 20px; text-decoration: none; color: white; font-weight: bold; transition: background 0.3s ease; }
+nav a:hover { background-color: #4e2f22; }
+.container { padding-top: 140px; padding-bottom: 40px; max-width: 1000px; margin: 0 auto; }
+.hero { background-color: rgba(255, 255, 255, 0.92); padding: 60px 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); margin-bottom: 40px; text-align: center; transform: scale(0.95); opacity: 0; transition: transform 0.8s ease, opacity 0.8s ease; }
+.hero.visible { transform: scale(1); opacity: 1; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: 42px; margin-bottom: 20px; color: #228B22; }
+.hero h2 { font-size: 30px; margin-top: 30px; font-family: 'Playfair Display', serif; color: #228B22; }
+.hero p, .hero li { font-size: 18px; line-height: 1.6; text-align: center; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.hero p.visible, .hero li.visible { opacity: 1; transform: translateY(0); }
+ul { padding-left: 0; list-style-position: inside; display: inline-block; text-align: left; }
+table { width: 80%; margin: 20px auto; border-collapse: collapse; background: #fff; text-align: center; }
+table th, table td { border: 1px solid #ccc; padding: 10px; }
+table th { background-color: #eaeaea; }
+footer { background-color: #5C4033; color: white; text-align: center; padding: 20px; margin-top: 80px; }
+
+/* ===== MOBILE STYLES ===== */
+@media (max-width: 768px) {
+  #logo { position: static; display: block; margin: 10px auto; height: 150px; }
+  nav { padding-left: 0; }
+  nav ul { flex-direction: column; align-items: center; display: none; }
+  nav li { width: 100%; text-align: center; }
+  nav a { padding: 14px; }
+  .container { padding: 120px 15px 40px 15px; }
+  .hero { padding: 30px 15px; }
+  .hero h1 { font-size: 32px; }
+  .hero h2 { font-size: 24px; }
+  .hero p, .hero li { font-size: 16px; }
+  table, thead, tbody, th, td, tr { display: block; width: 100%; }
+  table thead { display: none; }
+  table tr { margin-bottom: 15px; background: #fff; border: 1px solid #ccc; padding: 10px; border-radius: 8px; }
+  table td { border: none; padding: 8px 10px; position: relative; }
+  table td::before { content: attr(data-label); font-weight: bold; display: block; margin-bottom: 6px; color: #444; }
+
+  /* Hamburger Button */
+  .hamburger { display: block; position: fixed; top: 20px; right: 20px; z-index: 1000; cursor: pointer; width: 30px; height: 22px; }
+  .hamburger div { width: 100%; height: 4px; background-color: white; margin: 4px 0; transition: 0.4s; }
+  nav.active ul { display: flex; }
+}
+</style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="logo">
-      <img src="WildTails-PawsWalkers/front logo.png" alt="WildTails & Paws Walkers Logo">
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html" class="active">Services & Pricing</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="booking.html">Booking</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <!-- Hamburger icon for mobile -->
-      <div class="menu-toggle">&#9776;</div>
-    </nav>
-  </header>
 
-  <!-- Main Content -->
-  <main class="container">
-    <section id="Services" class="hero">
-      <h1 class="fade-in">Our Services & Pricing</h1>
-      <p class="fade-in">We provide safe, tailored dog walking and sitting for all types of dogs — from energetic pups to reactive or high-needs companions. Here's our full breakdown:</p>
+<!-- Logo -->
+<img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 
-      <h2 class="fade-in">Dog Walks (Per Dog)</h2>
-      <ul>
-        <li class="fade-in">30 mins £8</li>
-        <li class="fade-in">60 mins £16</li>
-        <li class="fade-in">90 mins £24</li>
-        <li class="fade-in"><strong>Discounts available</strong> for regulars and extended hours</li>
-      </ul>
+<!-- Hamburger -->
+<div class="hamburger" onclick="toggleNav()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
 
-      <h2 class="fade-in">Reactive or High-Needs Dogs (Per Dog)</h2>
-      <ul>
-        <li class="fade-in">30 mins £10</li>
-        <li class="fade-in">60 mins £20</li>
-        <li class="fade-in">Tailored walks with calm support and extra patience</li>
-      </ul>
+<!-- Navigation -->
+<nav id="nav">
+  <ul>
+    <li><a href="./">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="checkout.html">Check Out</a></li>
+    <li><a href="review.html">Reviews</a></li>
+    <li><a href="booking.html">Book Now</a></li>
+    <li><a href="contact-us.html">Contact Us</a></li>
+  </ul>
+</nav>
 
-      <h2 class="fade-in">Dog Sitting</h2>
-      <ul>
-        <li class="fade-in">24 hrs £20</li>
-        <li class="fade-in">48 hrs £45</li>
-        <li class="fade-in"><strong>Discounts applied</strong> for bookings of 3 or more days</li>
-        <li class="fade-in">Drop-ins and daycare — <em>contact us for a quote</em> (prices vary)</li>
-        <li class="fade-in">Special rates for holiday and long stays</li>
-      </ul>
+<!-- Main Content -->
+<main class="container">
+<section id="Services" class="hero">
+<h1>Our Services & Pricing</h1>
+<p>We provide safe, tailored dog walking and sitting for all types of dogs — from energetic pups to reactive or high-needs companions. Here's our full breakdown:</p>
 
-      <h2 class="fade-in">Cat Sitting</h2>
-      <ul>
-        <li class="fade-in">£10 per day</li>
-        <li class="fade-in"><strong>Discounts applied</strong> for bookings of 3 or more days</li>
-        <li class="fade-in">Drop-ins and daycare — <em>contact us for a quote</em> (prices vary)</li>
-        <li class="fade-in">Special rates for holidays and extended care</li>
-      </ul>
+<h2>Dog Walks (Per Dog)</h2>
+<ul>
+  <li>30 mins £8</li>
+  <li>60 mins £16</li>
+  <li>90 mins £24</li>
+  <li><strong>Discounts available</strong> for regulars and extended hours</li>
+</ul>
 
-      <h2 class="fade-in">Small Pet Care</h2>
-      <ul>
-        <li class="fade-in">Daily care (includes feeding, cleaning, and check-in) £8</li>
-        <li class="fade-in">Each additional cage or hutch £4</li>
-        <li class="fade-in">Multiple-day booking discounts available</li>
-        <li class="fade-in">Special rates for holidays and extended care</li>
-      </ul>
+<h2>Reactive or High-Needs Dogs (per dog)</h2>
+<ul>
+  <li>30 mins £10</li>
+  <li>60 mins £20</li>
+  <li>Tailored walks with calm support and extra patience</li>
+</ul>
 
-      <h2 class="fade-in">Additional Services</h2>
-      <ul>
-        <li class="fade-in">Drop-ins and daycare — <em>contact us for quotes</em> (prices vary)</li>
-      </ul>
+<h2>Dog Sitting</h2>
+<ul>
+  <li>24 hrs £20</li>
+  <li>48 hrs £45</li>
+  <li><strong>Discounts applied</strong> for bookings of 3 or more days</li>
+  <li>Drop-ins and daycare — <em>contact us for a quote</em> (prices vary)</li>
+  <li>Special rates for holiday and long stays</li>
+</ul>
 
-      <h2 class="fade-in">Travel Fees</h2>
-      <p class="fade-in"><strong>Local Area – Free travel</strong></p>
-      <ul>
-        <li class="fade-in">Chippenham (all parts)</li>
-        <li class="fade-in">Langley Burrell, Kington Langley, Pewsham, Lacock</li>
-        <li class="fade-in">Corsham, Allington, Notton, Biddestone</li>
-        <li class="fade-in">Easton Piercy, Sutton Benger, Yatton Keynell</li>
-      </ul>
+<h2>Cat Sitting</h2>
+<ul>
+  <li>£10 per day</li>
+  <li><strong>Discounts applied</strong> for bookings of 3 or more days</li>
+  <li>Drop-ins and daycare — <em>contact us for a quote</em> (prices vary)</li>
+  <li>Special rates for holidays and extended care</li>
+</ul>
 
-      <p class="fade-in"><strong>Extended Area – Small fee</strong></p>
-      <table class="fade-in">
-        <thead>
-          <tr><th>Area</th><th>Travel Fee</th></tr>
-        </thead>
-        <tbody>
-          <tr class="fade-in"><td data-label="Area">Calne</td><td data-label="Travel Fee">£2.50</td></tr>
-          <tr class="fade-in"><td data-label="Area">Christian Malford</td><td data-label="Travel Fee">£2</td></tr>
-          <tr class="fade-in"><td data-label="Area">Foxham</td><td data-label="Travel Fee">£2</td></tr>
-          <tr class="fade-in"><td data-label="Area">Bromham</td><td data-label="Travel Fee">£3</td></tr>
-          <tr class="fade-in"><td data-label="Area">Other villages (5+ miles)</td><td data-label="Travel Fee">£2 to £3 depending on distance</td></tr>
-        </tbody>
-      </table>
+<h2>Small Pet Care</h2>
+<ul>
+  <li>Daily care (includes feeding, cleaning, and check-in) £8</li>
+  <li>Each additional cage or hutch £4</li>
+  <li>Multiple-day booking discounts available</li>
+  <li>Special rates for holidays and extended care</li>
+</ul>
 
-      <p class="fade-in"><em>We may waive or reduce travel fees for regular weekly clients</em></p>
-      <p class="fade-in"><em>Contact us for drop-ins and daycare for dogs and cats — prices may vary depending on duration, needs, and location. Discounts are available for bookings of three or more days.</em></p>
+<h2>Additional Services</h2>
+<ul>
+  <li>Drop-ins and daycare — <em>contact us for quotes</em> (prices vary)</li>
+</ul>
 
-      <h2 class="fade-in">Accepted Payment Methods</h2>
-      <ul>
-        <li class="fade-in">💵 Cash</li>
-        <li class="fade-in">💳 Card (via Lopay)</li>
-        <li class="fade-in">
-          <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal Logo" style="height:20px; vertical-align:middle; margin-right:8px;"> PayPal
-        </li>
-      </ul>
-    </section>
-  </main>
+<h2>Travel Fees</h2>
+<p><strong>Local Area – Free travel</strong></p>
+<ul>
+  <li>Chippenham (all parts)</li>
+  <li>Langley Burrell, Kington Langley, Pewsham, Lacock</li>
+  <li>Corsham, Allington, Notton, Biddestone</li>
+  <li>Easton Piercy, Sutton Benger, Yatton Keynell</li>
+</ul>
+<p><strong>Extended Area – Small fee</strong></p>
+<table>
+<thead>
+<tr><th>Area</th><th>Travel Fee</th></tr>
+</thead>
+<tbody>
+<tr><td data-label="Area">Calne</td><td data-label="Travel Fee">£2.50</td></tr>
+<tr><td data-label="Area">Christian Malford</td><td data-label="Travel Fee">£2</td></tr>
+<tr><td data-label="Area">Foxham</td><td data-label="Travel Fee">£2</td></tr>
+<tr><td data-label="Area">Bromham</td><td data-label="Travel Fee">£3</td></tr>
+<tr><td data-label="Area">Other villages (5+ miles)</td><td data-label="Travel Fee">£2 to £3 depending on distance</td></tr>
+</tbody>
+</table>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 WildTails & Paws Walkers. All rights reserved.</p>
-  </footer>
+<p><em>We may waive or reduce travel fees for regular weekly clients</em></p>
+<p><em>Contact us for drop-ins and daycare for dogs and cats — prices may vary depending on duration, needs, and location. Discounts are available for bookings of three or more days.</em></p>
 
-  <!-- Mobile menu script -->
-  <script src="script.js"></script>
+<h2>Accepted Payment Methods</h2>
+<ul>
+  <li>💵 Cash</li>
+  <li>💳 Card (via Lopay)</li>
+  <li><img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal Logo" style="height:20px; vertical-align:middle; margin-right:8px;"> PayPal</li>
+</ul>
+</section>
+</main>
+
+<!-- Footer -->
+<footer>
+&copy; 2025 WildTails & Paws Walkers • All Rights Reserved
+</footer>
+
+<!-- Scripts -->
+<script>
+function toggleNav() { document.getElementById("nav").classList.toggle("active"); }
+
+// Animate hero
+const hero = document.querySelector('.hero');
+const heroObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('visible'); heroItems(); heroObserver.unobserve(entry.target); }});
+}, {threshold:0.3});
+heroObserver.observe(hero);
+
+// Animate hero content
+function heroItems() {
+  const items = hero.querySelectorAll('p, li');
+  items.forEach((el,i) => { setTimeout(() => { el.classList.add('visible'); }, i*150); });
+}
+
+// Animate nav links on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.querySelectorAll('nav li');
+  navLinks.forEach((link, i) => { setTimeout(() => { link.classList.add('visible'); }, i*150); });
+});
+</script>
 </body>
 </html>
-
-</html>
-
-
-
-
