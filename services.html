@@ -1,151 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Services & Pricing | WildTails & Paws Walkers</title>
   <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-
-    header {
-      background: #fff;
-      color: forestgreen;
-      padding: 1rem 0;
-      text-align: center;
-      border-bottom: 2px solid forestgreen;
-    }
-
-    header img {
-      height: 80px;
-    }
-
-    nav {
-      margin: 10px 0;
-    }
-
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: forestgreen;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 900px;
-      margin: 20px auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    h1, h2 {
-      color: forestgreen;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 15px 0;
-    }
-
-    table th, table td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: left;
-    }
-
-    table th {
-      background: forestgreen;
-      color: white;
-    }
-
-    ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #fff;
-      color: forestgreen;
-      border-top: 2px solid forestgreen;
-      margin-top: 20px;
-    }
-
-    .contact {
-      text-align: center;
-      margin: 30px 0;
-    }
-
-    .contact p {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: forestgreen;
-    }
-
-    .contact span {
-      font-size: 1.7rem;
-    }
-
-    .whatsapp-btn {
-      display: inline-block;
-      background-color: #25D366;
-      color: white;
-      font-weight: bold;
-      padding: 12px 20px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 1.1rem;
-      transition: 0.3s ease;
-      margin-top: 10px;
-    }
-
-    .whatsapp-btn:hover {
-      background-color: #1da851;
-    }
-
-    /* Fade-in animation */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <img src="WildTails-PawsWalkers/front logo.png" alt="WildTails & Paws Walkers Logo">
-    <h1>WildTails & Paws Walkers</h1>
+    <div class="logo">
+      <img src="WildTails-PawsWalkers/front logo.png" alt="WildTails & Paws Walkers Logo">
+    </div>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services & Pricing</a>
-      <a href="reviews.html">Reviews</a>
-      <a href="contact.html">Contact</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" class="active">Services & Pricing</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
   </header>
 
@@ -163,7 +40,7 @@
         <li class="fade-in"><strong>Discounts available</strong> for regulars and extended hours</li>
       </ul>
 
-      <h2 class="fade-in">Reactive or High-Needs Dogs (per dog)</h2>
+      <h2 class="fade-in">Reactive or High-Needs Dogs (Per Dog)</h2>
       <ul>
         <li class="fade-in">30 mins £10</li>
         <li class="fade-in">60 mins £20</li>
@@ -235,40 +112,14 @@
         </li>
       </ul>
     </section>
-
-    <div class="contact">
-      <p>📞 Call us today: <span>+44 7912 345678</span></p>
-      <a class="whatsapp-btn" href="https://wa.me/447912345678" target="_blank">💬 Chat on WhatsApp</a>
-    </div>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 WildTails & Paws Walkers | Professional Dog Walking & Sitting</p>
+    <p>&copy; 2025 WildTails & Paws Walkers. All rights reserved.</p>
   </footer>
-
-  <script>
-    // Fade-in on scroll
-    const faders = document.querySelectorAll('.fade-in');
-
-    const appearOptions = {
-      threshold: 0.2
-    };
-
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
-  </script>
 </body>
 </html>
-
 
 
 
