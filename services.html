@@ -58,7 +58,9 @@ footer { background-color: #5C4033; color: white; text-align: center; padding: 2
   /* Hamburger Button */
   .hamburger { display: block; position: fixed; top: 20px; right: 20px; z-index: 1000; cursor: pointer; width: 30px; height: 22px; }
   .hamburger div { width: 100%; height: 4px; background-color: white; margin: 4px 0; transition: 0.4s; }
-  nav.active ul { display: flex; }
+
+  /* Make everything visible on mobile immediately */
+  .hero, .hero p, .hero li, table, table tr, table td { opacity: 1 !important; transform: none !important; }
 }
 
 /* ===== Animations ===== */
@@ -178,7 +180,6 @@ footer { background-color: #5C4033; color: white; text-align: center; padding: 2
 </section>
 </main>
 
-<!-- Footer -->
 <footer>
 &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
 </footer>
@@ -187,17 +188,23 @@ footer { background-color: #5C4033; color: white; text-align: center; padding: 2
 <script>
 function toggleNav() { document.getElementById("nav").classList.toggle("active"); }
 
-// Animate hero
-const hero = document.querySelector('.hero');
-const heroObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('visible'); heroItems(); heroObserver.unobserve(entry.target); }});
-}, {threshold:0.3});
-heroObserver.observe(hero);
-
-// Animate hero content
-function heroItems() {
-  const items = hero.querySelectorAll('p, li');
-  items.forEach((el,i) => { setTimeout(() => { el.classList.add('visible'); }, i*150); });
+if(window.innerWidth <= 768){
+  // Mobile: show all content immediately
+  document.querySelectorAll('.hero, .hero p, .hero li, table, table tr').forEach(el => el.classList.add('visible'));
+} else {
+  // Desktop: fade-in animations
+  const hero = document.querySelector('.hero');
+  const heroObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => { 
+      if(entry.isIntersecting) { 
+        entry.target.classList.add('visible'); 
+        const items = entry.target.querySelectorAll('p, li');
+        items.forEach((el,i) => { setTimeout(() => { el.classList.add('visible'); }, i*150); });
+        heroObserver.unobserve(entry.target); 
+      }
+    });
+  }, {threshold:0.3});
+  heroObserver.observe(hero);
 }
 
 // Animate nav links on page load
