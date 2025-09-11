@@ -1,338 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Book a Service | WildTails & Paws Walkers</title>
-  <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Quicksand', sans-serif;
-      background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
-      background-size: cover;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      color: #222;
-    }
-    #logo {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      height: 280px;
-      width: auto;
-      z-index: 999;
-      border-radius: 50%;
-    }
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #5C4033;
-      z-index: 998;
-      padding-left: 130px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-    }
-    nav li { margin: 0; }
-    nav a {
-      display: block;
-      padding: 18px 20px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-    nav a:hover { background-color: #4e2f22; }
-    .hamburger {
-      display: none;
-      font-size: 30px;
-      color: white;
-      padding: 15px 20px;
-      cursor: pointer;
-    }
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      background: #5C4033;
-    }
-    .mobile-menu a {
-      padding: 14px;
-      border-top: 1px solid #444;
-    }
-    .mobile-menu.show {
-      display: flex;
-    }
-    .container {
-      padding-top: 140px;
-      padding-bottom: 40px;
-      text-align: center;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
-      color: #228B22; /* Forest Green for title */
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 1s ease-out forwards;
-    }
-    .subtitle {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: #333;
-      margin: 10px 0;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
-    }
-    .subtitle.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    form {
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      max-width: 700px;
-      margin: 20px auto;
-      position: relative;
-      text-align: left;
-    }
-    label, input, select, textarea {
-      display: block;
-      width: 100%;
-      margin-bottom: 15px;
-      font-size: 16px;
-    }
-    input, select, textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    textarea {
-      resize: vertical;
-      height: 120px;
-    }
-    button {
-      background-color: #5C4033;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover { background-color: #4e2f22; }
-    .calendar-label {
-      font-weight: bold;
-      margin-top: 30px;
-      font-size: 22px;
-    }
-    footer {
-      background-color: #5C4033;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-    @media (max-width: 768px) {
-      body { background-attachment: scroll; background-size: cover; }
-      nav { padding-left: 0; }
-      #logo {
-        position: static;
-        display: block;
-        margin: 10px auto;
-        height: 100px;
-      }
-      nav ul { display: none; }
-      .hamburger { display: block; }
-      .container { padding: 110px 15px 40px; }
-      form { padding: 20px 15px; margin: 20px 10px; }
-      h1 { font-size: 28px; }
-      .subtitle { font-size: 18px; }
-      label, input, select, textarea { font-size: 15px; }
-      button { width: 100%; font-size: 16px; }
-      .calendar-label { font-size: 18px; }
-    }
-    @media (max-width: 480px) {
-      h1 { font-size: 24px; }
-      nav a { font-size: 15px; }
-    }
-    .service-section { display: none; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a Service | WildTails & Paws Walkers</title>
+<link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
+<style>
+/* ===== Base Styles ===== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #222;
+}
+
+#logo {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  height: 280px;
+  width: auto;
+  z-index: 999;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+#logo:hover { transform: scale(1.05); }
+
+/* ===== Navigation ===== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #5C4033;
+  z-index: 998;
+  padding-left: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+nav li { margin: 0; }
+nav a {
+  display: block;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+nav a:hover { background-color: #4e2f22; }
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  margin-right: 20px;
+}
+.hamburger div {
+  width: 100%;
+  height: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+.hamburger.active div:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.active div:nth-child(2) { opacity: 0; }
+.hamburger.active div:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #5C4033;
+}
+.mobile-menu.show { display: flex; }
+.mobile-menu a { padding: 14px; border-top: 1px solid #444; color: white; text-decoration: none; }
+
+/* ===== Container ===== */
+.container {
+  padding-top: 140px;
+  padding-bottom: 40px;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ===== Hero Section ===== */
+.hero { 
+  background: rgba(255,255,255,0.95); 
+  padding: 40px 30px; 
+  border-radius: 12px; 
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2); 
+  text-align: left;
+}
+
+h1 { font-family: 'Playfair Display', serif; font-size: 40px; color: #228B22; }
+.subtitle { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: #333; margin: 10px 0; opacity: 0; transform: translateY(20px); transition: opacity 1s ease-out, transform 1s ease-out; }
+.subtitle.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== Form ===== */
+form {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  margin: 20px auto;
+  position: relative;
+}
+
+label, input, select, textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+input, select, textarea { padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+textarea { resize: vertical; height: 120px; }
+
+button {
+  background-color: #5C4033;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button:hover { background-color: #4e2f22; }
+
+.calendar-label { font-weight: bold; margin-top: 30px; font-size: 22px; }
+
+footer { background-color: #5C4033; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+
+.service-section { display: none; }
+
+/* ===== Mobile Styles ===== */
+@media (max-width: 768px) {
+  body { background-attachment: scroll; background-size: cover; }
+  #logo { position: static; display: block; margin: 10px auto; height: 100px; }
+  nav { padding-left: 0; }
+  nav ul { display: none; }
+  .hamburger { display: flex; }
+  .container { padding: 110px 15px 40px; }
+  form { padding: 20px 15px; margin: 20px 10px; }
+  h1 { font-size: 28px; }
+  .subtitle { font-size: 18px; }
+  label, input, select, textarea { font-size: 15px; }
+  button { width: 100%; font-size: 16px; }
+  .calendar-label { font-size: 18px; }
+}
+@media (max-width: 480px) { h1 { font-size: 24px; } nav a { font-size: 15px; } }
+
+/* ===== Fade-in ===== */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
 </head>
 <body>
 
-  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
+<!-- Logo -->
+<img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 
-  <nav>
-    <ul>
-      <li><a href="./">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="checkout.html">Check Out</a></li>
-      <li><a href="review.html">Reviews</a></li>
-      <li><a href="booking.html">Book Now</a></li>
-      <li><a href="contact-us.html">Contact Us</a></li>
-    </ul>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-  </nav>
+<!-- Hamburger -->
+<div class="hamburger" onclick="toggleMenu()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="./">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="services.html">Services</a>
-    <a href="shop.html">Shop</a>
-    <a href="checkout.html">Check Out</a>
-    <a href="review.html">Reviews</a>
-    <a href="booking.html">Book Now</a>
-    <a href="contact-us.html">Contact Us</a>
-  </div>
+<!-- Navigation -->
+<nav>
+  <ul>
+    <li><a href="./">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="checkout.html">Check Out</a></li>
+    <li><a href="review.html">Reviews</a></li>
+    <li><a href="booking.html">Book Now</a></li>
+    <li><a href="contact-us.html">Contact Us</a></li>
+  </ul>
+</nav>
 
-  <main class="container">
-    <section id="Book Now" class="hero">
-      <h1>Book a Service</h1>
-      <p class="subtitle">Ready to book in and secure your dates?</p>
-      <p class="subtitle">Fill in the form below to pre-book your pet's care.</p>
-      <p class="subtitle">If you have any questions or would like to arrange your free 30-minute introduction as a new client, please use our Contact Us form instead.</p>
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="./">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="services.html">Services</a>
+  <a href="shop.html">Shop</a>
+  <a href="checkout.html">Check Out</a>
+  <a href="review.html">Reviews</a>
+  <a href="booking.html">Book Now</a>
+  <a href="contact-us.html">Contact Us</a>
+</div>
 
-      <form class="fade-in" action="https://formsubmit.co/info@wildtailsandpawswalkers.co.uk" method="POST">
-        <input type="hidden" name="_next" value="https://wildtailsandpawswalkers.co.uk/thank-you-booking.html">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="New Booking from Website">
+<!-- Main Content -->
+<main class="container">
+<section id="Book Now" class="hero">
+  <h1>Book a Service</h1>
+  <p class="subtitle">Ready to book in and secure your dates?</p>
+  <p class="subtitle">Fill in the form below to pre-book your pet's care.</p>
+  <p class="subtitle">If you have any questions or would like to arrange your free 30-minute introduction as a new client, please use our Contact Us form instead.</p>
 
-        <label for="service-type">Select Service:</label>
-        <select id="service-type" name="service-type" required>
-          <option value="">-- Please choose an option --</option>
-          <option value="walks">Walks & Drop-ins</option>
-          <option value="dog-sitting">Dog Sitting</option>
-          <option value="cat-sitting">Cat Sitting</option>
-          <option value="small-pets">Small Pet Care</option>
-        </select>
+  <form class="fade-in" action="https://formsubmit.co/info@wildtailsandpawswalkers.co.uk" method="POST">
+    <input type="hidden" name="_next" value="https://wildtailsandpawswalkers.co.uk/thank-you-booking.html">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New Booking from Website">
 
-        <div id="walks" class="service-section">
-          <div class="calendar-label">Walks & Drop-ins</div>
-          <label>Start Date:</label>
-          <input type="date" name="walk-date-start">
-          <label>End Date:</label>
-          <input type="date" name="walk-date-end">
-          <label>Start Time:</label>
-          <input type="time" name="walk-time-start">
-          <label>End Time:</label>
-          <input type="time" name="walk-time-end">
-        </div>
+    <label for="service-type">Select Service:</label>
+    <select id="service-type" name="service-type" required>
+      <option value="">-- Please choose an option --</option>
+      <option value="walks">Walks & Drop-ins</option>
+      <option value="dog-sitting">Dog Sitting</option>
+      <option value="cat-sitting">Cat Sitting</option>
+      <option value="small-pets">Small Pet Care</option>
+    </select>
 
-        <div id="dog-sitting" class="service-section">
-          <div class="calendar-label">Dog Sitting</div>
-          <label>Start Date:</label>
-          <input type="date" name="dog-date-start">
-          <label>End Date:</label>
-          <input type="date" name="dog-date-end">
-          <label>Start Time:</label>
-          <input type="time" name="dog-time-start">
-          <label>End Time:</label>
-          <input type="time" name="dog-time-end">
-        </div>
+    <div id="walks" class="service-section">
+      <div class="calendar-label">Walks & Drop-ins</div>
+      <label>Start Date:</label>
+      <input type="date" name="walk-date-start">
+      <label>End Date:</label>
+      <input type="date" name="walk-date-end">
+      <label>Start Time:</label>
+      <input type="time" name="walk-time-start">
+      <label>End Time:</label>
+      <input type="time" name="walk-time-end">
+    </div>
 
-        <div id="cat-sitting" class="service-section">
-          <div class="calendar-label">Cat Sitting</div>
-          <label>Start Date:</label>
-          <input type="date" name="cat-date-start">
-          <label>End Date:</label>
-          <input type="date" name="cat-date-end">
-        </div>
+    <div id="dog-sitting" class="service-section">
+      <div class="calendar-label">Dog Sitting</div>
+      <label>Start Date:</label>
+      <input type="date" name="dog-date-start">
+      <label>End Date:</label>
+      <input type="date" name="dog-date-end">
+      <label>Start Time:</label>
+      <input type="time" name="dog-time-start">
+      <label>End Time:</label>
+      <input type="time" name="dog-time-end">
+    </div>
 
-        <div id="small-pets" class="service-section">
-          <div class="calendar-label">Small Pet Care</div>
-          <label>Start Date:</label>
-          <input type="date" name="smallpet-date-start">
-          <label>End Date:</label>
-          <input type="date" name="smallpet-date-end">
-        </div>
+    <div id="cat-sitting" class="service-section">
+      <div class="calendar-label">Cat Sitting</div>
+      <label>Start Date:</label>
+      <input type="date" name="cat-date-start">
+      <label>End Date:</label>
+      <input type="date" name="cat-date-end">
+    </div>
 
-        <label for="name">First Name:</label>
-        <input type="text" id="name" name="name" required>
+    <div id="small-pets" class="service-section">
+      <div class="calendar-label">Small Pet Care</div>
+      <label>Start Date:</label>
+      <input type="date" name="smallpet-date-start">
+      <label>End Date:</label>
+      <input type="date" name="smallpet-date-end">
+    </div>
 
-        <label for="surname">Last Name:</label>
-        <input type="text" id="surname" name="surname" required>
+    <label for="name">First Name:</label>
+    <input type="text" id="name" name="name" required>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+    <label for="surname">Last Name:</label>
+    <input type="text" id="surname" name="surname" required>
 
-        <label for="details">Additional Details:</label>
-        <textarea id="details" name="details" rows="4" placeholder="Include number of pets, breed, behaviour notes etc..."></textarea>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
 
-        <button type="submit">Confirm Booking</button>
-      </form>
-    </section>
-  </main>
+    <label for="details">Additional Details:</label>
+    <textarea id="details" name="details" rows="4" placeholder="Include number of pets, breed, behaviour notes etc..."></textarea>
 
-  <footer>
-    &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
-  </footer>
+    <button type="submit">Confirm Booking</button>
+  </form>
+</section>
+</main>
 
-  <script>
-    // Mobile menu toggle
-    function toggleMenu() {
-      document.getElementById('mobileMenu').classList.toggle('show');
+<footer>
+&copy; 2025 WildTails & Paws Walkers • All Rights Reserved
+</footer>
+
+<script>
+// Mobile menu toggle
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('show');
+  document.querySelector('.hamburger').classList.toggle('active');
+}
+
+// Close menu on link click
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+  link.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('show'));
+});
+
+// Service section toggle
+const serviceSelect = document.getElementById('service-type');
+const sections = document.querySelectorAll('.service-section');
+serviceSelect.addEventListener('change', function () {
+  sections.forEach(section => section.style.display = 'none');
+  const selected = this.value;
+  if(selected) document.getElementById(selected).style.display = 'block';
+});
+
+// Scroll fade-in for subtitles
+const faders = document.querySelectorAll('.subtitle, .fade-in');
+const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
     }
-
-    // Close menu when a link is clicked
-    const mobileLinks = document.querySelectorAll('#mobileMenu a');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('mobileMenu').classList.remove('show');
-      });
-    });
-
-    // Service type toggle
-    const serviceSelect = document.getElementById('service-type');
-    const sections = document.querySelectorAll('.service-section');
-    serviceSelect.addEventListener('change', function () {
-      sections.forEach(section => section.style.display = 'none');
-      const selected = this.value;
-      if (selected) {
-        document.getElementById(selected).style.display = 'block';
-      }
-    });
-
-    // Scroll fade-in animation
-    const faders = document.querySelectorAll('.subtitle, .fade-in');
-    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, appearOptions);
-    faders.forEach(fader => { appearOnScroll.observe(fader); });
-  </script>
+  });
+}, appearOptions);
+faders.forEach(fader => appearOnScroll.observe(fader));
+</script>
 
 </body>
 </html>
