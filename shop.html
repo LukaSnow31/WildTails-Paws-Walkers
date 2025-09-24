@@ -7,6 +7,7 @@
   <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet" />
   <style>
+    /* Keep your existing styles */
     body {
       margin: 0;
       font-family: 'Quicksand', sans-serif;
@@ -16,221 +17,42 @@
       background-repeat: no-repeat;
       color: #222;
     }
-
-    #logo {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      height: 280px;
-      width: auto;
-      z-index: 999;
-      border-radius: 50%;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #5C4033;
-      z-index: 998;
-      padding-left: 130px;
-    }
-
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-    }
-
+    #logo { position: fixed; top: 10px; left: 10px; height: 280px; width: auto; z-index: 999; border-radius: 50%; }
+    nav { position: fixed; top: 0; width: 100%; background-color: #5C4033; z-index: 998; padding-left: 130px; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: flex-end; flex-wrap: wrap; }
     nav li { margin: 0; }
-
-    nav a {
-      display: block;
-      padding: 18px 20px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-
+    nav a { display: block; padding: 18px 20px; text-decoration: none; color: white; font-weight: bold; transition: background 0.3s ease; }
     nav a:hover { background-color: #4e2f22; }
-
-    .container {
-      padding-top: 140px;
-      padding-bottom: 40px;
-      max-width: 1000px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .shop-item {
-      background: white;
-      margin: 20px;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .shop-item h3 {
-      font-family: 'Playfair Display', serif;
-    }
-
-    .shop-item .images {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 5px;
-      margin-bottom: 10px;
-    }
-
-    .shop-item .images img {
-      width: 100px;
-      height: auto;
-      border-radius: 6px;
-    }
-
-    .shop-item input[type="number"] {
-      width: 60px;
-      padding: 4px;
-      margin-right: 10px;
-      font-size: 16px;
-    }
-
-    .shop-item button {
-      padding: 8px 16px;
-      background: #5C4033;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .shop-item button:hover {
-      background: #4e2f22;
-    }
-
-    #cart {
-      background: white;
-      padding: 20px;
-      margin: 20px auto;
-      border-radius: 10px;
-      max-width: 600px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: left;
-    }
-
-    #cart p {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 8px 0;
-      flex-wrap: wrap;
-    }
-
-    #cart button.remove-btn {
-      background: #c0392b;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 4px 8px;
-      cursor: pointer;
-      font-size: 0.9em;
-    }
-
-    #cart button.remove-btn:hover {
-      background: #e74c3c;
-    }
-
-    #checkout-btn {
-      margin-top: 10px;
-      padding: 12px 20px;
-      font-size: 1.1em;
-      background: #5C4033;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    #checkout-btn:hover {
-      background: #4e2f22;
-    }
-
-    footer {
-      background-color: #5C4033;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 80px;
-    }
-
-    /* ===== MOBILE STYLES ===== */
+    .container { padding-top: 140px; padding-bottom: 40px; max-width: 1000px; margin: 0 auto; text-align: center; }
+    .shop-item { background: white; margin: 20px; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .shop-item h3 { font-family: 'Playfair Display', serif; }
+    .shop-item .images { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin-bottom: 10px; }
+    .shop-item .images img { width: 100px; height: auto; border-radius: 6px; }
+    .shop-item input[type="number"] { width: 60px; padding: 4px; margin-right: 10px; font-size: 16px; }
+    .shop-item button { padding: 8px 16px; background: #5C4033; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    .shop-item button:hover { background: #4e2f22; }
+    #cart { background: white; padding: 20px; margin: 20px auto; border-radius: 10px; max-width: 600px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: left; }
+    #cart p { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; flex-wrap: wrap; }
+    #cart button.remove-btn { background: #c0392b; color: white; border: none; border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 0.9em; }
+    #cart button.remove-btn:hover { background: #e74c3c; }
+    #checkout-btn { margin-top: 10px; padding: 12px 20px; font-size: 1.1em; background: #5C4033; color: white; border: none; border-radius: 8px; cursor: pointer; }
+    #checkout-btn:hover { background: #4e2f22; }
+    footer { background-color: #5C4033; color: white; text-align: center; padding: 20px; margin-top: 80px; }
     @media (max-width: 768px) {
-      #logo {
-        position: static;
-        display: block;
-        margin: 10px auto;
-        height: 100px;
-      }
-
-      nav {
-        padding-left: 0;
-      }
-
-      nav ul {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      nav li {
-        width: 100%;
-        text-align: center;
-      }
-
-      nav a {
-        padding: 14px;
-      }
-
-      .container {
-        padding: 120px 15px 40px;
-      }
-
-      .shop-item {
-        margin: 15px auto;
-        width: 100%;
-      }
-
-      .shop-item .images img {
-        width: 80px;
-      }
-
-      .shop-item input[type="number"] {
-        width: 50px;
-        font-size: 14px;
-      }
-
-      .shop-item button {
-        margin-top: 6px;
-        width: 100%;
-      }
-
-      #cart {
-        width: 95%;
-        padding: 15px;
-      }
-
-      #cart p {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      #checkout-btn {
-        width: 100%;
-      }
-    } 
+      #logo { position: static; display: block; margin: 10px auto; height: 100px; }
+      nav { padding-left: 0; }
+      nav ul { flex-direction: column; align-items: center; }
+      nav li { width: 100%; text-align: center; }
+      nav a { padding: 14px; }
+      .container { padding: 120px 15px 40px; }
+      .shop-item { margin: 15px auto; width: 100%; }
+      .shop-item .images img { width: 80px; }
+      .shop-item input[type="number"] { width: 50px; font-size: 14px; }
+      .shop-item button { margin-top: 6px; width: 100%; }
+      #cart { width: 95%; padding: 15px; }
+      #cart p { flex-direction: column; align-items: flex-start; }
+      #checkout-btn { width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -238,15 +60,15 @@
 
   <nav>
     <ul>
-    <li><a href="./">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="checkout.html">Check Out</a></li>
-    <li><a href="review.html">Reviews</a></li>
-    <li><a href="booking.html">Book Now</a></li>
-    <li><a href="contact-us.html">Contact Us</a></li>
+      <li><a href="./">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="checkout.html">Check Out</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
     </ul>
   </nav>
 
@@ -268,39 +90,78 @@
   </footer>
 
   <script>
+    const cart = [];
+
     async function getProducts() {
+      const container = document.getElementById('product-list');
+      container.innerHTML = 'Loading products...';
       try {
-        const response = await fetch('/api/products'); // Backend required!
-        const products = await response.json();
-        const container = document.getElementById('product-list');
+        const response = await fetch('http://localhost:3000/products'); // Your backend endpoint
+        const data = await response.json();
+
+        if (!data.data || data.data.length === 0) {
+          container.innerHTML = '<p>No products found.</p>';
+          return;
+        }
+
         container.innerHTML = '';
 
-        products.forEach(product => {
+        data.data.forEach(product => {
           const div = document.createElement('div');
           div.className = 'shop-item';
+
+          const imagesHtml = product.images?.map(img => `<img src="${img.src}" alt="${product.title}">`).join('') || '';
+
           div.innerHTML = `
             <h3>${product.title}</h3>
-            <div class="images">
-              <img src="${product.image}" alt="${product.title}" />
-            </div>
-            <p>£${(product.price / 100).toFixed(2)}</p>
-            <form action="/api/buy" method="POST">
-              <input type="hidden" name="variant_id" value="${product.variant_id}" />
-              <button type="submit">Buy Now</button>
-            </form>
+            <div class="images">${imagesHtml}</div>
+            <p>£${(product.variants[0]?.price || 0).toFixed(2)}</p>
+            <input type="number" min="1" value="1" id="qty-${product.id}">
+            <button onclick="addToCart(${product.id})">Buy Now</button>
           `;
+
           container.appendChild(div);
         });
+
       } catch (error) {
         console.error('Error loading products:', error);
-        document.getElementById('product-list').textContent = 'Failed to load products.';
+        container.innerHTML = 'Failed to load products.';
       }
     }
+
+    function addToCart(productId) {
+      const qty = parseInt(document.getElementById(`qty-${productId}`).value);
+      if (qty <= 0) return;
+      cart.push({ productId, qty });
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartDiv = document.getElementById('cart');
+      cartDiv.innerHTML = '';
+      cart.forEach((item, index) => {
+        const p = document.createElement('p');
+        p.innerHTML = `Product ID: ${item.productId} - Quantity: ${item.qty} <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>`;
+        cartDiv.appendChild(p);
+      });
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      alert('Checkout clicked. Later you can integrate PayPal / Printify order creation.');
+      console.log('Cart:', cart);
+    });
 
     getProducts();
   </script>
 </body>
 </html>
+
+
 
 
 
