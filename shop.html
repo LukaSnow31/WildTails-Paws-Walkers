@@ -7,7 +7,6 @@
   <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet" />
   <style>
-    /* === Keep your existing CSS === */
     body {
       margin: 0;
       font-family: 'Quicksand', sans-serif;
@@ -17,84 +16,209 @@
       background-repeat: no-repeat;
       color: #222;
     }
-    #logo { position: fixed; top: 10px; left: 10px; height: 280px; width: auto; z-index: 999; border-radius: 50%; }
-    nav { position: fixed; top: 0; width: 100%; background-color: #5C4033; z-index: 998; padding-left: 130px; }
-    nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: flex-end; flex-wrap: wrap; }
-    nav li { margin: 0; }
-    nav a { display: block; padding: 18px 20px; text-decoration: none; color: white; font-weight: bold; transition: background 0.3s ease; }
-    nav a:hover { background-color: #4e2f22; }
-    .container { padding-top: 140px; padding-bottom: 40px; max-width: 1000px; margin: 0 auto; text-align: center; }
-    .shop-item { background: white; margin: 20px; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .shop-item h3 { font-family: 'Playfair Display', serif; }
-    .shop-item .images { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin-bottom: 10px; }
-    .shop-item .images img { width: 100px; height: auto; border-radius: 6px; }
-    .shop-item input[type="number"] { width: 60px; padding: 4px; margin-right: 10px; font-size: 16px; }
-    .shop-item button { padding: 8px 16px; background: #5C4033; color: white; border: none; border-radius: 6px; cursor: pointer; }
-    .shop-item button:hover { background: #4e2f22; }
-    #cart { background: white; padding: 20px; margin: 20px auto; border-radius: 10px; max-width: 600px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: left; }
-    #cart p { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; flex-wrap: wrap; }
-    #cart button.remove-btn { background: #c0392b; color: white; border: none; border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 0.9em; }
-    #cart button.remove-btn:hover { background: #e74c3c; }
-    #checkout-btn { margin-top: 10px; padding: 12px 20px; font-size: 1.1em; background: #5C4033; color: white; border: none; border-radius: 8px; cursor: pointer; }
-    #checkout-btn:hover { background: #4e2f22; }
-    footer { background-color: #5C4033; color: white; text-align: center; padding: 20px; margin-top: 80px; }
-    @media (max-width: 768px) {
-      #logo { position: static; display: block; margin: 10px auto; height: 100px; }
-      nav { padding-left: 0; }
-      nav ul { flex-direction: column; align-items: center; }
-      nav li { width: 100%; text-align: center; }
-      nav a { padding: 14px; }
-      .container { padding: 120px 15px 40px; }
-      .shop-item { margin: 15px auto; width: 100%; }
-      .shop-item .images img { width: 80px; }
-      .shop-item input[type="number"] { width: 50px; font-size: 14px; }
-      .shop-item button { margin-top: 6px; width: 100%; }
-      #cart { width: 95%; padding: 15px; }
-      #cart p { flex-direction: column; align-items: flex-start; }
-      #checkout-btn { width: 100%; }
+
+    #logo {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      height: 280px;
+      width: auto;
+      z-index: 999;
+      border-radius: 50%;
     }
 
-    /* === Checkout Form Styles === */
-    #checkout-form-overlay {
-      display: none;
+    nav {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
+      top: 0;
+      width: 100%;
+      background-color: #5C4033;
+      z-index: 998;
+      padding-left: 130px;
     }
-    #checkout-form-container {
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    nav li { margin: 0; }
+
+    nav a {
+      display: block;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover { background-color: #4e2f22; }
+
+    .container {
+      padding-top: 140px;
+      padding-bottom: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .shop-item {
       background: white;
+      margin: 20px;
       padding: 20px;
       border-radius: 10px;
-      max-width: 400px;
-      width: 90%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    #checkout-form-container h2 {
-      margin-top: 0;
+
+    .shop-item h3 {
       font-family: 'Playfair Display', serif;
     }
-    #checkout-form-container input {
-      width: 100%;
-      padding: 8px;
-      margin: 5px 0;
-      font-size: 16px;
+
+    .shop-item .images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+      margin-bottom: 10px;
     }
-    #checkout-form-container button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
+
+    .shop-item .images img {
+      width: 100px;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .shop-item button {
+      padding: 8px 16px;
       background: #5C4033;
       color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
     }
-    #checkout-form-container button:hover {
+
+    .shop-item button:hover {
       background: #4e2f22;
     }
+
+    #cart {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 600px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    #cart p {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 0;
+      flex-wrap: wrap;
+    }
+
+    #cart button.remove-btn {
+      background: #c0392b;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+
+    #cart button.remove-btn:hover {
+      background: #e74c3c;
+    }
+
+    #checkout-btn {
+      margin-top: 10px;
+      padding: 12px 20px;
+      font-size: 1.1em;
+      background: #5C4033;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #checkout-btn:hover {
+      background: #4e2f22;
+    }
+
+    footer {
+      background-color: #5C4033;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 80px;
+    }
+
+    /* ===== MOBILE STYLES ===== */
+    @media (max-width: 768px) {
+      #logo {
+        position: static;
+        display: block;
+        margin: 10px auto;
+        height: 100px;
+      }
+
+      nav {
+        padding-left: 0;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav li {
+        width: 100%;
+        text-align: center;
+      }
+
+      nav a {
+        padding: 14px;
+      }
+
+      .container {
+        padding: 120px 15px 40px;
+      }
+
+      .shop-item {
+        margin: 15px auto;
+        width: 100%;
+      }
+
+      .shop-item .images img {
+        width: 80px;
+      }
+
+      .shop-item button {
+        margin-top: 6px;
+        width: 100%;
+      }
+
+      #cart {
+        width: 95%;
+        padding: 15px;
+      }
+
+      #cart p {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      #checkout-btn {
+        width: 100%;
+      }
+    } 
   </style>
 </head>
 <body>
@@ -102,140 +226,89 @@
 
   <nav>
     <ul>
-      <li><a href="./">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="checkout.html">Check Out</a></li>
-      <li><a href="review.html">Reviews</a></li>
-      <li><a href="booking.html">Book Now</a></li>
-      <li><a href="contact-us.html">Contact Us</a></li>
+    <li><a href="./">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="checkout.html">Check Out</a></li>
+    <li><a href="review.html">Reviews</a></li>
+    <li><a href="booking.html">Book Now</a></li>
+    <li><a href="contact-us.html">Contact Us</a></li>
     </ul>
   </nav>
 
   <main class="container">
     <section id="Shop">
-      <h1>Shop (In Progress)</h1>
+      <h1>Shop (In Progress but please feel free to come back later)</h1>
       <div id="product-list">Loading products...</div>
     </section>
-  </main>
 
-  <!-- Checkout Form Overlay -->
-  <div id="checkout-form-overlay">
-    <div id="checkout-form-container">
-      <h2>Checkout</h2>
-      <form id="checkout-form">
-        <input type="text" name="first_name" placeholder="First Name" required>
-        <input type="text" name="last_name" placeholder="Last Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="tel" name="phone" placeholder="Phone" required>
-        <input type="text" name="address1" placeholder="Address Line 1" required>
-        <input type="text" name="address2" placeholder="Address Line 2">
-        <input type="text" name="city" placeholder="City" required>
-        <input type="text" name="region" placeholder="State/Region" required>
-        <input type="text" name="zip" placeholder="ZIP / Postal Code" required>
-        <input type="text" name="country" placeholder="Country" required>
-        <button type="submit">Submit Order</button>
-      </form>
-    </div>
-  </div>
+    <section id="CartSection">
+      <h2>Your Cart</h2>
+      <div id="cart"></div>
+      <button id="checkout-btn">Go to Checkout</button>
+    </section>
+  </main>
 
   <footer>
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
 
   <script>
-    let selectedProduct = null;
-
     async function getProducts() {
       try {
-        const response = await fetch('/products');
+        const response = await fetch('https://printify-server.onrender.com/products');
         const products = await response.json();
         const container = document.getElementById('product-list');
         container.innerHTML = '';
 
-        products.forEach(product => {
+        products.data.forEach(product => {
+          const firstVariant = product.variants && product.variants[0];
           const div = document.createElement('div');
           div.className = 'shop-item';
-          const imgSrc = product.images?.[0]?.src || '';
-
           div.innerHTML = `
             <h3>${product.title}</h3>
             <div class="images">
-              <img src="${imgSrc}" alt="${product.title}" />
+              <img src="${product.images?.[0]?.src || ''}" alt="${product.title}" />
             </div>
-            <p>£${(product.variants?.[0]?.price || 0).toFixed(2)}</p>
-            <button class="buy-now" 
-              data-product-id="${product.id}" 
-              data-variant-id="${product.variants?.[0]?.id || ''}">
-              Buy Now
-            </button>
+            <p>£${(firstVariant?.price / 100).toFixed(2)}</p>
+            <button onclick="buyNow('${firstVariant?.id}')">Buy Now</button>
           `;
           container.appendChild(div);
         });
-
-        document.querySelectorAll('.buy-now').forEach(btn => {
-          btn.addEventListener('click', () => {
-            selectedProduct = {
-              product_id: btn.dataset.productId,
-              variant_id: btn.dataset.variantId
-            };
-            document.getElementById('checkout-form-overlay').style.display = 'flex';
-          });
-        });
-
       } catch (error) {
         console.error('Error loading products:', error);
         document.getElementById('product-list').textContent = 'Failed to load products.';
       }
     }
 
-    // Handle checkout form submission
-    document.getElementById('checkout-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (!selectedProduct) return;
-
-      const form = e.target;
-      const formData = Object.fromEntries(new FormData(form).entries());
-      const orderData = {
-        ...selectedProduct,
-        quantity: 1,
-        address: formData
-      };
-
+    async function buyNow(variantId) {
       try {
-        const res = await fetch('/order', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(orderData)
+        const response = await fetch("https://printify-server.onrender.com/api/buy", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ variant_id: variantId })
         });
-        const data = await res.json();
 
-        if (res.ok) {
-          alert(`✅ Order created! Order ID: ${data.id}`);
-          form.reset();
-          document.getElementById('checkout-form-overlay').style.display = 'none';
+        const data = await response.json();
+        if (data.success) {
+          alert("✅ Order created successfully!\nOrder ID: " + data.order.id);
         } else {
-          alert(`❌ Error: ${data.error || 'Failed to create order'}`);
+          alert("❌ Failed to create order");
         }
       } catch (err) {
         console.error(err);
-        alert(⚠️ Could not connect to server');
+        alert("⚠️ Error placing order");
       }
-    });
-
-    // Close overlay if clicked outside the form
-    document.getElementById('checkout-form-overlay').addEventListener('click', (e) => {
-      if (e.target.id === 'checkout-form-overlay') {
-        document.getElementById('checkout-form-overlay').style.display = 'none';
-      }
-    });
+    }
 
     getProducts();
   </script>
 </body>
 </html>
+
+
 
 
 
