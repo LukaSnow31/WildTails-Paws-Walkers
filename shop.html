@@ -7,6 +7,7 @@
   <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet" />
   <style>
+    /* === Original styles kept === */
     body {
       margin: 0;
       font-family: 'Quicksand', sans-serif;
@@ -16,46 +17,157 @@
       background-repeat: no-repeat;
       color: #222;
     }
-    #logo { position: fixed; top: 10px; left: 10px; height: 280px; width: auto; z-index: 999; border-radius: 50%; }
-    nav { position: fixed; top: 0; width: 100%; background-color: #5C4033; z-index: 998; padding-left: 130px; }
-    nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: flex-end; flex-wrap: wrap; }
+
+    #logo {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      height: 280px;
+      width: auto;
+      z-index: 999;
+      border-radius: 50%;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #5C4033;
+      z-index: 998;
+      padding-left: 130px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
     nav li { margin: 0; }
-    nav a { display: block; padding: 18px 20px; text-decoration: none; color: white; font-weight: bold; transition: background 0.3s ease; }
+
+    nav a {
+      display: block;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
     nav a:hover { background-color: #4e2f22; }
-    .container { padding-top: 140px; padding-bottom: 40px; max-width: 1000px; margin: 0 auto; text-align: center; }
-    .shop-item { background: white; margin: 20px; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .shop-item h3 { font-family: 'Playfair Display', serif; }
-    .shop-item .images { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin-bottom: 10px; }
-    .shop-item .images img { width: 100px; height: auto; border-radius: 6px; }
-    .shop-item button { padding: 8px 16px; background: #5C4033; color: white; border: none; border-radius: 6px; cursor: pointer; }
-    .shop-item button:hover { background: #4e2f22; }
-    #cart { background: white; padding: 20px; margin: 20px auto; border-radius: 10px; max-width: 600px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: left; }
-    #cart p { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; flex-wrap: wrap; }
-    #cart button.remove-btn { background: #c0392b; color: white; border: none; border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 0.9em; }
-    #cart button.remove-btn:hover { background: #e74c3c; }
-    #checkout-btn { margin-top: 10px; padding: 12px 20px; font-size: 1.1em; background: #5C4033; color: white; border: none; border-radius: 8px; cursor: pointer; }
-    #checkout-btn:hover { background: #4e2f22; }
-    footer { background-color: #5C4033; color: white; text-align: center; padding: 20px; margin-top: 80px; }
+
+    .container {
+      padding-top: 140px;
+      padding-bottom: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .shop-item {
+      background: white;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .shop-item h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .shop-item .images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .shop-item .images img {
+      width: 100px;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .shop-item input[type="number"] {
+      width: 60px;
+      padding: 4px;
+      margin-right: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    #cart, #paypal-button-container {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 600px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    footer {
+      background-color: #5C4033;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 80px;
+    }
+
     /* ===== MOBILE STYLES ===== */
     @media (max-width: 768px) {
-      #logo { position: static; display: block; margin: 10px auto; height: 100px; }
-      nav { padding-left: 0; }
-      nav ul { flex-direction: column; align-items: center; }
-      nav li { width: 100%; text-align: center; }
-      nav a { padding: 14px; }
-      .container { padding: 120px 15px 40px; }
-      .shop-item { margin: 15px auto; width: 100%; }
-      .shop-item .images img { width: 80px; }
-      .shop-item button { margin-top: 6px; width: 100%; }
-      #cart { width: 95%; padding: 15px; }
-      #cart p { flex-direction: column; align-items: flex-start; }
-      #checkout-btn { width: 100%; }
-    } 
+      #logo {
+        position: static;
+        display: block;
+        margin: 10px auto;
+        height: 100px;
+      }
+
+      nav {
+        padding-left: 0;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav li {
+        width: 100%;
+        text-align: center;
+      }
+
+      nav a {
+        padding: 14px;
+      }
+
+      .container {
+        padding: 120px 15px 40px;
+      }
+
+      .shop-item {
+        margin: 15px auto;
+        width: 100%;
+      }
+
+      .shop-item .images img {
+        width: 80px;
+      }
+
+      .shop-item input[type="number"] {
+        width: 50px;
+      }
+    }
   </style>
-  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=GBP"></script>
 </head>
 <body>
   <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
+
   <nav>
     <ul>
       <li><a href="./">Home</a></li>
@@ -72,13 +184,17 @@
 
   <main class="container">
     <section id="Shop">
-      <h1>Shop (In Progress but please feel free to come back later)</h1>
+      <h1>Shop</h1>
       <div id="product-list">Loading products...</div>
     </section>
 
     <section id="CartSection">
       <h2>Your Cart</h2>
       <div id="cart"></div>
+    </section>
+
+    <section id="Checkout">
+      <h2>Checkout</h2>
       <div id="paypal-button-container"></div>
     </section>
   </main>
@@ -86,6 +202,9 @@
   <footer>
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
+
+  <!-- Load PayPal SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=GBP"></script>
 
   <script>
     let cart = [];
@@ -107,7 +226,8 @@
               <img src="${product.images?.[0]?.src || ''}" alt="${product.title}" />
             </div>
             <p>£${(firstVariant?.price / 100).toFixed(2)}</p>
-            <button onclick="addToCart('${firstVariant?.id}','${product.title}',${(firstVariant?.price / 100)})">Add to Cart</button>
+            <input type="number" min="1" value="1" id="qty-${firstVariant?.id}" />
+            <button onclick="addToCart('${product.id}','${firstVariant?.id}','${firstVariant?.price}')">Add to Cart</button>
           `;
           container.appendChild(div);
         });
@@ -117,83 +237,70 @@
       }
     }
 
-    function addToCart(variantId, title, price) {
-      const existing = cart.find(i => i.variantId === variantId);
-      if(existing) existing.quantity++;
-      else cart.push({variantId, title, price, quantity:1});
-      renderCart();
-    }
+    function addToCart(productId, variantId, price) {
+      const qtyInput = document.getElementById(`qty-${variantId}`);
+      const quantity = parseInt(qtyInput.value) || 1;
 
-    function removeFromCart(variantId) {
-      cart = cart.filter(i => i.variantId !== variantId);
-      renderCart();
-    }
+      const existing = cart.find(item => item.variantId === variantId);
+      if (existing) {
+        existing.quantity += quantity;
+      } else {
+        cart.push({ productId, variantId, price, quantity });
+      }
 
-    function updateQuantity(variantId, qty) {
-      const item = cart.find(i => i.variantId === variantId);
-      if(item) item.quantity = Number(qty);
-      renderCart();
-    }
-
-    function clearCart() {
-      cart = [];
       renderCart();
     }
 
     function renderCart() {
-      const container = document.getElementById('cart');
-      container.innerHTML = '';
+      const cartDiv = document.getElementById('cart');
+      cartDiv.innerHTML = '';
+      cart.forEach((item, idx) => {
+        const p = document.createElement('p');
+        p.innerHTML = `
+          ${item.quantity} × £${(item.price / 100).toFixed(2)}
+          <button onclick="removeFromCart(${idx})">Remove</button>
+        `;
+        cartDiv.appendChild(p);
+      });
 
-      if(cart.length === 0){
-        container.textContent = 'Your cart is empty.';
-      } else {
-        cart.forEach(item => {
-          const p = document.createElement('p');
-          p.innerHTML = `${item.title} x <input class="qty" type="number" value="${item.quantity}" min="1" onchange="updateQuantity('${item.variantId}', this.value)"> - £${(item.price*item.quantity).toFixed(2)}
-          <button class="remove-btn" onclick="removeFromCart('${item.variantId}')">Remove</button>`;
-          container.appendChild(p);
-        });
-      }
-
+      if(cart.length === 0) cartDiv.textContent = 'Cart is empty';
       renderPayPalButton();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
     }
 
     function renderPayPalButton() {
       const container = document.getElementById('paypal-button-container');
       container.innerHTML = '';
-
       if(cart.length === 0) return;
 
       paypal.Buttons({
         createOrder: function(data, actions) {
-          const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
           return actions.order.create({
             purchase_units: [{
-              amount: { value: total },
-              description: 'WildTails & Paws Walkers Order'
+              amount: { value: cart.reduce((sum,item)=>sum+(item.price/100)*item.quantity,0).toFixed(2) }
             }]
           });
         },
         onApprove: function(data, actions) {
           return actions.order.capture().then(async function(details) {
-            try {
-              const lineItems = cart.map(item => ({
-                variant_id: item.variantId,
-                quantity: item.quantity
-              }));
-
+            // Send order to your backend Printify API
+            for (const item of cart) {
               await fetch('https://printify-server.onrender.com/api/buy', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ line_items: lineItems })
+                body: JSON.stringify({
+                  variant_id: item.variantId,
+                  quantity: item.quantity
+                })
               });
-
-              alert(`✅ Order completed! Thank you, ${details.payer.name.given_name}`);
-              clearCart();
-            } catch(err) {
-              console.error(err);
-              alert('⚠️ Error sending order to Printify');
             }
+            alert('✅ Payment completed and orders sent to Printify!');
+            cart = [];
+            renderCart();
           });
         }
       }).render('#paypal-button-container');
@@ -203,9 +310,6 @@
   </script>
 </body>
 </html>
-
-
-
 
 
 
