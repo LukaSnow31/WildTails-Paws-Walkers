@@ -7,7 +7,7 @@
   <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet" />
   <style>
-    /* Keep your existing styles */
+    /* === Keep your existing CSS === */
     body {
       margin: 0;
       font-family: 'Quicksand', sans-serif;
@@ -53,6 +53,48 @@
       #cart p { flex-direction: column; align-items: flex-start; }
       #checkout-btn { width: 100%; }
     }
+
+    /* === Checkout Form Styles === */
+    #checkout-form-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    #checkout-form-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+    }
+    #checkout-form-container h2 {
+      margin-top: 0;
+      font-family: 'Playfair Display', serif;
+    }
+    #checkout-form-container input {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    #checkout-form-container button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: #5C4033;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #checkout-form-container button:hover {
+      background: #4e2f22;
+    }
   </style>
 </head>
 <body>
@@ -74,86 +116,120 @@
 
   <main class="container">
     <section id="Shop">
-      <h1>Shop (In Progress but please feel free to come back later)</h1>
+      <h1>Shop (In Progress)</h1>
       <div id="product-list">Loading products...</div>
     </section>
-
-    <section id="CartSection">
-      <h2>Your Cart</h2>
-      <div id="cart"></div>
-      <button id="checkout-btn">Go to Checkout</button>
-    </section>
   </main>
+
+  <!-- Checkout Form Overlay -->
+  <div id="checkout-form-overlay">
+    <div id="checkout-form-container">
+      <h2>Checkout</h2>
+      <form id="checkout-form">
+        <input type="text" name="first_name" placeholder="First Name" required>
+        <input type="text" name="last_name" placeholder="Last Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Phone" required>
+        <input type="text" name="address1" placeholder="Address Line 1" required>
+        <input type="text" name="address2" placeholder="Address Line 2">
+        <input type="text" name="city" placeholder="City" required>
+        <input type="text" name="region" placeholder="State/Region" required>
+        <input type="text" name="zip" placeholder="ZIP / Postal Code" required>
+        <input type="text" name="country" placeholder="Country" required>
+        <button type="submit">Submit Order</button>
+      </form>
+    </div>
+  </div>
 
   <footer>
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
 
   <script>
-    const cart = [];
+    let selectedProduct = null;
 
     async function getProducts() {
-      const container = document.getElementById('product-list');
-      container.innerHTML = 'Loading products...';
       try {
-        const response = await fetch('http://localhost:3000/products'); // Your backend endpoint
-        const data = await response.json();
-
-        if (!data.data || data.data.length === 0) {
-          container.innerHTML = '<p>No products found.</p>';
-          return;
-        }
-
+        const response = await fetch('/products');
+        const products = await response.json();
+        const container = document.getElementById('product-list');
         container.innerHTML = '';
 
-        data.data.forEach(product => {
+        products.forEach(product => {
           const div = document.createElement('div');
           div.className = 'shop-item';
-
-          const imagesHtml = product.images?.map(img => `<img src="${img.src}" alt="${product.title}">`).join('') || '';
+          const imgSrc = product.images?.[0]?.src || '';
 
           div.innerHTML = `
             <h3>${product.title}</h3>
-            <div class="images">${imagesHtml}</div>
-            <p>£${(product.variants[0]?.price || 0).toFixed(2)}</p>
-            <input type="number" min="1" value="1" id="qty-${product.id}">
-            <button onclick="addToCart(${product.id})">Buy Now</button>
+            <div class="images">
+              <img src="${imgSrc}" alt="${product.title}" />
+            </div>
+            <p>£${(product.variants?.[0]?.price || 0).toFixed(2)}</p>
+            <button class="buy-now" 
+              data-product-id="${product.id}" 
+              data-variant-id="${product.variants?.[0]?.id || ''}">
+              Buy Now
+            </button>
           `;
-
           container.appendChild(div);
+        });
+
+        document.querySelectorAll('.buy-now').forEach(btn => {
+          btn.addEventListener('click', () => {
+            selectedProduct = {
+              product_id: btn.dataset.productId,
+              variant_id: btn.dataset.variantId
+            };
+            document.getElementById('checkout-form-overlay').style.display = 'flex';
+          });
         });
 
       } catch (error) {
         console.error('Error loading products:', error);
-        container.innerHTML = 'Failed to load products.';
+        document.getElementById('product-list').textContent = 'Failed to load products.';
       }
     }
 
-    function addToCart(productId) {
-      const qty = parseInt(document.getElementById(`qty-${productId}`).value);
-      if (qty <= 0) return;
-      cart.push({ productId, qty });
-      renderCart();
-    }
+    // Handle checkout form submission
+    document.getElementById('checkout-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!selectedProduct) return;
 
-    function renderCart() {
-      const cartDiv = document.getElementById('cart');
-      cartDiv.innerHTML = '';
-      cart.forEach((item, index) => {
-        const p = document.createElement('p');
-        p.innerHTML = `Product ID: ${item.productId} - Quantity: ${item.qty} <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>`;
-        cartDiv.appendChild(p);
-      });
-    }
+      const form = e.target;
+      const formData = Object.fromEntries(new FormData(form).entries());
+      const orderData = {
+        ...selectedProduct,
+        quantity: 1,
+        address: formData
+      };
 
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      renderCart();
-    }
+      try {
+        const res = await fetch('/order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(orderData)
+        });
+        const data = await res.json();
 
-    document.getElementById('checkout-btn').addEventListener('click', () => {
-      alert('Checkout clicked. Later you can integrate PayPal / Printify order creation.');
-      console.log('Cart:', cart);
+        if (res.ok) {
+          alert(`✅ Order created! Order ID: ${data.id}`);
+          form.reset();
+          document.getElementById('checkout-form-overlay').style.display = 'none';
+        } else {
+          alert(`❌ Error: ${data.error || 'Failed to create order'}`);
+        }
+      } catch (err) {
+        console.error(err);
+        alert(⚠️ Could not connect to server');
+      }
+    });
+
+    // Close overlay if clicked outside the form
+    document.getElementById('checkout-form-overlay').addEventListener('click', (e) => {
+      if (e.target.id === 'checkout-form-overlay') {
+        document.getElementById('checkout-form-overlay').style.display = 'none';
+      }
     });
 
     getProducts();
