@@ -93,108 +93,134 @@
         const container = document.getElementById('product-list');
         container.innerHTML = '';
 
+        if (!Array.isArray(data.data) || data.data.length === 0) {
+          container.textContent = 'No products available right now.';
+          return;
+        }
+
         data.data.forEach(product => {
           const div = document.createElement('div');
           div.className = 'shop-item';
 
-          // Show all images
-          const imagesHTML = product.images?.map(img=>`<img src="${img.src}" alt="${product.title}" />`).join('') || '';
+          // Images fallback
+          const imagesHTML = Array.isArray(product.images)
+            ? product.images.map(img => `<img src="${img.src}" alt="${product.title}" />`).join('')
+            : '';
 
-          // Dropdown for variants
-          const variantsHTML = product.variants?.map(v=>`<option value='${JSON.stringify({variant_id:v.id,title:v.title,price:v.price/100})}'>${v.title} - £${(v.price/100).toFixed(2)}</option>`).join('') || '';
+          // Variants fallback
+          const variants = Array.isArray(product.variants) ? product.variants : [];
+          const variantsHTML = variants.map(v =>
+            `<option value='${JSON.stringify({variant_id:v.id,title:v.title,price:v.price/100})}'>
+              ${v.title} - £${(v.price/100).toFixed(2)}
+            </option>`
+          ).join('');
+
+          const firstPrice = variants.length > 0 ? (variants[0].price / 100).toFixed(2) : 'N/A';
 
           div.innerHTML = `
-            <h3>${product.title}</h3>
+            <h3>${product.title || 'Untitled Product'}</h3>
             <div class="images">${imagesHTML}</div>
-            <p class="price">£${(product.variants?.[0]?.price/100).toFixed(2)}</p>
-            <select style="margin-bottom:10px;">${variantsHTML}</select>
-            <button>Add to Cart</button>
+            <p class="price">£${firstPrice}</p>
+            ${variants.length > 0 ? `<select style="margin-bottom:10px;">${variantsHTML}</select>` : '<p>No variants available</p>'}
+            ${variants.length > 0 ? '<button>Add to Cart</button>' : ''}
           `;
 
-          // Update price dynamically when selecting variant
-          const select = div.querySelector('select');
-          const priceP = div.querySelector('.price');
-          const button = div.querySelector('button');
+          if (variants.length > 0) {
+            const select = div.querySelector('select');
+            const priceP = div.querySelector('.price');
+            const button = div.querySelector('button');
 
-          select.addEventListener('change', ()=>{
-            const selected = JSON.parse(select.value);
-            priceP.textContent = '£' + selected.price.toFixed(2);
-          });
+            select.addEventListener('change', () => {
+              const selected = JSON.parse(select.value);
+              priceP.textContent = '£' + selected.price.toFixed(2);
+            });
 
-          button.addEventListener('click', ()=>{
-            const selected = JSON.parse(select.value);
-            addToCart(selected.variant_id, selected.title, selected.price);
-          });
+            button.addEventListener('click', () => {
+              const selected = JSON.parse(select.value);
+              addToCart(selected.variant_id, selected.title, selected.price);
+            });
+          }
 
           container.appendChild(div);
         });
-      } catch(e) {
+      } catch (e) {
         console.error(e);
-        document.getElementById('product-list').textContent='Failed to load products.';
+        document.getElementById('product-list').textContent = 'Failed to load products.';
       }
     }
 
     function addToCart(variantId, title, price) {
-      const item = cart.find(i=>i.variant_id===variantId);
-      if(item) item.quantity++;
+      const item = cart.find(i => i.variant_id === variantId);
+      if (item) item.quantity++;
       else cart.push({variant_id:variantId,title,quantity:1,price});
       renderCart();
     }
 
-    function removeFromCart(variantId){
-      cart = cart.filter(i=>i.variant_id!==variantId);
+    function removeFromCart(variantId) {
+      cart = cart.filter(i => i.variant_id !== variantId);
       renderCart();
     }
 
-    function renderCart(){
+    function renderCart() {
       const cartDiv = document.getElementById('cart');
-      cartDiv.innerHTML='';
-      miniCart.innerHTML='';
-      if(cart.length===0){cartDiv.textContent='Your cart is empty.'; miniCart.textContent='Cart is empty.';}
-      cart.forEach(item=>{
-        const p=document.createElement('p');
-        p.innerHTML=`${item.title} x ${item.quantity} - £${(item.price*item.quantity).toFixed(2)}
+      cartDiv.innerHTML = '';
+      miniCart.innerHTML = '';
+      if (cart.length === 0) {
+        cartDiv.textContent = 'Your cart is empty.';
+        miniCart.textContent = 'Cart is empty.';
+      }
+      cart.forEach(item => {
+        const p = document.createElement('p');
+        p.innerHTML = `${item.title} x ${item.quantity} - £${(item.price * item.quantity).toFixed(2)}
           <button class="remove-btn" onclick="removeFromCart('${item.variant_id}')">Remove</button>`;
         cartDiv.appendChild(p);
 
-        const mp=document.createElement('p');
-        mp.textContent=`${item.title} x ${item.quantity} - £${(item.price*item.quantity).toFixed(2)}`;
+        const mp = document.createElement('p');
+        mp.textContent = `${item.title} x ${item.quantity} - £${(item.price * item.quantity).toFixed(2)}`;
         miniCart.appendChild(mp);
       });
-      cartCount.textContent=cart.reduce((a,b)=>a+b.quantity,0);
+      cartCount.textContent = cart.reduce((a, b) => a + b.quantity, 0);
     }
 
-    cartIcon.addEventListener('click',()=>{document.getElementById('CartSection').scrollIntoView({behavior:'smooth'});});
-    cartIcon.addEventListener('mouseenter',()=>{miniCart.style.display='block';});
-    cartIcon.addEventListener('mouseleave',()=>{miniCart.style.display='none';});
+    cartIcon.addEventListener('click', () => {
+      document.getElementById('CartSection').scrollIntoView({behavior: 'smooth'});
+    });
+    cartIcon.addEventListener('mouseenter', () => { miniCart.style.display = 'block'; });
+    cartIcon.addEventListener('mouseleave', () => { miniCart.style.display = 'none'; });
 
     // PayPal Buttons
     paypal.Buttons({
-      createOrder: async (data, actions)=>{
-        const res = await fetch('https://printify-server.onrender.com/api/create-paypal-order',{
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({line_items:cart})
+      createOrder: async (data, actions) => {
+        const res = await fetch('https://printify-server.onrender.com/api/create-paypal-order', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({line_items: cart})
         });
         const d = await res.json();
         return d.id;
       },
-      onApprove: async (data, actions)=>{
-        const res = await fetch('https://printify-server.onrender.com/api/create-order',{
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({orderID:data.orderID, line_items:cart})
+      onApprove: async (data, actions) => {
+        const res = await fetch('https://printify-server.onrender.com/api/create-order', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({orderID: data.orderID, line_items: cart})
         });
         const result = await res.json();
-        if(result.success){alert('Payment completed and order sent to Printify!'); cart=[]; renderCart();}
-        else alert('Something went wrong. Please try again.');
+        if (result.success) {
+          alert('Payment completed and order sent to Printify!');
+          cart = [];
+          renderCart();
+        } else {
+          alert('Something went wrong. Please try again.');
+        }
       },
-      onError: err=>{console.error(err); alert('PayPal transaction failed.');}
+      onError: err => {
+        console.error(err);
+        alert('PayPal transaction failed.');
+      }
     }).render('#paypal-button-container');
 
     getProducts();
   </script>
 </body>
 </html>
-
-
