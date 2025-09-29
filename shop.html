@@ -7,7 +7,6 @@
   <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet" />
   <style>
-    /* === KEEP ALL YOUR EXISTING STYLES === */
     body { margin:0; font-family:'Quicksand',sans-serif; background-image:url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png"); background-size:cover; background-attachment:fixed; background-repeat:no-repeat; color:#222; scroll-behavior:smooth;}
     #logo { position:fixed; top:10px; left:10px; height:280px; width:auto; z-index:999; border-radius:50%; }
     nav { position:fixed; top:0; width:100%; background-color:#5C4033; z-index:998; padding-left:130px; }
@@ -35,6 +34,9 @@
     #mini-cart p{ font-size:0.9em; margin:6px 0; display:flex; justify-content:space-between; }
     #mini-cart button{ background:#c0392b; border:none; color:white; border-radius:4px; font-size:0.8em; cursor:pointer; padding:2px 6px; }
     @media (max-width:768px){ #logo{ position:static; display:block; margin:10px auto; height:100px; } nav{ padding-left:0; } nav ul{ flex-direction:column; align-items:center; } nav li{ width:100%; text-align:center; } nav a{ padding:14px; } .container{ padding:120px 15px 40px; } .shop-item{ margin:15px auto; width:100%; } .shop-item .images img{ width:80px; } .shop-item button{ margin-top:6px; width:100%; } #cart{ width:95%; padding:15px; } #cart p{ flex-direction:column; align-items:flex-start; } #checkout-btn{ width:100%; } #mini-cart{ width:90%; right:5%; } }
+    /* Animation for cart icon */
+    .cart-animate { transform: scale(1.2); transition: transform 0.3s ease; }
+    .show { display:block !important; }
   </style>
 </head>
 <body>
@@ -93,134 +95,133 @@
         const container = document.getElementById('product-list');
         container.innerHTML = '';
 
-        if (!Array.isArray(data.data) || data.data.length === 0) {
-          container.textContent = 'No products available right now.';
-          return;
-        }
-
         data.data.forEach(product => {
           const div = document.createElement('div');
           div.className = 'shop-item';
 
-          // Images fallback
-          const imagesHTML = Array.isArray(product.images)
-            ? product.images.map(img => `<img src="${img.src}" alt="${product.title}" />`).join('')
-            : '';
-
-          // Variants fallback
-          const variants = Array.isArray(product.variants) ? product.variants : [];
-          const variantsHTML = variants.map(v =>
-            `<option value='${JSON.stringify({variant_id:v.id,title:v.title,price:v.price/100})}'>
-              ${v.title} - £${(v.price/100).toFixed(2)}
-            </option>`
-          ).join('');
-
-          const firstPrice = variants.length > 0 ? (variants[0].price / 100).toFixed(2) : 'N/A';
+          const imagesHTML = product.images?.map(img=>`<img src="${img.src}" alt="${product.title}" />`).join('') || '';
+          const variantsHTML = product.variants?.map(v=>`<option value='${JSON.stringify({variant_id:v.id,title:v.title,price:v.price/100})}'>${v.title} - £${(v.price/100).toFixed(2)}</option>`).join('') || '';
 
           div.innerHTML = `
-            <h3>${product.title || 'Untitled Product'}</h3>
+            <h3>${product.title}</h3>
             <div class="images">${imagesHTML}</div>
-            <p class="price">£${firstPrice}</p>
-            ${variants.length > 0 ? `<select style="margin-bottom:10px;">${variantsHTML}</select>` : '<p>No variants available</p>'}
-            ${variants.length > 0 ? '<button>Add to Cart</button>' : ''}
+            <p class="price">£${(product.variants?.[0]?.price/100).toFixed(2)}</p>
+            <select style="margin-bottom:10px;">${variantsHTML}</select>
+            <button>Add to Cart</button>
           `;
 
-          if (variants.length > 0) {
-            const select = div.querySelector('select');
-            const priceP = div.querySelector('.price');
-            const button = div.querySelector('button');
+          const select = div.querySelector('select');
+          const priceP = div.querySelector('.price');
+          const button = div.querySelector('button');
 
-            select.addEventListener('change', () => {
-              const selected = JSON.parse(select.value);
-              priceP.textContent = '£' + selected.price.toFixed(2);
-            });
+          select.addEventListener('change', ()=>{
+            const selected = JSON.parse(select.value);
+            priceP.textContent = '£' + selected.price.toFixed(2);
+          });
 
-            button.addEventListener('click', () => {
-              const selected = JSON.parse(select.value);
-              addToCart(selected.variant_id, selected.title, selected.price);
-            });
-          }
+          button.addEventListener('click', ()=>{
+            const selected = JSON.parse(select.value);
+            addToCart(selected.variant_id, selected.title, selected.price);
+          });
 
           container.appendChild(div);
         });
-      } catch (e) {
+      } catch(e) {
         console.error(e);
-        document.getElementById('product-list').textContent = 'Failed to load products.';
+        document.getElementById('product-list').textContent='Failed to load products.';
       }
     }
 
     function addToCart(variantId, title, price) {
-      const item = cart.find(i => i.variant_id === variantId);
-      if (item) item.quantity++;
+      const item = cart.find(i=>i.variant_id===variantId);
+      if(item) item.quantity++;
       else cart.push({variant_id:variantId,title,quantity:1,price});
       renderCart();
+
+      cartIcon.classList.add('cart-animate');
+      setTimeout(()=>cartIcon.classList.remove('cart-animate'),400);
     }
 
-    function removeFromCart(variantId) {
-      cart = cart.filter(i => i.variant_id !== variantId);
+    function removeFromCart(variantId){
+      cart = cart.filter(i=>i.variant_id!==variantId);
       renderCart();
     }
 
-    function renderCart() {
+    function renderCart(){
       const cartDiv = document.getElementById('cart');
-      cartDiv.innerHTML = '';
-      miniCart.innerHTML = '';
-      if (cart.length === 0) {
-        cartDiv.textContent = 'Your cart is empty.';
-        miniCart.textContent = 'Cart is empty.';
+      cartDiv.innerHTML='';
+      miniCart.innerHTML='';
+      if(cart.length===0){
+        cartDiv.textContent='Your cart is empty.';
+        miniCart.textContent='Cart is empty.';
+        cartCount.textContent=0;
+        miniCart.classList.remove('show');
+        return;
       }
-      cart.forEach(item => {
-        const p = document.createElement('p');
-        p.innerHTML = `${item.title} x ${item.quantity} - £${(item.price * item.quantity).toFixed(2)}
-          <button class="remove-btn" onclick="removeFromCart('${item.variant_id}')">Remove</button>`;
+
+      cart.forEach(item=>{
+        // --- Main Cart ---
+        const p=document.createElement('p');
+        const span=document.createElement('span');
+        span.textContent=`${item.title} x ${item.quantity} - £${(item.price*item.quantity).toFixed(2)}`;
+        p.appendChild(span);
+
+        const removeBtn=document.createElement('button');
+        removeBtn.className='remove-btn';
+        removeBtn.textContent='Remove';
+        removeBtn.addEventListener('click', ()=>removeFromCart(item.variant_id));
+        p.appendChild(removeBtn);
         cartDiv.appendChild(p);
 
-        const mp = document.createElement('p');
-        mp.textContent = `${item.title} x ${item.quantity} - £${(item.price * item.quantity).toFixed(2)}`;
+        // --- Mini Cart ---
+        const mp=document.createElement('p');
+        const miniSpan=document.createElement('span');
+        miniSpan.textContent=`${item.title} x ${item.quantity} - £${(item.price*item.quantity).toFixed(2)}`;
+        mp.appendChild(miniSpan);
+
+        const miniRemoveBtn=document.createElement('button');
+        miniRemoveBtn.className='remove-btn';
+        miniRemoveBtn.textContent='×';
+        miniRemoveBtn.addEventListener('click', ()=>removeFromCart(item.variant_id));
+        mp.appendChild(miniRemoveBtn);
+
         miniCart.appendChild(mp);
       });
-      cartCount.textContent = cart.reduce((a, b) => a + b.quantity, 0);
+
+      cartCount.textContent=cart.reduce((a,b)=>a+b.quantity,0);
+      miniCart.classList.add('show');
     }
 
-    cartIcon.addEventListener('click', () => {
-      document.getElementById('CartSection').scrollIntoView({behavior: 'smooth'});
-    });
-    cartIcon.addEventListener('mouseenter', () => { miniCart.style.display = 'block'; });
-    cartIcon.addEventListener('mouseleave', () => { miniCart.style.display = 'none'; });
+    cartIcon.addEventListener('click',()=>{document.getElementById('CartSection').scrollIntoView({behavior:'smooth'});});
+    cartIcon.addEventListener('mouseenter',()=>{miniCart.classList.add('show');});
+    cartIcon.addEventListener('mouseleave',()=>{miniCart.classList.remove('show');});
 
-    // PayPal Buttons
     paypal.Buttons({
-      createOrder: async (data, actions) => {
-        const res = await fetch('https://printify-server.onrender.com/api/create-paypal-order', {
-          method: 'POST',
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({line_items: cart})
+      createOrder: async (data, actions)=>{
+        const res = await fetch('https://printify-server.onrender.com/api/create-paypal-order',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({line_items:cart})
         });
         const d = await res.json();
         return d.id;
       },
-      onApprove: async (data, actions) => {
-        const res = await fetch('https://printify-server.onrender.com/api/create-order', {
-          method: 'POST',
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({orderID: data.orderID, line_items: cart})
+      onApprove: async (data, actions)=>{
+        const res = await fetch('https://printify-server.onrender.com/api/create-order',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({orderID:data.orderID, line_items:cart})
         });
         const result = await res.json();
-        if (result.success) {
-          alert('Payment completed and order sent to Printify!');
-          cart = [];
-          renderCart();
-        } else {
-          alert('Something went wrong. Please try again.');
-        }
+        if(result.success){alert('Payment completed and order sent to Printify!'); cart=[]; renderCart();}
+        else alert('Something went wrong. Please try again.');
       },
-      onError: err => {
-        console.error(err);
-        alert('PayPal transaction failed.');
-      }
+      onError: err=>{console.error(err); alert('PayPal transaction failed.');}
     }).render('#paypal-button-container');
 
     getProducts();
   </script>
 </body>
 </html>
+
+
