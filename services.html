@@ -10,6 +10,7 @@
 /* ===== Base Styles ===== */
 * { box-sizing: border-box; }
 body { margin: 0; font-family: 'Quicksand', sans-serif; background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png"); background-size: cover; background-attachment: fixed; background-repeat: no-repeat; color: #222; text-align: center; }
+
 #logo { position: fixed; top: 10px; left: 10px; height: 280px; width: auto; z-index: 999; border-radius: 50%; transition: transform 0.3s ease; }
 #logo:hover { transform: scale(1.05); }
 
@@ -21,19 +22,17 @@ nav a:hover { background-color: #4e2f22; }
 
 .container { padding-top: 140px; padding-bottom: 40px; max-width: 1000px; }
 
-.hero { background-color: rgba(255, 255, 255, 0.92); padding: 60px 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); margin-bottom: 40px; text-align: center; }
-.hero h1, .hero h2, .hero p, .hero li { opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
+/* ===== Hero Section ===== */
+.hero { background-color: rgba(255, 255, 255, 0.92); padding: 60px 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); margin-bottom: 40px; text-align: center; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: 48px; color: #228B22; margin-bottom: 20px; opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
+.hero h2 { font-family: 'Playfair Display', serif; font-size: 36px; color: #228B22; margin-top: 30px; opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
+.hero p, .hero li { font-size: 20px; line-height: 1.8; text-align: center; opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
 
-/* ===== Forest Green Theme ===== */
-.hero h1, .hero h2 { color: #228B22; } /* main titles & subheadings */
-.hero p, .hero li { color: #228B22; } /* paragraph text and lists */
-table th, table td { color: #228B22; } /* table text */
-table th { background-color: #eaeaea; font-weight: bold; }
+ul { padding-left: 0; list-style-position: inside; display: inline-block; text-align: left; font-size: 20px; }
 
-ul { padding-left: 0; list-style-position: inside; display: inline-block; text-align: left; }
-
-table { width: 80%; margin: 20px auto; border-collapse: collapse; background: #fff; text-align: center; }
-table th, table td { border: 1px solid #ccc; padding: 10px; }
+table { width: 80%; margin: 20px auto; border-collapse: collapse; background: #fff; text-align: center; font-size: 20px; }
+table th, table td { border: 1px solid #ccc; padding: 14px 10px; }
+table th { background-color: #eaeaea; font-size: 20px; }
 
 footer { background-color: #5C4033; color: white; text-align: center; padding: 20px; margin-top: 80px; }
 
@@ -47,15 +46,15 @@ footer { background-color: #5C4033; color: white; text-align: center; padding: 2
   nav a { padding: 14px; }
   .container { padding: 120px 15px 40px 15px; }
   .hero { padding: 30px 15px; }
-  .hero h1 { font-size: 32px; }
-  .hero h2 { font-size: 24px; }
-  .hero p, .hero li { font-size: 16px; }
+  .hero h1 { font-size: 36px; }
+  .hero h2 { font-size: 28px; }
+  .hero p, .hero li { font-size: 18px; }
 
-  table, thead, tbody, th, td, tr { display: block; width: 100%; }
+  table, thead, tbody, th, td, tr { display: block; width: 100%; font-size: 18px; }
   table thead { display: none; }
-  table tr { margin-bottom: 15px; background: #fff; border: 1px solid #ccc; padding: 10px; border-radius: 8px; }
-  table td { border: none; padding: 8px 10px; position: relative; }
-  table td::before { content: attr(data-label); font-weight: bold; display: block; margin-bottom: 6px; color: #444; }
+  table tr { margin-bottom: 15px; background: #fff; border: 1px solid #ccc; padding: 12px; border-radius: 8px; }
+  table td { border: none; padding: 10px 8px; position: relative; }
+  table td::before { content: attr(data-label); font-weight: bold; display: block; margin-bottom: 6px; color: #444; font-size:16px; }
 
   /* Hamburger */
   .hamburger { display: block; position: fixed; top: 20px; right: 20px; z-index: 1000; cursor: pointer; width: 30px; height: 22px; }
@@ -119,8 +118,9 @@ footer { background-color: #5C4033; color: white; text-align: center; padding: 2
   <li>24 hrs £20</li>
   <li>48 hrs £45</li>
   <li><strong>Discounts applied</strong> for bookings of 3 or more days</li>
-  <li>Drop-ins and daycare — <em>contact us for a quote</em> (prices vary)</li>
-  <li>Special rates for holiday and long stays</li>
+  <li>Dog day care: from £15/day (includes walks, playtime, water changes, feeding etc.)</li>
+  <li>Dog drop-ins: from £10 per visit (includes walks, playtime, water changes, feeding etc.)</li>
+  <li>Additional £10 fee applies for drop-off or collection after 6pm</li>
 </ul>
 
 <h2>Cat Sitting</h2>
@@ -141,10 +141,8 @@ footer { background-color: #5C4033; color: white; text-align: center; padding: 2
 
 <h2>Additional Services</h2>
 <ul>
-  <li>Dog Daycare: from £15 per day (includes walks, playtime, feeding, water changes, and general care)</li>
-  <li>Dog Drop-ins: from £10 per visit (includes walks, playtime, feeding, water changes, and general care)</li>
+  <li>Drop-ins and daycare — <em>contact us for quotes</em> (prices vary)</li>
 </ul>
-  <p><em>Note: An additional £10 fee applies for dog sitting, daycare, or drop-ins if drop-off or collection time is after 6pm.</em></p>
 
 <h2>Travel Fees</h2>
 <p><strong>Local Area – Free travel</strong></p>
@@ -167,7 +165,6 @@ footer { background-color: #5C4033; color: white; text-align: center; padding: 2
 <tr><td data-label="Area">Other villages (5+ miles)</td><td data-label="Travel Fee">£2 to £3 depending on distance</td></tr>
 </tbody>
 </table>
-
 <p><em>We may waive or reduce travel fees for regular weekly clients</em></p>
 <p><em>Contact us for drop-ins and daycare for dogs and cats — prices may vary depending on duration, needs, and location. Discounts are available for bookings of three or more days.</em></p>
 
@@ -191,19 +188,17 @@ function toggleNav() {
   document.querySelector(".hamburger").classList.toggle("active");
 }
 
-// Animate text one by one
+// Animate text on page load
 document.addEventListener('DOMContentLoaded', () => {
   const textItems = document.querySelectorAll('.hero h1, .hero h2, .hero p, .hero li');
   textItems.forEach((el, i) => {
     setTimeout(() => {
       el.style.opacity = '1';
       el.style.transform = 'translateY(0)';
-    }, i * 100); // 100ms delay per item
+    }, i * 100);
   });
 });
 </script>
 
 </body>
 </html>
-
-
