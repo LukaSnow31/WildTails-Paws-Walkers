@@ -408,8 +408,8 @@ async function getProducts() {
 
       const images = product.images || [];
       const mainImage = images[0]?.src || '';
-      const thumbnailsHTML = images.map(img => `
-        <img src="${img.src}" alt="${product.title}" class="thumbnail" onclick="changeImage(this,${index})">
+      const thumbnailsHTML = images.map((img,i) => `
+        <img src="${img.src}" alt="${product.title}" class="thumbnail ${i===0?'active':''}" onclick="changeImage(this,${index},${i})">
       `).join('');
 
       const variantsHTML = product.variants?.map(v => `
@@ -451,11 +451,16 @@ async function getProducts() {
   }
 }
 
-// CHANGE MAIN IMAGE ON THUMBNAIL CLICK
-function changeImage(element,prodIndex){
+// CHANGE MAIN IMAGE & HIGHLIGHT THUMBNAIL
+function changeImage(element,prodIndex,imgIndex){
   const gallery = element.closest('.product-gallery');
   const mainImage = gallery.querySelector('.main-image');
   mainImage.src = element.src;
+  
+  // Highlight active thumbnail
+  const thumbnails = gallery.querySelectorAll('.thumbnail');
+  thumbnails.forEach(t=>t.classList.remove('active'));
+  element.classList.add('active');
 }
 
 // CART FUNCTIONS
@@ -565,6 +570,7 @@ function showLightboxImage(){
   lightboxImage.src = images[currentImageIndex].src;
 }
 
+// Prev/Next buttons
 prevBtn.addEventListener('click',()=>{
   const images = productsData[currentProductIndex].images || [];
   if(images.length===0) return;
@@ -577,11 +583,23 @@ nextBtn.addEventListener('click',()=>{
   currentImageIndex = (currentImageIndex+1)%images.length;
   showLightboxImage();
 });
+
+// Close button and click outside
 closeBtn.addEventListener('click',()=>{ lightboxOverlay.style.display='none'; });
 lightboxOverlay.addEventListener('click',(e)=>{
   if(e.target===lightboxOverlay) lightboxOverlay.style.display='none';
+});
+
+// --- KEYBOARD NAVIGATION ---
+document.addEventListener('keydown',(e)=>{
+  if(lightboxOverlay.style.display==='flex'){
+    if(e.key==='ArrowLeft') prevBtn.click();
+    if(e.key==='ArrowRight') nextBtn.click();
+    if(e.key==='Escape') closeBtn.click();
+  }
 });
 </script>
 
 </body>
 </html>
+
