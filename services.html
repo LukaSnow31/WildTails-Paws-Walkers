@@ -15,25 +15,21 @@ body { margin: 0; font-family: 'Quicksand', sans-serif; background-image: url("h
 
 nav { position: fixed; top: 0; width: 100%; background-color: #5C4033; z-index: 998; padding-left: 130px; transition: background 0.3s ease; }
 nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: flex-end; flex-wrap: wrap; }
-nav li { margin: 0; opacity: 0; transform: translateY(-20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-nav li.visible { opacity: 1; transform: translateY(0); }
+nav li { margin: 0; opacity: 1; transform: none; }
 nav a { display: block; padding: 18px 20px; text-decoration: none; color: white; font-weight: bold; transition: background 0.3s ease; }
 nav a:hover { background-color: #4e2f22; }
 
-.container { padding-top: 140px; padding-bottom: 40px; max-width: 1000px; margin: 0 auto; }
+.container { padding-top: 140px; padding-bottom: 40px; max-width: 1000px; }
 
-.hero { background-color: rgba(255, 255, 255, 0.92); padding: 60px 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); margin-bottom: 40px; text-align: center; transform: scale(0.95); opacity: 0; transition: transform 0.8s ease, opacity 0.8s ease; }
-.hero.visible { transform: scale(1); opacity: 1; }
-.hero h1 { font-family: 'Playfair Display', serif; font-size: 42px; margin-bottom: 20px; color: #228B22; }
-.hero h2 { font-size: 30px; margin-top: 30px; font-family: 'Playfair Display', serif; color: #228B22; }
-.hero p, .hero li { font-size: 18px; line-height: 1.6; text-align: center; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.hero p.visible, .hero li.visible { opacity: 1; transform: translateY(0); }
+.hero { background-color: rgba(255, 255, 255, 0.92); padding: 60px 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); margin-bottom: 40px; text-align: center; }
+.hero h1, .hero h2, .hero p, .hero li { opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
 
 ul { padding-left: 0; list-style-position: inside; display: inline-block; text-align: left; }
 
 table { width: 80%; margin: 20px auto; border-collapse: collapse; background: #fff; text-align: center; }
 table th, table td { border: 1px solid #ccc; padding: 10px; }
 table th { background-color: #eaeaea; }
+
 footer { background-color: #5C4033; color: white; text-align: center; padding: 20px; margin-top: 80px; }
 
 /* ===== Mobile Styles ===== */
@@ -62,14 +58,7 @@ footer { background-color: #5C4033; color: white; text-align: center; padding: 2
   .hamburger.active div:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
   .hamburger.active div:nth-child(2) { opacity: 0; }
   .hamburger.active div:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-  /* Make all content visible on mobile */
-  .hero, .hero p, .hero li, table, table tr, table td { opacity: 1 !important; transform: none !important; }
 }
-
-/* ===== Animations ===== */
-.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
@@ -195,32 +184,18 @@ function toggleNav() {
   document.querySelector(".hamburger").classList.toggle("active");
 }
 
-// Mobile: show all content immediately
-if(window.innerWidth <= 768){
-  document.querySelectorAll('.hero, .hero p, .hero li, table, table tr').forEach(el => el.classList.add('visible'));
-} else {
-  // Desktop fade-in animations
-  const hero = document.querySelector('.hero');
-  const heroObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => { 
-      if(entry.isIntersecting) { 
-        entry.target.classList.add('visible'); 
-        const items = entry.target.querySelectorAll('p, li');
-        items.forEach((el,i) => { setTimeout(() => { el.classList.add('visible'); }, i*150); });
-        heroObserver.unobserve(entry.target); 
-      }
-    });
-  }, {threshold:0.3});
-  heroObserver.observe(hero);
-}
-
-// Animate nav links on desktop
-window.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.querySelectorAll('nav li');
-  navLinks.forEach((link, i) => { setTimeout(() => { link.classList.add('visible'); }, i*150); });
+// Animate text one by one
+document.addEventListener('DOMContentLoaded', () => {
+  const textItems = document.querySelectorAll('.hero h1, .hero h2, .hero p, .hero li');
+  textItems.forEach((el, i) => {
+    setTimeout(() => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, i * 100); // 100ms delay per item
+  });
 });
 </script>
+
 </body>
 </html>
-
 
