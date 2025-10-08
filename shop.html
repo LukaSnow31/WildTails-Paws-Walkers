@@ -62,7 +62,6 @@
 
     nav a:hover { background-color:#4e2f22; }
 
-    /* HAMBURGER ICON */
     .menu-toggle {
       display:none;
       flex-direction:column;
@@ -111,8 +110,34 @@
     }
 
     .shop-item h3 { font-family:'Playfair Display', serif; }
-    .shop-item .images { display:flex; flex-wrap:wrap; justify-content:center; gap:5px; margin-bottom:10px; }
-    .shop-item .images img { width:80px; height:auto; border-radius:6px; }
+
+    /* IMAGE GALLERY STYLING */
+    .product-gallery { text-align:center; }
+    .main-image {
+      width:100%;
+      max-width:280px;
+      border-radius:10px;
+      box-shadow:0 0 5px rgba(0,0,0,0.2);
+      transition:0.3s;
+    }
+    .thumbnail-container {
+      margin-top:8px;
+      display:flex;
+      justify-content:center;
+      gap:6px;
+      flex-wrap:wrap;
+    }
+    .thumbnail {
+      width:50px;
+      height:50px;
+      object-fit:cover;
+      border-radius:6px;
+      cursor:pointer;
+      opacity:0.7;
+      transition:0.2s;
+    }
+    .thumbnail:hover { opacity:1; transform:scale(1.05); }
+
     .shop-item button {
       padding:8px 16px;
       background:#5C4033;
@@ -252,11 +277,10 @@
       nav li { width:100%; text-align:center; }
       nav a { padding:14px; width:100%; }
       .menu-toggle { display:flex; }
-      .menu-toggle.active + ul { max-height:500px; } /* expand menu */
+      .menu-toggle.active + ul { max-height:500px; }
       .container { padding:120px 15px 40px; }
       .shop-item { margin:15px auto; width:100%; }
-      .shop-item .images img { width:80px; }
-      .shop-item button { margin-top:6px; width:100%; }
+      .thumbnail-container { gap:4px; }
       #cart { width:95%; padding:15px; }
       #cart p { flex-direction:column; align-items:flex-start; }
       #checkout-btn { width:100%; }
@@ -286,7 +310,6 @@
     </ul>
   </nav>
 
-  <!-- CART ICON -->
   <div id="cart-icon">
     🛒<div id="cart-count">0</div>
     <div id="mini-cart"></div>
@@ -336,12 +359,25 @@
         data.data.forEach(product => {
           const div = document.createElement('div');
           div.className = 'shop-item';
-          const imagesHTML = product.images?.map(img=>`<img src="${img.src}" alt="${product.title}" />`).join('') || '';
-          const variantsHTML = product.variants?.map(v=>`<option value='${JSON.stringify({variant_id:v.id,title:v.title,price:v.price/100})}'>${v.title} - £${(v.price/100).toFixed(2)}</option>`).join('') || '';
+
+          const images = product.images || [];
+          const mainImage = images[0]?.src || '';
+          const thumbnailsHTML = images.map(img => `
+            <img src="${img.src}" alt="${product.title}" class="thumbnail" onclick="changeImage(this)">
+          `).join('');
+
+          const variantsHTML = product.variants?.map(v => `
+            <option value='${JSON.stringify({variant_id:v.id,title:v.title,price:v.price/100})}'>
+              ${v.title} - £${(v.price/100).toFixed(2)}
+            </option>
+          `).join('') || '';
 
           div.innerHTML = `
             <h3>${product.title}</h3>
-            <div class="images">${imagesHTML}</div>
+            <div class="product-gallery">
+              <img src="${mainImage}" alt="${product.title}" class="main-image">
+              <div class="thumbnail-container">${thumbnailsHTML}</div>
+            </div>
             <p class="price">£${(product.variants?.[0]?.price/100).toFixed(2)}</p>
             <select style="margin-bottom:10px;">${variantsHTML}</select>
             <button>Add to Cart</button>
@@ -351,12 +387,12 @@
           const priceP = div.querySelector('.price');
           const button = div.querySelector('button');
 
-          select.addEventListener('change', ()=>{
+          select.addEventListener('change', () => {
             const selected = JSON.parse(select.value);
             priceP.textContent = '£' + selected.price.toFixed(2);
           });
 
-          button.addEventListener('click', ()=>{
+          button.addEventListener('click', () => {
             const selected = JSON.parse(select.value);
             addToCart(selected.variant_id, selected.title, selected.price);
           });
@@ -365,8 +401,14 @@
         });
       } catch(e) {
         console.error(e);
-        document.getElementById('product-list').textContent='Failed to load products.';
+        document.getElementById('product-list').textContent = 'Failed to load products.';
       }
+    }
+
+    function changeImage(element) {
+      const gallery = element.closest('.product-gallery');
+      const mainImage = gallery.querySelector('.main-image');
+      mainImage.src = element.src;
     }
 
     function addToCart(variantId, title, price) {
@@ -456,3 +498,4 @@
   </script>
 </body>
 </html>
+
