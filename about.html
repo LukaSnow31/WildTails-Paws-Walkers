@@ -1,158 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About | WildTails & Paws Walkers</title>
-<link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #fefefe, #dce3e8);
-    margin: 0;
-    padding: 0;
-    color: #222;
-    overflow-x: hidden;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>About Us | WildTails & Paws Walkers</title>
+  <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon"/>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
 
-  header {
-    text-align: center;
-    padding: 30px 15px;
-    background: #ffffffcc;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: #222;
+      text-align: center;
+    }
 
-  header img {
-    width: 130px;
-    height: auto;
-  }
+    #logo {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      height: 280px;
+      width: auto;
+      z-index: 999;
+      border-radius: 50%;
+    }
 
-  h1 {
-    font-size: 2.4em;
-    color: #3a5a40;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-    margin-top: 10px;
-    animation: fadeInDown 1.5s ease;
-  }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #5C4033;
+      z-index: 998;
+      padding-left: 130px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
 
-  .about-container {
-    max-width: 1000px;
-    margin: 60px auto;
-    background: #ffffffee;
-    border-radius: 20px;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-    padding: 40px;
-  }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      transition: max-height 0.4s ease-out;
+    }
 
-  .animated-text {
-    font-size: 1.2em;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    white-space: pre-line;
-    overflow: hidden;
-    border-right: 2px solid #3a5a40;
-    width: 100%;
-    display: inline-block;
-    animation: caret 0.8s steps(1) infinite;
-  }
+    nav li { margin: 0; }
 
-  @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+    nav a {
+      display: block;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
 
-  @keyframes caret {
-    50% { border-color: transparent; }
-  }
+    nav a:hover { background-color: #4e2f22; }
 
-  footer {
-    text-align: center;
-    padding: 20px;
-    background: #3a5a40;
-    color: white;
-    margin-top: 50px;
-  }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      margin-right: 20px;
+    }
 
-  @media (max-width: 768px) {
-    .about-container {
-      margin: 30px 15px;
-      padding: 25px;
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    .container {
+      padding-top: 140px;
+      padding-bottom: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 60px 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
     h1 {
-      font-size: 1.8em;
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #5C4033;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      animation: fadeIn 1.5s ease-in-out;
     }
 
-    .animated-text {
-      font-size: 1.1em;
+    .highlight { color: #228B22; font-weight: bold; }
+
+    p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      display: inline-block;
+      white-space: pre-wrap;
+      border-right: 2px solid #228B22;
     }
-  }
-</style>
+
+    p.done {
+      border-right: none;
+    }
+
+    blockquote {
+      font-size: 20px;
+      font-style: italic;
+      background-color: #F0FFF0;
+      border-left: 6px solid #228B22;
+      margin: 20px auto;
+      padding: 15px 25px;
+      max-width: 700px;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1.5s forwards;
+      animation-delay: 2.8s;
+    }
+
+    footer {
+      background-color: #5C4033;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 80px;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes blinkCaret { 50% { border-color: transparent; } }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      #logo { position: static; margin: 10px auto; display: block; height: 80px; }
+      nav { padding-left: 0; justify-content: space-between; padding: 10px 20px; }
+      .menu-toggle { display: flex; }
+      nav ul { display: none; flex-direction: column; width: 100%; }
+      nav ul.show { display: flex; }
+      nav li { width: 100%; }
+      nav a { padding: 15px; width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <img src="WildTails-PawsWalkers/front logo.png" alt="WildTails & Paws Walkers Logo">
-  <h1>About WildTails & Paws Walkers</h1>
-</header>
+  <!-- Logo -->
+  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 
-<div class="about-container">
-  <p class="animated-text" id="type1"></p>
-  <p class="animated-text" id="type2"></p>
-  <p class="animated-text" id="type3"></p>
-  <p class="animated-text" id="type4"></p>
-  <p class="animated-text" id="type5"></p>
-</div>
+  <!-- Navigation -->
+  <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div><div></div><div></div>
+    </div>
+    <ul id="menu">
+      <li><a href="./">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="checkout.html">Check Out</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+  </nav>
 
-<footer>
-  <p>© 2025 WildTails & Paws Walkers | All Rights Reserved</p>
-</footer>
+  <!-- Main Content -->
+  <main class="container">
+    <h1>About <span class="highlight">WildTails & Paws Walkers</span></h1>
 
-<script>
-  const paragraphs = [
-    "WildTails & Paws Walkers was founded in 2024 with a heartfelt mission to provide trusted, compassionate, and affordable pet care for all animals regardless of breed, age, temperament, or behavioural needs. The inspiration came from our own struggles to find suitable care for our two huskies while travelling. Many services were either unavailable or too costly, which motivated us to build a dependable, home-style business that offered exceptional care without compromise.",
+    <p id="para1"></p>
+    <p id="para2"></p>
+    <p id="para3"></p>
+    <p id="para4"></p>
+    <p id="para5"></p>
 
-    "Before founding WildTails & Paws Walkers, we spent years working hands-on with animals of all kinds including retired racehorses, birds of prey, and wildlife in conservation programs. These experiences gave us a strong foundation in animal welfare, behaviour, and trust-building skills that continue to guide our approach to every pet we care for today.",
+    <blockquote>
+      <em>"Every pet deserves kindness, respect, and patience. We’re not just carers—we’re trusted partners in your pet’s happiness and wellbeing."</em>
+    </blockquote>
+  </main>
 
-    "Our personal journey with our huskies has deepened our understanding of canine behaviour, training, and emotional wellbeing. Through patience, consistency, and compassion, we’ve learned how to connect with animals from all backgrounds whether they’re energetic pups, nervous rescues, or gentle seniors.",
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
+  </footer>
 
-    "At WildTails & Paws Walkers, we believe every animal deserves kindness, respect, and individual attention. From adventurous woodland walks to calm moments of companionship, we provide a tailored experience that ensures each pet feels safe, loved, and understood.",
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
 
-    "Our business is built on trust, transparency, and a shared passion for helping pets live their happiest, healthiest lives one paw at a time."
-  ];
+    const paragraphs = [
+      "Founded in 2024, WildTails & Paws Walkers started with a mission to provide safe, welcoming, and compassionate pet care for every animal. Inspired by our own struggles to find reliable care for our huskies, we built a business that accepts all dogs, regardless of breed, age, temperament, or behavioral needs.",
+      "Before our huskies, we gained experience working with retired racehorses, birds of prey, and wildlife in conservation programs. This hands-on work gave us invaluable insight into animal behavior, welfare, and trust-building.",
+      "Our personal journey with our huskies taught us about training, daily routines, and understanding each dog's unique personality. We use this knowledge to offer the best care and companionship possible.",
+      "From woodland walks to calm afternoons at home, we create tailored experiences to keep pets happy, healthy, and loved. We adapt to each animal's needs and personality.",
+      "Our business is built on trust, transparency, and compassion, delivering meaningful care and attention to every pet we look after."
+    ];
 
-  let i = 0;
-  function typeWriterEffect(elementId, text, speed, callback) {
-    let index = 0;
-    function typeChar() {
-      if (index < text.length) {
-        document.getElementById(elementId).textContent += text.charAt(index);
-        index++;
-        setTimeout(typeChar, speed);
-      } else {
-        document.getElementById(elementId).style.borderRight = "none";
-        if (callback) callback();
+    function typeWriter(id, text, speed, callback) {
+      let index = 0;
+      const el = document.getElementById(id);
+      el.style.opacity = 1;
+      el.style.animation = "fadeIn 1s forwards";
+      el.style.borderRight = "2px solid #228B22";
+      function type() {
+        if(index < text.length) {
+          el.textContent += text.charAt(index);
+          index++;
+          setTimeout(type, speed);
+        } else {
+          el.classList.add("done");
+          if(callback) callback();
+        }
+      }
+      type();
+    }
+
+    function startTyping(i=0) {
+      if(i < paragraphs.length) {
+        typeWriter(`para${i+1}`, paragraphs[i], 40, () => {
+          setTimeout(() => startTyping(i+1), 500);
+        });
       }
     }
-    typeChar();
-  }
 
-  function typeAllParagraphs(index = 0) {
-    if (index < paragraphs.length) {
-      typeWriterEffect(`type${index + 1}`, paragraphs[index], 45, () => {  // slowed speed
-        setTimeout(() => typeAllParagraphs(index + 1), 1000); // longer pause between paragraphs
+    window.onload = startTyping;
+
+    // Blinking caret
+    setInterval(() => {
+      document.querySelectorAll('p:not(.done)').forEach(p => {
+        p.style.borderRight = p.style.borderRight === "2px solid #228B22" ? "2px solid transparent" : "2px solid #228B22";
       });
-    }
-  }
-
-  window.onload = () => typeAllParagraphs();
-</script>
-
+    }, 500);
+  </script>
 </body>
 </html>
-
-
-
 
