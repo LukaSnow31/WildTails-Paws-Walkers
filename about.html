@@ -42,7 +42,6 @@
       align-items: center;
     }
 
-    /* Default Nav Menu */
     nav ul {
       list-style: none;
       margin: 0;
@@ -67,7 +66,6 @@
       background-color: #4e2f22;
     }
 
-    /* Hamburger Button */
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -81,19 +79,6 @@
       background-color: white;
       margin: 4px 0;
       transition: 0.4s;
-    }
-
-    /* Hide menu on mobile by default */
-    nav ul {
-      transition: max-height 0.4s ease-out;
-    }
-
-    nav ul.collapsed {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      background-color: #5C4033;
-      text-align: center;
     }
 
     .container {
@@ -110,8 +95,8 @@
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      margin-bottom: 20px;
+      font-size: 52px;
+      margin-bottom: 25px;
       color: #5C4033;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
       animation: fadeIn 1.5s ease-in-out;
@@ -123,31 +108,33 @@
     }
 
     p {
-      font-size: 18px;
-      line-height: 1.8;
-      margin-bottom: 20px;
-      max-width: 720px;
+      font-size: 22px;
+      line-height: 2;
+      margin-bottom: 30px;
+      max-width: 850px;
       margin-left: auto;
       margin-right: auto;
     }
 
     blockquote {
-      font-size: 20px;
+      font-size: 24px;
       font-style: italic;
       background-color: #F0FFF0;
       border-left: 6px solid #228B22;
-      margin: 20px auto;
-      padding: 15px 25px;
-      max-width: 700px;
+      margin: 30px auto;
+      padding: 20px 30px;
+      max-width: 750px;
       border-radius: 8px;
+      line-height: 1.8;
     }
 
     footer {
       background-color: #5C4033;
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       margin-top: 80px;
+      font-size: 18px;
     }
 
     @keyframes fadeIn {
@@ -155,7 +142,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Mobile Styles */
     @media (max-width: 768px) {
       #logo {
         position: static;
@@ -190,15 +176,21 @@
         padding: 15px;
         width: 100%;
       }
+
+      p {
+        font-size: 20px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Logo -->
   <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 
-  <!-- Navigation -->
   <nav>
     <div class="menu-toggle" onclick="toggleMenu()">
       <div></div>
@@ -218,24 +210,24 @@
     </ul>
   </nav>
 
-  <!-- Main Content -->
   <main class="container">
     <h1>About <span class="highlight">WildTails & Paws Walkers</span></h1>
 
-    <p><strong>Founded in 2024</strong>, WildTails & Paws Walkers began with a heartfelt mission: to provide <span class="highlight">dedicated, compassionate care</span> tailored to the unique needs of each pet. With over a decade of hands-on experience, our team understands animals of all kinds—from playful puppies to retired racehorses with special needs.</p>
+    <p><strong>Founded in 2024</strong>, WildTails & Paws Walkers was born from a simple but heartfelt challenge — finding trustworthy, affordable care for our own huskies while we were away. After struggling to find services that met our dogs’ needs and fit within a realistic budget, we were inspired to create something better: a business built on empathy, accessibility, and genuine love for animals.</p>
 
-    <p>We know every pet is an individual, with their own personality and sensitivities. From energetic pups to nervous rescues, reserved seniors, and even our feline and small mammal friends, our approach is grounded in <span class="highlight">empathy, patience, and personalised support</span>.</p>
+    <p>Before WildTails began, we had years of hands-on experience caring for a wide variety of animals — from <span class="highlight">retired racehorses</span> and <span class="highlight">birds of prey</span> to supporting <span class="highlight">wildlife conservation programs</span>. These experiences gave us deep insight into animal behaviour, trust-building, and overall wellbeing — knowledge we continue to apply every day in our pet care services.</p>
 
-    <p>Initially, we worked through third-party platforms like Rover. But we wanted to offer <span class="highlight">transparent pricing, direct communication, and truly personalised care</span>. Operating independently allows us to build stronger, meaningful relationships with both pets and their owners.</p>
+    <p>Our goal has always been clear: to provide a safe, welcoming, and inclusive service for all pets — no matter their <span class="highlight">breed, age, temperament, or behavioural challenges</span>. Every dog, cat, or small pet in our care receives individual attention and a personalised experience that supports their unique personality and needs.</p>
+
+    <p>We initially began through third-party platforms such as Rover but soon realised the importance of offering <span class="highlight">transparent pricing, direct communication, and fully tailored care</span>. Operating independently allows us to build stronger, more personal relationships with both pets and their owners — creating trust that lasts well beyond the first walk.</p>
 
     <blockquote>
-      <em>"Every pet deserves kindness, respect, and patience. We’re not just carers—we’re trusted partners in your pet’s happiness and wellbeing."</em>
+      <em>"Every pet deserves kindness, respect, and patience. We’re not just carers — we’re trusted partners in your pet’s happiness and wellbeing."</em>
     </blockquote>
 
-    <p>From woodland walks to quiet afternoons of companionship, we provide <span class="highlight">tailored adventures</span> that keep pets happy, healthy, and loved. One animal at a time, one meaningful moment at a time.</p>
+    <p>From adventurous woodland walks to quiet afternoons of companionship, <span class="highlight">WildTails & Paws Walkers</span> is more than a service — it’s a promise. A promise to care for every animal as if they were our own, one moment and one pawprint at a time.</p>
   </main>
 
-  <!-- Footer -->
   <footer>
     &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
   </footer>
@@ -248,9 +240,6 @@
 
 </body>
 </html>
-
-
-
 
 
 
