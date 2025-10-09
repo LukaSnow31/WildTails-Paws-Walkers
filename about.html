@@ -105,7 +105,9 @@
       margin-bottom: 20px;
       color: #5C4033;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-      animation: fadeIn 1.5s ease-in-out;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1.5s forwards;
     }
 
     .highlight { color: #228B22; font-weight: bold; }
@@ -118,12 +120,14 @@
       margin-left: auto;
       margin-right: auto;
       opacity: 0;
-      display: inline-block;
-      white-space: pre-wrap;
-      border-right: 2px solid #228B22;
+      transform: translateY(20px);
+      animation: fadeIn 1.5s forwards;
     }
 
-    p.done { border-right: none; }
+    p:nth-of-type(1) { animation-delay: 0.3s; }
+    p:nth-of-type(2) { animation-delay: 0.6s; }
+    p:nth-of-type(3) { animation-delay: 0.9s; }
+    p:nth-of-type(4) { animation-delay: 1.2s; }
 
     blockquote {
       font-size: 20px;
@@ -136,12 +140,8 @@
       border-radius: 8px;
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 1.5s ease, transform 1.5s ease;
-    }
-
-    blockquote.visible {
-      opacity: 1;
-      transform: translateY(0);
+      animation: fadeIn 1.5s forwards;
+      animation-delay: 1.5s;
     }
 
     footer {
@@ -152,7 +152,9 @@
       margin-top: 80px;
     }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     @media (max-width: 768px) {
       #logo { position: static; margin: 10px auto; display: block; height: 80px; }
@@ -173,7 +175,9 @@
   <!-- Navigation -->
   <nav>
     <div class="menu-toggle" onclick="toggleMenu()">
-      <div></div><div></div><div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
     <ul id="menu">
       <li><a href="./">Home</a></li>
@@ -192,15 +196,19 @@
   <main class="container">
     <h1>About <span class="highlight">WildTails & Paws Walkers</span></h1>
 
-    <p id="para1"></p>
-    <p id="para2"></p>
-    <p id="para3"></p>
-    <p id="para4"></p>
-    <p id="para5"></p>
+    <p><strong>Founded in 2024</strong>, WildTails & Paws Walkers began from a personal experience. As devoted husky owners, we found it difficult to find reliable, affordable, and understanding pet care when we needed someone to look after our own dogs. Many services were either beyond our budget or unwilling to take on certain breeds or behavioural challenges.</p>
 
-    <blockquote id="quote">
+    <p>That experience inspired us to create something different — a <span class="highlight">safe, welcoming, and inclusive pet care business</span> where every animal, regardless of breed, age, temperament, or behaviour, receives the care and understanding they deserve.</p>
+
+    <p>Before WildTails was established, we had already gained extensive experience in <span class="highlight">animal care and welfare</span>, working with <span class="highlight">retired racehorses, birds of prey, and wildlife in conservation programs</span>. These early experiences taught us valuable lessons in animal behaviour, trust-building, and wellbeing — forming the foundation for the compassionate approach we bring to every pet today.</p>
+
+    <p>Our huskies further deepened our understanding, teaching us patience, adaptability, and empathy through training, care, and daily routines. Together, these experiences shaped WildTails & Paws Walkers into more than just a pet service. It’s a <span class="highlight">business built on trust, respect, and a genuine love for animals</span>.</p>
+
+    <blockquote>
       <em>"Every pet deserves kindness, respect, and patience. We’re not just carers — we’re trusted partners in your pet’s happiness and wellbeing."</em>
     </blockquote>
+
+    <p>At WildTails & Paws Walkers, we continue to grow from that same belief, offering <span class="highlight">professional, compassionate, and affordable care</span> for all animals — one adventure and one friendship at a time.</p>
   </main>
 
   <!-- Footer -->
@@ -212,54 +220,10 @@
     function toggleMenu() {
       document.getElementById("menu").classList.toggle("show");
     }
-
-    const paragraphs = [
-      "Founded in 2024, WildTails & Paws Walkers began from a personal experience. As devoted husky owners, we found it difficult to find reliable, affordable, and understanding pet care when we needed someone to look after our own dogs. Many services were either beyond our budget or unwilling to take on certain breeds or behavioural challenges.",
-      "That experience inspired us to create something different — a safe, welcoming, and inclusive pet care business where every animal, regardless of breed, age, temperament, or behaviour, receives the care and understanding they deserve.",
-      "Before WildTails was established, we had already gained extensive experience in animal care and welfare, working with retired racehorses, birds of prey, and wildlife in conservation programs. These early experiences taught us valuable lessons in animal behaviour, trust-building, and wellbeing — forming the foundation for the compassionate approach we bring to every pet today.",
-      "Our huskies further deepened our understanding, teaching us patience, adaptability, and empathy through training, care, and daily routines. Together, these experiences shaped WildTails & Paws Walkers into more than just a pet service. It’s a business built on trust, respect, and a genuine love for animals.",
-      "At WildTails & Paws Walkers, we continue to grow from that same belief, offering professional, compassionate, and affordable care for all animals — one adventure and one friendship at a time."
-    ];
-
-    function typeWriter(id, text, speed, callback) {
-      let index = 0;
-      const el = document.getElementById(id);
-      el.style.opacity = 1;
-      el.style.borderRight = "2px solid #228B22";
-      function type() {
-        if(index < text.length) {
-          el.textContent += text.charAt(index);
-          index++;
-          setTimeout(type, speed);
-        } else {
-          el.classList.add("done");
-          if(callback) callback();
-        }
-      }
-      type();
-    }
-
-    function startTyping(i=0) {
-      if(i < paragraphs.length) {
-        typeWriter(`para${i+1}`, paragraphs[i], 30, () => {
-          setTimeout(() => startTyping(i+1), 300);
-        });
-      } else {
-        // Show blockquote after all paragraphs are typed
-        document.getElementById('quote').classList.add('visible');
-      }
-    }
-
-    window.onload = startTyping;
-
-    setInterval(() => {
-      document.querySelectorAll('p:not(.done)').forEach(p => {
-        p.style.borderRight = p.style.borderRight === "2px solid #228B22" ? "2px solid transparent" : "2px solid #228B22";
-      });
-    }, 500);
   </script>
 
 </body>
 </html>
+
 
 
