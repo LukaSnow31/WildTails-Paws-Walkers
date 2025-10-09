@@ -77,8 +77,6 @@
       user-select: none;
     }
 
-    .hamburger.active { content: "✖"; }
-
     .mobile-menu {
       display: none;
       flex-direction: column;
@@ -204,7 +202,6 @@
   <!-- Main Content -->
   <main class="container">
 
-    <!-- About Us Hero Section -->
     <section class="hero">
       <h1>About <span class="highlight">WildTails & Paws Walkers</span></h1>
 
@@ -224,13 +221,9 @@
   </footer>
 
   <script>
-    // Scroll fade-in effect
     const faders = document.querySelectorAll('.fade-in');
 
-    const appearOptions = {
-      threshold: 0.2,
-      rootMargin: "0px 0px -50px 0px"
-    };
+    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
 
     const appearOnScroll = new IntersectionObserver(function(entries, observer) {
       entries.forEach(entry => {
@@ -241,11 +234,8 @@
       });
     }, appearOptions);
 
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
+    faders.forEach(fader => { appearOnScroll.observe(fader); });
 
-    // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -256,9 +246,7 @@
 
     hamburger.addEventListener('click', toggleMenu);
 
-    // Close mobile menu when a link is clicked
-    const mobileLinks = document.querySelectorAll('#mobileMenu a');
-    mobileLinks.forEach(link => {
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.remove('show');
         hamburger.textContent = "☰";
@@ -268,4 +256,5 @@
 
 </body>
 </html>
+
 
