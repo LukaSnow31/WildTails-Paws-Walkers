@@ -5,185 +5,204 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About Us | WildTails & Paws Walkers</title>
   <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
+
   <style>
+    * { box-sizing: border-box; }
+
     body {
-      font-family: 'Quicksand', sans-serif;
-      background: url('WildTails-PawsWalkers/background.jpg') no-repeat center center/cover;
       margin: 0;
-      padding: 0;
-      color: #333;
+      font-family: 'Quicksand', sans-serif;
+      background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: #222;
       text-align: center;
     }
 
+    html { scroll-behavior: smooth; }
+
+    #logo {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      height: 280px;
+      width: auto;
+      z-index: 999;
+      border-radius: 50%;
+    }
+
     header {
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 10px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background-color: rgba(92, 64, 51, 0.9); /* transparent version of #5C4033 */
       position: fixed;
       width: 100%;
       top: 0;
-      z-index: 1000;
-    }
-
-    header img {
-      width: 120px;
+      z-index: 998;
+      padding-left: 150px;
+      backdrop-filter: blur(6px);
+      transition: background 0.3s ease;
     }
 
     nav {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
-      flex-wrap: wrap;
-      margin-top: 10px;
     }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    nav li { margin: 0; }
 
     nav a {
-      color: #333;
+      display: block;
+      padding: 18px 20px;
       text-decoration: none;
-      margin: 0 15px;
+      color: white;
       font-weight: bold;
-      font-size: 1em;
-      position: relative;
-      transition: color 0.3s ease;
+      transition: background 0.3s ease;
     }
 
-    nav a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      left: 0;
-      bottom: -3px;
-      background-color: #333;
-      transition: width 0.3s ease;
+    nav a:hover { background-color: rgba(78, 47, 34, 0.9); }
+
+    /* Hamburger icon */
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: white;
+      padding: 18px 20px;
+      user-select: none;
     }
 
-    nav a:hover::after {
+    /* Mobile dropdown menu */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: rgba(92, 64, 51, 0.95);
       width: 100%;
     }
 
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      position: absolute;
-      right: 20px;
-      top: 20px;
+    .mobile-menu a {
+      padding: 15px;
+      border-top: 1px solid rgba(78, 47, 34, 0.9);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
     }
 
-    .bar {
-      height: 3px;
-      width: 25px;
-      background-color: #333;
-      margin: 4px 0;
-      border-radius: 5px;
-      transition: 0.3s;
+    .mobile-menu a:hover {
+      background-color: rgba(78, 47, 34, 0.9);
     }
 
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.95);
-      }
-
-      nav.active {
-        display: flex;
-        animation: slideDown 0.4s ease;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
+    /* Main content box */
+    .container {
+      padding-top: 180px;
+      padding-bottom: 60px;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    @keyframes slideDown {
-      from {opacity: 0; transform: translateY(-10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    .about-container {
-      max-width: 800px;
+    .hero {
       background-color: rgba(255, 255, 255, 0.9);
-      margin: 140px auto 60px auto;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      padding: 50px 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
     }
 
-    .about-container h1 {
-      color: #2c3e50;
-      font-size: 2em;
-      margin-bottom: 20px;
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      color: #228B22;
+      margin-bottom: 25px;
     }
 
-    .about-container p {
-      font-size: 1.05em;
+    .hero p {
+      font-size: 18px;
       line-height: 1.8;
       margin-bottom: 20px;
+      color: #333;
     }
 
     footer {
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 10px 0;
-      font-size: 0.9em;
-      margin-top: 40px;
+      background-color: rgba(92, 64, 51, 0.9);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 80px;
     }
 
     @media (max-width: 768px) {
-      .about-container {
-        margin: 120px 10px 30px 10px;
-        padding: 25px;
-      }
-
-      .about-container h1 {
-        font-size: 1.6em;
-      }
-
-      .about-container p {
-        font-size: 1em;
-      }
+      #logo { position: static; display: block; margin: 10px auto; height: 100px; }
+      header { position: relative; padding-left: 0; }
+      nav ul { display: none; }
+      .hamburger { display: block; }
+      .mobile-menu.show { display: flex; }
+      .hero h1 { font-size: 30px; }
+      .hero p { font-size: 16px; }
+      .container { padding-top: 40px; padding-left: 10px; padding-right: 10px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Fixed Logo -->
+  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
+
+  <!-- Header Navigation -->
   <header>
-    <img src="WildTails-PawsWalkers/front logo.png" alt="WildTails & Paws Walkers Logo">
-
-    <div class="menu-toggle" id="menu-toggle">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-
-    <nav id="navbar">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="reviews.html">Reviews</a>
-      <a href="contact.html">Contact</a>
-      <a href="shop.html">Shop</a>
+    <nav>
+      <ul>
+        <li><a href="./">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="checkout.html">Check Out</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="booking.html">Book Now</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">☰</div>
     </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="./">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="services.html">Services</a>
+      <a href="shop.html">Shop</a>
+      <a href="checkout.html">Check Out</a>
+      <a href="review.html">Reviews</a>
+      <a href="booking.html">Book Now</a>
+      <a href="contact-us.html">Contact Us</a>
+    </div>
   </header>
 
-  <div class="about-container">
-    <h1>About WildTails & Paws Walkers</h1>
-    <p>
-      WildTails & Paws Walkers was founded in 2024 with a heartfelt mission to provide trusted, compassionate, and affordable pet care for all animals, regardless of breed, age, temperament, or behavioural needs. The inspiration came from our own struggles to find suitable care for our two huskies while travelling. Many services were either unavailable or too costly, which motivated us to build a dependable, home-style business that offered exceptional care without compromise.
-    </p>
-    <p>
-      Before founding WildTails & Paws Walkers, we spent years working hands-on with animals of all kinds, including retired racehorses, birds of prey, and wildlife in conservation programs. These experiences gave us a strong foundation in animal welfare, behaviour, and trust-building—skills that continue to guide our approach to every pet we care for today.
-    </p>
-    <p>
-      Our personal journey with our huskies has deepened our understanding of canine behaviour, training, and emotional wellbeing. Through patience, consistency, and compassion, we’ve learned how to connect with animals from all backgrounds—whether they’re energetic pups, nervous rescues, or gentle seniors.
-    </p>
-    <p>
-      At WildTails & Paws Walkers, we believe every animal deserves kindness, respect, and individual attention. From adventurous woodland walks to calm moments of companionship, we provide a tailored experience that ensures each pet feels safe, loved, and understood. Our business is built on trust, transparency, and a shared passion for helping pets live their happiest, healthiest lives—one paw at a time.
-    </p>
+  <!-- About Content -->
+  <div class="container">
+    <div class="hero">
+      <h1>About WildTails & Paws Walkers</h1>
+      <p>
+        WildTails & Paws Walkers was founded in 2024 with a heartfelt mission to provide trusted, compassionate, and affordable pet care for all animals, regardless of breed, age, temperament, or behavioural needs. The inspiration came from our own struggles to find suitable care for our two huskies while travelling. Many services were either unavailable or too costly, which motivated us to build a dependable, home-style business that offered exceptional care without compromise.
+      </p>
+      <p>
+        Before founding WildTails & Paws Walkers, we spent years working hands-on with animals of all kinds, including retired racehorses, birds of prey, and wildlife in conservation programs. These experiences gave us a strong foundation in animal welfare, behaviour, and trust-building—skills that continue to guide our approach to every pet we care for today.
+      </p>
+      <p>
+        Our personal journey with our huskies has deepened our understanding of canine behaviour, training, and emotional wellbeing. Through patience, consistency, and compassion, we’ve learned how to connect with animals from all backgrounds—whether they’re energetic pups, nervous rescues, or gentle seniors.
+      </p>
+      <p>
+        At WildTails & Paws Walkers, we believe every animal deserves kindness, respect, and individual attention. From adventurous woodland walks to calm moments of companionship, we provide a tailored experience that ensures each pet feels safe, loved, and understood. Our business is built on trust, transparency, and a shared passion for helping pets live their happiest, healthiest lives—one paw at a time.
+      </p>
+    </div>
   </div>
 
   <footer>
@@ -191,12 +210,11 @@
   </footer>
 
   <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const navbar = document.getElementById('navbar');
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-    menuToggle.addEventListener('click', () => {
-      navbar.classList.toggle('active');
-      menuToggle.classList.toggle('open');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('show');
     });
   </script>
 
