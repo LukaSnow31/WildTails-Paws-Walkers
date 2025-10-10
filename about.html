@@ -6,6 +6,7 @@
   <title>About Us | WildTails & Paws Walkers</title>
   <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
+
   <style>
     * { box-sizing: border-box; }
 
@@ -33,12 +34,14 @@
     }
 
     header {
-      background-color: #5C4033;
+      background-color: rgba(92, 64, 51, 0.9); /* transparent version of #5C4033 */
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 998;
       padding-left: 150px;
+      backdrop-filter: blur(6px);
+      transition: background 0.3s ease;
     }
 
     nav {
@@ -66,8 +69,9 @@
       transition: background 0.3s ease;
     }
 
-    nav a:hover { background-color: #4e2f22; }
+    nav a:hover { background-color: rgba(78, 47, 34, 0.9); }
 
+    /* Hamburger icon */
     .hamburger {
       display: none;
       font-size: 28px;
@@ -77,90 +81,71 @@
       user-select: none;
     }
 
+    /* Mobile dropdown menu */
     .mobile-menu {
       display: none;
       flex-direction: column;
-      background-color: #5C4033;
+      background-color: rgba(92, 64, 51, 0.95);
       width: 100%;
     }
 
     .mobile-menu a {
       padding: 15px;
-      border-top: 1px solid #4e2f22;
+      border-top: 1px solid rgba(78, 47, 34, 0.9);
       color: white;
       text-decoration: none;
       font-weight: bold;
     }
 
     .mobile-menu a:hover {
-      background-color: #4e2f22;
+      background-color: rgba(78, 47, 34, 0.9);
     }
 
+    /* Main content box */
     .container {
       padding-top: 180px;
-      padding-bottom: 40px;
-      max-width: 1000px;
+      padding-bottom: 60px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
     .hero {
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 60px 30px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 50px 30px;
       border-radius: 12px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      text-align: left;
+      text-align: center;
     }
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      margin-bottom: 25px;
+      font-size: 42px;
       color: #228B22;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-      opacity: 0;
-      transform: translateY(-10px);
-      animation: fadeIn 1.5s ease-in-out forwards;
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+      margin-bottom: 25px;
     }
 
     .hero p {
       font-size: 18px;
-      line-height: 1.7;
-      margin-bottom: 15px;
+      line-height: 1.8;
+      margin-bottom: 20px;
       color: #333;
     }
 
     footer {
-      background-color: #5C4033;
+      background-color: rgba(92, 64, 51, 0.9);
       color: white;
       text-align: center;
       padding: 20px;
       margin-top: 80px;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @media (max-width: 768px) {
-      #logo { position: static; display: block; margin: 10px auto; height: 80px; }
+      #logo { position: static; display: block; margin: 10px auto; height: 100px; }
       header { position: relative; padding-left: 0; }
       nav ul { display: none; }
       .hamburger { display: block; }
       .mobile-menu.show { display: flex; }
-      .hero { padding: 40px 20px; }
-      .hero h1 { font-size: 28px; }
+      .hero h1 { font-size: 30px; }
       .hero p { font-size: 16px; }
       .container { padding-top: 40px; padding-left: 10px; padding-right: 10px; }
     }
@@ -168,8 +153,10 @@
 </head>
 <body>
 
+  <!-- Fixed Logo -->
   <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 
+  <!-- Header Navigation -->
   <header>
     <nav>
       <ul>
@@ -185,6 +172,7 @@
       </ul>
       <div class="hamburger" id="hamburger">☰</div>
     </nav>
+
     <div class="mobile-menu" id="mobileMenu">
       <a href="./">Home</a>
       <a href="about.html">About Us</a>
@@ -198,63 +186,37 @@
     </div>
   </header>
 
-  <main class="container">
-
-    <section class="hero">
-      <h1 class="fade-in">About WildTails & Paws Walkers</h1>
-
-      <p class="fade-in">WildTails & Paws Walkers was founded in 2024 with a heartfelt mission to provide trusted, compassionate, and affordable pet care for all animals, regardless of breed, age, temperament, or behavioural needs. The inspiration came from our own struggles to find suitable care for our two huskies while travelling. Many services were either unavailable or too costly, which motivated us to build a dependable, home-style business that offered exceptional care without compromise.</p>
-
-      <p class="fade-in">Before founding WildTails & Paws Walkers, we spent years working hands-on with animals of all kinds, including retired racehorses, birds of prey, and wildlife in conservation programs. These experiences gave us a strong foundation in animal welfare, behaviour, and trust-building—skills that continue to guide our approach to every pet we care for today.</p>
-
-      <p class="fade-in">Our personal journey with our huskies has deepened our understanding of canine behaviour, training, and emotional wellbeing. Through patience, consistency, and compassion, we’ve learned how to connect with animals from all backgrounds—whether they’re energetic pups, nervous rescues, or gentle seniors.</p>
-
-      <p class="fade-in">At WildTails & Paws Walkers, we believe every animal deserves kindness, respect, and individual attention. From adventurous woodland walks to calm moments of companionship, we provide a tailored experience that ensures each pet feels safe, loved, and understood. Our business is built on trust, transparency, and a shared passion for helping pets live their happiest, healthiest lives—one paw at a time.</p>
-    </section>
-
-  </main>
+  <!-- About Content -->
+  <div class="container">
+    <div class="hero">
+      <h1>About WildTails & Paws Walkers</h1>
+      <p>
+        WildTails & Paws Walkers was founded in 2024 with a heartfelt mission to provide trusted, compassionate, and affordable pet care for all animals, regardless of breed, age, temperament, or behavioural needs. The inspiration came from our own struggles to find suitable care for our two huskies while travelling. Many services were either unavailable or too costly, which motivated us to build a dependable, home-style business that offered exceptional care without compromise.
+      </p>
+      <p>
+        Before founding WildTails & Paws Walkers, we spent years working hands-on with animals of all kinds, including retired racehorses, birds of prey, and wildlife in conservation programs. These experiences gave us a strong foundation in animal welfare, behaviour, and trust-building—skills that continue to guide our approach to every pet we care for today.
+      </p>
+      <p>
+        Our personal journey with our huskies has deepened our understanding of canine behaviour, training, and emotional wellbeing. Through patience, consistency, and compassion, we’ve learned how to connect with animals from all backgrounds—whether they’re energetic pups, nervous rescues, or gentle seniors.
+      </p>
+      <p>
+        At WildTails & Paws Walkers, we believe every animal deserves kindness, respect, and individual attention. From adventurous woodland walks to calm moments of companionship, we provide a tailored experience that ensures each pet feels safe, loved, and understood. Our business is built on trust, transparency, and a shared passion for helping pets live their happiest, healthiest lives—one paw at a time.
+      </p>
+    </div>
+  </div>
 
   <footer>
-    &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
+    &copy; 2025 WildTails & Paws Walkers. All rights reserved.
   </footer>
 
   <script>
-    // Fade in paragraphs individually
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, index * 300); // 300ms stagger per paragraph
-          observer.unobserve(entry.target);
-        }
-      });
-    }, appearOptions);
-
-    faders.forEach(fader => appearOnScroll.observe(fader));
-
-    // Mobile menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
-    function toggleMenu() {
+
+    hamburger.addEventListener('click', () => {
       mobileMenu.classList.toggle('show');
-      hamburger.textContent = mobileMenu.classList.contains('show') ? "✖" : "☰";
-    }
-    hamburger.addEventListener('click', toggleMenu);
-    const mobileLinks = document.querySelectorAll('#mobileMenu a');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('show');
-        hamburger.textContent = "☰";
-      });
     });
   </script>
 
 </body>
 </html>
-
-
-
