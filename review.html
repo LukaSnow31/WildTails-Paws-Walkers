@@ -231,6 +231,7 @@ footer {
 
 <!-- Separate Reviews Box -->
 <!-- Separate Reviews Box -->
+<!-- Separate Reviews Box -->
 <section class="reviews fade-in">
   <div class="reviews-inner">
     <h2>Customer Reviews</h2>
@@ -246,8 +247,10 @@ footer {
 
     <!-- Google Sheets Reviews -->
     <div id="reviews"></div>
-     </div> <!-- important! close reviews-inner -->
-     </section> <!-- important! close the section -->
+
+  </div> <!-- FIXED: close .reviews-inner -->
+
+</section> <!-- FIXED: now closes properly -->
 
 </main>
 
@@ -337,6 +340,7 @@ fetch(sheetURL)
 </script>
 </body>
 </html>
+
 
 
 
