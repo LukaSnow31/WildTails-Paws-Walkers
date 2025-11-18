@@ -230,22 +230,27 @@ footer {
 </section>
 
 <!-- Separate Reviews Box -->
+<!-- Separate Reviews Box -->
 <section class="reviews fade-in">
   <div class="reviews-inner">
     <h2>Customer Reviews</h2>
 
-  <!-- Zoho Report Embed -->
-  <div class="zoho-container fade-in">
-    <iframe id="zohoReviews" frameborder="0" 
-      style="width:100%; height:950px; border:none; border-radius:10px;" 
-      class="review-report fade-in"
-      src="https://forms.zohopublic.eu/infowildtailsan1/report/CustomerReviews/reportperma/riKPj1k0XZzdp649H7xpps7G1IVI2TTac41tGkGiBJ4">
-    </iframe>
-  </div>
+    <!-- Zoho Report Embed -->
+    <div class="zoho-container fade-in">
+      <iframe id="zohoReviews" frameborder="0" 
+        style="width:100%; height:950px; border:none; border-radius:10px;" 
+        class="review-report fade-in"
+        src="https://forms.zohopublic.eu/infowildtailsan1/report/CustomerReviews/reportperma/riKPj1k0XZzdp649H7xpps7G1IVI2TTac41tGkGiBJ4">
+      </iframe>
+    </div>
 
-  <!-- Google Sheets Reviews -->
-  <div id="reviews"></div>
-</section>
+    <!-- Google Sheets Reviews -->
+    <div id="reviews"></div>
+
+  </div> <!-- important! close reviews-inner -->
+
+</section> <!-- important! close the section -->
+
 </main>
 
 <footer>
@@ -334,6 +339,7 @@ fetch(sheetURL)
 </script>
 </body>
 </html>
+
 
 
 
