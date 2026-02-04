@@ -4,8 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shop | WildTails & Paws Walkers</title>
+
 <link rel="shortcut icon" href="WildTails-PawsWalkers/front logo.png" type="image/x-icon" />
 <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet" />
+
 <style>
 body {
   margin:0;
@@ -15,7 +17,6 @@ body {
   background-attachment:fixed;
   background-repeat:no-repeat;
   color:#222;
-  scroll-behavior:smooth;
 }
 
 #logo {
@@ -23,77 +24,43 @@ body {
   top:10px;
   left:10px;
   height:280px;
-  width:auto;
-  z-index:999;
   border-radius:50%;
+  z-index:999;
 }
 
 nav {
   position:fixed;
   top:0;
   width:100%;
-  background-color:#5C4033;
+  background:#5C4033;
   z-index:998;
   padding-left:130px;
   display:flex;
   justify-content:space-between;
-  align-items:center;
 }
 
 nav ul {
   list-style:none;
+  display:flex;
   margin:0;
   padding:0;
-  display:flex;
-  justify-content:flex-end;
-  flex-wrap:wrap;
-  transition:max-height 0.3s ease-in-out;
 }
 
-nav li { margin:0; }
 nav a {
-  display:block;
   padding:18px 20px;
-  text-decoration:none;
   color:white;
+  text-decoration:none;
   font-weight:bold;
-  transition:background 0.3s ease;
 }
 
-nav a:hover { background-color:#4e2f22; }
+nav a:hover { background:#4e2f22; }
 
-.menu-toggle {
-  display:none;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  cursor:pointer;
-  padding:10px 20px;
-}
-
-.menu-toggle div {
-  width:25px;
-  height:3px;
-  background:white;
-  margin:4px 0;
-  transition:all 0.3s ease;
-}
-
-.menu-toggle.active div:nth-child(1) {
-  transform:rotate(45deg) translate(5px,5px);
-}
-.menu-toggle.active div:nth-child(2) {
-  opacity:0;
-}
-.menu-toggle.active div:nth-child(3) {
-  transform:rotate(-45deg) translate(5px,-5px);
-}
+.menu-toggle { display:none; }
 
 .container {
   padding-top:140px;
-  padding-bottom:40px;
   max-width:1000px;
-  margin:0 auto;
+  margin:auto;
   text-align:center;
 }
 
@@ -104,101 +71,50 @@ nav a:hover { background-color:#4e2f22; }
   border-radius:10px;
   box-shadow:0 2px 8px rgba(0,0,0,0.1);
   display:inline-block;
-  vertical-align:top;
   width:calc(33% - 40px);
-  box-sizing:border-box;
 }
 
-.shop-item h3 { font-family:'Playfair Display', serif; }
-
-.product-gallery { text-align:center; }
 .main-image {
   width:100%;
   max-width:280px;
   border-radius:10px;
-  box-shadow:0 0 5px rgba(0,0,0,0.2);
-  cursor:pointer;
-  transition:0.3s;
 }
+
 .thumbnail-container {
-  margin-top:8px;
   display:flex;
   justify-content:center;
   gap:6px;
-  flex-wrap:wrap;
+  margin-top:6px;
 }
+
 .thumbnail {
   width:50px;
   height:50px;
-  object-fit:cover;
   border-radius:6px;
   cursor:pointer;
   opacity:0.7;
-  transition:0.2s;
 }
-.thumbnail:hover { opacity:1; transform:scale(1.05); }
+
+.thumbnail:hover { opacity:1; }
 
 .shop-item button {
-  padding:8px 16px;
   background:#5C4033;
   color:white;
   border:none;
+  padding:10px;
   border-radius:6px;
   cursor:pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
+  width:100%;
 }
-.shop-item button:hover { background:#4e2f22; transform:scale(1.05); }
-.shop-item .price { font-weight:bold; margin-bottom:10px; }
+
+.shop-item button:hover { background:#4e2f22; }
 
 #cart {
   background:white;
   padding:20px;
-  margin:20px auto;
   border-radius:10px;
   max-width:600px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.1);
-  text-align:left;
-}
-
-#cart p {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:8px 0;
-  flex-wrap:wrap;
-}
-
-#cart button.remove-btn {
-  background:#c0392b;
-  color:white;
-  border:none;
-  border-radius:4px;
-  padding:4px 8px;
-  cursor:pointer;
-  font-size:0.9em;
-}
-
-#cart button.remove-btn:hover { background:#e74c3c; }
-
-#checkout-btn {
-  margin-top:10px;
-  padding:12px 20px;
-  font-size:1.1em;
-  background:#5C4033;
-  color:white;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-#checkout-btn:hover { background:#4e2f22; }
-
-footer {
-  background-color:#5C4033;
-  color:white;
-  text-align:center;
-  padding:20px;
-  margin-top:80px;
+  margin:auto;
 }
 
 #cart-icon {
@@ -207,15 +123,13 @@ footer {
   right:20px;
   background:#5C4033;
   color:white;
-  border-radius:50%;
   width:50px;
   height:50px;
+  border-radius:50%;
   display:flex;
   justify-content:center;
   align-items:center;
   cursor:pointer;
-  z-index:1000;
-  font-weight:bold;
 }
 
 #cart-count {
@@ -224,382 +138,237 @@ footer {
   right:-5px;
   background:#c0392b;
   color:white;
+  border-radius:50%;
   width:18px;
   height:18px;
-  border-radius:50%;
   font-size:0.8em;
-  display:flex;
-  justify-content:center;
-  align-items:center;
 }
 
-#mini-cart {
-  position:absolute;
-  top:60px;
-  right:0;
-  width:250px;
-  background:white;
-  border-radius:10px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.2);
-  padding:10px;
-  display:none;
-  z-index:1001;
-}
-
-#mini-cart p { font-size:0.9em; margin:6px 0; display:flex; justify-content:space-between; }
-#mini-cart button {
-  background:#c0392b;
-  border:none;
-  color:white;
-  border-radius:4px;
-  font-size:0.8em;
-  cursor:pointer;
-  padding:2px 6px;
-}
-
-.cart-animate { transform: scale(1.2); transition: transform 0.3s ease; }
-.show { display:block !important; }
-
-/* LIGHTBOX STYLES */
-#lightbox-overlay {
-  display:none;
-  position:fixed;
-  top:0;
-  left:0;
-  width:100vw;
-  height:100vh;
-  background:rgba(0,0,0,0.9);
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
-  flex-direction:column;
-}
-#lightbox-overlay img {
-  max-width:90%;
-  max-height:80%;
-  border-radius:10px;
-  margin-bottom:15px;
-}
-#lightbox-controls {
-  display:flex;
-  gap:20px;
-}
-#lightbox-controls button {
-  padding:8px 12px;
+footer {
   background:#5C4033;
   color:white;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-  font-size:1em;
-}
-#lightbox-controls button:hover { background:#4e2f22; }
-
-@media (max-width:1024px){
-  .shop-item { width:calc(50% - 40px); }
+  text-align:center;
+  padding:20px;
+  margin-top:60px;
 }
 
-@media (max-width:768px){
-  #logo { position:static; display:block; margin:10px auto; height:100px; }
-  nav { padding-left:0; flex-direction:column; align-items:flex-start; }
-  nav ul {
-    flex-direction:column;
-    width:100%;
-    max-height:0;
-    overflow:hidden;
-    background-color:#5C4033;
-  }
-  nav li { width:100%; text-align:center; }
-  nav a { padding:14px; width:100%; }
-  .menu-toggle { display:flex; }
-  .menu-toggle.active + ul { max-height:500px; }
-  .container { padding:120px 15px 40px; }
-  .thumbnail-container { gap:4px; }
-  #cart { width:95%; padding:15px; }
-  #cart p { flex-direction:column; align-items:flex-start; }
-  #checkout-btn { width:100%; }
-  #mini-cart { width:90%; right:5%; }
+/* MOBILE IMPROVEMENTS */
+@media(max-width:600px){
+  .shop-item { width:100%; margin:15px 0; }
+  .shop-item button { padding:14px; }
+  #logo { position:static; height:120px; margin:10px auto; display:block; }
 }
 </style>
 </head>
+
 <body>
 
-<img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
+<img id="logo" src="WildTails-PawsWalkers/front logo.png">
 
 <nav>
-  <div class="menu-toggle" id="mobile-menu">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-  <ul>
-    <li><a href="./">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="checkout.html">Check Out</a></li>
-    <li><a href="review.html">Reviews</a></li>
-    <li><a href="booking.html">Book Now</a></li>
-    <li><a href="contact-us.html">Contact Us</a></li>
-  </ul>
+<ul>
+  <li><a href="./">Home</a></li>
+  <li><a href="shop.html">Shop</a></li>
+  <li><a href="contact-us.html">Contact</a></li>
+</ul>
 </nav>
 
-<div id="cart-icon">
-  🛒<div id="cart-count">0</div>
-  <div id="mini-cart"></div>
-</div>
+<div id="cart-icon">🛒<div id="cart-count">0</div></div>
 
 <main class="container">
-  <section id="Shop">
-    <h1>Shop</h1>
-    <div id="product-list">Loading products...</div>
-  </section>
 
-  <section id="CartSection">
-    <h2>Your Cart</h2>
-    <div id="cart">Your cart is empty.</div>
-    <div id="paypal-button-container"></div>
-  </section>
+<h1>Shop</h1>
+<div style="margin-bottom:10px;">
+  <label><strong>Filter by Category:</strong></label>
+  <select id="category-filter" style="width:100%;padding:8px;">
+    <option value="all">All</option>
+    <option value="pet">Pet Items</option>
+    <option value="accessories">Accessories</option>
+    <option value="art">Artwork</option>
+    <option value="candles">Candles/Wax</option>
+    <option value="clay">Clay Items</option>
+    <option value="others">Other</option>
+  </select>
+</div>
+
+<div id="product-list"></div>
+
+<h2>Your Cart</h2>
+<div id="cart">Your cart is empty.</div>
+
+<div style="margin:15px 0;">
+<label><strong>Shipping</strong></label>
+<select id="shipping" style="width:100%;padding:8px;">
+  <option value="0">Local Collection – Free</option>
+  <option value="3.99">UK Small Parcel – £3.99</option>
+  <option value="6.99">UK Tracked – £6.99</option>
+</select>
+</div>
+
+<p id="shipping-cost"><strong>Shipping:</strong> £0.00</p>
+<p id="order-total"><strong>Total:</strong> £0.00</p>
+
+<div id="paypal-button-container"></div>
+
+<p style="font-size:0.85em;">
+You will receive a PayPal receipt by email.<br>
+Orders dispatch within 2–5 working days.
+</p>
+
 </main>
 
 <footer>
-  &copy; 2025 WildTails & Paws Walkers • All Rights Reserved
+&copy; 2025 WildTails & Paws Walkers
 </footer>
-
-<!-- LIGHTBOX OVERLAY -->
-<div id="lightbox-overlay">
-  <img src="" alt="Product Preview">
-  <div id="lightbox-controls">
-    <button id="prev-btn">◀ Prev</button>
-    <button id="next-btn">Next ▶</button>
-    <button id="close-btn">Close ✖</button>
-  </div>
-</div>
 
 <script src="https://www.paypal.com/sdk/js?client-id=AX4Tiv9qeR9nOAof7COXV3oWHrlEmd8yDjiHPA1WCUeFX2joVvxYsB6SGsa1KLBnMUF4qSjmegmWxPXu&currency=GBP"></script>
 
 <script>
-const menuToggle = document.getElementById('mobile-menu');
-const navMenu = document.querySelector('nav ul');
-menuToggle.addEventListener('click', () => {
-  menuToggle.classList.toggle('active');
-  navMenu.classList.toggle('show');
-});
+const products = [
+  { id:"bandana", title:"WildTails Dog Bandana", price:6.99, category:"pet", stock:5, images:["images/bandana1.jpg","images/bandana2.jpg"] },
+  { id:"towel", title:"Paw Print Dog Towel", price:12.50, category:"pet", stock:3, images:["images/towel1.jpg"] },
+  { id:"pin", title:"Pin Badge", price:5.00, category:"accessories", stock:10, images:["images/pin.jpg"] },
+  { id:"art1", title:"Digital Artwork", price:15.00, category:"art", stock:5, images:["images/art1.jpg"] },
+  { id:"candle1", title:"Pet Candle", price:8.00, category:"candles", stock:4, images:["images/candle1.jpg"] },
+  { id:"clay1", title:"Clay Magnet", price:4.50, category:"clay", stock:7, images:["images/clay1.jpg"] }
+];
 
-let cart = [];
-const cartIcon = document.getElementById('cart-icon');
-const cartCount = document.getElementById('cart-count');
-const miniCart = document.getElementById('mini-cart');
+let cart=[];
+let shippingCost=0;
+let activeCategory="all";
 
-let productsData = [];
+const productList=document.getElementById("product-list");
+const categoryFilter=document.getElementById("category-filter");
 
-async function getProducts() {
-  try {
-    const res = await fetch('https://printify-server.onrender.com/products');
-    const data = await res.json();
-    productsData = data.data;
-    const container = document.getElementById('product-list');
-    container.innerHTML = '';
+categoryFilter.addEventListener("change",()=>{ activeCategory=categoryFilter.value; renderProducts(); });
 
-    productsData.forEach((product,index) => {
-      const div = document.createElement('div');
-      div.className = 'shop-item';
+function renderProducts(){
+  productList.innerHTML="";
+  products
+    .filter(p=>activeCategory==="all" || p.category===activeCategory)
+    .forEach(p=>{
+      const d=document.createElement("div");
+      d.className="shop-item";
 
-      const images = product.images || [];
-      const mainImage = images[0]?.src || '';
-      const thumbnailsHTML = images.map((img,i) => `
-        <img src="${img.src}" alt="${product.title}" class="thumbnail ${i===0?'active':''}" onclick="changeImage(this,${index},${i})">
-      `).join('');
+      const disabledText = p.stock === 0 ? 'disabled' : '';
+      const buttonText = p.stock === 0 ? 'Sold Out' : 'Add to Cart';
 
-      const variantsHTML = product.variants?.map(v => `
-        <option value='${JSON.stringify({variant_id:v.id,title:v.title,price:v.price/100})}'>
-          ${v.title} - £${(v.price/100).toFixed(2)}
-        </option>
-      `).join('') || '';
-
-      div.innerHTML = `
-        <h3>${product.title}</h3>
-        <div class="product-gallery">
-          <img src="${mainImage}" alt="${product.title}" class="main-image" onclick="openLightbox(${index},0)">
-          <div class="thumbnail-container">${thumbnailsHTML}</div>
+      d.innerHTML=`
+        <h3>${p.title}</h3>
+        <img src="${p.images[0]}" class="main-image">
+        <div class="thumbnail-container">
+          ${p.images.map(i=>`<img src="${i}" class="thumbnail" onclick="this.parentNode.previousElementSibling.src='${i}'">`).join("")}
         </div>
-        <p class="price">£${(product.variants?.[0]?.price/100).toFixed(2)}</p>
-        <select style="margin-bottom:10px;">${variantsHTML}</select>
-        <button>Add to Cart</button>
+        <p><strong>£${p.price.toFixed(2)}</strong></p>
+        <p><em>Stock: ${p.stock}</em></p>
+        <button ${disabledText} onclick="addToCart('${p.id}','${p.title}',${p.price})">${buttonText}</button>
       `;
-
-      const select = div.querySelector('select');
-      const priceP = div.querySelector('.price');
-      const button = div.querySelector('button');
-
-      select.addEventListener('change', () => {
-        const selected = JSON.parse(select.value);
-        priceP.textContent = '£' + selected.price.toFixed(2);
-      });
-
-      button.addEventListener('click', () => {
-        const selected = JSON.parse(select.value);
-        addToCart(selected.variant_id, selected.title, selected.price);
-      });
-
-      container.appendChild(div);
+      productList.appendChild(d);
     });
-  } catch(e) {
-    console.error(e);
-    document.getElementById('product-list').textContent = 'Failed to load products.';
+}
+
+function addToCart(id,title,price){
+  const product = products.find(p => p.id===id);
+  if(product.stock === 0) return;
+
+  const item=cart.find(i=>i.id===id);
+  if(item){
+    if(product.stock > 0){
+      item.qty++;
+      product.stock--;
+    }
+  } else {
+    cart.push({id,title,price,qty:1});
+    product.stock--;
   }
-}
 
-// CHANGE MAIN IMAGE & HIGHLIGHT THUMBNAIL
-function changeImage(element,prodIndex,imgIndex){
-  const gallery = element.closest('.product-gallery');
-  const mainImage = gallery.querySelector('.main-image');
-  mainImage.src = element.src;
-  
-  // Highlight active thumbnail
-  const thumbnails = gallery.querySelectorAll('.thumbnail');
-  thumbnails.forEach(t=>t.classList.remove('active'));
-  element.classList.add('active');
-}
-
-// CART FUNCTIONS
-function addToCart(variantId, title, price) {
-  const item = cart.find(i=>i.variant_id===variantId);
-  if(item) item.quantity++;
-  else cart.push({variant_id:variantId,title,quantity:1,price});
-  renderCart();
-  cartIcon.classList.add('cart-animate');
-  setTimeout(()=>cartIcon.classList.remove('cart-animate'),400);
-}
-function removeFromCart(variantId){
-  cart = cart.filter(i=>i.variant_id!==variantId);
+  renderProducts();
   renderCart();
 }
+
+function removeFromCart(id){
+  const index = cart.findIndex(i=>i.id===id);
+  if(index > -1){
+    const product = products.find(p=>p.id===id);
+    if(product) product.stock += cart[index].qty;
+    cart.splice(index,1);
+  }
+  renderProducts();
+  renderCart();
+}
+
+function changeQty(id, delta){
+  const item = cart.find(i=>i.id===id);
+  const product = products.find(p=>p.id===id);
+  if(!item || !product) return;
+
+  if(delta>0 && product.stock>0){
+    item.qty++;
+    product.stock--;
+  } else if(delta<0 && item.qty>0){
+    item.qty--;
+    product.stock++;
+  }
+
+  if(item.qty===0) removeFromCart(id);
+  renderProducts();
+  renderCart();
+}
+
 function renderCart(){
-  const cartDiv = document.getElementById('cart');
-  cartDiv.innerHTML='';
-  miniCart.innerHTML='';
-  if(cart.length===0){
-    cartDiv.textContent='Your cart is empty.';
-    miniCart.textContent='Cart is empty.';
-    cartCount.textContent=0;
-    miniCart.classList.remove('show');
-    return;
-  }
+  const c=document.getElementById("cart");
+  c.innerHTML="";
+  if(cart.length===0){ c.textContent="Your cart is empty."; return; }
 
-  cart.forEach(item=>{
-    const p=document.createElement('p');
-    const span=document.createElement('span');
-    span.textContent=`${item.title} x ${item.quantity} - £${(item.price*item.quantity).toFixed(2)}`;
-    p.appendChild(span);
-
-    const removeBtn=document.createElement('button');
-    removeBtn.className='remove-btn';
-    removeBtn.textContent='Remove';
-    removeBtn.addEventListener('click', ()=>removeFromCart(item.variant_id));
-    p.appendChild(removeBtn);
-    cartDiv.appendChild(p);
-
-    const mp=document.createElement('p');
-    const miniSpan=document.createElement('span');
-    miniSpan.textContent=`${item.title} x ${item.quantity} - £${(item.price*item.quantity).toFixed(2)}`;
-    mp.appendChild(miniSpan);
-
-    const miniRemoveBtn=document.createElement('button');
-    miniRemoveBtn.className='remove-btn';
-    miniRemoveBtn.textContent='×';
-    miniRemoveBtn.addEventListener('click', ()=>removeFromCart(item.variant_id));
-    mp.appendChild(miniRemoveBtn);
-    miniCart.appendChild(mp);
+  cart.forEach(i=>{
+    const p=document.createElement("p");
+    p.innerHTML=`
+      ${i.title} x ${i.qty} – £${(i.price*i.qty).toFixed(2)}
+      <button style="margin-left:6px;" onclick="changeQty('${i.id}',1)">+</button>
+      <button style="margin-left:3px;" onclick="changeQty('${i.id}',-1)">-</button>
+      <button style="margin-left:3px;" onclick="removeFromCart('${i.id}')">Remove</button>
+    `;
+    c.appendChild(p);
   });
-
-  cartCount.textContent=cart.reduce((a,b)=>a+b.quantity,0);
-  miniCart.classList.add('show');
+  updateTotals();
 }
-cartIcon.addEventListener('click',()=>{document.getElementById('CartSection').scrollIntoView({behavior:'smooth'});});
-cartIcon.addEventListener('mouseenter',()=>{miniCart.classList.add('show');});
-cartIcon.addEventListener('mouseleave',()=>{miniCart.classList.remove('show');});
 
-// PAYPAL
+document.getElementById("shipping").addEventListener("change",e=>{
+  shippingCost=parseFloat(e.target.value);
+  updateTotals();
+});
+
+function updateTotals(){
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById("shipping-cost").textContent=`Shipping: £${shippingCost.toFixed(2)}`;
+  document.getElementById("order-total").textContent=`Total: £${(total+shippingCost).toFixed(2)}`;
+}
+
 paypal.Buttons({
-  createOrder: async (data, actions)=>{
-    const res = await fetch('https://printify-server.onrender.com/api/create-paypal-order',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({line_items:cart})
+  createOrder:(data,actions)=>{
+    const total=cart.reduce((s,i)=>s+i.price*i.qty,0)+shippingCost;
+    return actions.order.create({
+      purchase_units:[{
+        description:"WildTails & Paws Walkers – Handmade Items",
+        amount:{currency_code:"GBP",value:total.toFixed(2)}
+      }]
     });
-    const d = await res.json();
-    return d.id;
   },
-  onApprove: async (data, actions)=>{
-    const res = await fetch('https://printify-server.onrender.com/api/create-order',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({orderID:data.orderID, line_items:cart})
+  onApprove:(data,actions)=>{
+    return actions.order.capture().then(()=>{
+      alert("Thank you for your order 🐾\nOrders ship within 2–5 working days.");
+      cart=[];
+      renderProducts();
+      renderCart();
     });
-    const result = await res.json();
-    if(result.success){alert('Payment completed and order sent to Printify!'); cart=[]; renderCart();}
-    else alert('Something went wrong. Please try again.');
-  },
-  onError: err=>{console.error(err); alert('PayPal transaction failed.');}
-}).render('#paypal-button-container');
-
-getProducts();
-
-// --- LIGHTBOX ---
-const lightboxOverlay = document.getElementById('lightbox-overlay');
-const lightboxImage = lightboxOverlay.querySelector('img');
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-const closeBtn = document.getElementById('close-btn');
-
-let currentProductIndex = 0;
-let currentImageIndex = 0;
-
-function openLightbox(prodIndex,imgIndex){
-  currentProductIndex = prodIndex;
-  currentImageIndex = imgIndex;
-  lightboxOverlay.style.display = 'flex';
-  showLightboxImage();
-}
-
-function showLightboxImage(){
-  const images = productsData[currentProductIndex].images || [];
-  if(images.length===0) return;
-  lightboxImage.src = images[currentImageIndex].src;
-}
-
-// Prev/Next buttons
-prevBtn.addEventListener('click',()=>{
-  const images = productsData[currentProductIndex].images || [];
-  if(images.length===0) return;
-  currentImageIndex = (currentImageIndex-1+images.length)%images.length;
-  showLightboxImage();
-});
-nextBtn.addEventListener('click',()=>{
-  const images = productsData[currentProductIndex].images || [];
-  if(images.length===0) return;
-  currentImageIndex = (currentImageIndex+1)%images.length;
-  showLightboxImage();
-});
-
-// Close button and click outside
-closeBtn.addEventListener('click',()=>{ lightboxOverlay.style.display='none'; });
-lightboxOverlay.addEventListener('click',(e)=>{
-  if(e.target===lightboxOverlay) lightboxOverlay.style.display='none';
-});
-
-// --- KEYBOARD NAVIGATION ---
-document.addEventListener('keydown',(e)=>{
-  if(lightboxOverlay.style.display==='flex'){
-    if(e.key==='ArrowLeft') prevBtn.click();
-    if(e.key==='ArrowRight') nextBtn.click();
-    if(e.key==='Escape') closeBtn.click();
   }
-});
+}).render("#paypal-button-container");
+
+renderProducts();
 </script>
 
 </body>
 </html>
+
+
 
