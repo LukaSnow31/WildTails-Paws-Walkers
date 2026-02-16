@@ -232,10 +232,43 @@ Orders dispatch within 2–5 working days.
 
 <script>
 const products = [
-  
-  { id:"blanket1", title:"Embroidered logo Pet blanket Size M", price:12.50, category:"pet", stock:3, images:["images/blanket1.jpg"] },
-  { id:"blanket2", title:"Embroidered logo Pet blanket Size L", price:12.50, category:"pet", stock:3, images:["images/blanket2.jpg"] },
- 
+  { 
+    id:"blanket1",
+    title:"Embroidered Pet Blanket Size M",
+    price:11.50,
+    category:"pet",
+    stock:2,
+    images:["https://i.postimg.cc/tRsw56vm/Whats-App-Image-2026-02-15-at-23-47-29.jpg"],
+    description:`
+      • 100% Polyester<br>
+      • Hemmed square edges<br>
+      • Satin care label<br>
+      • Fabric weight: 160gsm<br>
+      • Item weight: 0.10kg<br>
+      • Size: 100cm x 80cm<br>
+      • Maximum print area: 97cm x 77cm
+    `
+  },
+
+  { 
+    id:"blanket2",
+    title:"Embroidered Pet Blanket Size L",
+    price:13.50,
+    category:"pet",
+    stock:2,
+    images:["https://i.postimg.cc/tRsw56vm/Whats-App-Image-2026-02-15-at-23-47-29.jpg"],
+    description:`
+      • 100% Polyester<br>
+      • Hemmed square edges<br>
+      • Satin care label<br>
+      • Fabric weight: 160gsm<br>
+      • Item weight: 0.30kg<br>
+      • Size: 150cm x 100cm<br>
+      • Maximum print area: 147cm x 97cm
+    `
+  }
+];
+
 let cart=[];
 let shippingCost=0;
 let activeCategory="all";
@@ -243,7 +276,10 @@ let activeCategory="all";
 const productList=document.getElementById("product-list");
 const categoryFilter=document.getElementById("category-filter");
 
-categoryFilter.addEventListener("change",()=>{ activeCategory=categoryFilter.value; renderProducts(); });
+categoryFilter.addEventListener("change",()=>{
+  activeCategory=categoryFilter.value;
+  renderProducts();
+});
 
 function renderProducts(){
   productList.innerHTML="";
@@ -258,23 +294,58 @@ function renderProducts(){
 
       d.innerHTML=`
         <h3>${p.title}</h3>
+
         <img src="${p.images[0]}" class="main-image">
         <div class="thumbnail-container">
           ${p.images.map(i=>`<img src="${i}" class="thumbnail" onclick="this.parentNode.previousElementSibling.src='${i}'">`).join("")}
         </div>
+
         <p><strong>£${p.price.toFixed(2)}</strong></p>
+
+        <div class="description-container">
+          <div class="short-desc">
+            100% Polyester • Hemmed edges • 160gsm
+          </div>
+
+          <div class="full-desc" id="desc-${p.id}" style="display:none;">
+            ${p.description}
+          </div>
+
+          <button class="read-more-btn" onclick="toggleDescription('${p.id}')">
+            Read More
+          </button>
+        </div>
+
         <p><em>Stock: ${p.stock}</em></p>
-        <button ${disabledText} onclick="addToCart('${p.id}','${p.title}',${p.price})">${buttonText}</button>
+
+        <button ${disabledText} onclick="addToCart('${p.id}','${p.title}',${p.price})">
+          ${buttonText}
+        </button>
       `;
+
       productList.appendChild(d);
     });
 }
 
+ function toggleDescription(id){
+  const desc = document.getElementById("desc-"+id);
+  const btn = desc.nextElementSibling;
+
+  if(desc.style.display === "none"){
+    desc.style.display = "block";
+    btn.textContent = "Read Less";
+  } else {
+    desc.style.display = "none";
+    btn.textContent = "Read More";
+  }
+}
+ 
 function addToCart(id,title,price){
   const product = products.find(p => p.id===id);
   if(product.stock === 0) return;
 
   const item=cart.find(i=>i.id===id);
+
   if(item){
     if(product.stock > 0){
       item.qty++;
@@ -314,6 +385,7 @@ function changeQty(id, delta){
   }
 
   if(item.qty===0) removeFromCart(id);
+
   renderProducts();
   renderCart();
 }
@@ -321,7 +393,11 @@ function changeQty(id, delta){
 function renderCart(){
   const c=document.getElementById("cart");
   c.innerHTML="";
-  if(cart.length===0){ c.textContent="Your cart is empty."; return; }
+  if(cart.length===0){
+    c.textContent="Your cart is empty.";
+    updateTotals();
+    return;
+  }
 
   cart.forEach(i=>{
     const p=document.createElement("p");
@@ -333,6 +409,7 @@ function renderCart(){
     `;
     c.appendChild(p);
   });
+
   updateTotals();
 }
 
@@ -372,6 +449,7 @@ renderProducts();
 
 </body>
 </html>
+
 
 
 
