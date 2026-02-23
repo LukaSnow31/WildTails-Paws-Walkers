@@ -424,10 +424,17 @@ function renderProducts() {
           ${p.images.map(i => `<img src="${i}" class="thumbnail" onclick="this.parentNode.previousElementSibling.src='${i}'">`).join("")}
         </div>
         <p><strong>£${p.price.toFixed(2)}</strong></p>
-        <div class="description-container">
-          <div class="short-desc">
-            100% Polyester • Hemmed edges • 160gsm
-          </div>
+       <div class="description-container">
+  <div class="full-desc" id="desc-${p.id}">
+    ${p.description}
+<div class="description-container">
+  <div class="full-desc" id="desc-${p.id}">
+    ${p.description}
+  </div>
+     <button class="read-more-btn" onclick="toggleDescription('${p.id}', this)">
+    Read More
+     </button>
+     </div>
           <div class="full-desc" id="desc-${p.id}">
             ${p.description}
           </div>
@@ -533,6 +540,7 @@ renderProducts();
 </script>
 </body> 
 </html>
+
 
 
 
