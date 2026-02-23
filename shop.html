@@ -17,6 +17,16 @@ body {
   background-attachment:fixed;
   background-repeat:no-repeat;
   color:#222;
+  .product { border:1px solid #ccc; padding:1rem; margin-bottom:1rem; border-radius:8px; background:#fff; }
+  .product img { max-width:200px; display:block; margin-bottom:0.5rem; }
+  .product h2 { margin-top:0; }
+  .price { font-weight:bold; margin:0.5rem 0; }
+  .toggle-btn { background:#007bff; color:#fff; padding:0.5rem 1rem; border:none; border-radius:4px; cursor:pointer; margin-top:0.5rem; }
+  .toggle-btn:hover { background:#0056b3; }
+  .description { display:none; margin-top:0.5rem; white-space: pre-wrap; }
+  .description p { margin:0.6rem 0; }
+  .description ul { padding-left:1.5rem; margin:0.5rem 0; }
+  .description li { margin-bottom:0.3rem; }
 }
 
 #logo {
@@ -255,295 +265,290 @@ const products = [
     id:"blanket1",
     title:"Embroidered Pet Blanket Size M",
     price:11.50,
-    category:"pet",
-    stock:2,
     images:["https://i.postimg.cc/tRsw56vm/Whats-App-Image-2026-02-15-at-23-47-29.jpg"],
-    description:`
-• 100% Polyester
+    description:`• 100% Polyester
 • Hemmed square edges
 • Satin care label
 • Fabric weight: 160gsm
 • Item weight: 0.10kg
 • Size: 100cm x 80cm
-• Maximum print area: 97cm x 77cm
-    `
+• Maximum print area: 97cm x 77cm`
   },
   { 
     id:"blanket2",
     title:"Embroidered Pet Blanket Size L",
     price:13.50,
-    category:"pet",
-    stock:2,
     images:["https://i.postimg.cc/tRsw56vm/Whats-App-Image-2026-02-15-at-23-47-29.jpg"],
-    description:`
-• 100% Polyester
+    description:`• 100% Polyester
 • Hemmed square edges
 • Satin care label
 • Fabric weight: 160gsm
 • Item weight: 0.30kg
 • Size: 150cm x 100cm
-• Maximum print area: 147cm x 97cm
-    `
+• Maximum print area: 147cm x 97cm`
   },
+
+  // --- Dog Treats ---
   { 
     id:"dogtreats1",
     title:"Rabbit Ears With Fur",
     price:5.50,
-    category:"pet",
-    stock:8,
     images:[""],
-    description:`
-A simple, single-ingredient chew made from 100% rabbit cartilage with natural fur intact. 
+    description:`A simple, single-ingredient chew made from 100% rabbit cartilage with natural fur intact.  
 Ethically sourced and gently prepared with nothing added and nothing artificial.
-These low-fat, easily digestible treats are perfect for supporting your dog’s natural chewing instinct while helping to maintain healthy teeth and strong jaw muscles. 
-The natural fur provides an added benefit by acting as a gentle digestive aid, helping to support gut health as it moves naturally through the system.
-Unlike many processed bones or synthetic chews, rabbit ears are lightweight, highly digestible and well tolerated.
-These are a great option for sensitive stomachs, allergy-prone dogs and those on limited-ingredient diets.
+
+These low-fat, easily digestible treats are perfect for supporting your dog’s natural chewing instinct while helping to maintain healthy teeth and strong jaw muscles.  
+
+The natural fur provides an added benefit by acting as a gentle digestive aid, helping to support gut health as it moves naturally through the system.  
+Unlike many processed bones or synthetic chews, rabbit ears are lightweight, highly digestible and well tolerated.  
+These are a great option for sensitive stomachs, allergy-prone dogs and those on limited-ingredient diets.  
 100g per pack.
 
-✔ 100% Natural
-✔ Ethically sourced
-✔ No additives or preservatives
-✔ Low in fat
-✔ Supports dental hygiene
-✔ Suitable for sensitive dogs
+<ul>
+<li>✔ 100% Natural</li>
+<li>✔ Ethically sourced</li>
+<li>✔ No additives or preservatives</li>
+<li>✔ Low in fat</li>
+<li>✔ Supports dental hygiene</li>
+<li>✔ Suitable for sensitive dogs</li>
+</ul>
 
 A wholesome, instinct-friendly chew your dog will love, naturally.
 
-Composition: 100% rabbit ear with fur complimentary feed fore dogs and sourced in the UK.
-Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
-Feeding guide: Suitable for all dog breeds and puppies from 12+ weeks old. Supervision on all natural treats advised.
-Nutritional Analysis: crude protein 52.2%, crude oil & fats 21.3%, moisture 0%, crude ash 17%, fibre 0.01%
-    `
+<p><strong>Composition:</strong> 100% rabbit ear with fur complimentary feed for dogs and sourced in the UK.</p>
+<p><strong>Storage:</strong> Please keep in a dry and cool place away from any direct sunlight / heat sources.</p>
+<p><strong>Feeding guide:</strong> Suitable for all dog breeds and puppies from 12+ weeks old. Supervision on all natural treats advised.</p>
+<p><strong>Nutritional Analysis:</strong> crude protein 52.2%, crude oil & fats 21.3%, moisture 0%, crude ash 17%, fibre 0.01%</p>`
   },
   { 
     id:"dogtreats2",
     title:"Veggie Bones",
     price:4.99,
-    category:"pet",
-    stock:8,
     images:[""],
-    description:`
-A delicious plant-based treat made with carefully selected vegetables and enriched with essential vitamins and minerals to support your dog’s wellbeing.
-These nutritious bones are suitable for dogs of all sizes and make a great everyday reward, whether you’re reinforcing good behaviour during training or simply treating your pup to something tasty. 
-Crafted without artificial additives, they offer a lighter alternative to traditional meat-based snacks while still delivering great flavour and satisfaction.
+    description:`A delicious plant-based treat made with carefully selected vegetables and enriched with essential vitamins and minerals to support your dog’s wellbeing.  
+
+These nutritious bones are suitable for dogs of all sizes and make a great everyday reward, whether you’re reinforcing good behaviour during training or simply treating your pup to something tasty.  
+
+Crafted without artificial additives, they offer a lighter alternative to traditional meat-based snacks while still delivering great flavour and satisfaction.  
 100g per pack.
 
-✔ Made with wholesome vegetables
-✔ Enriched with essential nutrients
-✔ No artificial ingredients
-✔ Suitable for dogs of all sizes
-✔ Perfect for training or everyday rewards
+<ul>
+<li>✔ Made with wholesome vegetables</li>
+<li>✔ Enriched with essential nutrients</li>
+<li>✔ No artificial ingredients</li>
+<li>✔ Suitable for dogs of all sizes</li>
+<li>✔ Perfect for training or everyday rewards</li>
+</ul>
 
 A feel-good treat you can trust, and a flavour your dog will enjoy every time.
 
-Composition: Light Brown & White: 54% Peanut Butter & 40% Sweet Potato, 6% Minerals & Vitamins, Calcium Carbonate, Vegetable Glycerine. 
-Orange & White: 54% Pumpkin, 40% Sweet Potato, 6% Minerals & Vitamins. Green & White: 50% Spinach, 40% Sweet Potato, 5% Mint, 5% Minerals & Vitamins. 
-Dark Brown & White: Blackberries 4%, Carob 35%, Minerals 6%, 55% Sweet Potato.
-Nutritional Analysis:  Moisture 16%, Crude ash 7% Crude fibre 3%, protein 3%, Fat Content 1% 
-Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
-Feeding Guide: Complementary feeds for dogs. Suitable for dogs from 8+ weeks. Supervision on all natural treats advised.
-    `
+<p><strong>Composition:</strong> Light Brown & White: 54% Peanut Butter & 40% Sweet Potato, 6% Minerals & Vitamins, Calcium Carbonate, Vegetable Glycerine. Orange & White: 54% Pumpkin, 40% Sweet Potato, 6% Minerals & Vitamins. Green & White: 50% Spinach, 40% Sweet Potato, 5% Mint, 5% Minerals & Vitamins. Dark Brown & White: Blackberries 4%, Carob 35%, Minerals 6%, 55% Sweet Potato.</p>
+<p><strong>Nutritional Analysis:</strong> Moisture 16%, Crude ash 7%, Crude fibre 3%, protein 3%, Fat Content 1%</p>
+<p><strong>Storage:</strong> Please keep in a dry and cool place away from any direct sunlight / heat sources.</p>
+<p><strong>Feeding Guide:</strong> Complementary feeds for dogs. Suitable for dogs from 8+ weeks. Supervision on all natural treats advised.</p>`
   },
   { 
     id:"dogtreats3",
     title:"Kangaroo Jerky Sticks",
     price:5.50,
-    category:"pet",
-    stock:8,
     images:[""],
-    description:`
-Made from 100% ethically sourced kangaroo, these high-protein treats offer a lean and naturally flavourful reward your dog will love. 
-Responsibly sourced and gently prepared to preserve their nutritional value, they provide a simple, single-protein option with no unnecessary additives.
-Soft in texture and easy to handle, these jerky sticks can be given whole as a satisfying chew or broken into smaller pieces for training sessions and positive reinforcement.
-Naturally lean and rich in protein, kangaroo is a great alternative protein choice and can be especially suitable for dogs on limited-ingredient or novel-protein diets.
+    description:`Made from 100% ethically sourced kangaroo, these high-protein treats offer a lean and naturally flavourful reward your dog will love.  
+
+Responsibly sourced and gently prepared to preserve their nutritional value, they provide a simple, single-protein option with no unnecessary additives.  
+
+Soft in texture and easy to handle, these jerky sticks can be given whole as a satisfying chew or broken into smaller pieces for training sessions and positive reinforcement.  
+
+Naturally lean and rich in protein, kangaroo is a great alternative protein choice and can be especially suitable for dogs on limited-ingredient or novel-protein diets.  
 Approx 20 sticks per pack.
 
-✔ 100% Kangaroo
-✔ Ethically sourced
-✔ High in protein
-✔ Lean and easily digestible
-✔ Ideal for training or everyday rewards
-✔ No artificial additives
+<ul>
+<li>✔ 100% Kangaroo</li>
+<li>✔ Ethically sourced</li>
+<li>✔ High in protein</li>
+<li>✔ Lean and easily digestible</li>
+<li>✔ Ideal for training or everyday rewards</li>
+<li>✔ No artificial additives</li>
+</ul>
 
 A unique, premium treat for dogs who deserve something a little different.
 
-Composition: 98% Kangaroo & minerals jerky sticks are a complimentary feed for dogs.
-Nutritional Analysis: Crude Protein: 80.5%, Crude Oils / Fats: 6.3%, Moisture: 8.9%, Crude Ash: 3%, Fibre: 3%
-Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
-Feeding Guide: Complementary feeds for dogs. Suitable for dogs from 8+ weeks. Supervision on all natural treats advised.
-    `
+<p><strong>Composition:</strong> 98% Kangaroo & minerals jerky sticks are a complimentary feed for dogs.</p>
+<p><strong>Nutritional Analysis:</strong> Crude Protein: 80.5%, Crude Oils / Fats: 6.3%, Moisture: 8.9%, Crude Ash: 3%, Fibre: 3%</p>
+<p><strong>Storage:</strong> Please keep in a dry and cool place away from any direct sunlight / heat sources.</p>
+<p><strong>Feeding Guide:</strong> Complementary feeds for dogs. Suitable for dogs from 8+ weeks. Supervision on all natural treats advised.</p>`
   },
   { 
     id:"dogtreats4",
     title:"Limited Edition: Venison, Ostrich & Salmon Biscuits",
     price:4.00,
-    category:"pet",
-    stock:8,
     images:[""],
-    description:`
-A deliciously crunchy, gluten-free biscuit wrapped around a rich, meaty centre. 
-Made with ethically sourced venison, ostrich and salmon, these treats offer a unique selection of high-quality proteins your dog will love.
-Each biscuit combines a satisfying crunch with a flavourful filling, creating a rewarding texture and taste experience. 
-Carefully crafted as a grain and wheat-free alternative, they are designed to be gentler on sensitive stomachs while still delivering great nutrition and enjoyment.
-These hypoallergenic recipe options make them suitable for a wide range of dogs, including those who thrive on alternative or limited-protein diets.
+    description:`A deliciously crunchy, gluten-free biscuit wrapped around a rich, meaty centre.  
+
+Made with ethically sourced venison, ostrich and salmon, these treats offer a unique selection of high-quality proteins your dog will love.  
+
+Each biscuit combines a satisfying crunch with a flavourful filling, creating a rewarding texture and taste experience.  
+
+Carefully crafted as a grain and wheat-free alternative, they are designed to be gentler on sensitive stomachs while still delivering great nutrition and enjoyment.  
+These hypoallergenic recipe options make them suitable for a wide range of dogs, including those who thrive on alternative or limited-protein diets.  
 150g per pack.
 
-✔ Ethically sourced venison, ostrich and salmon
-✔ Gluten free
-✔ Grain and wheat free
-✔ Hypoallergenic recipe
-✔ Crunchy outside with a rich meaty centre
+<ul>
+<li>✔ Ethically sourced venison, ostrich and salmon</li>
+<li>✔ Gluten free</li>
+<li>✔ Grain and wheat free</li>
+<li>✔ Hypoallergenic recipe</li>
+<li>✔ Crunchy outside with a rich meaty centre</li>
+</ul>
 
 A wholesome, satisfying treat made for dogs who deserve quality in every bite.
 
-Composition: 35% venison, 35% ostrich, 30% salmon, fish cereals, biscuit mix are a complimentary feed foir dogs and sourced in the UK. 
-Nutritional Analysis: crude protein 16%, crude oil & fats 8%, moisture 0%, crude ash 5.5%, fibre 2.0%
-Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
-Feeding Guide: Complementary feeds for dogs. Suitable for dogs from 8+ weeks. Supervision on all natural treats advised.
-    `
+<p><strong>Composition:</strong> 35% venison, 35% ostrich, 30% salmon, fish cereals, biscuit mix are a complimentary feed for dogs and sourced in the UK.</p>
+<p><strong>Nutritional Analysis:</strong> crude protein 16%, crude oil & fats 8%, moisture 0%, crude ash 5.5%, fibre 2.0%</p>
+<p><strong>Storage:</strong> Please keep in a dry and cool place away from any direct sunlight / heat sources.</p>
+<p><strong>Feeding Guide:</strong> Complementary feeds for dogs. Suitable for dogs from 8+ weeks. Supervision on all natural treats advised.</p>`
   },
+
+  // --- Cat Treats ---
   { 
     id:"cattreats1",
     title:"Venison Brittle Cat Treats",
     price:4.99,
-    category:"pet",
-    stock:2,
     images:[""],
-    description:`
-Made from ethically sourced, lean venison and gently air-dried to create a light, crisp texture, this natural treat delivers pure flavour in every bite.
-Venison is a novel protein, making it an excellent choice for cats with sensitive stomachs or those who can be selective with their food. 
+    description:`Made from ethically sourced, lean venison and gently air-dried to create a light, crisp texture, this natural treat delivers pure flavour in every bite.  
+
+Venison is a novel protein, making it an excellent choice for cats with sensitive stomachs or those who can be selective with their food.  
+
 With a simple, single-protein recipe and no unnecessary additives, it offers a clean and wholesome reward you can feel confident giving.
-The delicate crunch provides a satisfying texture cats enjoy, while the rich natural taste keeps them coming back for more.
+
+The delicate crunch provides a satisfying texture cats enjoy, while the rich natural taste keeps them coming back for more.  
 100g per tube.
 
-✔ 100% ethically sourced venison
-✔ Single novel protein
-✔ Gently air-dried for natural goodness
-✔ Suitable for sensitive or selective cats
-✔ No artificial additives
+<ul>
+<li>✔ 100% ethically sourced venison</li>
+<li>✔ Single novel protein</li>
+<li>✔ Gently air-dried for natural goodness</li>
+<li>✔ Suitable for sensitive or selective cats</li>
+<li>✔ No artificial additives</li>
+</ul>
 
 A refined, protein-rich treat made for cats who deserve quality and simplicity.
 
-Composition: 100% Deer (Venison)
-Nutritional Analysis: Crude Protein 76.8%, Crude Oils & Fats 9.4%, Moisture 4.2%, Crude Ash 5.1%, Fibre 0.8%
-Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
-Feeding Guide: Complementary feeds for cats. Suitable for cats from 8+ weeks.
-Serving suggestion: 6 pieces per a day.
-    `
+<p><strong>Composition:</strong> 100% Deer (Venison)</p>
+<p><strong>Nutritional Analysis:</strong> Crude Protein 76.8%, Crude Oils & Fats 9.4%, Moisture 4.2%, Crude Ash 5.1%, Fibre 0.8%</p>
+<p><strong>Storage:</strong> Please keep in a dry and cool place away from any direct sunlight / heat sources.</p>
+<p><strong>Feeding Guide:</strong> Complementary feeds for cats. Suitable for cats from 8+ weeks.</p>
+<p><strong>Serving suggestion:</strong> 6 pieces per a day.</p>`
   },
+
   { 
     id:"cattreats2",
     title:"Duck Drops Cat Treats",
     price:4.99,
-    category:"pet",
-    stock:2,
     images:[""],
-    description:`
-Made from ethically sourced duck, these high-protein bite-sized cubes are gently dried to lock in natural flavor and nutrition. 
-Each cube offers a rich, irresistible taste cats can’t resist.
-Perfect as a rewarding treat during training, an everyday snack, or a little indulgence, these cubes are crafted with care to provide wholesome goodness without any unnecessary additives.
+    description:`Made from ethically sourced duck, these high-protein bite-sized cubes are gently dried to lock in natural flavor and nutrition.  
+
+Each cube offers a rich, irresistible taste cats can’t resist. Perfect as a rewarding treat during training, an everyday snack, or a little indulgence, these cubes are crafted with care to provide wholesome goodness without any unnecessary additives.  
 100g per tube.
 
-✔ Ethically sourced duck
-✔ High in protein
-✔ Gently dried to preserve flavor
-✔ Bite-sized for training or everyday rewards
-✔ No artificial additives
+<ul>
+<li>✔ Ethically sourced duck</li>
+<li>✔ High in protein</li>
+<li>✔ Gently dried to preserve flavor</li>
+<li>✔ Bite-sized for training or everyday rewards</li>
+<li>✔ No artificial additives</li>
+</ul>
 
 A natural, protein-packed treat your cat will love, made with quality you can trust.
 
-Composition: 100% Duck
-Nutritional Analysis: Crude Protein 40.8%, Crude Oils & Fats 25.5%, Moisture 6.7%, Crude Ash 1.68%, Fibre 1.1%
-Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
-Feeding Guide: Complementary feeds for cats. Suitable for cats from 8+ weeks.
-Serving suggestion: 6 pieces per a day.
-    `
+<p><strong>Composition:</strong> 100% Duck</p>
+<p><strong>Nutritional Analysis:</strong> Crude Protein 40.8%, Crude Oils & Fats 25.5%, Moisture 6.7%, Crude Ash 1.68%, Fibre 1.1%</p>
+<p><strong>Storage:</strong> Please keep in a dry and cool place away from any direct sunlight / heat sources.</p>
+<p><strong>Feeding Guide:</strong> Complementary feeds for cats. Suitable for cats from 8+ weeks.</p>
+<p><strong>Serving suggestion:</strong> 6 pieces per a day.</p>`
   },
+
   { 
     id:"cattreats3",
     title:"Hare Bites Cat Treats",
     price:4.99,
-    category:"pet",
-    stock:2,
     images:[""],
-    description:`
-Made from ethically sourced, lean hare, these single-protein cubes are gently air-dried to preserve natural nutrients and rich flavor. 
-A wild-inspired treat that offers a novel protein option, perfect for cats with sensitive stomachs or those seeking something unique.
-Wholesome and simple, each cube delivers a satisfying texture and pure taste, without unnecessary additives, making it a treat you can feel confident giving every day.
+    description:`Made from ethically sourced, lean hare, these single-protein cubes are gently air-dried to preserve natural nutrients and rich flavor.  
+
+A wild-inspired treat that offers a novel protein option, perfect for cats with sensitive stomachs or those seeking something unique. Wholesome and simple, each cube delivers a satisfying texture and pure taste, without unnecessary additives.  
 100g per tube.
 
-✔ Ethically sourced hare
-✔ Single novel protein
-✔ Gently air-dried to retain nutrients
-✔ Suitable for sensitive or selective cats
-✔ No artificial additives
+<ul>
+<li>✔ Ethically sourced hare</li>
+<li>✔ Single novel protein</li>
+<li>✔ Gently air-dried to retain nutrients</li>
+<li>✔ Suitable for sensitive or selective cats</li>
+<li>✔ No artificial additives</li>
+</ul>
 
 A natural, protein-rich treat for cats who deserve quality and adventure in every bite.
 
-Composition: 100% Hare meat
-Nutritional Analysis: Crude Protein 39.1%, Crude Oils & Fats 21.9%, Moisture 5%, Crude Ash 11.9%, Fibre 0.8%
-Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
-Feeding Guide: Complementary feeds for cats. Suitable for cats from 8+ weeks.
-Serving suggestion: 6 pieces per a day.
-    `
+<p><strong>Composition:</strong> 100% Hare meat</p>
+<p><strong>Nutritional Analysis:</strong> Crude Protein 39.1%, Crude Oils & Fats 21.9%, Moisture 5%, Crude Ash 11.9%, Fibre 0.8%</p>
+<p><strong>Storage:</strong> Please keep in a dry and cool place away from any direct sunlight / heat sources.</p>
+<p><strong>Feeding Guide:</strong> Complementary feeds for cats. Suitable for cats from 8+ weeks.</p>
+<p><strong>Serving suggestion:</strong> 6 pieces per a day.</p>`
   },
+
   { 
     id:"cattreats4",
     title:"Boar Bites Cat Treats",
     price:4.99,
-    category:"pet",
-    stock:2,
     images:[""],
-    description:`
-Made from ethically sourced wild boar, these meaty bites deliver a rich, natural flavor cats love. 
-Packed with protein and carefully prepared to retain their wholesome goodness, they bring a taste of the wild to every treat.
-Perfect for adventurous eaters or cats with strong carnivorous cravings, these bites are simple, single-protein treats with no artificial additives, providing a healthy, satisfying reward.
+    description:`Made from ethically sourced wild boar, these meaty bites deliver a rich, natural flavor cats love.  
+
+Packed with protein and carefully prepared to retain their wholesome goodness, they bring a taste of the wild to every treat. Perfect for adventurous eaters or cats with strong carnivorous cravings, these bites are simple, single-protein treats with no artificial additives, providing a healthy, satisfying reward.  
 100g per tube.
 
-✔ Ethically sourced wild boar
-✔ High in natural protein
-✔ Bold, meaty flavor
-✔ Single-protein treat
-✔ No artificial additives
+<ul>
+<li>✔ Ethically sourced wild boar</li>
+<li>✔ High in natural protein</li>
+<li>✔ Bold, meaty flavor</li>
+<li>✔ Single-protein treat</li>
+<li>✔ No artificial additives</li>
+</ul>
 
 A wild-inspired, protein-rich treat for cats who crave quality and adventure in every bite.
 
-Composition: 100% Boar Meat
-Nutritional Analysis: Crude Protein 59.8%, Crude Oils & Fats 12.1%, Moisture 7.6%, Crude Ash 9.6%, Fibre 1.68%
-Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
-Feeding Guide: Complementary feeds for cats. Suitable for cats from 8+ weeks.
-Serving suggestion: 6 pieces per a day.
-    `
+<p><strong>Composition:</strong> 100% Boar Meat</p>
+<p><strong>Nutritional Analysis:</strong> Crude Protein 59.8%, Crude Oils & Fats 12.1%, Moisture 7.6%, Crude Ash 9.6%, Fibre 1.68%</p>
+<p><strong>Storage:</strong> Please keep in a dry and cool place away from any direct sunlight / heat sources.</p>
+<p><strong>Feeding Guide:</strong> Complementary feeds for cats. Suitable for cats from 8+ weeks.</p>
+<p><strong>Serving suggestion:</strong> 6 pieces per a day.</p>`
   },
+
   { 
     id:"cattreats5",
     title:"Salmon & Trout Fishes Cat Treats",
     price:4.99,
-    category:"pet",
-    stock:2,
     images:[""],
-    description:`
-Made from ethically sourced salmon and trout, these omega-rich bites deliver natural flavor that cats adore. 
-Packed with essential nutrients, they support healthy skin, a shiny coat, and overall wellbeing while providing a satisfying texture in every bite.
-Crafted as a wholesome, single-protein treat without artificial additives, these bites are perfect for everyday rewards or special indulgences.
+    description:`Made from ethically sourced salmon and trout, these omega-rich bites deliver natural flavor that cats adore.  
+
+Packed with essential nutrients, they support healthy skin, a shiny coat, and overall wellbeing while providing a satisfying texture in every bite.  
+
+Crafted as a wholesome, single-protein treat without artificial additives, these bites are perfect for everyday rewards or special indulgences.  
 100g per tube.
 
-✔ Ethically sourced salmon and trout
-✔ Rich in omega-3 for skin, coat, and heart health
-✔ Wholesome, single-protein treat
-✔ Delicious, natural flavor cats love
-✔ No artificial additives
+<ul>
+<li>✔ Ethically sourced salmon and trout</li>
+<li>✔ Rich in omega-3 for skin, coat, and heart health</li>
+<li>✔ Wholesome, single-protein treat</li>
+<li>✔ Delicious, natural flavor cats love</li>
+<li>✔ No artificial additives</li>
+</ul>
 
 A nutritious, protein-packed seafood treat your cat will crave again and again.
 
-Composition: 42% Salmon, 28% whitefish, 10% Trout, Sweet Potato
-Nutritional Analysis: Crude Protein 32%, Crude Oils & Fats 12%, Moisture 8%, Crude Ash 9.5%, Fibre 1.5%
-Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
-Feeding Guide: Complementary feeds for cats. Suitable for cats from 8+ weeks.
-Serving suggestion: 6 pieces per a day.
-    `
-  },
+<p><strong>Composition:</strong> 42% Salmon, 28% whitefish, 10% Trout, Sweet Potato</p>
+<p><strong>Nutritional Analysis:</strong> Crude Protein 32%, Crude Oils & Fats 12%, Moisture 8%, Crude Ash 9.5%, Fibre 1.5%</p>
+<p><strong>Storage:</strong> Please keep in a dry and cool place away from any direct sunlight / heat sources.</p>
+<p><strong>Feeding Guide:</strong> Complementary feeds for cats. Suitable for cats from 8+ weeks.</p>
+<p><strong>Serving suggestion:</strong> 6 pieces per a day.</p>`
+  }
 ];
 
 let cart=[];
@@ -674,6 +679,7 @@ renderProducts();
 
 </body>
 </html>
+
 
 
 
