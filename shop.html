@@ -424,7 +424,6 @@ function renderProducts() {
           ${p.images.map(i => `<img src="${i}" class="thumbnail" onclick="this.parentNode.previousElementSibling.src='${i}'">`).join("")}
         </div>
         <p><strong>£${p.price.toFixed(2)}</strong></p>
-       ass="short-desc">
   </div>
 <div class="description-container">
   <div class="full-desc" id="desc-${p.id}">
@@ -532,6 +531,7 @@ renderProducts();
 </script>
 </body> 
 </html>
+
 
 
 
