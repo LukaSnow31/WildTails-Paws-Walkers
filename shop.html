@@ -17,18 +17,35 @@ body {
   background-attachment:fixed;
   background-repeat:no-repeat;
   color:#222;
-  .product { border:1px solid #ccc; padding:1rem; margin-bottom:1rem; border-radius:8px; background:#fff; }
-  .product img { max-width:200px; display:block; margin-bottom:0.5rem; }
-  .product h2 { margin-top:0; }
-  .price { font-weight:bold; margin:0.5rem 0; }
-  .toggle-btn { background:#007bff; color:#fff; padding:0.5rem 1rem; border:none; border-radius:4px; cursor:pointer; margin-top:0.5rem; }
-  .toggle-btn:hover { background:#0056b3; }
-  .description { display:none; margin-top:0.5rem; white-space: pre-wrap; }
-  .description p { margin:0.6rem 0; }
-  .description ul { padding-left:1.5rem; margin:0.5rem 0; }
-  .description li { margin-bottom:0.3rem; }
 }
 
+/* Product Styles */
+.product {
+  border:1px solid #ccc;
+  padding:1rem;
+  margin-bottom:1rem;
+  border-radius:8px;
+  background:#fff;
+}
+.product img { max-width:200px; display:block; margin-bottom:0.5rem; }
+.product h2 { margin-top:0; }
+.price { font-weight:bold; margin:0.5rem 0; }
+.toggle-btn {
+  background:#007bff;
+  color:#fff;
+  padding:0.5rem 1rem;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+  margin-top:0.5rem;
+}
+.toggle-btn:hover { background:#0056b3; }
+.description { display:none; margin-top:0.5rem; white-space: pre-wrap; }
+.description p { margin:0.6rem 0; }
+.description ul { padding-left:1.5rem; margin:0.5rem 0; }
+.description li { margin-bottom:0.3rem; }
+
+/* Logo */
 #logo {
   position:fixed;
   top:10px;
@@ -38,6 +55,7 @@ body {
   z-index:999;
 }
 
+/* Navigation */
 nav {
   position: fixed;
   top: 0;
@@ -49,25 +67,22 @@ nav {
   padding-left: 0;            
   padding-right: 20px;       
 }
-
 nav ul {
   list-style:none;
   display:flex;
   margin:0;
   padding:0;
 }
-
 nav a {
   padding:18px 20px;
   color:white;
   text-decoration:none;
   font-weight:bold;
 }
-
 nav a:hover { background:#4e2f22; }
-
 .menu-toggle { display:none; }
 
+/* Container */
 .container {
   padding-top:140px;
   max-width:1000px;
@@ -75,6 +90,7 @@ nav a:hover { background:#4e2f22; }
   text-align:center;
 }
 
+/* Shop Items */
 .shop-item {
   background:white;
   margin:20px;
@@ -83,21 +99,19 @@ nav a:hover { background:#4e2f22; }
   box-shadow:0 2px 8px rgba(0,0,0,0.1);
   display:inline-block;
   width:calc(33% - 40px);
+  vertical-align:top;
 }
-
 .main-image {
   width:100%;
   max-width:280px;
   border-radius:10px;
 }
-
 .thumbnail-container {
   display:flex;
   justify-content:center;
   gap:6px;
   margin-top:6px;
 }
-
 .thumbnail {
   width:50px;
   height:50px;
@@ -105,9 +119,7 @@ nav a:hover { background:#4e2f22; }
   cursor:pointer;
   opacity:0.7;
 }
-
 .thumbnail:hover { opacity:1; }
-
 .shop-item button {
   background:#5C4033;
   color:white;
@@ -117,9 +129,9 @@ nav a:hover { background:#4e2f22; }
   cursor:pointer;
   width:100%;
 }
-
 .shop-item button:hover { background:#4e2f22; }
 
+/* Cart */
 #cart {
   background:white;
   padding:20px;
@@ -127,7 +139,6 @@ nav a:hover { background:#4e2f22; }
   max-width:600px;
   margin:auto;
 }
-
 #cart-icon {
   position:fixed;
   top:20px;
@@ -142,7 +153,6 @@ nav a:hover { background:#4e2f22; }
   align-items:center;
   cursor:pointer;
 }
-
 #cart-count {
   position:absolute;
   top:-5px;
@@ -155,6 +165,7 @@ nav a:hover { background:#4e2f22; }
   font-size:0.8em;
 }
 
+/* Footer */
 footer {
   background:#5C4033;
   color:white;
@@ -163,7 +174,7 @@ footer {
   margin-top:60px;
 }
 
-/* Product Description Toggle Styling */
+/* Product Description Toggle */
 .full-desc {
   display: none;
   max-height: 0;
@@ -174,14 +185,13 @@ footer {
   border-radius: 6px;
   margin-top: 6px;
 }
-
 .full-desc.show {
   display: block;
-  max-height: 1000px; /* enough for long descriptions */
+  max-height: 1000px;
   padding: 10px;
 }
 
-/* MOBILE IMPROVEMENTS */
+/* Mobile */
 @media(max-width:600px){
   .shop-item { width:100%; margin:15px 0; }
   .shop-item button { padding:14px; }
@@ -386,7 +396,7 @@ products.forEach(p => {
 
 let cart = [];
 let shippingCost = 0;
-let activeCategory = "all";
+let activeCategory = "Pet Items";
 
 const productList = document.getElementById("product-list");
 const categoryFilter = document.getElementById("category-filter");
@@ -495,6 +505,7 @@ document.getElementById("shipping").addEventListener("change", e => {
 
 function updateTotals(){
   const total = cart.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById("category-filter").value = activeCategory;
   document.getElementById("shipping-cost").textContent = `Shipping: £${shippingCost.toFixed(2)}`;
   document.getElementById("order-total").textContent = `Total: £${(total + shippingCost).toFixed(2)}`;
 }
@@ -522,6 +533,7 @@ renderProducts();
 </script>
 </body> 
 </html>
+
 
 
 
