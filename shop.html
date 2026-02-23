@@ -153,6 +153,24 @@ footer {
   margin-top:60px;
 }
 
+/* Product Description Toggle Styling */
+.full-desc {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background: #f8f8f8;
+  padding: 0 10px;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+.full-desc.show {
+  display: block;
+  max-height: 1000px; /* enough for long descriptions */
+  padding: 10px;
+}
+
 /* MOBILE IMPROVEMENTS */
 @media(max-width:600px){
   .shop-item { width:100%; margin:15px 0; }
@@ -240,17 +258,8 @@ const products = [
     category:"pet",
     stock:2,
     images:["https://i.postimg.cc/tRsw56vm/Whats-App-Image-2026-02-15-at-23-47-29.jpg"],
-    description:`
-      • 100% Polyester<br>
-      • Hemmed square edges<br>
-      • Satin care label<br>
-      • Fabric weight: 160gsm<br>
-      • Item weight: 0.10kg<br>
-      • Size: 100cm x 80cm<br>
-      • Maximum print area: 97cm x 77cm
-    `
+    description:`• 100% Polyester<br>• Hemmed square edges<br>• Satin care label<br>• Fabric weight: 160gsm<br>• Item weight: 0.10kg<br>• Size: 100cm x 80cm<br>• Maximum print area: 97cm x 77cm`
   },
-
   { 
     id:"blanket2",
     title:"Embroidered Pet Blanket Size L",
@@ -258,26 +267,16 @@ const products = [
     category:"pet",
     stock:2,
     images:["https://i.postimg.cc/tRsw56vm/Whats-App-Image-2026-02-15-at-23-47-29.jpg"],
-    description:`
-      • 100% Polyester<br>
-      • Hemmed square edges<br>
-      • Satin care label<br>
-      • Fabric weight: 160gsm<br>
-      • Item weight: 0.30kg<br>
-      • Size: 150cm x 100cm<br>
-      • Maximum print area: 147cm x 97cm
-    `
+    description:`• 100% Polyester<br>• Hemmed square edges<br>• Satin care label<br>• Fabric weight: 160gsm<br>• Item weight: 0.30kg<br>• Size: 150cm x 100cm<br>• Maximum print area: 147cm x 97cm`
   },
-
-    { 
+  { 
     id:"dogtreats1",
     title:"Rabbit Ears With Fur",
     price:5.50,
     category:"pet",
     stock:8,
     images:[""],
-    description:`
-     A simple, single-ingredient chew made from 100% rabbit cartilage with natural fur intact. 
+    description:`A simple, single-ingredient chew made from 100% rabbit cartilage with natural fur intact. 
      Ethically sourced and gently prepared with nothing added and nothing artificial.
      These low-fat, easily digestible treats are perfect for supporting your dog’s natural chewing instinct while helping to maintain healthy teeth and strong jaw muscles. 
      The natural fur provides an added benefit by acting as a gentle digestive aid, helping to support gut health as it moves naturally through the system.
@@ -297,19 +296,16 @@ const products = [
      Composition: 100% rabbit ear with fur complimentary feed fore dogs and sourced in the UK.
      Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
      Feeding guide: Suitable for all dog breeds and puppies from 12+ weeks old. Supervision on all natural treats advised.
-     Nutritional Analysis: crude protein 52.2%, crude oil & fats 21.3%, moisture 0%, crude ash 17%, fibre 0.01%
-    `
+     Nutritional Analysis: crude protein 52.2%, crude oil & fats 21.3%, moisture 0%, crude ash 17%, fibre 0.01%`
   },
-
-   { 
+  { 
     id:"dogtreats2",
     title:"Veggie Bones",
     price:4.99,
     category:"pet",
     stock:8,
     images:[""],
-    description:`
-     A delicious plant-based treat made with carefully selected vegetables and enriched with essential vitamins and minerals to support your dog’s wellbeing.
+    description:`A delicious plant-based treat made with carefully selected vegetables and enriched with essential vitamins and minerals to support your dog’s wellbeing.
      These nutritious bones are suitable for dogs of all sizes and make a great everyday reward, whether you’re reinforcing good behaviour during training or simply treating your pup to something tasty. 
      Crafted without artificial additives, they offer a lighter alternative to traditional meat-based snacks while still delivering great flavour and satisfaction.
      100g per pack.
@@ -327,19 +323,16 @@ const products = [
      Dark Brown & White: Blackberries 4%, Carob 35%, Minerals 6%, 55% Sweet Potato.
      Nutritional Analysis:  Moisture 16%, Crude ash 7% Crude fibre 3%, protein 3%, Fat Content 1% 
      Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
-     Feeding Guide: Complementary feeds for dogs. Suitable for dogs from 8+ weeks. Supervision on all natural treats advised.
-    `
+     Feeding Guide: Complementary feeds for dogs. Suitable for dogs from 8+ weeks. Supervision on all natural treats advised.`
   },
-
-   { 
+  { 
     id:"dogtreats3",
     title:"Kangaroo Jerky Sticks",
     price:5.50,
     category:"pet",
     stock:8,
     images:[""],
-    description:`
-     Made from 100% ethically sourced kangaroo, these high-protein treats offer a lean and naturally flavourful reward your dog will love. 
+    description:`Made from 100% ethically sourced kangaroo, these high-protein treats offer a lean and naturally flavourful reward your dog will love. 
      Responsibly sourced and gently prepared to preserve their nutritional value, they provide a simple, single-protein option with no unnecessary additives.
      Soft in texture and easy to handle, these jerky sticks can be given whole as a satisfying chew or broken into smaller pieces for training sessions and positive reinforcement.
      Naturally lean and rich in protein, kangaroo is a great alternative protein choice and can be especially suitable for dogs on limited-ingredient or novel-protein diets.
@@ -357,19 +350,16 @@ const products = [
      Composition: 98% Kangaroo & minerals jerky sticks are a complimentary feed for dogs.
      Nutritional Analysis: Crude Protein: 80.5%, Crude Oils / Fats: 6.3%, Moisture: 8.9%, Crude Ash: 3%, Fibre: 3%
      Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
-     Feeding Guide: Complementary feeds for dogs. Suitable for dogs from 8+ weeks. Supervision on all natural treats advised.
-    `
+     Feeding Guide: Complementary feeds for dogs. Suitable for dogs from 8+ weeks. Supervision on all natural treats advised.`
   },
-
-   { 
+  { 
     id:"dogtreats4",
     title:"Limited Edition: Venison, Ostrich & Salmon Biscuits",
     price:4.00,
     category:"pet",
     stock:8,
     images:[""],
-    description:`
-     A deliciously crunchy, gluten-free biscuit wrapped around a rich, meaty centre. 
+    description:`A deliciously crunchy, gluten-free biscuit wrapped around a rich, meaty centre. 
      Made with ethically sourced venison, ostrich and salmon, these treats offer a unique selection of high-quality proteins your dog will love.
      Each biscuit combines a satisfying crunch with a flavourful filling, creating a rewarding texture and taste experience. 
      Carefully crafted as a grain and wheat-free alternative, they are designed to be gentler on sensitive stomachs while still delivering great nutrition and enjoyment.
@@ -387,19 +377,16 @@ const products = [
      Composition: 35% venison, 35% ostrich, 30% salmon, fish cereals, biscuit mix are a complimentary feed foir dogs and sourced in the UK. 
      Nutritional Analysis: crude protein 16%, crude oil & fats 8%, moisture 0%, crude ash 5.5%, fibre 2.0%
      Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
-     Feeding Guide: Complementary feeds for dogs. Suitable for dogs from 8+ weeks. Supervision on all natural treats advised.
-    `
+     Feeding Guide: Complementary feeds for dogs. Suitable for dogs from 8+ weeks. Supervision on all natural treats advised.`
   },
-
-   { 
+  { 
     id:"cattreats1",
     title:"Venison Brittle Cat Treats",
     price:4.99,
     category:"pet",
     stock:2,
     images:[""],
-    description:`
-     Made from ethically sourced, lean venison and gently air-dried to create a light, crisp texture, this natural treat delivers pure flavour in every bite.
+    description:`Made from ethically sourced, lean venison and gently air-dried to create a light, crisp texture, this natural treat delivers pure flavour in every bite.
      Venison is a novel protein, making it an excellent choice for cats with sensitive stomachs or those who can be selective with their food. 
      With a simple, single-protein recipe and no unnecessary additives, it offers a clean and wholesome reward you can feel confident giving.
      The delicate crunch provides a satisfying texture cats enjoy, while the rich natural taste keeps them coming back for more.
@@ -417,19 +404,16 @@ const products = [
     Nutritional Analysis: Crude Protein 76.8%, Crude Oils & Fats 9.4%, Moisture 4.2%, Crude Ash 5.1%, Fibre 0.8%
     Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
     Feeding Guide: Complementary feeds for cats. Suitable for cats from 8+ weeks.
-    Serving suggestion: 6 pieces per a day. 
-    `
+    Serving suggestion: 6 pieces per a day.`
   },
-
-     { 
+  { 
     id:"cattreats2",
     title:"Duck Drops Cat Treats",
     price:4.99,
     category:"pet",
     stock:2,
     images:[""],
-    description:`
-     Made from ethically sourced duck, these high-protein bite-sized cubes are gently dried to lock in natural flavor and nutrition. 
+    description:`Made from ethically sourced duck, these high-protein bite-sized cubes are gently dried to lock in natural flavor and nutrition. 
      Each cube offers a rich, irresistible taste cats can’t resist.
      Perfect as a rewarding treat during training, an everyday snack, or a little indulgence, these cubes are crafted with care to provide wholesome goodness without any unnecessary additives.
      100g per tube.
@@ -446,19 +430,16 @@ const products = [
      Nutritional Analysis: Crude Protein 40.8%, Crude Oils & Fats 25.5%, Moisture 6.7%, Crude Ash 1.68%, Fibre 1.1%
      Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
      Feeding Guide: Complementary feeds for cats. Suitable for cats from 8+ weeks.
-     Serving suggestion: 6 pieces per a day. 
-    `
+     Serving suggestion: 6 pieces per a day.`
   },
-
-    { 
+  { 
     id:"cattreats3",
     title:"Hare Bites Cat Treats",
     price:4.99,
     category:"pet",
     stock:2,
     images:[""],
-    description:`
-     Made from ethically sourced, lean hare, these single-protein cubes are gently air-dried to preserve natural nutrients and rich flavor. 
+    description:`Made from ethically sourced, lean hare, these single-protein cubes are gently air-dried to preserve natural nutrients and rich flavor. 
      A wild-inspired treat that offers a novel protein option, perfect for cats with sensitive stomachs or those seeking something unique.
      Wholesome and simple, each cube delivers a satisfying texture and pure taste, without unnecessary additives, making it a treat you can feel confident giving every day.
      100g per tube.
@@ -475,19 +456,16 @@ const products = [
      Nutritional Analysis: Crude Protein 39.1%, Crude Oils & Fats 21.9%, Moisture 5%, Crude Ash 11.9%, Fibre 0.8%
      Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
      Feeding Guide: Complementary feeds for cats. Suitable for cats from 8+ weeks.
-     Serving suggestion: 6 pieces per a day. 
-    `
+     Serving suggestion: 6 pieces per a day.`
   },
-
-   { 
+  { 
     id:"cattreats4",
     title:"Boar Bites Cat Treats",
     price:4.99,
     category:"pet",
     stock:2,
     images:[""],
-    description:`
-     Made from ethically sourced wild boar, these meaty bites deliver a rich, natural flavor cats love. 
+    description:`Made from ethically sourced wild boar, these meaty bites deliver a rich, natural flavor cats love. 
      Packed with protein and carefully prepared to retain their wholesome goodness, they bring a taste of the wild to every treat.
      Perfect for adventurous eaters or cats with strong carnivorous cravings, these bites are simple, single-protein treats with no artificial additives, providing a healthy, satisfying reward.
      100g per tube.
@@ -504,19 +482,16 @@ const products = [
      Nutritional Analysis: Crude Protein 59.8%, Crude Oils & Fats 12.1%, Moisture 7.6%, Crude Ash 9.6%, Fibre 1.68%
      Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
      Feeding Guide: Complementary feeds for cats. Suitable for cats from 8+ weeks.
-     Serving suggestion: 6 pieces per a day. 
-    `
+     Serving suggestion: 6 pieces per a day.`
   },
-
-    { 
+  { 
     id:"cattreats5",
     title:"Salmon & Trout Fishes Cat Treats",
     price:4.99,
     category:"pet",
     stock:2,
     images:[""],
-    description:`
-     Made from ethically sourced salmon and trout, these omega-rich bites deliver natural flavor that cats adore. 
+    description:`Made from ethically sourced salmon and trout, these omega-rich bites deliver natural flavor that cats adore. 
      Packed with essential nutrients, they support healthy skin, a shiny coat, and overall wellbeing while providing a satisfying texture in every bite.
      Crafted as a wholesome, single-protein treat without artificial additives, these bites are perfect for everyday rewards or special indulgences.
      100g per tube.
@@ -533,8 +508,7 @@ const products = [
      Nutritional Analysis: Crude Protein 32%, Crude Oils & Fats 12%, Moisture 8%, Crude Ash 9.5%, Fibre 1.5%
      Storage: Please keep in a dry and cool place away from any direct sunlight / heat sources.
      Feeding Guide: Complementary feeds for cats. Suitable for cats from 8+ weeks.
-     Serving suggestion: 6 pieces per a day. 
-    `
+     Serving suggestion: 6 pieces per a day.`
   },
 ];
 
@@ -545,10 +519,7 @@ let activeCategory="all";
 const productList=document.getElementById("product-list");
 const categoryFilter=document.getElementById("category-filter");
 
-categoryFilter.addEventListener("change",()=>{
-  activeCategory=categoryFilter.value;
-  renderProducts();
-});
+categoryFilter.addEventListener("change",()=>{ activeCategory=categoryFilter.value; renderProducts(); });
 
 function renderProducts(){
   productList.innerHTML="";
@@ -563,30 +534,23 @@ function renderProducts(){
 
       d.innerHTML=`
         <h3>${p.title}</h3>
-
         <img src="${p.images[0]}" class="main-image">
         <div class="thumbnail-container">
           ${p.images.map(i=>`<img src="${i}" class="thumbnail" onclick="this.parentNode.previousElementSibling.src='${i}'">`).join("")}
         </div>
-
         <p><strong>£${p.price.toFixed(2)}</strong></p>
-
         <div class="description-container">
           <div class="short-desc">
             100% Polyester • Hemmed edges • 160gsm
           </div>
-
-          <div class="full-desc" id="desc-${p.id}" style="display:none;">
+          <div class="full-desc" id="desc-${p.id}">
             ${p.description}
           </div>
-
           <button class="read-more-btn" onclick="toggleDescription('${p.id}')">
             Read More
           </button>
         </div>
-
         <p><em>Stock: ${p.stock}</em></p>
-
         <button ${disabledText} onclick="addToCart('${p.id}','${p.title}',${p.price})">
           ${buttonText}
         </button>
@@ -596,78 +560,42 @@ function renderProducts(){
     });
 }
 
- function toggleDescription(id){
+function toggleDescription(id){
   const desc = document.getElementById("desc-"+id);
   const btn = desc.nextElementSibling;
-
-  if(desc.style.display === "none"){
-    desc.style.display = "block";
-    btn.textContent = "Read Less";
-  } else {
-    desc.style.display = "none";
-    btn.textContent = "Read More";
-  }
+  desc.classList.toggle("show");
+  btn.textContent = desc.classList.contains("show") ? "Read Less" : "Read More";
 }
- 
+
 function addToCart(id,title,price){
   const product = products.find(p => p.id===id);
   if(product.stock === 0) return;
-
   const item=cart.find(i=>i.id===id);
-
-  if(item){
-    if(product.stock > 0){
-      item.qty++;
-      product.stock--;
-    }
-  } else {
-    cart.push({id,title,price,qty:1});
-    product.stock--;
-  }
-
-  renderProducts();
-  renderCart();
+  if(item){ if(product.stock>0){ item.qty++; product.stock--; } }
+  else { cart.push({id,title,price,qty:1}); product.stock--; }
+  renderProducts(); renderCart();
 }
 
 function removeFromCart(id){
   const index = cart.findIndex(i=>i.id===id);
-  if(index > -1){
-    const product = products.find(p=>p.id===id);
-    if(product) product.stock += cart[index].qty;
-    cart.splice(index,1);
-  }
-  renderProducts();
-  renderCart();
+  if(index > -1){ const product = products.find(p=>p.id===id); if(product) product.stock += cart[index].qty; cart.splice(index,1); }
+  renderProducts(); renderCart();
 }
 
 function changeQty(id, delta){
   const item = cart.find(i=>i.id===id);
   const product = products.find(p=>p.id===id);
   if(!item || !product) return;
-
-  if(delta>0 && product.stock>0){
-    item.qty++;
-    product.stock--;
-  } else if(delta<0 && item.qty>0){
-    item.qty--;
-    product.stock++;
-  }
-
+  if(delta>0 && product.stock>0){ item.qty++; product.stock--; }
+  else if(delta<0 && item.qty>0){ item.qty--; product.stock++; }
   if(item.qty===0) removeFromCart(id);
-
-  renderProducts();
-  renderCart();
+  renderProducts(); renderCart();
 }
 
 function renderCart(){
   const c=document.getElementById("cart");
   c.innerHTML="";
-  if(cart.length===0){
-    c.textContent="Your cart is empty.";
-    updateTotals();
-    return;
-  }
-
+  if(cart.length===0){ c.textContent="Your cart is empty."; updateTotals(); return; }
   cart.forEach(i=>{
     const p=document.createElement("p");
     p.innerHTML=`
@@ -678,14 +606,10 @@ function renderCart(){
     `;
     c.appendChild(p);
   });
-
   updateTotals();
 }
 
-document.getElementById("shipping").addEventListener("change",e=>{
-  shippingCost=parseFloat(e.target.value);
-  updateTotals();
-});
+document.getElementById("shipping").addEventListener("change",e=>{ shippingCost=parseFloat(e.target.value); updateTotals(); });
 
 function updateTotals(){
   const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
@@ -706,9 +630,7 @@ paypal.Buttons({
   onApprove:(data,actions)=>{
     return actions.order.capture().then(()=>{
       alert("Thank you for your order 🐾\nOrders ship within 2–5 working days.");
-      cart=[];
-      renderProducts();
-      renderCart();
+      cart=[]; renderProducts(); renderCart();
     });
   }
 }).render("#paypal-button-container");
@@ -718,8 +640,6 @@ renderProducts();
 
 </body>
 </html>
-
-
 
 
 
