@@ -424,12 +424,9 @@ function renderProducts() {
           ${p.images.map(i => `<img src="${i}" class="thumbnail" onclick="this.parentNode.previousElementSibling.src='${i}'">`).join("")}
         </div>
         <p><strong>£${p.price.toFixed(2)}</strong></p>
-       <div class="description-container">
-  <div class="full-desc" id="desc-${p.id}">
-    ${p.description}
-<div class="description-container">
-  <div class="short-desc">
+       ass="short-desc">
   </div>
+<div class="description-container">
   <div class="full-desc" id="desc-${p.id}">
     ${p.description}
   </div>
@@ -437,13 +434,6 @@ function renderProducts() {
     Read More
   </button>
 </div>
-          <div class="full-desc" id="desc-${p.id}">
-            ${p.description}
-          </div>
-          <button class="read-more-btn" onclick="toggleDescription('${p.id}', this)">
-            Read More
-          </button>
-        </div>
         <p><em>Stock: ${p.stock}</em></p>
         <button ${disabledText} onclick="addToCart('${p.id}','${p.title}',${p.price})">
           ${buttonText}
@@ -542,6 +532,7 @@ renderProducts();
 </script>
 </body> 
 </html>
+
 
 
 
