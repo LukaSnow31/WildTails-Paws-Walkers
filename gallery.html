@@ -222,71 +222,57 @@
     }
 
     /* Mobile-Friendly CSS */
-    @media (max-width: 768px) {
-      nav {
-        padding-left: 0;
-        padding-top: 0;
-      }
+   @media (max-width: 768px) {
 
-      #logo {
-        position: static;
-        margin: 10px auto;
-        display: block;
-        height: 100px;
-      }
+  nav ul {
+    display: none;
+  }
 
-      .menu-toggle {
-        display: block;
-        width: 100%;
-        text-align: right;
-      }
+  .hamburger {
+    display: block;
+  }
 
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background: #5C4033;
-        width: 100%;
-      }
+  .mobile-menu {
+    display: none;
+  }
 
-      nav ul.active {
-        display: flex;
-      }
+  .mobile-menu.show {
+    display: flex;
+  }
 
-      nav li {
-        width: 100%;
-        text-align: center;
-      }
+  #logo {
+    position: static;
+    margin: 10px auto;
+    display: block;
+    height: 100px;
+  }
 
-      .gallery-track {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        animation: none;
-        gap: 10px;
-        padding: 10px;
-      }
+  .gallery-track {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    animation: none;
+    gap: 10px;
+    padding: 10px;
+  }
 
-      .gallery-track img {
-        width: 80vw;
-        height: auto;
-      }
+  .gallery-track img {
+    width: 80vw;
+  }
 
-      .arrow {
-        display: none;
-      }
+  .arrow {
+    display: none;
+  }
 
-      h1 {
-        font-size: 28px;
-      }
+  h1 {
+    font-size: 28px;
+  }
 
-      .container {
-        padding-top: 120px;
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-    }
-  </style>
-</head>
-<body>
+  .container {
+    padding-top: 120px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
 
  <!-- ===== LOGO ===== -->
 <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo">
@@ -469,6 +455,7 @@
 </script>
 </body>
 </html>
+
 
 
 
