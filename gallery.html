@@ -288,10 +288,12 @@
 </head>
 <body>
 
-  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
+ <!-- ===== LOGO ===== -->
+<img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo">
 
+<!-- ===== HEADER START ===== -->
+<header>
   <nav>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <ul>
       <li><a href="./">Home</a></li>
       <li><a href="about.html">About Us</a></li>
@@ -302,7 +304,22 @@
       <li><a href="booking.html">Book Now</a></li>
       <li><a href="contact-us.html">Contact Us</a></li>
     </ul>
+
+    <div class="hamburger" id="hamburger">☰</div>
   </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="services.html">Services</a>
+    <a href="shop.html">Shop</a>
+    <a href="review.html">Reviews</a>
+    <a href="booking.html">Book Now</a>
+    <a href="contact-us.html">Contact Us</a>
+  </div>
+</header>
+<!-- ===== HEADER END ===== -->
 
   <main class="container">
     <section id="Gallery" class="hero">
@@ -432,54 +449,27 @@
   </div>
 
   <!-- JS -->
-  <script>
-    // Mobile menu toggle
-    function toggleMenu() {
-      document.querySelector("nav ul").classList.toggle("active");
-    }
+ <script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
 
-    const track = document.getElementById('galleryTrack');
-    const galleryImages = Array.from(track.querySelectorAll('img'));
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    let currentImgIndex = 0;
+  hamburger.addEventListener('click', function () {
+    mobileMenu.classList.toggle('show');
+    hamburger.textContent =
+      mobileMenu.classList.contains('show') ? "✖" : "☰";
+  });
 
-    function scrollGallery(direction) {
-      const scrollAmount = 320;
-      track.style.animationPlayState = 'paused';
-      const currentTransform = getComputedStyle(track).transform;
-      const matrix = new DOMMatrix(currentTransform);
-      const newX = matrix.m41 + (direction * -scrollAmount);
-      track.style.transform = `translateX(${newX}px)`;
-      setTimeout(() => {
-        track.style.animationPlayState = 'running';
-      }, 2000);
-    }
-
-    galleryImages.forEach((img, index) => {
-      img.addEventListener('click', () => {
-        currentImgIndex = index;
-        lightboxImg.src = img.src;
-        lightbox.style.display = 'flex';
-      });
+  const mobileLinks = document.querySelectorAll('#mobileMenu a');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('show');
+      hamburger.textContent = "☰";
     });
-
-    function changeImage(direction) {
-      currentImgIndex = (currentImgIndex + direction + galleryImages.length) % galleryImages.length;
-      lightboxImg.src = galleryImages[currentImgIndex].src;
-    }
-
-    function closeLightbox() {
-      lightbox.style.display = 'none';
-      lightboxImg.src = '';
-    }
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeLightbox();
-    });
-  </script>
+  });
+</script>
 </body>
 </html>
+
 
 
 
