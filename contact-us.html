@@ -36,98 +36,40 @@ html { scroll-behavior: smooth; }
       background-color: #5C4033;
       position: fixed;
       width: 100%;
-      top: 0;  body {
-      margin: 0;
-      font-family: 'Quicksand', sans-serif;
-      background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
-      background-size: cover;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      color: #222;
-      text-align: center;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    #logo {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      height: 280px;
-      width: auto;
-      z-index: 999;
-      border-radius: 50%;
-    }
-
-    header {
-      background-color: #5C4033;
-      position: fixed;
-      width: 100%;
       top: 0;
       z-index: 998;
       padding-left: 150px;
-    }
-
-    nav {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
-
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    nav li { margin: 0; }
-
-    nav a {
-      display: block;
-      padding: 18px 20px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-
-    nav a:hover { background-color: #4e2f22; }
-
-    /* Hamburger icon - hidden by default */
-    .hamburger {
-      display: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: white;
-      padding: 18px 20px;
-      user-select: none;
-    }
-
-    .hamburger.active {
-      content: "✖";
-    }
-
-    /* Mobile dropdown menu (hidden by default) */
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      background-color: #5C4033;
-      width: 100%;
-    }
-
-    .mobile-menu a {
-      padding: 15px;
-      border-top: 1px solid #4e2f22;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .mobile-menu a:hover {
-      background-color: #4e2f22;
-    }
+}
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+nav {
+  background-color: #5C4033;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+nav li { margin: 0; }
+nav a {
+  display: block;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+nav a:hover { background-color: #4e2f22; }
 /* ===== Container & Hero ===== */
 .container {
   padding-top: 140px;
@@ -393,6 +335,7 @@ fadeElements.forEach(el => observer.observe(el));
 
 </body>
 </html>
+
 
 
 
