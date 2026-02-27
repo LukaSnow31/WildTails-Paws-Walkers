@@ -25,41 +25,71 @@ body { margin: 0; font-family: 'Quicksand', sans-serif;
       }
 #logo:hover { transform: scale(1.05);}
       }
-   header {
-      background-color: #5C4033;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 998;
-      padding-left: 150px;
-   }
+header {
+  background-color: #5C4033;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 998;
+  padding-left: 150px;
+}
 
-nav { position: fixed; top: 0; 
-     width: 100%; 
-     background-color: #5C4033; 
-     z-index: 998; 
-     padding-left: 130px; 
-     transition: background 0.3s ease; 
-    } 
-nav ul { list-style: none; 
-        margin: 0; 
-        padding: 0; 
-        display: flex; 
-        justify-content: flex-end; 
-        flex-wrap: wrap; 
-       }
-nav li { margin: 0; 
-        opacity: 1; 
-        transform: none; 
-       }
-nav a { display: block; 
-       padding: 18px 20px; 
-       text-decoration: none; 
-       color: white; 
-       font-weight: bold; 
-       transition: background 0.3s ease; 
-      }
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+nav li { margin: 0; }
+
+nav a {
+  display: block;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
 nav a:hover { background-color: #4e2f22; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  padding: 18px 20px;
+  user-select: none;
+}
+
+/* Mobile dropdown */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #5C4033;
+  width: 100%;
+}
+
+.mobile-menu a {
+  padding: 15px;
+  border-top: 1px solid #4e2f22;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.mobile-menu a:hover {
+  background-color: #4e2f22;
+}
 
 .container { 
   padding-top: 140px; 
@@ -97,9 +127,24 @@ footer { background-color: #5C4033; color: white; text-align: center; padding: 2
   #logo { position: static; display: block; margin: 10px auto; height: 150px; }
   nav { padding-left: 0; }
   nav ul { flex-direction: column; align-items: center; display: none; }
-  nav.active ul { display: flex; }
-  nav li { width: 100%; text-align: center; }
-  nav a { padding: 14px; }
+ nav ul {
+  display: none;
+}
+
+.hamburger {
+  display: block;
+}
+
+.mobile-menu.show {
+  display: flex;
+}
+
+#logo {
+  position: static;
+  margin: 10px auto;
+  display: block;
+  height: 100px;
+}
   .container { padding: 120px 15px 40px 15px; }
   .hero { padding: 30px 15px; }
   .hero h1 { font-size: 36px; }
@@ -126,26 +171,34 @@ footer { background-color: #5C4033; color: white; text-align: center; padding: 2
 <!-- Logo -->
 <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 
-<!-- Hamburger -->
-<div class="hamburger" onclick="toggleNav()">
-  <div></div>
-  <div></div>
-  <div></div>
-</div>
+<!-- ===== HEADER START ===== -->
+<header>
+  <nav>
+    <ul>
+      <li><a href="./">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
 
-<!-- Navigation -->
-<nav id="nav">
-  <ul>
-    <li><a href="./">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="review.html">Reviews</a></li>
-    <li><a href="booking.html">Book Now</a></li>
-    <li><a href="contact-us.html">Contact Us</a></li>
-  </ul>
-</nav>
+    <div class="hamburger" id="hamburger">☰</div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="services.html">Services</a>
+    <a href="shop.html">Shop</a>
+    <a href="review.html">Reviews</a>
+    <a href="booking.html">Book Now</a>
+    <a href="contact-us.html">Contact Us</a>
+  </div>
+</header>
 
 <!-- Main Content -->
 <main class="container">
@@ -257,6 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 
 
 
