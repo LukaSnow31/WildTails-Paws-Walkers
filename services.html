@@ -17,21 +17,25 @@ body { margin: 0; font-family: 'Quicksand', sans-serif;
       color: #222; text-align: center; 
      }
 
-#logo { position: fixed; top: 10px; 
-       left: 10px; height: 280px; 
-       width: auto; z-index: 999; 
-       border-radius: 50%; 
-       transition: transform 0.3s ease; 
-      }
+    #logo {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      height: 280px;
+      width: auto;
+      z-index: 999;
+      border-radius: 50%;
+    }
 #logo:hover { transform: scale(1.05); }
       
-header {
-  background-color: #5C4033;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 998;
-}
+    header {
+      background-color: #5C4033;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 998;
+      padding-left: 150px;
+    }
 
 nav {
   display: flex;
@@ -109,7 +113,7 @@ nav a:hover { background-color: #4e2f22; }
   width: 100%; 
   max-width: 900px; /* ✅ Keeps the white box centered */
 }
-.hero h1 { font-family: 'Playfair Display', serif; font-size: 48px; color: #228B22; margin-bottom: 20px; opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: 40px; color: #228B22; margin-bottom: 20px; opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
 .hero h2 { font-family: 'Playfair Display', serif; font-size: 36px; color: #228B22; margin-top: 30px; opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
 .hero p, .hero li { font-size: 20px; line-height: 1.8; text-align: center; opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
 
@@ -312,6 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
 
 
 
