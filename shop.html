@@ -9,70 +9,39 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet" />
 
 <style>
-body {
+body, html {
   margin:0;
+  padding:0;
   font-family:'Quicksand',sans-serif;
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
   background-image:url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
   background-size:cover;
-  background-attachment:fixed;
   background-repeat:no-repeat;
   color:#222;
 }
 
-/* Product Styles */
-.product {
-  border:1px solid #ccc;
-  padding:1rem;
-  margin-bottom:1rem;
-  border-radius:8px;
-  background:#fff;
-}
-.product img { max-width:200px; display:block; margin-bottom:0.5rem; }
-.product h2 { margin-top:0; }
-.price { font-weight:bold; margin:0.5rem 0; }
-.toggle-btn {
-  background:#007bff;
-  color:#fff;
-  padding:0.5rem 1rem;
-  border:none;
-  border-radius:4px;
-  cursor:pointer;
-  margin-top:0.5rem;
-}
-.toggle-btn:hover { background:#0056b3; }
-.description { display:none; margin-top:0.5rem; white-space: pre-wrap; }
-.description p { margin:0.6rem 0; }
-.description ul { padding-left:1.5rem; margin:0.5rem 0; }
-.description li { margin-bottom:0.3rem; }
-
-/* Logo */
-#logo {
-  position:fixed;
-  top:10px;
-  left:10px;
-  height:280px;
-  border-radius:50%;
-  z-index:999;
-}
- header {
-      background-color: #5C4033;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 998;
-      padding-left: 150px;
- }
-/* Navigation */
-nav {
+/* ===== Header & Navigation ===== */
+header {
+  background-color: #5C4033;
   position: fixed;
-  top: 0;
+  top:0;
   width: 100%;
-  background: #5C4033;
-  z-index: 998;
+  z-index: 999;
   display: flex;
-  justify-content: flex-end; 
-  padding-left: 0;            
-  padding-right: 20px;       
+  align-items: center;
+  padding:10px 20px;
+}
+
+#logo {
+  height: 100px;
+  border-radius:50%;
+  margin-right:20px;
+}
+
+nav {
+  margin-left:auto;
 }
 nav ul {
   list-style:none;
@@ -80,39 +49,49 @@ nav ul {
   margin:0;
   padding:0;
 }
-nav a {
-  padding:18px 20px;
+nav li a {
+  padding: 18px 15px;
   color:white;
   text-decoration:none;
   font-weight:bold;
+  display:block;
 }
-nav a:hover { background:#4e2f22; }
-.menu-toggle { display:none; }
+nav li a:hover { background:#4e2f22; border-radius:6px; }
 
-/* Container */
-.container {
-  padding-top:140px;
+/* ===== Main Container ===== */
+main.container {
+  flex:1;
   max-width:1000px;
   margin:auto;
+  padding:140px 20px 20px 20px;
   text-align:center;
 }
 
-/* Shop Items */
+/* ===== Product Grid ===== */
+#product-list {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+}
+
 .shop-item {
+  flex:1 1 calc(33% - 40px);
   background:white;
-  margin:20px;
   padding:20px;
   border-radius:10px;
   box-shadow:0 2px 8px rgba(0,0,0,0.1);
-  display:inline-block;
-  width:calc(33% - 40px);
-  vertical-align:top;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
-.main-image {
+
+.shop-item img.main-image {
   width:100%;
   max-width:280px;
   border-radius:10px;
 }
+
 .thumbnail-container {
   display:flex;
   justify-content:center;
@@ -127,6 +106,7 @@ nav a:hover { background:#4e2f22; }
   opacity:0.7;
 }
 .thumbnail:hover { opacity:1; }
+
 .shop-item button {
   background:#5C4033;
   color:white;
@@ -135,10 +115,26 @@ nav a:hover { background:#4e2f22; }
   border-radius:6px;
   cursor:pointer;
   width:100%;
+  margin-top:6px;
 }
 .shop-item button:hover { background:#4e2f22; }
 
-/* Cart */
+/* ===== Product Description Toggle ===== */
+.full-desc {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background: #f8f8f8;
+  border-radius:6px;
+  margin-top:6px;
+  padding:0 10px;
+}
+.full-desc.show {
+  max-height: 1000px;
+  padding:10px;
+}
+
+/* ===== Cart ===== */
 #cart {
   background:white;
   padding:20px;
@@ -146,6 +142,7 @@ nav a:hover { background:#4e2f22; }
   max-width:600px;
   margin:auto;
 }
+
 #cart-icon {
   position:fixed;
   top:20px;
@@ -171,94 +168,82 @@ nav a:hover { background:#4e2f22; }
   height:18px;
   font-size:0.8em;
 }
-body, html {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
+
+/* ===== Filters & Shipping ===== */
+select {
+  width:100%;
+  padding:8px;
+  margin-bottom:10px;
+  border-radius:6px;
 }
 
-main.container {
-  flex: 1; /* pushes footer down */
-}
-
+/* ===== Footer ===== */
 footer {
-  margin-top: 0; /* remove extra margin */
-}
-/* Product Description Toggle */
-.full-desc {
-  display: none;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  background: #f8f8f8;
-  padding: 0 10px;
-  border-radius: 6px;
-  margin-top: 6px;
-}
-.full-desc.show {
-  display: block;
-  max-height: 1000px;
-  padding: 10px;
+  background:#5C4033;
+  color:white;
+  text-align:center;
+  padding:15px;
 }
 
-/* Mobile */
+/* ===== Mobile ===== */
+@media(max-width:900px){
+  .shop-item { flex:1 1 45%; }
+}
 @media(max-width:600px){
-  .shop-item { width:100%; margin:15px 0; }
-  .shop-item button { padding:14px; }
-  #logo { position:static; height:120px; margin:10px auto; display:block; }
+  .shop-item { flex:1 1 100%; }
+  #logo { height:80px; margin:auto; display:block; }
+  nav ul { flex-direction:column; align-items:center; }
+  nav li a { padding:10px 15px; margin:3px 0; }
 }
 </style>
 </head>
 
 <body>
 
-<img id="logo" src="WildTails-PawsWalkers/front logo.png">
-
-<nav>
-<ul>
-        <li><a href="./">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="review.html">Reviews</a></li>
-        <li><a href="booking.html">Book Now</a></li>
-        <li><a href="contact-us.html">Contact Us</a></li>
-</ul>
-  <div class="hamburger" id="hamburger">☰</div>
-</nav>
+<header>
+  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="Logo">
+  <nav>
+    <ul>
+      <li><a href="./">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
 
 <div id="cart-icon">🛒<div id="cart-count">0</div></div>
 
 <main class="container">
 
 <h1>Shop</h1>
-<div style="margin-bottom:10px;">
-  <label><strong>Filter by Category:</strong></label>
-  <select id="category-filter" style="width:100%;padding:8px;">
-    <option value="all">All</option>
-    <option value="pet">Pet Items</option>
-    <option value="accessories">Accessories</option>
-    <option value="art">Artwork</option>
-    <option value="candles">Candles/Wax</option>
-    <option value="clay">Clay Items</option>
-    <option value="others">Other</option>
-  </select>
-</div>
+
+<label><strong>Filter by Category:</strong></label>
+<select id="category-filter">
+  <option value="all">All</option>
+  <option value="pet">Pet Items</option>
+  <option value="accessories">Accessories</option>
+  <option value="art">Artwork</option>
+  <option value="candles">Candles/Wax</option>
+  <option value="clay">Clay Items</option>
+  <option value="others">Other</option>
+</select>
 
 <div id="product-list"></div>
 
 <h2>Your Cart</h2>
 <div id="cart">Your cart is empty.</div>
 
-<div style="margin:15px 0;">
 <label><strong>Shipping</strong></label>
-<select id="shipping" style="width:100%;padding:8px;">
+<select id="shipping">
   <option value="0">Local Collection – Free</option>
   <option value="3.99">UK Small Parcel – £3.99</option>
   <option value="6.99">UK Tracked – £6.99</option>
 </select>
-</div>
 
 <p id="shipping-cost"><strong>Shipping:</strong> £0.00</p>
 <p id="order-total"><strong>Total:</strong> £0.00</p>
@@ -271,7 +256,6 @@ Orders dispatch within 2–5 working days.
 </p>
 
 </main>
-
 <footer>
 &copy; 2025 WildTails & Paws Walkers
 </footer>
@@ -397,152 +381,105 @@ const products = [
   }
 ];
 
-// --- Fix Issue 1 & 2: default stock and category ---
-products.forEach(p => {
-  if (!p.stock) p.stock = 10; // default stock
-  if (!p.category) p.category = "pet"; // default category
-});
+products.forEach(p => { if(!p.stock) p.stock=10; if(!p.category) p.category="pet"; });
 
 let cart = [];
 let shippingCost = 0;
-let activeCategory = "all"; // show all products by default
+let activeCategory = "all";
 
 const productList = document.getElementById("product-list");
 const categoryFilter = document.getElementById("category-filter");
+categoryFilter.addEventListener("change", () => { activeCategory = categoryFilter.value; renderProducts(); });
 
-categoryFilter.addEventListener("change", () => { 
-  activeCategory = categoryFilter.value; 
-  renderProducts(); 
-});
+// ===== Render Products =====
+function renderProducts(){
+  productList.innerHTML="";
+  products.filter(p => activeCategory==="all"||p.category===activeCategory).forEach(p=>{
+    const d = document.createElement("div");
+    d.className="shop-item";
 
-function renderProducts() {
-  productList.innerHTML = "";
-  products
-    .filter(p => activeCategory === "all" || p.category === activeCategory)
-    .forEach(p => {
-     const d = document.createElement("div");
-     d.className = "shop-item";
+    const buttonHtml = p.stock===0
+      ? `<button disabled>Sold Out</button>`
+      : `<button onclick="addToCart('${p.id}','${p.title}',${p.price})">Add to Cart</button>`;
 
-const disabledText = p.stock === 0 ? 'disabled' : '';
-const buttonText = p.stock === 0 ? 'Sold Out' : 'Add to Cart';
-
-d.innerHTML = `
-  <h3>${p.title}</h3>
-  <img src="${p.images[0]}" class="main-image">
-  <div class="thumbnail-container">
-    ${p.images.map(i => `<img src="${i}" class="thumbnail" onclick="this.parentNode.previousElementSibling.src='${i}'">`).join("")}
-  </div>
-  <p><strong>£${p.price.toFixed(2)}</strong></p>
-
-  <div class="full-desc" id="desc-${p.id}">
-    ${p.description}
-  </div>
-  <button class="read-more-btn" onclick="toggleDescription('${p.id}', this)">
-    Read More
-  </button>
-
-  <p><em>Stock: ${p.stock}</em></p>
-  <button ${disabledText} onclick="addToCart('${p.id}','${p.title}',${p.price})">
-    ${buttonText}
-  </button>
-`;
-#product-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+    d.innerHTML=`
+      <h3>${p.title}</h3>
+      <img src="${p.images[0]}" class="main-image">
+      <div class="thumbnail-container">${p.images.map(i=>`<img src="${i}" class="thumbnail" onclick="this.parentNode.previousElementSibling.src='${i}'">`).join('')}</div>
+      <p><strong>£${p.price.toFixed(2)}</strong></p>
+      <div class="full-desc" id="desc-${p.id}">${p.description}</div>
+      <button onclick="toggleDescription('${p.id}', this)">Read More</button>
+      <p><em>Stock: ${p.stock}</em></p>
+      ${buttonHtml}
+    `;
+    productList.appendChild(d);
+  });
 }
 
-// --- Fixed toggleDescription ---
+// ===== Toggle Description =====
 function toggleDescription(id, btn){
-  const desc = document.getElementById("desc-" + id);
+  const desc=document.getElementById("desc-"+id);
   desc.classList.toggle("show");
   btn.textContent = desc.classList.contains("show") ? "Read Less" : "Read More";
 }
 
-// --- Cart Functions ---
+// ===== Cart Functions =====
 function addToCart(id, title, price){
-  const product = products.find(p => p.id === id);
-  if(product.stock === 0) return;
-  const item = cart.find(i => i.id === id);
-  if(item){ if(product.stock > 0){ item.qty++; product.stock--; } }
-  else { cart.push({id, title, price, qty:1}); product.stock--; }
+  const product=products.find(p=>p.id===id);
+  if(!product||product.stock===0) return;
+  const item=cart.find(i=>i.id===id);
+  if(item){ item.qty++; product.stock--; }
+  else { cart.push({id,title,price,qty:1}); product.stock--; }
   renderProducts(); renderCart();
 }
-
 function removeFromCart(id){
-  const index = cart.findIndex(i => i.id === id);
-  if(index > -1){ 
-    const product = products.find(p => p.id === id); 
-    if(product) product.stock += cart[index].qty; 
-    cart.splice(index,1); 
-  }
+  const index=cart.findIndex(i=>i.id===id);
+  if(index>-1){ const product=products.find(p=>p.id===id); if(product) product.stock+=cart[index].qty; cart.splice(index,1); }
   renderProducts(); renderCart();
 }
-
-function changeQty(id, delta){
-  const item = cart.find(i => i.id === id);
-  const product = products.find(p => p.id === id);
-  if(!item || !product) return;
+function changeQty(id,delta){
+  const item=cart.find(i=>i.id===id);
+  const product=products.find(p=>p.id===id);
+  if(!item||!product) return;
   if(delta>0 && product.stock>0){ item.qty++; product.stock--; }
   else if(delta<0 && item.qty>0){ item.qty--; product.stock++; }
   if(item.qty===0) removeFromCart(id);
   renderProducts(); renderCart();
 }
-
 function renderCart(){
-  const c = document.getElementById("cart");
-  c.innerHTML = "";
-  if(cart.length === 0){ c.textContent = "Your cart is empty."; updateTotals(); return; }
-  cart.forEach(i => {
-    const p = document.createElement("p");
-    p.innerHTML = `
-      ${i.title} x ${i.qty} – £${(i.price*i.qty).toFixed(2)}
+  const c=document.getElementById("cart");
+  c.innerHTML="";
+  if(cart.length===0){ c.textContent="Your cart is empty."; updateTotals(); return; }
+  cart.forEach(i=>{
+    const p=document.createElement("p");
+    p.innerHTML=`${i.title} x ${i.qty} – £${(i.price*i.qty).toFixed(2)}
       <button style="margin-left:6px;" onclick="changeQty('${i.id}',1)">+</button>
       <button style="margin-left:3px;" onclick="changeQty('${i.id}',-1)">-</button>
-      <button style="margin-left:3px;" onclick="removeFromCart('${i.id}')">Remove</button>
-    `;
+      <button style="margin-left:3px;" onclick="removeFromCart('${i.id}')">Remove</button>`;
     c.appendChild(p);
   });
   updateTotals();
 }
-
-document.getElementById("shipping").addEventListener("change", e => { 
-  shippingCost = parseFloat(e.target.value); 
-  updateTotals(); 
-});
-
+document.getElementById("shipping").addEventListener("change", e => { shippingCost=parseFloat(e.target.value); updateTotals(); });
 function updateTotals(){
-  const total = cart.reduce((s,i)=>s+i.price*i.qty,0);
-  document.getElementById("category-filter").value = activeCategory;
-  document.getElementById("shipping-cost").textContent = `Shipping: £${shippingCost.toFixed(2)}`;
-  document.getElementById("order-total").textContent = `Total: £${(total + shippingCost).toFixed(2)}`;
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById("shipping-cost").textContent=`Shipping: £${shippingCost.toFixed(2)}`;
+  document.getElementById("order-total").textContent=`Total: £${(total+shippingCost).toFixed(2)}`;
 }
 
-// --- PayPal ---
+// ===== PayPal =====
 paypal.Buttons({
   createOrder:(data,actions)=>{
-    const total = cart.reduce((s,i)=>s+i.price*i.qty,0) + shippingCost;
-    return actions.order.create({
-      purchase_units:[{
-        description:"WildTails & Paws Walkers – Handmade Items",
-        amount:{currency_code:"GBP", value: total.toFixed(2)}
-      }]
-    });
+    const total=cart.reduce((s,i)=>s+i.price*i.qty,0)+shippingCost;
+    return actions.order.create({purchase_units:[{description:"WildTails & Paws Walkers – Handmade Items",amount:{currency_code:"GBP", value:total.toFixed(2)}}]});
   },
-  onApprove:(data, actions)=>{
-    return actions.order.capture().then(()=>{
-      alert("Thank you for your order 🐾\nOrders ship within 2–5 working days.");
-      cart=[]; renderProducts(); renderCart();
-    });
-  }
+  onApprove:(data,actions)=>{ return actions.order.capture().then(()=>{ alert("Thank you for your order 🐾\nOrders ship within 2–5 working days."); cart=[]; renderProducts(); renderCart(); }); }
 }).render("#paypal-button-container");
 
 renderProducts();
 </script>
-</body> 
+</body>
 </html>
-
-
 
 
 
