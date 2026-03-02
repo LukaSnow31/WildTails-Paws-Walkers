@@ -21,56 +21,63 @@ body, html {
   background-repeat:no-repeat;
   color:#222;
 }
-
+/* Logo on the left */
 #logo-container {
-  text-align: left; /* aligns like other pages */
-  margin: 20px 0; /* spacing above and below */
+  text-align: left;
+  margin: 20px 20px 0 20px; /* spacing from top & sides */
 }
 #logo {
   height: 120px;
   border-radius: 50%;
 }
 
-/* Header / nav like other pages (not centered) */
+/* Header with nav on the right */
 header {
-  background-color: #5C4033;
-  width: 100%;
   position: fixed;
-  top:0;
+  top: 0;
+  width: 100%;
+  background-color: #5C4033;
   z-index: 999;
-  padding-left: 150px; /* same as other pages */
+  padding: 0 20px; /* spacing for left/right */
 }
+
+nav {
+  display: flex;
+  justify-content: flex-end; /* nav links on right */
+  align-items: center;
+  height: 60px;
+}
+
 nav ul {
-  list-style:none;
-  display:flex;
-  margin:0;
-  padding:0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
+
 nav li a {
   padding: 18px 20px;
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  display:block;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
 }
-nav li a:hover { background:#4e2f22; border-radius:6px; }
 
-/* PayPal section centered */
+nav li a:hover {
+  background: #4e2f22;
+  border-radius: 6px;
+}
+
 #paypal-section {
   display: flex;
   justify-content: center;
   margin: 20px 0;
 }
-/* ===== Main Container ===== */
+
 main.container {
-  flex:1;
-  max-width:1000px;
-  margin:auto;
-  padding:140px 20px 20px 20px;
-  text-align:center;
+  padding-top: 160px; /* enough space for header + logo */
 }
 
-/* ===== Product Grid ===== */
 #product-list {
   display:flex;
   flex-wrap:wrap;
@@ -257,8 +264,7 @@ footer {
 You will receive a PayPal receipt by email.<br>
 Orders dispatch within 2–5 working days.
 </p>
-
-  <div id="paypal-section">
+ <div id="paypal-section">
     <div id="paypal-button-container"></div>
   </div>
 </main>
@@ -487,6 +493,7 @@ renderProducts();
 </script>
 </body>
 </html>
+
 
 
 
