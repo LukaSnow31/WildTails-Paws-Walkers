@@ -21,20 +21,22 @@ body {
 html { scroll-behavior: smooth; }
 
 #logo {
-  position: relative; /* or absolute inside header */
-  height: 60px;       /* matches other pages */
-  top: 0;
-  left: 0;
-  z-index: 1;         /* behind nav if needed */
-  border-radius: 0;   /* remove circle if other pages don’t have it */
+  height: 60px; /* smaller logo to fit header */
+  width: auto;
+  border-radius: 0; /* same as other pages */
 }
+
 header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #5C4033;
+  height: 80px; /* match other pages */
+  padding: 0 20px;
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 998;
-  padding-left: 150px;
+  z-index: 999; /* logo and nav above background */
 }
 nav {
   display: flex;
@@ -148,37 +150,34 @@ footer { background-color: #5C4033; color: white; text-align: center; padding: 2
 </style>
 </head>
 <body>
-<!-- Logo -->
-<img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
+  
+<header>
+  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
+  <nav>
+    <ul>
+      <li><a href="./">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
 
-<!-- Hamburger -->
-<div class="hamburger" onclick="toggleMenu()">☰</div>
-
-<!-- Navigation -->
-<nav>
-  <ul>
-    <li><a href="./">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="review.html">Reviews</a></li>
-    <li><a href="booking.html">Book Now</a></li>
-    <li><a href="contact-us.html">Contact Us</a></li>
-  </ul>
-</nav>
-
-<!-- Mobile menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="./">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="services.html">Services</a>
-  <a href="shop.html">Shop</a>
-  <a href="review.html">Reviews</a>
-  <a href="booking.html">Book Now</a>
-  <a href="contact-us.html">Contact Us</a>
-</div>
+    <div class="hamburger" id="hamburger">☰</div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="services.html">Services</a>
+    <a href="shop.html">Shop</a>
+    <a href="review.html">Reviews</a>
+    <a href="booking.html">Book Now</a>
+    <a href="contact-us.html">Contact Us</a>
+  </div>
+</header>
 
 <!-- Main Content -->
 <main class="container">
@@ -292,6 +291,7 @@ faders.forEach(fader => appearOnScroll.observe(fader));
 </script>
 </body>
 </html>
+
 
 
 
