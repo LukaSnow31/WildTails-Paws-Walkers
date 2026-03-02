@@ -25,10 +25,10 @@ html { scroll-behavior: smooth; }
   position: fixed;
   top: 10px;
   left: 10px;
-  height: 180px;
+  height: 60px; /* match other pages */
   width: auto;
   z-index: 999;
-  border-radius: 50%;
+  border-radius: 0; /* remove circle if other pages don’t have it */
 }
 header {
   background-color: #5C4033;
@@ -36,7 +36,11 @@ header {
   width: 100%;
   top: 0;
   z-index: 998;
-  padding-left: 150px;
+  padding: 0 20px; /* same as other pages */
+  display: flex;
+  justify-content: flex-end; /* aligns nav to right like other pages */
+  align-items: center;
+  height: 80px; /* consistent header height */
 }
 nav {
   display: flex;
@@ -86,12 +90,12 @@ nav a:hover { background-color: #4e2f22; }
 
 /* Container */
 .container {
-  padding-top: 220px; /* adjusted for smaller logo + header */
+  padding-top: 120px; /* header height + some spacing */
   padding-bottom: 40px;
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
-}
+}}
 
 /* Hero Section */
 .hero {
@@ -293,6 +297,7 @@ faders.forEach(fader => appearOnScroll.observe(fader));
 </script>
 </body>
 </html>
+
 
 
 
