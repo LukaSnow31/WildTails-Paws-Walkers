@@ -171,16 +171,19 @@ nav a:hover { background:#4e2f22; }
   height:18px;
   font-size:0.8em;
 }
-
-/* Footer */
-footer {
-  background:#5C4033;
-  color:white;
-  text-align:center;
-  padding:20px;
-  margin-top:60px;
+body, html {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
+main.container {
+  flex: 1; /* pushes footer down */
+}
+
+footer {
+  margin-top: 0; /* remove extra margin */
+}
 /* Product Description Toggle */
 .full-desc {
   display: none;
@@ -402,7 +405,7 @@ products.forEach(p => {
 
 let cart = [];
 let shippingCost = 0;
-let activeCategory = "Pet Items";
+let activeCategory = "all"; // show all products by default
 
 const productList = document.getElementById("product-list");
 const categoryFilter = document.getElementById("category-filter");
@@ -417,35 +420,36 @@ function renderProducts() {
   products
     .filter(p => activeCategory === "all" || p.category === activeCategory)
     .forEach(p => {
-      const d = document.createElement("div");
-      d.className = "shop-item";
+     const d = document.createElement("div");
+     d.className = "shop-item";
 
-      const disabledText = p.stock === 0 ? 'disabled' : '';
-      const buttonText = p.stock === 0 ? 'Sold Out' : 'Add to Cart';
+const disabledText = p.stock === 0 ? 'disabled' : '';
+const buttonText = p.stock === 0 ? 'Sold Out' : 'Add to Cart';
 
-      d.innerHTML = `
-        <h3>${p.title}</h3>
-        <img src="${p.images[0]}" class="main-image">
-        <div class="thumbnail-container">
-          ${p.images.map(i => `<img src="${i}" class="thumbnail" onclick="this.parentNode.previousElementSibling.src='${i}'">`).join("")}
-        </div>
-        <p><strong>£${p.price.toFixed(2)}</strong></p>
+d.innerHTML = `
+  <h3>${p.title}</h3>
+  <img src="${p.images[0]}" class="main-image">
+  <div class="thumbnail-container">
+    ${p.images.map(i => `<img src="${i}" class="thumbnail" onclick="this.parentNode.previousElementSibling.src='${i}'">`).join("")}
   </div>
-<div class="description-container">
+  <p><strong>£${p.price.toFixed(2)}</strong></p>
+
   <div class="full-desc" id="desc-${p.id}">
     ${p.description}
   </div>
   <button class="read-more-btn" onclick="toggleDescription('${p.id}', this)">
     Read More
   </button>
-</div>
-        <p><em>Stock: ${p.stock}</em></p>
-        <button ${disabledText} onclick="addToCart('${p.id}','${p.title}',${p.price})">
-          ${buttonText}
-        </button>
-      `;
-      productList.appendChild(d);
-    });
+
+  <p><em>Stock: ${p.stock}</em></p>
+  <button ${disabledText} onclick="addToCart('${p.id}','${p.title}',${p.price})">
+    ${buttonText}
+  </button>
+`;
+#product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 // --- Fixed toggleDescription ---
@@ -537,6 +541,7 @@ renderProducts();
 </script>
 </body> 
 </html>
+
 
 
 
