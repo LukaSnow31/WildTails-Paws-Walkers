@@ -11,107 +11,108 @@
 * { box-sizing: border-box; }
 
 body {
-      margin: 0;
-      font-family: 'Quicksand', sans-serif;
-      background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
-      background-size: cover;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      color: #222;
-      text-align: center;
-    }
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-image: url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #222;
+  text-align: center;
+}
 
-    html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
 
-    #logo {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      height: 280px;
-      width: auto;
-      z-index: 999;
-      border-radius: 50%;
-    }
+/* ===== Logo ===== */
+#logo {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  height: 220px; /* slightly smaller to save space */
+  width: auto;
+  z-index: 999;
+  border-radius: 50%;
+}
+#logo:hover { transform: scale(1.05); }
 
-    header {
-      background-color: #5C4033;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 998;
-      padding-left: 150px;
-    }
+/* ===== Header ===== */
+header {
+  background-color: #5C4033;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 998;
+  padding-left: 150px;
+}
 
-    nav {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-    }
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-    nav li { margin: 0; }
+nav li { margin: 0; }
 
-    nav a {
-      display: block;
-      padding: 18px 20px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
+nav a {
+  display: block;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
 
-    nav a:hover { background-color: #4e2f22; }
+nav a:hover { background-color: #4e2f22; }
 
-    /* Hamburger icon - hidden by default */
-    .hamburger {
-      display: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: white;
-      padding: 18px 20px;
-      user-select: none;
-    }
+/* Hamburger icon */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  padding: 18px 20px;
+  user-select: none;
+}
 
-    .hamburger.active {
-      content: "✖";
-    }
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #5C4033;
+  width: 100%;
+}
 
-    /* Mobile dropdown menu (hidden by default) */
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      background-color: #5C4033;
-      width: 100%;
-    }
+.mobile-menu a {
+  padding: 15px;
+  border-top: 1px solid #4e2f22;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.mobile-menu a:hover { background-color: #4e2f22; }
 
-    .mobile-menu a {
-      padding: 15px;
-      border-top: 1px solid #4e2f22;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .mobile-menu a:hover {
-      background-color: #4e2f22;
-    }
 /* ===== Container ===== */
 .container {
-  padding-top: 320px;
+  padding-top: 320px; /* enough for 220px logo + 70px header + 30px spacing */
+  padding-bottom: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
 }
+
 /* ===== Hero Section ===== */
-.hero { 
-  background: rgba(255,255,255,0.95); 
-  padding: 40px 30px; 
-  border-radius: 12px; 
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2); 
+.hero {
+  background: rgba(255,255,255,0.95);
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   text-align: center;
 }
 
@@ -138,6 +139,7 @@ label, input, select, textarea {
   font-size: 16px;
   text-align: center;
 }
+
 input, select, textarea { 
   padding: 10px; 
   border: 1px solid #ccc; 
@@ -177,11 +179,11 @@ footer {
 /* ===== Mobile Styles ===== */
 @media (max-width: 768px) {
   body { background-attachment: scroll; background-size: cover; }
-  #logo { position: static; display: block; margin: 10px auto; height: 100px; }
+  #logo { position: static; display: block; margin: 10px auto; height: 150px; }
   nav { padding-left: 0; }
   nav ul { display: none; }
   .hamburger { display: flex; }
-  .container { padding: 110px 15px 40px; }
+  .container { padding: 150px 15px 40px; } /* adjusts for smaller logo */
   form { padding: 20px 15px; margin: 20px 10px; }
   h1 { font-size: 28px; }
   .subtitle { font-size: 18px; }
@@ -189,11 +191,16 @@ footer {
   button { width: 100%; font-size: 16px; }
   .calendar-label { font-size: 18px; }
 }
-@media (max-width: 480px) { h1 { font-size: 24px; } nav a { font-size: 15px; } }
+
+@media (max-width: 480px) {
+  h1 { font-size: 24px; } 
+  nav a { font-size: 15px; }
+}
 
 /* ===== Fade-in ===== */
 .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
+
 </style>
 </head>
 <body>
@@ -338,6 +345,7 @@ mobileLinks.forEach(link => {
 
 </body>
 </html>
+
 
 
 
