@@ -9,97 +9,115 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet" />
 
 <style>
-body, html {
+/* Body */
+body {
   margin:0;
-  padding:0;
   font-family:'Quicksand',sans-serif;
-  min-height:100%;
-  display:flex;
-  flex-direction:column;
   background-image:url("https://i.postimg.cc/hjpvXjfH/Untitled-design-1.png");
   background-size:cover;
+  background-attachment:fixed;
   background-repeat:no-repeat;
   color:#222;
-}
-/* Logo on the left */
-#logo-container {
-  text-align: left;
-  margin: 20px 20px 0 20px; /* spacing from top & sides */
-}
-#logo {
-  height: 120px;
-  border-radius: 50%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Header with nav on the right */
+/* Header & Nav */
 header {
   position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #5C4033;
-  z-index: 999;
-  padding: 0 20px; /* spacing for left/right */
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#5C4033;
+  padding:10px 20px;
+  z-index:998;
 }
 
-nav {
-  display: flex;
-  justify-content: flex-end; /* nav links on right */
-  align-items: center;
-  height: 60px;
+#logo {
+  height:80px;
 }
 
 nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
+  list-style:none;
+  display:flex;
+  margin:0;
+  padding:0;
 }
 
 nav li a {
-  padding: 18px 20px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  display: block;
+  padding:10px 15px;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
 }
 
-nav li a:hover {
-  background: #4e2f22;
-  border-radius: 6px;
-}
+nav li a:hover { background:#4e2f22; border-radius:4px; }
 
-#paypal-section {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-}
-
+/* Main container */
 main.container {
-  padding-top: 160px; /* enough space for header + logo */
+  flex:1;
+  max-width:1200px;
+  margin:140px auto 40px auto; /* top margin for header space */
+  text-align:center;
+  padding:0 10px;
 }
 
+/* Category filter */
+#category-filter {
+  width:100%;
+  max-width:300px;
+  padding:8px;
+  margin:10px auto 20px auto;
+  display:block;
+}
+.shop-center {
+  max-width: 1000px;     /* limit width of shop content */
+  margin: 0 auto;        /* center horizontally */
+  text-align: center;    /* center text for category, shipping, totals */
+}
+
+/* Products flexbox for centering */
 #product-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* horizontally center items */
-  gap: 20px; /* space between items */
-  margin: 0 auto; /* center container in page */
-  max-width: 1200px; /* optional, keeps items aligned nicely */
-  padding: 0 10px; /* small side padding */
+  justify-content: center;  /* center products */
+  gap: 20px;                /* spacing between items */
 }
 
-.shop-item {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  flex: 1 1 280px; /* flexible width, min 280px, grows if space allows */
-  max-width: 33%; /* max 3 items per row */
-  box-sizing: border-box;
+/* Cart styling */
+#cart {
+  margin: 20px auto;
+  max-width: 600px;       /* same width as cart */
+  text-align: center;
 }
-.shop-item img.main-image {
+
+/* PayPal */
+#paypal-wrapper {
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+}
+#paypal-button-container iframe {
+  width: 100% !important;
+  max-width: 400px;
+  min-height: 50px !important;
+}
+/* Shop items */
+.shop-item {
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  flex:1 1 280px; /* flexible width */
+  max-width:33%;
+  box-sizing:border-box;
+}
+
+.shop-item .main-image {
   width:100%;
-  max-width:280px;
   border-radius:10px;
 }
 
@@ -109,6 +127,7 @@ main.container {
   gap:6px;
   margin-top:6px;
 }
+
 .thumbnail {
   width:50px;
   height:50px;
@@ -116,6 +135,7 @@ main.container {
   cursor:pointer;
   opacity:0.7;
 }
+
 .thumbnail:hover { opacity:1; }
 
 .shop-item button {
@@ -126,96 +146,62 @@ main.container {
   border-radius:6px;
   cursor:pointer;
   width:100%;
-  margin-top:6px;
 }
+
 .shop-item button:hover { background:#4e2f22; }
 
-/* ===== Product Description Toggle ===== */
+/* Cart & shipping section */
+#cart, #shipping, #paypal-button-container {
+  max-width:600px;
+  margin:20px auto;
+  text-align:center;
+}
+
+/* Footer */
+footer {
+  text-align:center;
+  margin-top:20px;
+  padding:10px 0;
+  background:#5C4033;
+  color:white;
+}
+
+/* Product Description Toggle */
 .full-desc {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  background: #f8f8f8;
+  display:none;
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.3s ease, padding 0.3s ease;
+  background:#f8f8f8;
+  padding:0 10px;
   border-radius:6px;
   margin-top:6px;
-  padding:0 10px;
 }
+
 .full-desc.show {
-  max-height: 1000px;
+  display:block;
+  max-height:1000px;
   padding:10px;
 }
 
-/* ===== Cart ===== */
-#cart {
-  background:white;
-  padding:20px;
-  border-radius:10px;
-  max-width:600px;
-  margin:auto;
-}
-
-#cart-icon {
-  position:fixed;
-  top:20px;
-  right:20px;
-  background:#5C4033;
-  color:white;
-  width:50px;
-  height:50px;
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  cursor:pointer;
-}
-#cart-count {
-  position:absolute;
-  top:-5px;
-  right:-5px;
-  background:#c0392b;
-  color:white;
-  border-radius:50%;
-  width:18px;
-  height:18px;
-  font-size:0.8em;
-}
-
-/* ===== Filters & Shipping ===== */
-select {
-  width:100%;
-  padding:8px;
-  margin-bottom:10px;
-  border-radius:6px;
-}
-
-/* ===== Footer ===== */
-footer {
-  background:#5C4033;
-  color:white;
-  text-align:center;
-  padding:15px;
-}
-
-/* ===== Mobile ===== */
+/* Mobile */
 @media(max-width:900px){
-  .shop-item { flex:1 1 45%; }
+  .shop-item { max-width:45%; }
 }
+
 @media(max-width:600px){
-  .shop-item { flex:1 1 100%; }
-  #logo { height:80px; margin:auto; display:block; }
-  nav ul { flex-direction:column; align-items:center; }
-  nav li a { padding:10px 15px; margin:3px 0; }
+  .shop-item { max-width:100%; margin:10px 0; }
+  #logo { height:60px; }
+  nav ul { flex-direction:column; align-items:flex-end; }
+  nav li a { padding:8px 12px; }
 }
 </style>
 </head>
 
 <body>
 
-<div id="logo-container">
-  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="Logo">
-</div>
-
 <header>
+  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails & Paws Walkers Logo">
   <nav>
     <ul>
       <li><a href="./">Home</a></li>
@@ -231,42 +217,52 @@ footer {
 </header>
 
 <main class="container">
-<h1>Shop</h1>
+  <div class="shop-center">
+    <h1>Shop</h1>
 
-<label><strong>Filter by Category:</strong></label>
-<select id="category-filter">
-  <option value="all">All</option>
-  <option value="pet">Pet Items</option>
-  <option value="accessories">Accessories</option>
-  <option value="art">Artwork</option>
-  <option value="candles">Candles/Wax</option>
-  <option value="clay">Clay Items</option>
-  <option value="others">Other</option>
-</select>
+    <!-- Category Filter -->
+    <div style="margin-bottom:10px;">
+      <label><strong>Filter by Category:</strong></label>
+      <select id="category-filter" style="width:100%;padding:8px;">
+        <option value="all">All</option>
+        <option value="pet">Pet Items</option>
+        <option value="accessories">Accessories</option>
+        <option value="art">Artwork</option>
+        <option value="candles">Candles/Wax</option>
+        <option value="clay">Clay Items</option>
+        <option value="others">Other</option>
+      </select>
+    </div>
 
-<div id="product-list"></div>
+    <!-- Products -->
+    <div id="product-list"></div>
 
-<h2>Your Cart</h2>
-<div id="cart">Your cart is empty.</div>
+    <!-- Cart -->
+    <h2>Your Cart</h2>
+    <div id="cart">Your cart is empty.</div>
 
-<label><strong>Shipping</strong></label>
-<select id="shipping">
-  <option value="0">Local Collection – Free</option>
-  <option value="3.99">UK Small Parcel – £3.99</option>
-  <option value="6.99">UK Tracked – £6.99</option>
-</select>
+    <!-- Shipping -->
+    <div style="margin:15px 0;">
+      <label><strong>Shipping</strong></label>
+      <select id="shipping" style="width:100%;padding:8px;">
+        <option value="0">Local Collection – Free</option>
+        <option value="3.99">UK Small Parcel – £3.99</option>
+        <option value="6.99">UK Tracked – £6.99</option>
+      </select>
+    </div>
 
-<p id="shipping-cost"><strong>Shipping:</strong> £0.00</p>
-<p id="order-total"><strong>Total:</strong> £0.00</p>
+    <p id="shipping-cost"><strong>Shipping:</strong> £0.00</p>
+    <p id="order-total"><strong>Total:</strong> £0.00</p>
 
-<div id="paypal-button-container"></div>
+    <!-- PayPal -->
+    <div id="paypal-wrapper">
+      <div id="paypal-button-container"></div>
+    </div>
 
-<p style="font-size:0.85em;">
-You will receive a PayPal receipt by email.<br>
-Orders dispatch within 2–5 working days.
-</p>
- <div id="paypal-section">
-    <div id="paypal-button-container"></div>
+    <p style="font-size:0.85em;">
+      You will receive a PayPal receipt by email.<br>
+      Orders dispatch within 2–5 working days.
+    </p>
   </div>
 </main>
   
@@ -494,6 +490,7 @@ renderProducts();
 </script>
 </body>
 </html>
+
 
 
 
