@@ -20,8 +20,6 @@ body {
 }
 html { scroll-behavior: smooth; }
 
-/* Logo & Header */
-/* Logo & Header */
 #logo {
   position: fixed;
   top: 10px;
@@ -37,11 +35,7 @@ header {
   width: 100%;
   top: 0;
   z-index: 998;
-  padding: 0 20px; /* same as other pages */
-  display: flex;
-  justify-content: flex-end; /* aligns nav to right like other pages */
-  align-items: center;
-  height: 80px; /* consistent header height */
+  padding-left: 150px;
 }
 nav {
   display: flex;
@@ -55,6 +49,7 @@ nav ul {
   display: flex;
 }
 nav li { margin: 0; }
+  
 nav a {
   display: block;
   padding: 18px 20px;
@@ -298,6 +293,7 @@ faders.forEach(fader => appearOnScroll.observe(fader));
 </script>
 </body>
 </html>
+
 
 
 
