@@ -22,26 +22,26 @@ body, html {
   color:#222;
 }
 
-/* ===== Header & Navigation ===== */
+/* Logo outside header */
+#logo-container {
+  text-align: center;
+  margin: 120px 0 20px 0; /* spacing above and below */
+}
+#logo {
+  height: 120px;
+  border-radius: 50%;
+}
+
+/* Header now just nav */
 header {
   background-color: #5C4033;
+  width: 100%;
   position: fixed;
   top:0;
-  width: 100%;
   z-index: 999;
   display: flex;
-  align-items: center;
-  padding:10px 20px;
-}
-
-#logo {
-  height: 100px;
-  border-radius:50%;
-  margin-right:20px;
-}
-
-nav {
-  margin-left:auto;
+  justify-content: center;
+  padding:10px 0;
 }
 nav ul {
   list-style:none;
@@ -57,6 +57,13 @@ nav li a {
   display:block;
 }
 nav li a:hover { background:#4e2f22; border-radius:6px; }
+
+/* PayPal section centered */
+#paypal-section {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
 
 /* ===== Main Container ===== */
 main.container {
@@ -201,7 +208,6 @@ footer {
 <body>
 
 <header>
-  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="Logo">
   <nav>
     <ul>
       <li><a href="./">Home</a></li>
@@ -216,9 +222,13 @@ footer {
   </nav>
 </header>
 
-<div id="cart-icon">🛒<div id="cart-count">0</div></div>
+<!-- Logo moved OUTSIDE header -->
+<div id="logo-container">
+  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="Logo">
+</div>
 
 <main class="container">
+
 
 <h1>Shop</h1>
 
@@ -254,6 +264,10 @@ footer {
 You will receive a PayPal receipt by email.<br>
 Orders dispatch within 2–5 working days.
 </p>
+
+<div id="paypal-section">
+  <div id="paypal-button-container"></div>
+</div>
 
 </main>
 <footer>
@@ -480,6 +494,7 @@ renderProducts();
 </script>
 </body>
 </html>
+
 
 
 
