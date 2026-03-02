@@ -206,38 +206,35 @@ footer {
 <!-- Logo -->
 <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails Logo" />
 
-<!-- Hamburger -->
-<div class="hamburger" onclick="toggleMenu()">
-  <div></div>
-  <div></div>
-  <div></div>
-</div>
+<!-- ===== HEADER START ===== -->
+<header>
+  <nav>
+    <ul>
+      <li><a href="./">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
 
-<!-- Navigation -->
-<nav>
-  <ul>
-    <li><a href="./">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="review.html">Reviews</a></li>
-    <li><a href="booking.html">Book Now</a></li>
-    <li><a href="contact-us.html">Contact Us</a></li>
-  </ul>
-</nav>
+    <div class="hamburger" id="hamburger">☰</div>
+  </nav>
 
-<!-- Mobile menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="./">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="services.html">Services</a>
-  <a href="shop.html">Shop</a>
-  <a href="review.html">Reviews</a>
-  <a href="booking.html">Book Now</a>
-  <a href="contact-us.html">Contact Us</a>
-</div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="services.html">Services</a>
+    <a href="shop.html">Shop</a>
+    <a href="review.html">Reviews</a>
+    <a href="booking.html">Book Now</a>
+    <a href="contact-us.html">Contact Us</a>
+  </div>
+</header>
+<!-- ===== HEADER END ===== -->
 
 <!-- Main Content -->
 <main class="container">
@@ -326,43 +323,27 @@ footer {
 </footer>
 
 <script>
-// Mobile menu toggle
-function toggleMenu() {
-  const menu = document.getElementById('mobileMenu');
-  menu.classList.toggle('show');
-  document.querySelector('.hamburger').classList.toggle('active');
-}
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
 
-// Close menu on link click
-document.querySelectorAll('#mobileMenu a').forEach(link => {
-  link.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('show'));
+hamburger.addEventListener('click', function () {
+  mobileMenu.classList.toggle('show');
+  hamburger.textContent =
+    mobileMenu.classList.contains('show') ? "✖" : "☰";
 });
 
-// Service section toggle
-const serviceSelect = document.getElementById('service-type');
-const sections = document.querySelectorAll('.service-section');
-serviceSelect.addEventListener('change', function () {
-  sections.forEach(section => section.style.display = 'none');
-  const selected = this.value;
-  if(selected) document.getElementById(selected).style.display = 'block';
-});
-
-// Scroll fade-in for subtitles
-const faders = document.querySelectorAll('.subtitle, .fade-in');
-const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
+const mobileLinks = document.querySelectorAll('#mobileMenu a');
+mobileLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('show');
+    hamburger.textContent = "☰";
   });
-}, appearOptions);
-faders.forEach(fader => appearOnScroll.observe(fader));
+});
 </script>
 
 </body>
 </html>
+
 
 
 
