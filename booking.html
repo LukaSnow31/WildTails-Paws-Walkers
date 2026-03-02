@@ -21,22 +21,22 @@ body {
 html { scroll-behavior: smooth; }
 
 #logo {
-  height: 60px; /* smaller logo to fit header */
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  height: 280px;
   width: auto;
-  border-radius: 0; /* same as other pages */
+  z-index: 1; /* lower than header */
+  border-radius: 50%;
 }
 
 header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #5C4033;
-  height: 80px; /* match other pages */
-  padding: 0 20px;
   position: fixed;
-  width: 100%;
   top: 0;
-  z-index: 999; /* logo and nav above background */
+  width: 100%;
+  background-color: #5C4033;
+  z-index: 999; /* header above logo */
+  padding-left: 150px;
 }
 nav {
   display: flex;
@@ -291,6 +291,7 @@ faders.forEach(fader => appearOnScroll.observe(fader));
 </script>
 </body>
 </html>
+
 
 
 
