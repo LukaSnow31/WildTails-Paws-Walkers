@@ -22,26 +22,23 @@ body, html {
   color:#222;
 }
 
-/* Logo outside header */
 #logo-container {
-  text-align: center;
-  margin: 120px 0 20px 0; /* spacing above and below */
+  text-align: left; /* aligns like other pages */
+  margin: 20px 0; /* spacing above and below */
 }
 #logo {
   height: 120px;
   border-radius: 50%;
 }
 
-/* Header now just nav */
+/* Header / nav like other pages (not centered) */
 header {
   background-color: #5C4033;
   width: 100%;
   position: fixed;
   top:0;
   z-index: 999;
-  display: flex;
-  justify-content: center;
-  padding:10px 0;
+  padding-left: 150px; /* same as other pages */
 }
 nav ul {
   list-style:none;
@@ -50,7 +47,7 @@ nav ul {
   padding:0;
 }
 nav li a {
-  padding: 18px 15px;
+  padding: 18px 20px;
   color:white;
   text-decoration:none;
   font-weight:bold;
@@ -64,7 +61,6 @@ nav li a:hover { background:#4e2f22; border-radius:6px; }
   justify-content: center;
   margin: 20px 0;
 }
-
 /* ===== Main Container ===== */
 main.container {
   flex:1;
@@ -207,6 +203,10 @@ footer {
 
 <body>
 
+<div id="logo-container">
+  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="Logo">
+</div>
+
 <header>
   <nav>
     <ul>
@@ -222,14 +222,7 @@ footer {
   </nav>
 </header>
 
-<!-- Logo moved OUTSIDE header -->
-<div id="logo-container">
-  <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="Logo">
-</div>
-
 <main class="container">
-
-
 <h1>Shop</h1>
 
 <label><strong>Filter by Category:</strong></label>
@@ -265,11 +258,11 @@ You will receive a PayPal receipt by email.<br>
 Orders dispatch within 2–5 working days.
 </p>
 
-<div id="paypal-section">
-  <div id="paypal-button-container"></div>
-</div>
-
+  <div id="paypal-section">
+    <div id="paypal-button-container"></div>
+  </div>
 </main>
+  
 <footer>
 &copy; 2025 WildTails & Paws Walkers
 </footer>
@@ -494,6 +487,7 @@ renderProducts();
 </script>
 </body>
 </html>
+
 
 
 
