@@ -234,13 +234,15 @@ footer {
     display: block;
     padding: 15px;
   }
-}
-
 @media(max-width:600px){
-  .shop-item { max-width:100%; margin:10px 0; }
-  #logo { height:60px; }
-  nav ul { flex-direction:column; align-items:flex-end; }
-  nav li a { padding:8px 12px; }
+  .shop-item { 
+    max-width:100%; 
+    margin:10px 0; 
+  }
+
+  #logo { 
+    height:60px; 
+  }
 }
 </style>
 </head>
@@ -250,14 +252,13 @@ footer {
 <header>
   <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails & Paws Walkers Logo">
 
- <div class="hamburger" onclick="toggleMenu()">
+  <div class="hamburger" onclick="toggleMenu()">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
   <nav id="nav-menu">
-  <nav>
     <ul>
       <li><a href="./">Home</a></li>
       <li><a href="about.html">About Us</a></li>
@@ -548,6 +549,7 @@ renderProducts();
 </script>
 </body>
 </html>
+
 
 
 
