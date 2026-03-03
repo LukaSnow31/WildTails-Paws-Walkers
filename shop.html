@@ -184,9 +184,56 @@ footer {
   padding:10px;
 }
 
-/* Mobile */
-@media(max-width:900px){
-  .shop-item { max-width:45%; }
+/* Hamburger Button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+}
+
+@media(max-width: 768px){
+
+  .hamburger {
+    display: flex;
+  }
+
+  nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background: #5C4033;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  nav.open {
+    max-height: 500px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav li a {
+    display: block;
+    padding: 15px;
+  }
 }
 
 @media(max-width:600px){
@@ -202,6 +249,14 @@ footer {
 
 <header>
   <img id="logo" src="WildTails-PawsWalkers/front logo.png" alt="WildTails & Paws Walkers Logo">
+
+ <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav id="nav-menu">
   <nav>
     <ul>
       <li><a href="./">Home</a></li>
@@ -485,11 +540,15 @@ paypal.Buttons({
   },
   onApprove:(data,actions)=>{ return actions.order.capture().then(()=>{ alert("Thank you for your order 🐾\nOrders ship within 2–5 working days."); cart=[]; renderProducts(); renderCart(); }); }
 }).render("#paypal-button-container");
-
+  
+  function toggleMenu(){
+  document.getElementById("nav-menu").classList.toggle("open");
+}
 renderProducts();
 </script>
 </body>
 </html>
+
 
 
 
